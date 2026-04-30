@@ -1,0 +1,730 @@
+// ============================================================
+// App.jsx – Đề Cương Ôn Tập Lịch Sử 10 – Học Kì 2
+// Màu chủ đạo: Nền đất đỏ/nâu cổ kính (#2C1810, #4A2C17)
+// Accent: Vàng đồng (#D4A017), Ngọc bích (#1A6B5A)
+// Font: Playfair Display (tiêu đề) + Crimson Text (thân bài)
+// ============================================================
+
+import { useState, useEffect } from “react”;
+
+// ── PALETTE & CSS VARIABLES (thay đổi tại đây để restyle toàn bộ) ──
+const C = {
+bg:       “#1C1008”,   // nền tối đất nung
+surface:  “#2A1A0E”,   // card nền
+surface2: “#3A2415”,   // card nổi hơn
+border:   “#5A3820”,   // viền đồng
+gold:     “#D4A017”,   // vàng đồng – accent chính
+goldDim:  “#8B6914”,   // vàng tối
+jade:     “#1A6B5A”,   // xanh ngọc – Văn Lang
+teal:     “#0E4D5C”,   // xanh biển – Chăm Pa
+crimson:  “#7A1F1F”,   // đỏ – Phù Nam
+text:     “#F0E6D0”,   // chữ kem
+textDim:  “#A89070”,   // chữ mờ
+correct:  “#2E7D32”,   // xanh lá đúng
+wrong:    “#7A1F1F”,   // đỏ sai
+white:    “#FFFFFF”,
+};
+
+// ── DỮ LIỆU LÝ THUYẾT ──────────────────────────────────────
+
+const theoryData = [
+{
+id: “van-lang-au-lac”,
+icon: “🥁”,
+title: “Văn Minh Văn Lang – Âu Lạc”,
+color: C.jade,
+accent: “#2ECC71”,
+sections: [
+{
+heading: “Cơ sở hình thành”,
+type: “list”,
+items: [
+{ main: “Địa lý”, detail: “Lưu vực sông Hồng, khu vực Bắc Bộ và Bắc Trung Bộ Việt Nam ngày nay. Đồng bằng phù sa màu mỡ → thuận lợi nông nghiệp lúa nước.” },
+{ main: “Kinh tế”, detail: “Nông nghiệp trồng lúa nước đạt trình độ cao là cơ sở kinh tế chủ yếu. Kĩ thuật luyện kim, đúc đồng (trống đồng Đông Sơn) phát triển rực rỡ.” },
+{ main: “Xã hội”, detail: “Xã hội phân hóa thành giai cấp: quý tộc, dân tự do (thành viên công xã), nô tì – nhưng chưa có mâu thuẫn gay gắt. Đây là cơ sở xã hội dẫn đến sự hình thành nhà nước.” },
+{ main: “Văn hóa gốc”, detail: “Hình thành trên nền văn hóa Đông Sơn (thời đại đồng thau → sắt sớm, thế kỉ VII–III TCN).” },
+]
+},
+{
+heading: “Nhà nước Văn Lang & Âu Lạc”,
+type: “compare”,
+items: [
+{
+label: “Văn Lang”,
+color: C.jade,
+points: [
+“Ra đời khoảng thế kỉ VII TCN – nhà nước đầu tiên trong lịch sử Việt Nam.”,
+“Kinh đô: Phong Châu (Phú Thọ) – trung du miền núi.”,
+“Vua Hùng đứng đầu; giúp việc là Lạc hầu, Lạc tướng, Bồ chính.”,
+“Bộ máy đơn giản, sơ khai (KHÔNG có Thượng thư, Tể tướng).”,
+“Kinh tế: Luyện kim đúc đồng đạt đỉnh cao – Trống đồng Đông Sơn là biểu tượng.”,
+]
+},
+{
+label: “Âu Lạc”,
+color: “#3498DB”,
+points: [
+“Kế thừa và phát triển từ Văn Lang.”,
+“Kinh đô: Cổ Loa (Đông Anh, Hà Nội) – đồng bằng trung tâm.”,
+“Bộ máy nhà nước hoàn thiện hơn.”,
+“Sáng chế Nỏ Liên Châu (nỏ thần) – kĩ thuật quân sự vượt bậc.”,
+“Xây thành Cổ Loa – công trình kiến trúc tiêu biểu.”,
+]
+}
+]
+},
+{
+heading: “⚠️ Lưu ý làm bài”,
+type: “warnings”,
+items: [
+“Bộ máy Văn Lang KHÔNG có: Thượng thư, Tể tướng, Trạng nguyên, Lục bộ.”,
+“Cơ sở XÃ HỘI = phân hóa giai cấp; cơ sở KINH TẾ = nông nghiệp lúa nước.”,
+“Nhà nước Văn Lang: sơ khai, chưa hoàn chỉnh (KHÔNG phải quan liêu tập quyền).”,
+“Chế độ công xã nguyên thủy đạt cực thịnh KHÔNG phải lý do ra đời nhà nước (câu 9 đáp án A).”,
+“Văn minh Văn Lang – Âu Lạc: biểu tượng là Trống đồng Đông Sơn (không phải tượng Phật, phù điêu Chăm).”,
+“Hai nhà nước đều dựa trên văn hóa Đông Sơn, nhưng KHÔNG phải đều thành lập sau kháng chiến (câu đúng/sai c – SAI).”,
+]
+},
+{
+heading: “Đời sống tinh thần”,
+type: “list”,
+items: [
+{ main: “Tín ngưỡng”, detail: “Thờ cúng tổ tiên, sùng bái tự nhiên (thần Mặt Trời, thần Nước…), tín ngưỡng phồn thực. CHƯA tiếp thu đạo Phật / Hinđu như Chăm Pa.” },
+{ main: “Nghệ thuật”, detail: “Âm nhạc, ca múa quan trọng; điêu khắc đạt trình độ thẩm mĩ cao. Trống đồng là đỉnh cao nghệ thuật đúc đồng.” },
+]
+}
+]
+},
+{
+id: “cham-pa”,
+icon: “🕌”,
+title: “Văn Minh Chăm Pa”,
+color: C.teal,
+accent: “#3498DB”,
+sections: [
+{
+heading: “Cơ sở hình thành”,
+type: “list”,
+items: [
+{ main: “Địa lý”, detail: “Duyên hải và một phần cao nguyên miền Trung Việt Nam. Lưu vực sông Thu Bồn – đồng bằng ven sông màu mỡ → nông nghiệp.” },
+{ main: “Ra đời”, detail: “Khoảng thế kỉ II (sau Công nguyên) – trễ hơn Văn Lang.” },
+{ main: “Điểm khác biệt so với Văn Lang–Âu Lạc”, detail: “Chịu ảnh hưởng sâu sắc của văn minh ẤN ĐỘ (tôn giáo, chữ viết, kiến trúc) – đây là điểm khác biệt cốt lõi.” },
+{ main: “Thể chế”, detail: “Quân chủ chuyên chế (vua có toàn quyền). Vương hiệu Ấn Độ: Varman. Hai đại thần: Senapati (dân sự) & Tapatica (quân sự). Chưa có luật thành văn.” },
+]
+},
+{
+heading: “Kinh tế & Văn hóa”,
+type: “list”,
+items: [
+{ main: “Kinh tế”, detail: “Nông nghiệp lúa nước + thủ công nghiệp (kĩ thuật làm gốm, xây đền tháp đạt trình độ cao).” },
+{ main: “Tôn giáo”, detail: “Tiếp thu Hinđu giáo và Phật giáo từ Ấn Độ.” },
+{ main: “Chữ viết”, detail: “Sáng tạo chữ Chăm cổ trên cơ sở chữ Phạn (Sanskrit) của Ấn Độ.” },
+{ main: “Kiến trúc”, detail: “Thánh địa Mĩ Sơn – Di sản văn hóa thế giới UNESCO. Nghệ thuật điêu khắc đề tài thần thoại Ấn Độ (Shiva, Brahma, Vishnu, Garuda…).” },
+]
+},
+{
+heading: “⚠️ Lưu ý làm bài”,
+type: “warnings”,
+items: [
+“Điểm KHÁC BIỆT cơ sở hình thành Chăm Pa so với Văn Lang–Âu Lạc = ảnh hưởng văn minh Ấn Độ (không phải Trung Hoa).”,
+“Nhà nước Chăm Pa: quân chủ chuyên chế (không phải dân chủ).”,
+“Quan lại Chăm Pa KHÔNG có lương, không được cấp ruộng – sống nhờ cống nạp của dân.”,
+“Nghệ thuật điêu khắc Chăm Pa: đề tài chủ yếu là thần thoại Ấn Độ (không phải thần thoại Trung Hoa).”,
+“Công trình tiêu biểu: Thánh địa Mĩ Sơn (không phải chùa Một Cột, thành Cổ Loa, tháp Phổ Minh).”,
+“Đoạn tư liệu câu 1 phần II Chăm Pa: nói nghệ thuật Chăm Pa ở Thừa Thiên Huế – KHÔNG phải chỉ riêng Thừa Thiên Huế mới chịu ảnh hưởng Ấn Độ (đáp án b – SAI).”,
+“Si-va, Brahma, Vishnu là thần Hinđu giáo (không phải Phật giáo) → câu d – SAI.”,
+]
+},
+{
+heading: “Vai trò”,
+type: “list”,
+items: [
+{ main: “Đối với Việt Nam”, detail: “Là một bộ phận hình thành bản sắc văn hóa Việt Nam (không phải cơ sở chủ yếu của văn minh Đại Việt).” },
+]
+}
+]
+},
+{
+id: “phu-nam”,
+icon: “⛵”,
+title: “Văn Minh Phù Nam”,
+color: C.crimson,
+accent: “#E74C3C”,
+sections: [
+{
+heading: “Cơ sở hình thành”,
+type: “list”,
+items: [
+{ main: “Địa lý”, detail: “Nam Bộ Việt Nam – lưu vực sông Cửu Long (sông Mê Công). Đồng bằng màu mỡ, nguồn nước dồi dào.” },
+{ main: “Văn hóa gốc”, detail: “Văn hóa Óc Eo (KHÔNG phải Sa Huỳnh hay Đông Sơn).” },
+{ main: “Điểm nổi bật”, detail: “Văn minh biển và thương mại – Phù Nam giàu mạnh nhờ kinh tế biển. Giao lưu rộng với Đông Á, Nam Á, cả Tây Á và La Mã.” },
+{ main: “Tôn giáo”, detail: “Chịu ảnh hưởng sâu sắc của văn minh Ấn Độ (Bà La Môn, Hinđu giáo). Có vua người Ấn Độ: Thiên Trúc Chiên Đàn, Kiều Trấn Như.” },
+{ main: “Thể chế”, detail: “Quân chủ chuyên chế (giống Chăm Pa).” },
+]
+},
+{
+heading: “Kinh tế đặc trưng”,
+type: “list”,
+items: [
+{ main: “Thương nghiệp biển”, detail: “Ngành kinh tế mạnh nhất, tạo nên sự giàu mạnh của Phù Nam. Đây là điểm KHÁC BIỆT với Văn Lang–Âu Lạc (chủ yếu nông nghiệp).” },
+{ main: “Nông nghiệp”, detail: “Lúa nước vùng đầm lầy – cung cấp lương thực (vai trò phụ hơn thương nghiệp).” },
+{ main: “Lâm thổ sản”, detail: “Vùng núi phía đông bắc cung cấp; sản phẩm không chỉ phục vụ nội địa mà còn buôn bán ra ngoài.” },
+]
+},
+{
+heading: “Đời sống”,
+type: “list”,
+items: [
+{ main: “Nhà ở”, detail: “Nhà sàn dựng bằng gỗ, mái lợp bằng lá (nhà gác nhiều tầng).” },
+{ main: “Trang phục”, detail: “Dùng vải may quần áo; có sự phân biệt theo tầng lớp xã hội (nhà giàu cắt gấm, người nghèo dùng vải).” },
+{ main: “Đồ dùng”, detail: “Dùng vàng bạc nạm khảm bát đĩa; xây thành bằng gỗ ken.” },
+]
+},
+{
+heading: “⚠️ Lưu ý làm bài”,
+type: “warnings”,
+items: [
+“Văn hóa nền tảng của Phù Nam = Óc Eo (KHÔNG phải Sa Huỳnh).”,
+“Cơ sở kinh tế Phù Nam = thương nghiệp đường biển (KHÔNG phải nhu cầu trị thủy/chống xâm lược).”,
+“Điểm khác biệt kinh tế Phù Nam so với Văn Lang–Âu Lạc = thương nghiệp đường biển phát triển.”,
+“Sản phẩm lâm thổ sản Phù Nam có buôn bán ra ngoài (câu d Đoạn 4 phần II Phù Nam – SAI khi nói ‘chỉ phục vụ nội địa’).”,
+“Ba nền văn minh đều hình thành ở lưu vực các con sông – đây là điểm CHUNG.”,
+“Chăm Pa và Phù Nam đều chịu ảnh hưởng văn minh Ấn Độ; Văn Lang–Âu Lạc chịu ít ảnh hưởng hơn.”,
+]
+}
+]
+}
+];
+
+// ── DỮ LIỆU QUIZ (tất cả câu hỏi từ đề cương) ──────────────
+
+const quizData = [
+// === VĂN LANG – ÂU LẠC: Phần I ===
+{ q: “Nhà nước đầu tiên được hình thành trên lãnh thổ Việt Nam có tên gọi là?”, opts: [“Văn Lang”, “Lâm Ấp”, “Chăm pa”, “Phù Nam”], ans: 0, explain: “Văn Lang là nhà nước đầu tiên trong lịch sử Việt Nam, ra đời khoảng thế kỉ VII TCN.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Nền văn minh Văn Lang - Âu Lạc chủ yếu được hình thành trên lưu vực con sông nào?”, opts: [“Sông Hằng”, “Sông Ấn”, “Sông Hồng”, “Sông Nin”], ans: 2, explain: “Văn minh Văn Lang – Âu Lạc hình thành chủ yếu trên lưu vực sông Hồng.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Nền văn minh Văn Lang - Âu Lạc được hình thành ở khu vực nào của Việt Nam?”, opts: [“Khu vực Bắc Bộ và Bắc Trung Bộ”, “Vùng duyên hải và cao nguyên miền Trung”, “Khu vực Bắc Trung Bộ và Nam Bộ”, “Vùng ven biển Nam Trung Bộ và Nam Bộ”], ans: 0, explain: “Văn minh Văn Lang – Âu Lạc hình thành ở khu vực Bắc Bộ và Bắc Trung Bộ Việt Nam ngày nay.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Điều kiện tự nhiên nào tạo thuận lợi cho cư dân Văn Lang – Âu Lạc phát triển nông nghiệp lúa nước?”, opts: [“Tài nguyên khoáng sản phong phú”, “Khí hậu khô hạn, lượng nhiệt lớn”, “Hệ thống sông lớn bồi đắp đất phù sa màu mỡ”, “Tiếp giáp với các nền văn minh lớn”], ans: 2, explain: “Hệ thống sông lớn bồi đắp phù sa màu mỡ là điều kiện thuận lợi chính cho nông nghiệp lúa nước.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Cơ sở kinh tế dẫn đến sự hình thành nền văn minh Văn Lang - Âu Lạc là?”, opts: [“Hoạt động thương nghiệp đường biển đặc biệt phát triển”, “Bắt đầu xuất hiện sự phân hóa giữa các tầng lớp xã hội”, “Nhu cầu chống giặc ngoại xâm ngày càng bức thiết”, “Nông nghiệp trồng lúa nước đạt trình độ phát triển cao”], ans: 3, explain: “Cơ sở KINH TẾ = nông nghiệp trồng lúa nước đạt trình độ cao. Lưu ý: phân hóa xã hội là cơ sở XÃ HỘI.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Cư dân Văn Lang – Âu Lạc sớm phát triển nghề luyện kim nhờ điều kiện tự nhiên nào?”, opts: [“Tài nguyên khoáng sản phong phú”, “Khí hậu nhiệt đới ẩm gió mùa”, “Các vùng đồng bằng phù sa màu mỡ”, “Hệ thống sông ngòi chằng chịt”], ans: 0, explain: “Tài nguyên khoáng sản phong phú là điều kiện để phát triển nghề luyện kim, đúc đồng.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Văn minh Văn Lang – Âu Lạc được hình thành trên cơ sở của nền văn hóa nào?”, opts: [“Phùng Nguyên”, “Óc Eo”, “Đông Sơn”, “Đồng Đậu”], ans: 2, explain: “Văn minh Văn Lang – Âu Lạc hình thành trên nền văn hóa Đông Sơn. (Óc Eo là nền tảng của Phù Nam).”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Cơ sở xã hội dẫn đến sự hình thành nền văn minh Văn Lang - Âu Lạc là?”, opts: [“Xuất hiện sự phân hóa giữa các tầng lớp trong xã hội”, “Nhu cầu xâm lược, mở rộng lãnh thổ trở nên bức thiết”, “Hoạt động thủ công nghiệp đạt trình độ phát triển cao”, “Công cụ lao động bằng kim khí được sử dụng phổ biến”], ans: 0, explain: “Cơ sở XÃ HỘI = xã hội phân hóa thành các giai cấp, tầng lớp khác nhau.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Nội dung nào KHÔNG phản ánh đúng cơ sở ra đời của nhà nước Văn Lang - Âu Lạc?”, opts: [“Chế độ công xã nguyên thủy đạt đến giai đoạn cực thịnh”, “Yêu cầu của hoạt động trị thuỷ để phục vụ nông nghiệp”, “Yêu cầu của công cuộc đấu tranh chống giặc ngoại xâm”, “Những chuyển biến cơ bản trong đời sống kinh tế - xã hội”], ans: 0, explain: “Chế độ công xã nguyên thủy ‘cực thịnh’ là giai đoạn TRƯỚC khi nhà nước ra đời, không phải cơ sở hình thành nhà nước.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Nhà nước nào sau đây ở Việt Nam ra đời vào khoảng thế kỉ VII TCN?”, opts: [“Văn Lang”, “Âu Lạc”, “Phù Nam”, “Đại Việt”], ans: 0, explain: “Nhà nước Văn Lang ra đời khoảng thế kỉ VII TCN – nhà nước đầu tiên trong lịch sử Việt Nam.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Kinh đô của nhà nước Văn Lang đặt tại?”, opts: [“Cổ Loa (Hà Nội)”, “Phong Châu (Phú Thọ)”, “Phú Xuân (Huế)”, “Quy Nhơn (Bình Định)”], ans: 1, explain: “Kinh đô Văn Lang = Phong Châu (Phú Thọ). Kinh đô Âu Lạc = Cổ Loa (Hà Nội).”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Kinh đô của nước Âu Lạc đặt tại?”, opts: [“Đông Anh (Hà Nội)”, “Phong Châu (Phú Thọ)”, “Thăng Long (Hà Nội)”, “Tây Đô (Thanh Hóa)”], ans: 0, explain: “Kinh đô Âu Lạc = Cổ Loa (thuộc Đông Anh, Hà Nội ngày nay).”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Đứng đầu nhà nước Văn Lang là Vua Hùng, giúp việc cho vua là?”, opts: [“Tể tướng”, “Lục bộ”, “Lạc hầu”, “Trạng nguyên”], ans: 2, explain: “Giúp việc cho Vua Hùng là Lạc hầu (dân sự) và Lạc tướng (địa phương). Không có Tể tướng, Lục bộ hay Trạng nguyên.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Bộ máy hành chính nhà nước dưới thời kì Văn Lang KHÔNG tồn tại chức vụ nào?”, opts: [“Lạc hầu”, “Lạc tướng”, “Bồ chính”, “Thượng thư”], ans: 3, explain: “Thượng thư là chức quan xuất hiện về sau, không có trong bộ máy nhà nước Văn Lang.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Nhà nước nào là sự kế thừa và phát triển của nhà nước Văn Lang?”, opts: [“Âu Lạc”, “Lâm Ấp”, “Chămpa”, “Phù Nam”], ans: 0, explain: “Âu Lạc kế thừa và phát triển từ Văn Lang – đây là bước phát triển tiếp theo trong lịch sử Việt Nam.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Một biểu hiện chứng tỏ sự phát triển của Âu Lạc so với Văn Lang là?”, opts: [“Bộ máy nhà nước được tổ chức hoàn thiện hơn”, “Lãnh thổ mở rộng hơn trên cơ sở thống nhất Âu Việt và Lạc Việt”, “Cải cách đơn vị hành chính theo hướng tập trung, quan liêu”, “Bảo vệ vững chắc độc lập trước quân Nam Hán”], ans: 1, explain: “Âu Lạc mở rộng lãnh thổ hơn nhờ thống nhất cộng đồng Âu Việt và Lạc Việt.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Đặc điểm của bộ máy nhà nước Văn Lang - Âu Lạc là?”, opts: [“Hoàn chỉnh, chặt chẽ”, “Đơn giản, sơ khai”, “Quan liêu, tập quyền”, “Phân quyền, pháp trị”], ans: 1, explain: “Bộ máy nhà nước Văn Lang – Âu Lạc còn sơ khai, đơn giản, chưa hoàn chỉnh.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Công trình kiến trúc tiêu biểu được xây dựng dưới thời kì nhà nước Âu Lạc là?”, opts: [“Chùa Một Cột”, “Tháp Phổ Minh”, “Thành Cổ Loa”, “Kinh thành Huế”], ans: 2, explain: “Thành Cổ Loa (Hà Nội) là công trình kiến trúc tiêu biểu nhất của thời kì Âu Lạc.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Nội dung nào phản ánh sự phát triển kinh tế của cư dân Văn Lang - Âu Lạc?”, opts: [“Kĩ thuật luyện kim, đúc đồng đạt trình độ cao”, “Thương nghiệp đường biển phát triển vượt bậc”, “Kĩ thuật đóng gạch xây tháp đạt mức hoàn mĩ”, “Làm chủ nhiều vùng rộng lớn ở Đông Nam Á”], ans: 0, explain: “Kĩ thuật luyện kim, đúc đồng (trống đồng Đông Sơn) là đỉnh cao kinh tế thủ công nghiệp Văn Lang – Âu Lạc.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Ngành kinh tế nào phát triển mạnh dưới thời kì Văn Lang – Âu Lạc?”, opts: [“Chế tạo máy”, “Đóng tàu biển”, “Trồng lúa nước”, “Làm giấy”], ans: 2, explain: “Trồng lúa nước là ngành kinh tế chủ đạo và phát triển mạnh nhất dưới thời Văn Lang – Âu Lạc.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Hiện vật nào trở thành biểu tượng của nền văn minh Văn Lang - Âu Lạc?”, opts: [“Trống đồng Đông Sơn”, “Tượng Phật Đồng Dương”, “Phù điêu Khương Mỹ”, “Tiền đồng Óc Eo”], ans: 0, explain: “Trống đồng Đông Sơn là biểu tượng của nền văn minh Văn Lang – Âu Lạc.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Phát hiện gần 300 trống đồng Đông Sơn trên lãnh thổ Việt Nam chứng minh cho sự phát triển của ngành nào?”, opts: [“Đóng tàu”, “Đúc đồng”, “Chế tạo máy”, “Cơ khí”], ans: 1, explain: “Trống đồng là sản phẩm của nghề đúc đồng – minh chứng cho sự phát triển rực rỡ của ngành luyện kim đúc đồng.”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Nội dung nào KHÔNG phản ánh đúng đời sống tinh thần của cư dân Văn Lang - Âu Lạc?”, opts: [“Tiếp thu đạo Phật và đạo Hinđu từ Ấn Độ”, “Âm nhạc, ca múa đóng vai trò quan trọng”, “Thờ cúng người có công với cộng đồng”, “Nghệ thuật điêu khắc đạt trình độ thẩm mĩ cao”], ans: 0, explain: “Cư dân Văn Lang – Âu Lạc CHƯA tiếp thu đạo Phật và Hinđu từ Ấn Độ (đây là đặc điểm của Chăm Pa, Phù Nam).”, tag: “Văn Lang – Âu Lạc” },
+{ q: “Tục thờ thần Mặt Trời là biểu hiện của tín ngưỡng nào của cư dân Văn Lang – Âu Lạc?”, opts: [“Thờ cúng tổ tiên”, “Tín ngưỡng phồn thực”, “Sùng bái tự nhiên”, “Thờ thần động vật”], ans: 2, explain: “Thờ thần Mặt Trời là biểu hiện của tín ngưỡng sùng bái tự nhiên.”, tag: “Văn Lang – Âu Lạc” },
+
+// === CHĂM PA: Phần I ===
+{ q: “Nền văn minh cổ đại nào được hình thành trên khu vực miền Trung Việt Nam?”, opts: [“Văn Lang”, “Âu Lạc”, “Chăm pa”, “Phù Nam”], ans: 2, explain: “Văn minh Chăm Pa hình thành ở khu vực miền Trung Việt Nam.”, tag: “Chăm Pa” },
+{ q: “Nền văn minh Chăm – pa chủ yếu được hình thành trên lưu vực con sông nào?”, opts: [“Sông Mã”, “Sông Thu Bồn”, “Sông Hồng”, “Sông Mê Công”], ans: 1, explain: “Văn minh Chăm Pa hình thành chủ yếu trên lưu vực sông Thu Bồn.”, tag: “Chăm Pa” },
+{ q: “Nền văn minh Chăm-pa được hình thành ở khu vực nào của Việt Nam hiện nay?”, opts: [“Vùng duyên hải và một phần cao nguyên miền Trung”, “Các tỉnh vùng đồng bằng Bắc Bộ và Bắc Trung Bộ”, “Các tỉnh vùng duyên hải miền Trung và Tây Nguyên”, “Vùng ven biển Nam Trung Bộ và các tỉnh Nam Bộ”], ans: 0, explain: “Văn minh Chăm Pa hình thành ở vùng duyên hải và một phần cao nguyên miền Trung.”, tag: “Chăm Pa” },
+{ q: “Cánh đồng màu mỡ ven sông Thu Bồn tạo điều kiện cư dân Chăm – pa phát triển ngành nào?”, opts: [“Nông nghiệp lúa nước”, “Khai thác lâm thổ sản”, “Luyện kim, đúc đồng”, “Thương mại đường biển”], ans: 0, explain: “Đồng bằng ven sông Thu Bồn màu mỡ → phát triển nông nghiệp lúa nước.”, tag: “Chăm Pa” },
+{ q: “Cơ sở kinh tế dẫn đến sự hình thành nền văn minh Chăm - pa là?”, opts: [“Hoạt động buôn bán với phương Tây đặc biệt phát triển”, “Bắt đầu xuất hiện sự phân hóa giữa các tầng lớp xã hội”, “Chịu ảnh hưởng sâu sắc của văn minh Ấn Độ và Ai Cập”, “Kinh tế nông nghiệp, thủ công nghiệp tương đối phát triển”], ans: 3, explain: “Cơ sở kinh tế hình thành văn minh Chăm Pa = kinh tế nông nghiệp, thủ công nghiệp tương đối phát triển.”, tag: “Chăm Pa” },
+{ q: “Nhà nước cổ đại nào ở Việt Nam ra đời vào khoảng thế kỉ II?”, opts: [“Văn Lang”, “Âu Lạc”, “Phù Nam”, “Chăm - pa”], ans: 3, explain: “Nhà nước Chăm Pa ra đời khoảng thế kỉ II (sau Công nguyên).”, tag: “Chăm Pa” },
+{ q: “Điểm KHÁC BIỆT cơ sở hình thành văn minh Chăm – pa so với Văn Lang – Âu Lạc là?”, opts: [“Kinh tế nông nghiệp, thủ công nghiệp phát triển”, “Xã hội có sự phân hóa thành các giai cấp, tầng lớp”, “Chịu ảnh hưởng sâu sắc của văn minh Trung Hoa”, “Chịu ảnh hưởng sâu sắc của nền văn minh Ấn Độ”], ans: 3, explain: “Điểm khác biệt cốt lõi = Chăm Pa chịu ảnh hưởng sâu sắc văn minh Ấn Độ (Văn Lang – Âu Lạc không có).”, tag: “Chăm Pa” },
+{ q: “Nhà nước Chăm – pa được tổ chức theo mô hình thể chế nào?”, opts: [“Dân chủ cộng hòa”, “Dân chủ chủ nô”, “Quân chủ chuyên chế”, “Quân chủ lập hiến”], ans: 2, explain: “Nhà nước Chăm Pa tổ chức theo thể chế quân chủ chuyên chế (vua có toàn quyền).”, tag: “Chăm Pa” },
+{ q: “Nội dung nào phản ánh sự phát triển kinh tế của cư dân Chăm - pa?”, opts: [“Tiếp thu kĩ thuật làm giấy, la bàn từ Trung Quốc”, “Sản phẩm nông nghiệp chủ yếu phục vụ xuất khẩu”, “Kĩ thuật làm gốm, xây đền tháp đạt trình độ cao”, “Công nghiệp đóng tàu biển đóng vai trò chủ đạo”], ans: 2, explain: “Chăm Pa nổi tiếng với kĩ thuật làm gốm và xây đền tháp đạt trình độ rất cao.”, tag: “Chăm Pa” },
+{ q: “Cư dân Chăm – pa đã tiếp thu tôn giáo nào từ Ấn Độ?”, opts: [“Hin – đu giáo”, “Đạo giáo”, “Nho giáo”, “Thiên chúa giáo”], ans: 0, explain: “Chăm Pa tiếp thu Hinđu giáo (và cả Phật giáo) từ Ấn Độ.”, tag: “Chăm Pa” },
+{ q: “Cư dân Chăm – pa đã sáng tạo ra chữ Chăm cổ trên cơ sở tiếp thu chữ viết nào?”, opts: [“Chữ Phạn”, “Chữ Hán”, “Chữ La-tinh”, “Chữ Nôm”], ans: 0, explain: “Chữ Chăm cổ được sáng tạo trên cơ sở chữ Phạn (Sanskrit) của Ấn Độ.”, tag: “Chăm Pa” },
+{ q: “Công trình kiến trúc nào của văn minh Chăm-pa được công nhận là di sản văn hóa thế giới?”, opts: [“Thành Cổ Loa”, “Thánh địa Mĩ Sơn”, “Chùa Một Cột”, “Tháp Phổ Minh”], ans: 1, explain: “Thánh địa Mĩ Sơn là di sản văn hóa thế giới UNESCO tiêu biểu của văn minh Chăm Pa.”, tag: “Chăm Pa” },
+{ q: “Vai trò của văn minh Chăm-pa đối với tiến trình phát triển lịch sử Việt Nam là?”, opts: [“Là một bộ phận hình thành bản sắc văn hóa Việt Nam”, “Tạo nên sự tách biệt trong lịch sử văn hóa dân tộc”, “Cung cấp nguồn sử liệu quý giá cho lịch sử thế giới”, “Là cơ sở chủ yếu hình thành nền văn minh Đại Việt”], ans: 0, explain: “Văn minh Chăm Pa là một bộ phận hình thành bản sắc văn hóa Việt Nam.”, tag: “Chăm Pa” },
+
+// === PHÙ NAM: Phần I ===
+{ q: “Nền văn minh Phù Nam được hình thành trên lưu vực con sông nào?”, opts: [“Sông Cửu Long”, “Sông Thu Bồn”, “Sông Hồng”, “Sông Mã”], ans: 0, explain: “Văn minh Phù Nam hình thành trên lưu vực sông Cửu Long (sông Mê Công).”, tag: “Phù Nam” },
+{ q: “Văn minh Phù Nam được hình thành và phát triển chủ yếu ở khu vực nào?”, opts: [“Đồng bằng sông Hồng”, “Trung du Bắc Bộ”, “Nam Bộ Việt Nam”, “Duyên hải Trung Bộ”], ans: 2, explain: “Văn minh Phù Nam hình thành và phát triển chủ yếu ở Nam Bộ Việt Nam.”, tag: “Phù Nam” },
+{ q: “Văn minh Chăm-pa và văn minh Phù Nam đều chịu ảnh hưởng mạnh mẽ của văn minh nào?”, opts: [“Trung Hoa”, “Ấn Độ”, “Ai Cập”, “Hy Lạp”], ans: 1, explain: “Cả Chăm Pa và Phù Nam đều chịu ảnh hưởng sâu sắc của văn minh Ấn Độ.”, tag: “Phù Nam” },
+{ q: “Văn minh Phù Nam được hình thành trên cơ sở nền văn hóa nào?”, opts: [“Sa Huỳnh”, “Óc Eo”, “Đông Sơn”, “Đồng Đậu”], ans: 1, explain: “Văn minh Phù Nam hình thành trên nền văn hóa Óc Eo (không phải Sa Huỳnh hay Đông Sơn).”, tag: “Phù Nam” },
+{ q: “Đồng bằng màu mỡ, nguồn nước dồi dào tạo điều kiện cư dân Phù Nam phát triển ngành kinh tế nào?”, opts: [“Nông nghiệp lúa nước”, “Khai thác lâm thổ sản”, “Luyện kim, đúc đồng”, “Thương mại đường biển”], ans: 0, explain: “Điều kiện tự nhiên thuận lợi → phát triển nông nghiệp lúa nước (cung cấp lương thực).”, tag: “Phù Nam” },
+{ q: “Cơ sở kinh tế dẫn đến sự hình thành nền văn minh Phù Nam là?”, opts: [“Hoạt động buôn bán bằng đường biển đặc biệt phát triển”, “Bắt đầu xuất hiện sự phân hóa giữa các tầng lớp xã hội”, “Chịu ảnh hưởng sâu sắc của văn minh Ấn Độ và Ai Cập”, “Nhu cầu trị thủy và chống ngoại xâm ngày càng bức thiết”], ans: 0, explain: “Cơ sở kinh tế hình thành văn minh Phù Nam = thương nghiệp đường biển đặc biệt phát triển.”, tag: “Phù Nam” },
+{ q: “Ngành kinh tế nào phát triển mạnh dưới thời kì nhà nước Phù Nam?”, opts: [“Chế tạo máy”, “Làm đồng hồ”, “Thương nghiệp biển”, “Chế tạo vũ khí”], ans: 2, explain: “Thương nghiệp biển là ngành kinh tế đặc trưng và phát triển mạnh nhất của Phù Nam.”, tag: “Phù Nam” },
+{ q: “Điểm khác biệt về kinh tế của văn minh Phù Nam so với Văn Lang – Âu Lạc là?”, opts: [“Kĩ thuật đóng gạch đạt trình độ cao”, “Thương nghiệp đường biển phát triển”, “Nông nghiệp lúa nước có vai trò chủ đạo”, “Sản xuất nông nghiệp quy mô đồn điền”], ans: 1, explain: “Thương nghiệp đường biển phát triển là điểm khác biệt kinh tế của Phù Nam so với Văn Lang – Âu Lạc.”, tag: “Phù Nam” },
+{ q: “Các nền văn minh cổ đại trên đất nước Việt Nam có điểm CHUNG nào?”, opts: [“Chịu ảnh hưởng của văn minh Ấn Độ”, “Chịu ảnh hưởng của văn minh Trung Hoa”, “Hình thành ở lưu vực các con sông”, “Được hình thành ở vùng giàu tài nguyên khoáng sản”], ans: 2, explain: “Điểm CHUNG của cả 3 nền văn minh = đều hình thành ở lưu vực các con sông lớn.”, tag: “Phù Nam” },
+];
+
+// ── COMPONENT: THEORY SECTION ──────────────────────────────
+
+function TheoryCard({ section }) {
+const [open, setOpen] = useState(false);
+
+return (
+<div style={{
+marginBottom: 20,
+borderRadius: 12,
+overflow: “hidden”,
+border: `1px solid ${section.color}60`,
+// màu viền theo chủ đề mỗi section
+}}>
+{/* Header toggle */}
+<button
+onClick={() => setOpen(o => !o)}
+style={{
+width: “100%”,
+background: `linear-gradient(135deg, ${section.color}DD, ${section.color}88)`,
+border: “none”,
+color: C.white,
+padding: “18px 22px”,
+cursor: “pointer”,
+display: “flex”,
+justifyContent: “space-between”,
+alignItems: “center”,
+textAlign: “left”,
+fontFamily: “‘Playfair Display’, Georgia, serif”,
+fontSize: 18,
+fontWeight: 700,
+letterSpacing: 0.5,
+}}
+>
+<span>{section.icon} {section.title}</span>
+<span style={{ fontSize: 18, opacity: 0.8 }}>{open ? “▲” : “▼”}</span>
+</button>
+
+```
+  {/* Content */}
+  {open && (
+    <div style={{ background: C.surface, padding: 20 }}>
+      {section.sections.map((block, bi) => (
+        <div key={bi} style={{ marginBottom: 28 }}>
+          <h3 style={{
+            color: section.accent,
+            fontSize: 14,
+            fontWeight: 700,
+            letterSpacing: 1,
+            textTransform: "uppercase",
+            marginBottom: 14,
+            borderBottom: `1px solid ${section.accent}40`,
+            paddingBottom: 8,
+            fontFamily: "'Crimson Text', Georgia, serif",
+          }}>
+            {block.heading}
+          </h3>
+
+          {/* LIST TYPE */}
+          {block.type === "list" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {block.items.map((item, i) => (
+                <div key={i} style={{
+                  background: C.surface2,
+                  borderLeft: `3px solid ${section.accent}`,
+                  borderRadius: "0 8px 8px 0",
+                  padding: "12px 16px",
+                }}>
+                  <span style={{ color: section.accent, fontWeight: 700, fontSize: 14 }}>{item.main}:</span>
+                  {/* tên mục màu accent */}
+                  <span style={{ color: C.text, fontSize: 14, marginLeft: 6, lineHeight: 1.6 }}>{item.detail}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* COMPARE TYPE */}
+          {block.type === "compare" && (
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+              {block.items.map((col, ci) => (
+                <div key={ci} style={{
+                  background: C.surface2,
+                  borderRadius: 10,
+                  overflow: "hidden",
+                  border: `1px solid ${col.color}40`,
+                }}>
+                  <div style={{
+                    background: col.color,
+                    color: C.white,
+                    padding: "8px 14px",
+                    fontWeight: 700,
+                    fontSize: 14,
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                  }}>
+                    {col.label}
+                  </div>
+                  <div style={{ padding: 14 }}>
+                    {col.points.map((p, pi) => (
+                      <div key={pi} style={{
+                        display: "flex", gap: 8, marginBottom: 8,
+                        fontSize: 13, lineHeight: 1.6, color: C.textDim,
+                      }}>
+                        <span style={{ color: col.color, minWidth: 14 }}>→</span>
+                        <span>{p}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* WARNINGS TYPE */}
+          {block.type === "warnings" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {block.items.map((item, i) => (
+                <div key={i} style={{
+                  background: "#2A1800",
+                  border: "1px solid #C0801060",
+                  // nền cảnh báo màu nâu đậm + viền vàng mờ
+                  borderRadius: 8,
+                  padding: "10px 14px",
+                  fontSize: 13,
+                  color: "#F0C080",
+                  // chữ cảnh báo màu vàng nhạt
+                  lineHeight: 1.6,
+                  display: "flex",
+                  gap: 8,
+                }}>
+                  <span>⚠️</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+```
+
+);
+}
+
+// ── COMPONENT: QUIZ ─────────────────────────────────────────
+
+function QuizMode({ onBack }) {
+const [currentQ, setCurrentQ] = useState(0);
+const [selected, setSelected] = useState(null);
+const [showExplain, setShowExplain] = useState(false);
+const [score, setScore] = useState(0);
+const [finished, setFinished] = useState(false);
+const [answers, setAnswers] = useState([]);
+const [filter, setFilter] = useState(“Tất cả”);
+
+const tags = [“Tất cả”, “Văn Lang – Âu Lạc”, “Chăm Pa”, “Phù Nam”];
+const questions = filter === “Tất cả” ? quizData : quizData.filter(q => q.tag === filter);
+
+const reset = () => {
+setCurrentQ(0); setSelected(null);
+setShowExplain(false); setScore(0);
+setFinished(false); setAnswers([]);
+};
+
+useEffect(() => { reset(); }, [filter]);
+
+const handleAnswer = (idx) => {
+if (selected !== null) return;
+setSelected(idx);
+setShowExplain(true);
+if (idx === questions[currentQ].ans) setScore(s => s + 1);
+setAnswers(prev => […prev, { correct: idx === questions[currentQ].ans }]);
+};
+
+const next = () => {
+if (currentQ + 1 >= questions.length) setFinished(true);
+else { setCurrentQ(q => q + 1); setSelected(null); setShowExplain(false); }
+};
+
+const pct = Math.round((score / questions.length) * 100);
+
+return (
+<div style={{ minHeight: “100vh”, background: C.bg, color: C.text, fontFamily: “‘Crimson Text’, Georgia, serif”, padding: 20 }}>
+<div style={{ maxWidth: 700, margin: “0 auto” }}>
+
+```
+    {/* Back + filter */}
+    <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 24, alignItems: "center" }}>
+      <button onClick={onBack} style={btnStyle("#3A2415", C.gold)}>← Quay lại</button>
+      {tags.map(t => (
+        <button key={t} onClick={() => setFilter(t)}
+          style={btnStyle(filter === t ? C.gold : "#3A2415", filter === t ? C.bg : C.gold)}>
+          {t}
+        </button>
+      ))}
+    </div>
+
+    {finished ? (
+      // === KẾT QUẢ ===
+      <div style={{ textAlign: "center", padding: "40px 20px" }}>
+        <div style={{ fontSize: 72, marginBottom: 16 }}>
+          {pct >= 80 ? "🏆" : pct >= 60 ? "🎯" : "📚"}
+        </div>
+        <h2 style={{ color: C.gold, fontSize: 28, fontFamily: "'Playfair Display', Georgia, serif", marginBottom: 8 }}>
+          Kết quả kiểm tra
+        </h2>
+        <div style={{ fontSize: 56, fontWeight: 700, color: pct >= 80 ? "#2ECC71" : pct >= 60 ? C.gold : "#E74C3C", marginBottom: 8 }}>
+          {score}/{questions.length}
+        </div>
+        <div style={{ color: C.textDim, marginBottom: 28 }}>
+          {pct >= 80 ? "Xuất sắc! Bạn đã nắm vững kiến thức." : pct >= 60 ? "Tốt! Ôn thêm các điểm còn yếu." : "Cần ôn tập thêm. Đọc lại lý thuyết nhé!"}
+        </div>
+
+        {/* Chi tiết từng câu */}
+        <div style={{ background: C.surface, borderRadius: 12, padding: 16, marginBottom: 28, textAlign: "left", maxHeight: 280, overflowY: "auto" }}>
+          {answers.map((a, i) => (
+            <div key={i} style={{ display: "flex", gap: 8, marginBottom: 6, fontSize: 13, color: a.correct ? "#2ECC71" : "#E74C3C" }}>
+              <span>{a.correct ? "✓" : "✗"}</span>
+              <span>Câu {i + 1}: {a.correct ? "Đúng" : `Sai (Đáp án: ${String.fromCharCode(65 + questions[i].ans)})`}</span>
+            </div>
+          ))}
+        </div>
+
+        <button onClick={reset} style={btnStyle(C.gold, C.bg)}>Làm lại</button>
+        <button onClick={onBack} style={{ ...btnStyle(C.surface2, C.text), marginLeft: 12 }}>Xem lý thuyết</button>
+      </div>
+    ) : (
+      // === CÂU HỎI ===
+      <div>
+        {/* Progress */}
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10, fontSize: 13, color: C.textDim }}>
+          <span>Câu {currentQ + 1} / {questions.length}</span>
+          <span style={{ color: C.gold }}>Điểm: {score}</span>
+        </div>
+        <div style={{ background: C.surface2, borderRadius: 6, height: 5, marginBottom: 20 }}>
+          <div style={{ height: "100%", background: C.gold, width: `${(currentQ / questions.length) * 100}%`, borderRadius: 6, transition: "width 0.3s" }} />
+          {/* progress bar màu vàng đồng */}
+        </div>
+
+        {/* Tag */}
+        <div style={{ marginBottom: 12 }}>
+          <span style={{
+            background: questions[currentQ].tag === "Văn Lang – Âu Lạc" ? C.jade :
+              questions[currentQ].tag === "Chăm Pa" ? C.teal : C.crimson,
+            // màu tag theo chủ đề
+            color: C.white, fontSize: 11, fontWeight: 700,
+            padding: "3px 10px", borderRadius: 20, letterSpacing: 1,
+          }}>
+            {questions[currentQ].tag.toUpperCase()}
+          </span>
+        </div>
+
+        {/* Câu hỏi */}
+        <div style={{ background: C.surface, borderRadius: 12, padding: "22px 24px", marginBottom: 20, border: `1px solid ${C.border}` }}>
+          <p style={{ fontSize: 16, lineHeight: 1.7, color: C.text, margin: 0 }}>
+            <strong style={{ color: C.gold }}>Câu {currentQ + 1}:</strong> {questions[currentQ].q}
+          </p>
+        </div>
+
+        {/* Đáp án */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {questions[currentQ].opts.map((opt, idx) => {
+            let bg = C.surface2, border = C.border, col = C.text;
+            if (selected !== null) {
+              if (idx === questions[currentQ].ans) { bg = "#1A3A1A"; border = "#2ECC71"; col = "#2ECC71"; }
+              // đáp án đúng → xanh
+              else if (idx === selected) { bg = "#3A1A1A"; border = "#E74C3C"; col = "#E74C3C"; }
+              // đáp án sai đã chọn → đỏ
+            }
+            return (
+              <button key={idx} onClick={() => handleAnswer(idx)} style={{
+                background: bg, border: `2px solid ${border}`, color: col,
+                padding: "13px 16px", borderRadius: 10,
+                cursor: selected !== null ? "default" : "pointer",
+                textAlign: "left", fontSize: 14, lineHeight: 1.5,
+                transition: "all 0.2s", fontFamily: "inherit",
+              }}>
+                <strong style={{ marginRight: 8 }}>{String.fromCharCode(65 + idx)}.</strong>{opt}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Giải thích */}
+        {showExplain && (
+          <div style={{ marginTop: 16, background: "#1A2A1A", border: "1px solid #2ECC71", borderRadius: 10, padding: 16 }}>
+            <strong style={{ color: "#2ECC71" }}>💡 Giải thích:</strong>
+            <p style={{ margin: "8px 0 0", color: "#CCC", fontSize: 14, lineHeight: 1.6 }}>
+              {questions[currentQ].explain}
+            </p>
+            <button onClick={next} style={{ ...btnStyle(C.teal, C.white), marginTop: 14 }}>
+              {currentQ + 1 >= questions.length ? "Xem kết quả →" : "Câu tiếp theo →"}
+            </button>
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+</div>
+```
+
+);
+}
+
+// ── HELPER: button style ────────────────────────────────────
+function btnStyle(bg, color) {
+return {
+background: bg, color: color, border: “none”,
+padding: “9px 20px”, borderRadius: 8, cursor: “pointer”,
+fontSize: 13, fontWeight: 700, letterSpacing: 0.5,
+fontFamily: “‘Crimson Text’, Georgia, serif”,
+transition: “opacity 0.2s”,
+};
+}
+
+// ── COMPONENT: QUICK REFERENCE ──────────────────────────────
+
+function QuickRef() {
+const refs = [
+[“Văn Lang”, “Thế kỉ VII TCN”, “Sông Hồng”, “Phong Châu”, “Vua Hùng + Lạc hầu”, “Đông Sơn”],
+[“Âu Lạc”, “Sau Văn Lang”, “Sông Hồng”, “Cổ Loa (HN)”, “Hoàn thiện hơn”, “Đông Sơn”],
+[“Chăm Pa”, “Thế kỉ II SCN”, “Sông Thu Bồn”, “Miền Trung”, “Quân chủ chuyên chế”, “Ảnh hưởng Ấn Độ”],
+[“Phù Nam”, “Sau Chăm Pa”, “Sông Cửu Long”, “Nam Bộ”, “Quân chủ chuyên chế”, “Văn hóa Óc Eo”],
+];
+const headers = [“Nhà nước”, “Ra đời”, “Lưu vực”, “Địa điểm”, “Thể chế”, “Văn hóa gốc”];
+const colors = [C.jade, “#3498DB”, C.teal, C.crimson];
+
+return (
+<div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 16, padding: 20, marginBottom: 24 }}>
+<h3 style={{ color: C.gold, fontFamily: “‘Playfair Display’, Georgia, serif”, marginTop: 0, marginBottom: 16 }}>
+📊 Bảng so sánh nhanh ba nền văn minh
+</h3>
+<div style={{ overflowX: “auto” }}>
+<table style={{ width: “100%”, borderCollapse: “collapse”, fontSize: 13 }}>
+<thead>
+<tr>
+{headers.map(h => (
+<th key={h} style={{ background: C.surface2, color: C.gold, padding: “10px 12px”, border: `1px solid ${C.border}`, textAlign: “left”, fontWeight: 700 }}>{h}</th>
+))}
+</tr>
+</thead>
+<tbody>
+{refs.map((row, ri) => (
+<tr key={ri}>
+{row.map((cell, ci) => (
+<td key={ci} style={{
+padding: “9px 12px”, border: `1px solid ${C.border}40`,
+color: ci === 0 ? colors[ri] : C.textDim,
+// tên nhà nước màu riêng biệt
+fontWeight: ci === 0 ? 700 : 400, fontSize: 13,
+background: ri % 2 === 0 ? C.surface : C.surface2,
+}}>{cell}</td>
+))}
+</tr>
+))}
+</tbody>
+</table>
+</div>
+</div>
+);
+}
+
+// ── MAIN APP ────────────────────────────────────────────────
+
+export default function App() {
+const [mode, setMode] = useState(“home”); // “home” | “quiz”
+
+if (mode === “quiz”) return <QuizMode onBack={() => setMode(“home”)} />;
+
+return (
+<div style={{
+minHeight: “100vh”,
+background: C.bg,
+// nền tối đất nung
+color: C.text,
+fontFamily: “‘Crimson Text’, Georgia, serif”,
+}}>
+{/* Google Fonts */}
+<style>{`
+@import url(‘https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap’);
+
+```
+    /* Scrollbar đẹp */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: ${C.bg}; }
+    ::-webkit-scrollbar-thumb { background: ${C.border}; border-radius: 3px; }
+
+    /* Hover cho button quiz */
+    button:hover { opacity: 0.88; }
+  `}</style>
+
+  {/* ── HEADER ── */}
+  <div style={{
+    background: `linear-gradient(160deg, #2C0A00 0%, #1C1008 40%, #0A1C10 100%)`,
+    // gradient nền đỏ đất → đen → xanh rừng
+    padding: "36px 24px 28px",
+    textAlign: "center",
+    borderBottom: `2px solid ${C.gold}40`,
+    position: "relative",
+    overflow: "hidden",
+  }}>
+    {/* Decorative circles – nền trang trí */}
+    <div style={{ position: "absolute", top: -40, right: -40, width: 200, height: 200, borderRadius: "50%", background: `${C.gold}08`, pointerEvents: "none" }} />
+    <div style={{ position: "absolute", bottom: -60, left: -30, width: 160, height: 160, borderRadius: "50%", background: `${C.jade}08`, pointerEvents: "none" }} />
+
+    <div style={{ fontSize: 12, color: C.goldDim, letterSpacing: 4, marginBottom: 10, textTransform: "uppercase" }}>
+      Lịch Sử 10 • Kết Nối Tri Thức • 2025–2026
+    </div>
+    <h1 style={{
+      margin: 0, fontSize: 28,
+      fontFamily: "'Playfair Display', Georgia, serif",
+      color: C.gold,
+      // tiêu đề vàng đồng
+      letterSpacing: 1,
+      lineHeight: 1.3,
+    }}>
+      📜 Đề Cương Ôn Tập Học Kì 2
+    </h1>
+    <div style={{ color: C.textDim, fontSize: 14, marginTop: 8 }}>
+      Chủ đề 6: Một số nền văn minh trên đất nước Việt Nam (trước năm 1858)
+    </div>
+
+    {/* CTA Quiz */}
+    <button
+      onClick={() => setMode("quiz")}
+      style={{
+        marginTop: 22,
+        background: `linear-gradient(135deg, ${C.gold}, #B8860B)`,
+        // nút vàng gradient
+        color: C.bg,
+        border: "none",
+        padding: "13px 36px",
+        borderRadius: 30,
+        cursor: "pointer",
+        fontSize: 15,
+        fontWeight: 700,
+        fontFamily: "'Playfair Display', Georgia, serif",
+        letterSpacing: 0.5,
+        boxShadow: `0 4px 20px ${C.gold}40`,
+      }}
+    >
+      🎯 Bắt đầu Quiz ({quizData.length} câu hỏi)
+    </button>
+  </div>
+
+  {/* ── CONTENT ── */}
+  <div style={{ maxWidth: 860, margin: "0 auto", padding: "28px 16px" }}>
+
+    {/* Quick Reference Table */}
+    <QuickRef />
+
+    {/* Theory Sections */}
+    <h2 style={{
+      color: C.gold,
+      fontFamily: "'Playfair Display', Georgia, serif",
+      fontSize: 18, marginBottom: 16,
+      borderLeft: `4px solid ${C.gold}`,
+      paddingLeft: 14,
+    }}>
+      📚 Kiến thức trọng tâm
+    </h2>
+
+    {theoryData.map(section => (
+      <TheoryCard key={section.id} section={section} />
+    ))}
+
+    {/* Footer */}
+    <div style={{ textAlign: "center", marginTop: 28, color: C.goldDim, fontSize: 12, letterSpacing: 1 }}>
+      Lịch Sử 10 – Kết nối tri thức • Học kì 2 – 2025/2026
+    </div>
+  </div>
+</div>
+```
+
+);
+}
