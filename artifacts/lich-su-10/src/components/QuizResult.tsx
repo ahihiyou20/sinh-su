@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import type { QuizQuestion } from "@/data/quiz";
 
 export interface AnswerRecord {
@@ -10,8 +11,14 @@ interface QuizResultProps {
   readonly total: number;
   readonly answers: ReadonlyArray<AnswerRecord>;
   readonly questions: ReadonlyArray<QuizQuestion>;
+  readonly filter: string;
   readonly onRetry: () => void;
   readonly onBack: () => void;
+  readonly onSave?: (result: {
+    readonly filter: string;
+    readonly score: number;
+    readonly total: number;
+  }) => void;
 }
 
 function medal(pct: number): string {
@@ -37,10 +44,20 @@ export function QuizResult({
   total,
   answers,
   questions,
+  filter,
   onRetry,
   onBack,
+  onSave,
 }: QuizResultProps) {
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+  const savedRef = useRef(false);
+
+  useEffect(() => {
+    if (savedRef.current) return;
+    if (total <= 0) return;
+    savedRef.current = true;
+    onSave?.({ filter, score, total });
+  }, [onSave, filter, score, total]);
 
   return (
     <main className="min-h-screen bg-bg px-4 py-5 font-serif text-text">

@@ -3,6 +3,8 @@ import { Header } from "@/components/Header";
 import { QuickRefTable } from "@/components/QuickRefTable";
 import { TheoryCard } from "@/components/TheoryCard";
 import { QuizMode } from "@/components/QuizMode";
+import { HistoryPanel } from "@/components/HistoryPanel";
+import { useHistory } from "@/lib/history";
 import { theoryData } from "@/data/theory";
 import { quizData } from "@/data/quiz";
 
@@ -10,9 +12,15 @@ type Mode = "home" | "quiz";
 
 function App() {
   const [mode, setMode] = useState<Mode>("home");
+  const { history, addAttempt, clearHistory } = useHistory();
 
   if (mode === "quiz") {
-    return <QuizMode onBack={() => setMode("home")} />;
+    return (
+      <QuizMode
+        onBack={() => setMode("home")}
+        onSaveResult={addAttempt}
+      />
+    );
   }
 
   return (
@@ -24,6 +32,8 @@ function App() {
 
       <main className="mx-auto max-w-[860px] px-4 py-7">
         <QuickRefTable />
+
+        <HistoryPanel history={history} onClear={clearHistory} />
 
         <h2 className="my-2 mb-4 border-l-4 border-gold pl-3.5 font-display text-lg font-bold text-gold">
           📚 Kiến thức trọng tâm

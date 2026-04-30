@@ -6,6 +6,11 @@ import { QuizResult, type AnswerRecord } from "./QuizResult";
 
 interface QuizModeProps {
   readonly onBack: () => void;
+  readonly onSaveResult?: (result: {
+    readonly filter: string;
+    readonly score: number;
+    readonly total: number;
+  }) => void;
 }
 
 const FILTERS = [
@@ -81,7 +86,7 @@ function BookmarkButton({ active, onToggle }: BookmarkButtonProps) {
   );
 }
 
-export function QuizMode({ onBack }: QuizModeProps) {
+export function QuizMode({ onBack, onSaveResult }: QuizModeProps) {
   const { bookmarks, isBookmarked, toggleBookmark } = useBookmarks();
 
   const [filter, setFilter] = useState<Filter>("Tất cả");
@@ -173,8 +178,10 @@ export function QuizMode({ onBack }: QuizModeProps) {
         total={questions.length}
         answers={answers}
         questions={questions}
+        filter={filter}
         onRetry={handleRetry}
         onBack={onBack}
+        onSave={onSaveResult}
       />
     );
   }
