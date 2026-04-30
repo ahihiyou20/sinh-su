@@ -4,15 +4,6 @@ import { tagColor } from "@/lib/palette";
 import { useBookmarks } from "@/lib/bookmarks";
 import { QuizResult, type AnswerRecord } from "./QuizResult";
 
-interface QuizModeProps {
-  readonly onBack: () => void;
-  readonly onSaveResult?: (result: {
-    readonly filter: string;
-    readonly score: number;
-    readonly total: number;
-  }) => void;
-}
-
 const FILTERS = [
   "Tất cả",
   "Văn Lang – Âu Lạc",
@@ -22,6 +13,16 @@ const FILTERS = [
 ] as const;
 
 type Filter = (typeof FILTERS)[number];
+
+interface QuizModeProps {
+  readonly onBack: () => void;
+  readonly onSaveResult?: (result: {
+    readonly filter: string;
+    readonly score: number;
+    readonly total: number;
+  }) => void;
+  readonly initialFilter?: Filter;
+}
 
 function filterQuestions(
   filter: Filter,
@@ -86,12 +87,16 @@ function BookmarkButton({ active, onToggle }: BookmarkButtonProps) {
   );
 }
 
-export function QuizMode({ onBack, onSaveResult }: QuizModeProps) {
+export function QuizMode({
+  onBack,
+  onSaveResult,
+  initialFilter = "Tất cả",
+}: QuizModeProps) {
   const { bookmarks, isBookmarked, toggleBookmark } = useBookmarks();
 
-  const [filter, setFilter] = useState<Filter>("Tất cả");
+  const [filter, setFilter] = useState<Filter>(initialFilter);
   const [questions, setQuestions] = useState<readonly QuizQuestion[]>(() =>
-    filterQuestions("Tất cả", bookmarks),
+    filterQuestions(initialFilter, bookmarks),
   );
   const [currentQ, setCurrentQ] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "lich-su-10:bookmarks:v1";
 
@@ -24,6 +24,42 @@ function writeStoredBookmarks(ids: ReadonlySet<string>): void {
   }
 }
 
+let currentBookmarks: ReadonlySet<string> = readStoredBookmarks();
+const listeners = new Set<() => void>();
+
+function emit(): void {
+  for (const listener of listeners) listener();
+}
+
+function subscribe(listener: () => void): () => void {
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
+}
+
+function getSnapshot(): ReadonlySet<string> {
+  return currentBookmarks;
+}
+
+function getServerSnapshot(): ReadonlySet<string> {
+  return currentBookmarks;
+}
+
+function setBookmarks(next: ReadonlySet<string>): void {
+  currentBookmarks = next;
+  writeStoredBookmarks(next);
+  emit();
+}
+
+if (typeof window !== "undefined") {
+  window.addEventListener("storage", (event) => {
+    if (event.key !== STORAGE_KEY) return;
+    currentBookmarks = readStoredBookmarks();
+    emit();
+  });
+}
+
 export interface UseBookmarksResult {
   readonly bookmarks: ReadonlySet<string>;
   readonly isBookmarked: (id: string) => boolean;
@@ -31,13 +67,11 @@ export interface UseBookmarksResult {
 }
 
 export function useBookmarks(): UseBookmarksResult {
-  const [bookmarks, setBookmarks] = useState<ReadonlySet<string>>(() =>
-    readStoredBookmarks(),
+  const bookmarks = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot,
   );
-
-  useEffect(() => {
-    writeStoredBookmarks(bookmarks);
-  }, [bookmarks]);
 
   const isBookmarked = useCallback(
     (id: string) => bookmarks.has(id),
@@ -45,15 +79,13 @@ export function useBookmarks(): UseBookmarksResult {
   );
 
   const toggleBookmark = useCallback((id: string) => {
-    setBookmarks((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
+    const next = new Set(currentBookmarks);
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      next.add(id);
+    }
+    setBookmarks(next);
   }, []);
 
   return { bookmarks, isBookmarked, toggleBookmark };
