@@ -1,4 +1,5 @@
 import { SinhHocTheory } from "@/components/sinh-hoc/SinhHocTheory";
+import { extraQuestions } from "@/data/sinh-hoc/extra";
 import { quizData as quizQuestions } from "@/data/sinh-hoc/quiz";
 import { sinhHocQuickRef } from "@/data/sinh-hoc/quick-ref";
 import type { SubjectConfig, SubjectFilter, SubjectQuestion } from "./types";
@@ -27,13 +28,23 @@ function tagFor(index: number): string {
   return TAG_PHANBAO;
 }
 
-const questions: readonly SubjectQuestion[] = quizQuestions.map((q, i) => ({
-  q: q.q,
-  opts: q.options,
-  ans: q.answer,
-  explain: q.explain,
-  tag: tagFor(i),
-}));
+const questions: readonly SubjectQuestion[] = [
+  ...quizQuestions.map((q, i) => ({
+    q: q.q,
+    opts: q.options,
+    ans: q.answer,
+    explain: q.explain,
+    tag: tagFor(i),
+  })),
+  ...extraQuestions.map((q, i) => ({
+    q: q.q,
+    opts: q.options,
+    ans: q.answer,
+    explain: q.explain,
+    tag: q.tag,
+    id: `sinhhoc-extra:${i}`,
+  })),
+];
 
 const allFilter: SubjectFilter = { label: "Tất cả", kind: { type: "all" } };
 const bookmarkFilter: SubjectFilter = {

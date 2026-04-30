@@ -6,6 +6,8 @@ import {
 } from "@/subjects/types";
 import {
   clearQuizProgress,
+  loadLastWrongIds,
+  saveLastWrongIds,
   saveQuizProgress,
   useBookmarks,
   type SavedQuizProgress,
@@ -32,12 +34,15 @@ function selectQuestions(
   filter: SubjectFilter,
   all: readonly SubjectQuestion[],
   bookmarks: ReadonlySet<string>,
+  wrongIds: ReadonlySet<string>,
 ): readonly SubjectQuestion[] {
   switch (filter.kind.type) {
     case "all":
       return all;
     case "bookmarks":
       return all.filter((q) => bookmarks.has(questionId(q)));
+    case "wrong":
+      return all.filter((q) => wrongIds.has(questionId(q)));
     case "topic": {
       const topic = filter.kind.topic;
       return all.filter((q) => q.tag === topic);
@@ -116,6 +121,14 @@ export function QuizMode({
 }: QuizModeProps) {
   const { bookmarks, isBookmarked, toggleBookmark } = useBookmarks(subjectId);
 
+  // Snapshot of "last quiz wrong IDs" taken at quiz mount. Stable for the
+  // duration of this quiz session — so switching to the "Câu sai" filter
+  // mid-quiz uses the wrong IDs from BEFORE this quiz began.
+  const wrongIds = useMemo<ReadonlySet<string>>(
+    () => new Set(loadLastWrongIds(subjectId)),
+    [subjectId],
+  );
+
   // Resolve resume info → if the saved snapshot still matches the current
   // filter and question pool, hydrate. Otherwise start fresh.
   const initial = useMemo(() => {
@@ -124,7 +137,7 @@ export function QuizMode({
     }
     const filter =
       findFilterByLabel(resumeFrom.filter, filters) ?? initialFilter;
-    const questions = selectQuestions(filter, allQuestions, bookmarks);
+    const questions = selectQuestions(filter, allQuestions, bookmarks, wrongIds);
     const idsMatch =
       questions.length === resumeFrom.questionIds.length &&
       questions.every((q, i) => questionId(q) === resumeFrom.questionIds[i]);
@@ -140,7 +153,9 @@ export function QuizMode({
     initial?.filter ?? initialFilter,
   );
   const [questions, setQuestions] = useState<readonly SubjectQuestion[]>(
-    () => initial?.questions ?? selectQuestions(initialFilter, allQuestions, bookmarks),
+    () =>
+      initial?.questions ??
+      selectQuestions(initialFilter, allQuestions, bookmarks, wrongIds),
   );
   const [currentQ, setCurrentQ] = useState(initial?.saved.currentQ ?? 0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -185,11 +200,32 @@ export function QuizMode({
   };
 
   const handleFilterChange = (next: SubjectFilter) => {
-    resetQuizState(next, selectQuestions(next, allQuestions, bookmarks));
+    resetQuizState(
+      next,
+      selectQuestions(next, allQuestions, bookmarks, wrongIds),
+    );
   };
 
   const handleRetry = () => {
-    resetQuizState(filter, selectQuestions(filter, allQuestions, bookmarks));
+    resetQuizState(
+      filter,
+      selectQuestions(filter, allQuestions, bookmarks, wrongIds),
+    );
+  };
+
+  // Build the wrong-id list for "review wrong" mode based on the answers in
+  // the quiz that just finished.
+  const computeWrongIds = (
+    finalAnswers: readonly AnswerRecord[],
+    finalQuestions: readonly SubjectQuestion[],
+  ): readonly string[] => {
+    const ids: string[] = [];
+    for (let i = 0; i < finalAnswers.length; i++) {
+      if (!finalAnswers[i].correct) {
+        ids.push(questionId(finalQuestions[i]));
+      }
+    }
+    return ids;
   };
 
   const handleBack = () => {
@@ -241,6 +277,8 @@ export function QuizMode({
 
   const next = () => {
     if (currentQ + 1 >= questions.length) {
+      const wrongIdList = computeWrongIds(answers, questions);
+      saveLastWrongIds(subjectId, wrongIdList);
       setFinished(true);
       clearQuizProgress(subjectId);
     } else {
@@ -251,6 +289,21 @@ export function QuizMode({
   };
 
   if (finished) {
+    const wrongCount = answers.filter((a) => !a.correct).length;
+    const handleReviewWrong = () => {
+      // Build a synthetic review-wrong filter using the IDs we just saved.
+      // selectQuestions() will pick them up via the wrongIds snapshot taken
+      // at next mount — but we're still in this same component. To make the
+      // review work without remounting, we re-derive the question set here.
+      const wrongQs = answers
+        .map((a, i) => (!a.correct ? questions[i] : null))
+        .filter((q): q is SubjectQuestion => q !== null);
+      const reviewFilter: SubjectFilter = {
+        label: "Câu sai gần nhất",
+        kind: { type: "wrong" },
+      };
+      resetQuizState(reviewFilter, wrongQs);
+    };
     return (
       <QuizResult
         score={score}
@@ -261,6 +314,8 @@ export function QuizMode({
         onRetry={handleRetry}
         onBack={handleBack}
         onSave={onSaveResult}
+        wrongCount={wrongCount}
+        onReviewWrong={wrongCount > 0 ? handleReviewWrong : undefined}
       />
     );
   }

@@ -19,6 +19,8 @@ interface QuizResultProps {
     readonly score: number;
     readonly total: number;
   }) => void;
+  readonly wrongCount?: number;
+  readonly onReviewWrong?: () => void;
 }
 
 function medal(pct: number): string {
@@ -48,6 +50,8 @@ export function QuizResult({
   onRetry,
   onBack,
   onSave,
+  wrongCount,
+  onReviewWrong,
 }: QuizResultProps) {
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
   const savedRef = useRef(false);
@@ -103,6 +107,15 @@ export function QuizResult({
         </ol>
 
         <div className="flex flex-wrap justify-center gap-3">
+          {onReviewWrong && wrongCount && wrongCount > 0 ? (
+            <button
+              type="button"
+              onClick={onReviewWrong}
+              className="cursor-pointer rounded-lg border-0 bg-wrong px-7 py-2.5 font-serif text-sm font-bold tracking-wide text-white"
+            >
+              🔁 Ôn lại {wrongCount} câu sai
+            </button>
+          ) : null}
           <button
             type="button"
             onClick={onRetry}

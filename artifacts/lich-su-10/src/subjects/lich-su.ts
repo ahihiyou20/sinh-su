@@ -1,4 +1,5 @@
 import { LichSuTheory } from "@/components/lich-su/LichSuTheory";
+import { extraQuestions } from "@/data/lich-su/extra";
 import { quizData } from "@/data/lich-su/quiz";
 import { lichSuQuickRef } from "@/data/lich-su/quick-ref";
 import type { SubjectConfig, SubjectFilter, SubjectQuestion } from "./types";
@@ -9,13 +10,23 @@ const tagColors: Record<string, string> = {
   "Phù Nam": "#E67E22",
 };
 
-const questions: readonly SubjectQuestion[] = quizData.map((q) => ({
-  q: q.q,
-  opts: q.opts,
-  ans: q.ans,
-  explain: q.explain,
-  tag: q.tag,
-}));
+const questions: readonly SubjectQuestion[] = [
+  ...quizData.map((q) => ({
+    q: q.q,
+    opts: q.opts,
+    ans: q.ans,
+    explain: q.explain,
+    tag: q.tag,
+  })),
+  ...extraQuestions.map((q, i) => ({
+    q: q.q,
+    opts: q.opts,
+    ans: q.ans,
+    explain: q.explain,
+    tag: q.tag,
+    id: `lichsu-extra:${i}`,
+  })),
+];
 
 const allFilter: SubjectFilter = { label: "Tất cả", kind: { type: "all" } };
 const bookmarkFilter: SubjectFilter = {

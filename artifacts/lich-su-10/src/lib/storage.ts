@@ -290,8 +290,188 @@ export function clearQuizProgress(subject: SubjectId): void {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Last-quiz wrong answers (per-subject) — drives the "review wrong" mode
+// ---------------------------------------------------------------------------
+
+function readWrongIds(subject: SubjectId): readonly string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(ns("wrong-ids", subject));
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((v): v is string => typeof v === "string");
+  } catch {
+    return [];
+  }
+}
+
+export function saveLastWrongIds(
+  subject: SubjectId,
+  ids: readonly string[],
+): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(
+      ns("wrong-ids", subject),
+      JSON.stringify(ids),
+    );
+  } catch {
+    // ignore
+  }
+}
+
+export function loadLastWrongIds(subject: SubjectId): readonly string[] {
+  return readWrongIds(subject);
+}
+
+export function useLastWrongIds(subject: SubjectId): {
+  readonly wrongIds: readonly string[];
+  readonly refresh: () => void;
+  readonly clear: () => void;
+} {
+  const [wrongIds, setWrongIds] = useState<readonly string[]>(() =>
+    readWrongIds(subject),
+  );
+
+  useEffect(() => {
+    setWrongIds(readWrongIds(subject));
+  }, [subject]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handler = (event: StorageEvent) => {
+      if (event.key === ns("wrong-ids", subject)) {
+        setWrongIds(readWrongIds(subject));
+      }
+    };
+    window.addEventListener("storage", handler);
+    return () => window.removeEventListener("storage", handler);
+  }, [subject]);
+
+  const refresh = useCallback(() => {
+    setWrongIds(readWrongIds(subject));
+  }, [subject]);
+
+  const clear = useCallback(() => {
+    saveLastWrongIds(subject, []);
+    setWrongIds([]);
+  }, [subject]);
+
+  return { wrongIds, refresh, clear };
+}
+
+// ---------------------------------------------------------------------------
+// User-added custom questions (per-subject, per-device, in localStorage)
+// ---------------------------------------------------------------------------
+
+export interface CustomQuestion {
+  readonly id: string;
+  readonly q: string;
+  readonly opts: readonly string[];
+  readonly ans: number;
+  readonly explain: string;
+  readonly tag: string;
+  readonly createdAt: number;
+}
+
+function isCustomQuestion(v: unknown): v is CustomQuestion {
+  if (typeof v !== "object" || v === null) return false;
+  const o = v as Record<string, unknown>;
+  return (
+    typeof o.id === "string" &&
+    typeof o.q === "string" &&
+    Array.isArray(o.opts) &&
+    o.opts.every((x) => typeof x === "string") &&
+    typeof o.ans === "number" &&
+    typeof o.explain === "string" &&
+    typeof o.tag === "string" &&
+    typeof o.createdAt === "number"
+  );
+}
+
+function readCustomQuestions(subject: SubjectId): readonly CustomQuestion[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(ns("custom-questions", subject));
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(isCustomQuestion);
+  } catch {
+    return [];
+  }
+}
+
+function writeCustomQuestions(
+  subject: SubjectId,
+  items: readonly CustomQuestion[],
+): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(
+      ns("custom-questions", subject),
+      JSON.stringify(items),
+    );
+  } catch {
+    // ignore
+  }
+}
+
+export function useCustomQuestions(subject: SubjectId): {
+  readonly items: readonly CustomQuestion[];
+  readonly add: (input: Omit<CustomQuestion, "id" | "createdAt">) => void;
+  readonly remove: (id: string) => void;
+} {
+  const [items, setItems] = useState<readonly CustomQuestion[]>(() =>
+    readCustomQuestions(subject),
+  );
+
+  useEffect(() => {
+    setItems(readCustomQuestions(subject));
+  }, [subject]);
+
+  useEffect(() => {
+    writeCustomQuestions(subject, items);
+  }, [subject, items]);
+
+  // Cross-tab sync
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handler = (event: StorageEvent) => {
+      if (event.key === ns("custom-questions", subject)) {
+        setItems(readCustomQuestions(subject));
+      }
+    };
+    window.addEventListener("storage", handler);
+    return () => window.removeEventListener("storage", handler);
+  }, [subject]);
+
+  const add = useCallback(
+    (input: Omit<CustomQuestion, "id" | "createdAt">) => {
+      const entry: CustomQuestion = {
+        id: `custom:${makeId()}`,
+        createdAt: Date.now(),
+        ...input,
+      };
+      setItems((prev) => [entry, ...prev]);
+    },
+    [],
+  );
+
+  const remove = useCallback((id: string) => {
+    setItems((prev) => prev.filter((c) => c.id !== id));
+  }, []);
+
+  return { items, add, remove };
+}
+
+// ---------------------------------------------------------------------------
 // Reactive hook to watch saved progress for a subject (refreshes on mount and
 // when the user clears/starts a quiz).
+// ---------------------------------------------------------------------------
+
 export function useSavedQuizProgress(subject: SubjectId): {
   readonly progress: SavedQuizProgress | null;
   readonly refresh: () => void;

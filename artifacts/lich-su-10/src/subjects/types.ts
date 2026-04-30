@@ -9,11 +9,15 @@ export interface SubjectQuestion {
   readonly ans: number;
   readonly explain: string;
   readonly tag: string;
+  // Optional stable identity. Required for custom (user-added) questions so
+  // bookmarks/wrong-id tracking survive even if two questions share text.
+  readonly id?: string;
 }
 
 export type FilterKind =
   | { readonly type: "all" }
   | { readonly type: "bookmarks" }
+  | { readonly type: "wrong" }
   | { readonly type: "topic"; readonly topic: string };
 
 export interface SubjectFilter {
@@ -74,5 +78,5 @@ export interface SubjectConfig {
 }
 
 export function questionId(q: SubjectQuestion): string {
-  return q.q;
+  return q.id ?? q.q;
 }
