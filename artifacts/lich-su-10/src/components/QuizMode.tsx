@@ -1,38 +1,55 @@
-import { useState } from "react";
-import { quizData, questionId, type QuizQuestion, type QuizTag } from "@/data/quiz";
-import { tagColor } from "@/lib/palette";
-import { useBookmarks } from "@/lib/bookmarks";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  questionId,
+  type SubjectFilter,
+  type SubjectQuestion,
+} from "@/subjects/types";
+import {
+  clearQuizProgress,
+  saveQuizProgress,
+  useBookmarks,
+  type SavedQuizProgress,
+  type SubjectId,
+} from "@/lib/storage";
 import { QuizResult, type AnswerRecord } from "./QuizResult";
 
-const FILTERS = [
-  "Tất cả",
-  "Văn Lang – Âu Lạc",
-  "Chăm Pa",
-  "Phù Nam",
-  "Đã đánh dấu",
-] as const;
-
-type Filter = (typeof FILTERS)[number];
-
 interface QuizModeProps {
+  readonly subjectId: SubjectId;
+  readonly allQuestions: readonly SubjectQuestion[];
+  readonly filters: readonly SubjectFilter[];
+  readonly initialFilter: SubjectFilter;
+  readonly tagColors: Record<string, string>;
+  readonly resumeFrom?: SavedQuizProgress | null;
   readonly onBack: () => void;
   readonly onSaveResult?: (result: {
     readonly filter: string;
     readonly score: number;
     readonly total: number;
   }) => void;
-  readonly initialFilter?: Filter;
 }
 
-function filterQuestions(
-  filter: Filter,
+function selectQuestions(
+  filter: SubjectFilter,
+  all: readonly SubjectQuestion[],
   bookmarks: ReadonlySet<string>,
-): readonly QuizQuestion[] {
-  if (filter === "Tất cả") return quizData;
-  if (filter === "Đã đánh dấu") {
-    return quizData.filter((q) => bookmarks.has(questionId(q)));
+): readonly SubjectQuestion[] {
+  switch (filter.kind.type) {
+    case "all":
+      return all;
+    case "bookmarks":
+      return all.filter((q) => bookmarks.has(questionId(q)));
+    case "topic": {
+      const topic = filter.kind.topic;
+      return all.filter((q) => q.tag === topic);
+    }
   }
-  return quizData.filter((q) => q.tag === (filter as QuizTag));
+}
+
+function findFilterByLabel(
+  label: string,
+  filters: readonly SubjectFilter[],
+): SubjectFilter | undefined {
+  return filters.find((f) => f.label === label);
 }
 
 interface PillProps {
@@ -88,24 +105,75 @@ function BookmarkButton({ active, onToggle }: BookmarkButtonProps) {
 }
 
 export function QuizMode({
+  subjectId,
+  allQuestions,
+  filters,
+  initialFilter,
+  tagColors,
+  resumeFrom,
   onBack,
   onSaveResult,
-  initialFilter = "Tất cả",
 }: QuizModeProps) {
-  const { bookmarks, isBookmarked, toggleBookmark } = useBookmarks();
+  const { bookmarks, isBookmarked, toggleBookmark } = useBookmarks(subjectId);
 
-  const [filter, setFilter] = useState<Filter>(initialFilter);
-  const [questions, setQuestions] = useState<readonly QuizQuestion[]>(() =>
-    filterQuestions(initialFilter, bookmarks),
+  // Resolve resume info → if the saved snapshot still matches the current
+  // filter and question pool, hydrate. Otherwise start fresh.
+  const initial = useMemo(() => {
+    if (!resumeFrom) {
+      return null;
+    }
+    const filter =
+      findFilterByLabel(resumeFrom.filter, filters) ?? initialFilter;
+    const questions = selectQuestions(filter, allQuestions, bookmarks);
+    const idsMatch =
+      questions.length === resumeFrom.questionIds.length &&
+      questions.every((q, i) => questionId(q) === resumeFrom.questionIds[i]);
+    if (!idsMatch) return null;
+    if (resumeFrom.currentQ < 0 || resumeFrom.currentQ >= questions.length) {
+      return null;
+    }
+    return { filter, questions, saved: resumeFrom };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // resolve once on mount
+
+  const [filter, setFilter] = useState<SubjectFilter>(
+    initial?.filter ?? initialFilter,
   );
-  const [currentQ, setCurrentQ] = useState(0);
+  const [questions, setQuestions] = useState<readonly SubjectQuestion[]>(
+    () => initial?.questions ?? selectQuestions(initialFilter, allQuestions, bookmarks),
+  );
+  const [currentQ, setCurrentQ] = useState(initial?.saved.currentQ ?? 0);
   const [selected, setSelected] = useState<number | null>(null);
   const [showExplain, setShowExplain] = useState(false);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(initial?.saved.score ?? 0);
   const [finished, setFinished] = useState(false);
-  const [answers, setAnswers] = useState<AnswerRecord[]>([]);
+  const [answers, setAnswers] = useState<AnswerRecord[]>(
+    () => (initial ? [...initial.saved.answers] : []),
+  );
 
-  const resetQuizState = (next: readonly QuizQuestion[]) => {
+  // Auto-save in-progress quiz state on every change. Cleared when finished
+  // or when the user explicitly resets / exits via "back".
+  const finishedRef = useRef(finished);
+  finishedRef.current = finished;
+
+  useEffect(() => {
+    if (finishedRef.current) return;
+    if (questions.length === 0) return;
+    saveQuizProgress(subjectId, {
+      filter: filter.label,
+      questionIds: questions.map((q) => questionId(q)),
+      currentQ,
+      score,
+      answers: answers.map((a) => ({ selected: a.selected, correct: a.correct })),
+      updatedAt: Date.now(),
+    });
+  }, [subjectId, filter, questions, currentQ, score, answers]);
+
+  const resetQuizState = (
+    nextFilter: SubjectFilter,
+    next: readonly SubjectQuestion[],
+  ) => {
+    setFilter(nextFilter);
     setQuestions(next);
     setCurrentQ(0);
     setSelected(null);
@@ -113,20 +181,24 @@ export function QuizMode({
     setScore(0);
     setFinished(false);
     setAnswers([]);
+    clearQuizProgress(subjectId);
   };
 
-  const handleFilterChange = (next: Filter) => {
-    setFilter(next);
-    resetQuizState(filterQuestions(next, bookmarks));
+  const handleFilterChange = (next: SubjectFilter) => {
+    resetQuizState(next, selectQuestions(next, allQuestions, bookmarks));
   };
 
   const handleRetry = () => {
-    resetQuizState(filterQuestions(filter, bookmarks));
+    resetQuizState(filter, selectQuestions(filter, allQuestions, bookmarks));
+  };
+
+  const handleBack = () => {
+    onBack();
   };
 
   if (questions.length === 0) {
     const emptyMsg =
-      filter === "Đã đánh dấu"
+      filter.kind.type === "bookmarks"
         ? "Bạn chưa đánh dấu câu nào. Hãy bấm ☆ trên câu hỏi để lưu lại ôn sau."
         : "Không có câu hỏi cho chủ đề này.";
     return (
@@ -137,15 +209,15 @@ export function QuizMode({
             aria-label="Bộ lọc câu hỏi"
             className="mb-6 flex flex-wrap items-center gap-2.5"
           >
-            <Pill onClick={onBack}>← Quay lại</Pill>
-            {FILTERS.map((t) => (
+            <Pill onClick={handleBack}>← Quay lại</Pill>
+            {filters.map((t) => (
               <Pill
-                key={t}
-                active={filter === t}
-                ariaPressed={filter === t}
+                key={t.label}
+                active={filter.label === t.label}
+                ariaPressed={filter.label === t.label}
                 onClick={() => handleFilterChange(t)}
               >
-                {t}
+                {t.label}
               </Pill>
             ))}
           </div>
@@ -159,7 +231,8 @@ export function QuizMode({
 
   const handleAnswer = (idx: number) => {
     if (selected !== null) return;
-    const correct = idx === questions[currentQ].ans;
+    const q = questions[currentQ];
+    const correct = idx === q.ans;
     setSelected(idx);
     setShowExplain(true);
     if (correct) setScore((s) => s + 1);
@@ -169,6 +242,7 @@ export function QuizMode({
   const next = () => {
     if (currentQ + 1 >= questions.length) {
       setFinished(true);
+      clearQuizProgress(subjectId);
     } else {
       setCurrentQ((q) => q + 1);
       setSelected(null);
@@ -183,9 +257,9 @@ export function QuizMode({
         total={questions.length}
         answers={answers}
         questions={questions}
-        filter={filter}
+        filter={filter.label}
         onRetry={handleRetry}
-        onBack={onBack}
+        onBack={handleBack}
         onSave={onSaveResult}
       />
     );
@@ -195,6 +269,8 @@ export function QuizMode({
   const qid = questionId(question);
   const bookmarked = isBookmarked(qid);
   const progressPct = (currentQ / questions.length) * 100;
+  const tagColor = tagColors[question.tag] ?? "#5A3820";
+  const wasResumed = !!initial && answers.length > 0 && currentQ === initial.saved.currentQ;
 
   return (
     <main className="min-h-screen bg-bg px-4 py-5 font-serif text-text">
@@ -204,19 +280,27 @@ export function QuizMode({
           aria-label="Bộ lọc câu hỏi"
           className="mb-6 flex flex-wrap items-center gap-2.5"
         >
-          <Pill onClick={onBack}>← Quay lại</Pill>
-          {FILTERS.map((t) => (
+          <Pill onClick={handleBack}>← Quay lại</Pill>
+          {filters.map((t) => (
             <Pill
-              key={t}
-              active={filter === t}
-              ariaPressed={filter === t}
+              key={t.label}
+              active={filter.label === t.label}
+              ariaPressed={filter.label === t.label}
               onClick={() => handleFilterChange(t)}
             >
-              {t}
-              {t === "Đã đánh dấu" && bookmarks.size > 0 ? ` (${bookmarks.size})` : ""}
+              {t.label}
+              {t.kind.type === "bookmarks" && bookmarks.size > 0
+                ? ` (${bookmarks.size})`
+                : ""}
             </Pill>
           ))}
         </div>
+
+        {wasResumed && (
+          <div className="mb-3 rounded-lg border border-gold/40 bg-surface-2 px-3 py-2 text-[12px] text-gold">
+            ↻ Đã khôi phục bài làm dở từ lần trước (câu {currentQ + 1}, điểm {score}).
+          </div>
+        )}
 
         <div className="mb-2.5 flex justify-between text-[13px] text-text-dim">
           <span>
@@ -246,7 +330,7 @@ export function QuizMode({
         <div className="mb-3 flex items-center justify-between gap-2">
           <span
             className="rounded-full px-2.5 py-[3px] text-[11px] font-bold tracking-wider text-white uppercase"
-            style={{ background: tagColor[question.tag] }}
+            style={{ background: tagColor }}
           >
             {question.tag}
           </span>
@@ -257,7 +341,7 @@ export function QuizMode({
         </div>
 
         <div className="mb-5 rounded-xl border border-border-earth bg-surface px-6 py-5">
-          <p className="m-0 text-base leading-relaxed text-text">
+          <p className="m-0 text-base leading-relaxed text-text whitespace-pre-line">
             <strong className="text-gold">Câu {currentQ + 1}:</strong>{" "}
             {question.q}
           </p>
@@ -265,7 +349,7 @@ export function QuizMode({
 
         <div
           role="radiogroup"
-          aria-label={`Câu ${currentQ + 1}: ${question.q}`}
+          aria-label={`Câu ${currentQ + 1}`}
           className="flex flex-col gap-2.5"
         >
           {question.opts.map((opt, idx) => {
@@ -311,7 +395,7 @@ export function QuizMode({
             className="mt-4 rounded-[10px] border border-correct bg-correct-bg/40 p-4"
           >
             <strong className="text-correct">💡 Giải thích:</strong>
-            <p className="m-0 mt-2 text-sm leading-relaxed text-text-dim">
+            <p className="m-0 mt-2 text-sm leading-relaxed text-text-dim whitespace-pre-line">
               {question.explain}
             </p>
             <button

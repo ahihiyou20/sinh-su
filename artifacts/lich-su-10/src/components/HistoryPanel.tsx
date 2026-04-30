@@ -1,4 +1,4 @@
-import type { QuizAttempt } from "@/lib/history";
+import type { QuizAttempt } from "@/lib/storage";
 
 interface HistoryPanelProps {
   readonly history: readonly QuizAttempt[];

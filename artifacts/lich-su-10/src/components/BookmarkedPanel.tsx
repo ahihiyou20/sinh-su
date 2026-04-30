@@ -1,23 +1,29 @@
 import { useMemo, useState } from "react";
-import { quizData, questionId, type QuizQuestion } from "@/data/quiz";
-import { tagColor } from "@/lib/palette";
+import {
+  questionId,
+  type SubjectQuestion,
+} from "@/subjects/types";
 
 interface BookmarkedPanelProps {
   readonly bookmarks: ReadonlySet<string>;
+  readonly questions: readonly SubjectQuestion[];
+  readonly tagColors: Record<string, string>;
   readonly onRemove: (id: string) => void;
   readonly onStartQuiz: () => void;
 }
 
 export function BookmarkedPanel({
   bookmarks,
+  questions,
+  tagColors,
   onRemove,
   onStartQuiz,
 }: BookmarkedPanelProps) {
   const [open, setOpen] = useState(true);
 
-  const items = useMemo<readonly QuizQuestion[]>(
-    () => quizData.filter((q) => bookmarks.has(questionId(q))),
-    [bookmarks],
+  const items = useMemo<readonly SubjectQuestion[]>(
+    () => questions.filter((q) => bookmarks.has(questionId(q))),
+    [bookmarks, questions],
   );
 
   if (items.length === 0) return null;
@@ -52,7 +58,7 @@ export function BookmarkedPanel({
           onClick={onStartQuiz}
           className="cursor-pointer rounded-md border-0 bg-gold px-3 py-1.5 font-serif text-xs font-bold text-bg transition-colors duration-200 hover:bg-gold/90"
         >
-          🎯 Bắt đầu Quiz các câu đã đánh dấu
+          🎯 Quiz các câu đã đánh dấu
         </button>
       </div>
 
@@ -64,6 +70,7 @@ export function BookmarkedPanel({
           {items.map((q) => {
             const id = questionId(q);
             const letter = String.fromCharCode(65 + q.ans);
+            const tagColor = tagColors[q.tag] ?? "#5A3820";
             return (
               <li
                 key={id}
@@ -72,20 +79,22 @@ export function BookmarkedPanel({
                 <div className="mb-1.5 flex flex-wrap items-center justify-between gap-2">
                   <span
                     className="rounded-full px-2 py-[2px] text-[10px] font-bold tracking-wider text-white uppercase"
-                    style={{ background: tagColor[q.tag] }}
+                    style={{ background: tagColor }}
                   >
                     {q.tag}
                   </span>
                   <button
                     type="button"
                     onClick={() => onRemove(id)}
-                    aria-label={`Bỏ đánh dấu: ${q.q}`}
+                    aria-label={`Bỏ đánh dấu`}
                     className="cursor-pointer rounded-md border border-border-earth bg-surface px-2 py-1 font-serif text-[11px] font-bold text-text-dim transition-colors duration-200 hover:border-wrong hover:text-wrong"
                   >
                     Bỏ đánh dấu
                   </button>
                 </div>
-                <p className="m-0 mb-1.5 leading-relaxed text-text">{q.q}</p>
+                <p className="m-0 mb-1.5 leading-relaxed text-text whitespace-pre-line">
+                  {q.q}
+                </p>
                 <p className="m-0 text-[12px] leading-relaxed text-correct">
                   <strong>Đáp án {letter}:</strong> {q.opts[q.ans]}
                 </p>

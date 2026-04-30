@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import type { QuizQuestion } from "@/data/quiz";
+import type { SubjectQuestion } from "@/subjects/types";
 
 export interface AnswerRecord {
   readonly selected: number;
@@ -10,7 +10,7 @@ interface QuizResultProps {
   readonly score: number;
   readonly total: number;
   readonly answers: ReadonlyArray<AnswerRecord>;
-  readonly questions: ReadonlyArray<QuizQuestion>;
+  readonly questions: ReadonlyArray<SubjectQuestion>;
   readonly filter: string;
   readonly onRetry: () => void;
   readonly onBack: () => void;

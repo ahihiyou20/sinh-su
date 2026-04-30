@@ -1,62 +1,10 @@
-interface RowSpec {
-  readonly name: string;
-  readonly era: string;
-  readonly river: string;
-  readonly place: string;
-  readonly polity: string;
-  readonly culture: string;
-  readonly nameColor: string;
+import type { QuickRef } from "@/subjects/types";
+
+interface QuickRefTableProps {
+  readonly data: QuickRef;
 }
 
-const HEADERS = [
-  "Nhà nước",
-  "Ra đời",
-  "Lưu vực",
-  "Địa điểm",
-  "Thể chế",
-  "Văn hóa gốc",
-] as const;
-
-const ROWS: ReadonlyArray<RowSpec> = [
-  {
-    name: "Văn Lang",
-    era: "Thế kỉ VII TCN",
-    river: "Sông Hồng",
-    place: "Phong Châu",
-    polity: "Vua Hùng + Lạc hầu",
-    culture: "Đông Sơn",
-    nameColor: "var(--color-jade)",
-  },
-  {
-    name: "Âu Lạc",
-    era: "Sau Văn Lang",
-    river: "Sông Hồng",
-    place: "Cổ Loa (HN)",
-    polity: "Hoàn thiện hơn",
-    culture: "Đông Sơn",
-    nameColor: "#3498DB",
-  },
-  {
-    name: "Chăm Pa",
-    era: "Thế kỉ II SCN",
-    river: "Sông Thu Bồn",
-    place: "Miền Trung",
-    polity: "Quân chủ chuyên chế",
-    culture: "Ảnh hưởng Ấn Độ",
-    nameColor: "var(--color-teal)",
-  },
-  {
-    name: "Phù Nam",
-    era: "Sau Chăm Pa",
-    river: "Sông Cửu Long",
-    place: "Nam Bộ",
-    polity: "Quân chủ chuyên chế",
-    culture: "Văn hóa Óc Eo",
-    nameColor: "var(--color-crimson)",
-  },
-];
-
-export function QuickRefTable() {
+export function QuickRefTable({ data }: QuickRefTableProps) {
   return (
     <section
       aria-labelledby="quick-ref-heading"
@@ -66,13 +14,13 @@ export function QuickRefTable() {
         id="quick-ref-heading"
         className="mt-0 mb-4 font-display text-lg font-bold text-gold"
       >
-        📊 Bảng so sánh nhanh ba nền văn minh
+        {data.heading}
       </h2>
       <div className="overflow-x-auto [-webkit-overflow-scrolling:touch]">
         <table className="w-full min-w-[640px] border-collapse text-sm">
           <thead>
             <tr>
-              {HEADERS.map((h) => (
+              {data.headers.map((h) => (
                 <th
                   key={h}
                   scope="col"
@@ -84,19 +32,11 @@ export function QuickRefTable() {
             </tr>
           </thead>
           <tbody>
-            {ROWS.map((row, ri) => {
-              const cells = [
-                row.name,
-                row.era,
-                row.river,
-                row.place,
-                row.polity,
-                row.culture,
-              ];
+            {data.rows.map((row, ri) => {
               const rowBg = ri % 2 === 0 ? "bg-surface" : "bg-surface-2";
               return (
-                <tr key={row.name}>
-                  {cells.map((cell, ci) => {
+                <tr key={ri}>
+                  {row.cells.map((cell, ci) => {
                     const isName = ci === 0;
                     return (
                       <td
@@ -104,7 +44,11 @@ export function QuickRefTable() {
                         className={`border border-border-earth/40 px-3 py-2.5 text-sm ${rowBg} ${
                           isName ? "font-bold" : "font-normal text-text-dim"
                         }`}
-                        style={isName ? { color: row.nameColor } : undefined}
+                        style={
+                          isName && row.nameColor
+                            ? { color: row.nameColor }
+                            : undefined
+                        }
                       >
                         {cell}
                       </td>

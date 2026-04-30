@@ -1,6 +1,6 @@
 kind = "web"
-previewPath = "/lich-su-10/"
-title = "Đề cương Lịch sử 10 – HK2"
+previewPath = "/"
+title = "Ôn tập Lịch sử & Sinh học 10"
 version = "1.0.0"
 id = "artifacts/lich-su-10"
 router = "path"
@@ -11,7 +11,7 @@ version = "1.0.0"
 
 [[services]]
 name = "web"
-paths = [ "/lich-su-10/" ]
+paths = [ "/" ]
 localPort = 21087
 
 [services.development]
@@ -28,4 +28,4 @@ to = "/index.html"
 
 [services.env]
 PORT = "21087"
-BASE_PATH = "/lich-su-10/"
+BASE_PATH = "/"
