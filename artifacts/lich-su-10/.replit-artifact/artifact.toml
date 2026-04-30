@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/lich-su-10/"
+title = "Đề cương Lịch sử 10 – HK2"
+version = "1.0.0"
+id = "artifacts/lich-su-10"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/lich-su-10/" ]
+localPort = 21087
+
+[services.development]
+run = "pnpm --filter @workspace/lich-su-10 run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/lich-su-10", "run", "build" ]
+publicDir = "artifacts/lich-su-10/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21087"
+BASE_PATH = "/lich-su-10/"

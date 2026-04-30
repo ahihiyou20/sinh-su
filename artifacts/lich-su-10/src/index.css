@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #1C1008;
+  --color-surface: #2A1A0E;
+  --color-surface-2: #3A2415;
+  --color-border-earth: #5A3820;
+  --color-gold: #D4A017;
+  --color-gold-dim: #8B6914;
+  --color-jade: #1A6B5A;
+  --color-teal: #0E4D5C;
+  --color-crimson: #7A1F1F;
+  --color-text: #F0E6D0;
+  --color-text-dim: #A89070;
+  --color-correct: #2ECC71;
+  --color-correct-bg: #1A3A1A;
+  --color-wrong: #E74C3C;
+  --color-wrong-bg: #3A1A1A;
+  --color-warn-bg: #2A1800;
+  --color-warn-border: #c08010;
+  --color-warn-text: #F0C080;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-serif: "Crimson Text", Georgia, serif;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-earth);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dim);
+}
+
+button:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
