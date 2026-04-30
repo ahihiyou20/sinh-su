@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { quizData, type QuizQuestion, type QuizTag } from "@/data/quiz";
+import { useState } from "react";
+import { quizData, questionId, type QuizQuestion, type QuizTag } from "@/data/quiz";
 import { tagColor } from "@/lib/palette";
+import { useBookmarks } from "@/lib/bookmarks";
 import { QuizResult, type AnswerRecord } from "./QuizResult";
 
 interface QuizModeProps {
@@ -12,12 +13,19 @@ const FILTERS = [
   "Văn Lang – Âu Lạc",
   "Chăm Pa",
   "Phù Nam",
+  "Đã đánh dấu",
 ] as const;
 
 type Filter = (typeof FILTERS)[number];
 
-function filterQuestions(filter: Filter): readonly QuizQuestion[] {
+function filterQuestions(
+  filter: Filter,
+  bookmarks: ReadonlySet<string>,
+): readonly QuizQuestion[] {
   if (filter === "Tất cả") return quizData;
+  if (filter === "Đã đánh dấu") {
+    return quizData.filter((q) => bookmarks.has(questionId(q)));
+  }
   return quizData.filter((q) => q.tag === (filter as QuizTag));
 }
 
@@ -46,8 +54,40 @@ function Pill({ active = false, children, onClick, ariaPressed }: PillProps) {
   );
 }
 
+interface BookmarkButtonProps {
+  readonly active: boolean;
+  readonly onToggle: () => void;
+}
+
+function BookmarkButton({ active, onToggle }: BookmarkButtonProps) {
+  const label = active ? "Bỏ đánh dấu câu này" : "Đánh dấu câu này";
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-pressed={active}
+      aria-label={label}
+      title={label}
+      className={`flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border transition-colors duration-200 ${
+        active
+          ? "border-gold bg-gold/15 text-gold"
+          : "border-border-earth bg-surface-2 text-text-dim hover:border-gold/60 hover:text-gold"
+      }`}
+    >
+      <span aria-hidden="true" className="text-lg leading-none">
+        {active ? "★" : "☆"}
+      </span>
+    </button>
+  );
+}
+
 export function QuizMode({ onBack }: QuizModeProps) {
+  const { bookmarks, isBookmarked, toggleBookmark } = useBookmarks();
+
   const [filter, setFilter] = useState<Filter>("Tất cả");
+  const [questions, setQuestions] = useState<readonly QuizQuestion[]>(() =>
+    filterQuestions("Tất cả", bookmarks),
+  );
   const [currentQ, setCurrentQ] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [showExplain, setShowExplain] = useState(false);
@@ -55,9 +95,8 @@ export function QuizMode({ onBack }: QuizModeProps) {
   const [finished, setFinished] = useState(false);
   const [answers, setAnswers] = useState<AnswerRecord[]>([]);
 
-  const questions = filterQuestions(filter);
-
-  const reset = () => {
+  const resetQuizState = (next: readonly QuizQuestion[]) => {
+    setQuestions(next);
     setCurrentQ(0);
     setSelected(null);
     setShowExplain(false);
@@ -66,15 +105,44 @@ export function QuizMode({ onBack }: QuizModeProps) {
     setAnswers([]);
   };
 
-  useEffect(() => {
-    reset();
-  }, [filter]);
+  const handleFilterChange = (next: Filter) => {
+    setFilter(next);
+    resetQuizState(filterQuestions(next, bookmarks));
+  };
+
+  const handleRetry = () => {
+    resetQuizState(filterQuestions(filter, bookmarks));
+  };
 
   if (questions.length === 0) {
+    const emptyMsg =
+      filter === "Đã đánh dấu"
+        ? "Bạn chưa đánh dấu câu nào. Hãy bấm ☆ trên câu hỏi để lưu lại ôn sau."
+        : "Không có câu hỏi cho chủ đề này.";
     return (
-      <main className="min-h-screen bg-bg p-5 text-text">
-        <p>Không có câu hỏi cho chủ đề này.</p>
-        <Pill onClick={onBack}>← Quay lại</Pill>
+      <main className="min-h-screen bg-bg p-5 font-serif text-text">
+        <div className="mx-auto max-w-[720px]">
+          <div
+            role="toolbar"
+            aria-label="Bộ lọc câu hỏi"
+            className="mb-6 flex flex-wrap items-center gap-2.5"
+          >
+            <Pill onClick={onBack}>← Quay lại</Pill>
+            {FILTERS.map((t) => (
+              <Pill
+                key={t}
+                active={filter === t}
+                ariaPressed={filter === t}
+                onClick={() => handleFilterChange(t)}
+              >
+                {t}
+              </Pill>
+            ))}
+          </div>
+          <p className="rounded-xl border border-border-earth bg-surface px-6 py-5 text-text-dim">
+            {emptyMsg}
+          </p>
+        </div>
       </main>
     );
   }
@@ -105,13 +173,15 @@ export function QuizMode({ onBack }: QuizModeProps) {
         total={questions.length}
         answers={answers}
         questions={questions}
-        onRetry={reset}
+        onRetry={handleRetry}
         onBack={onBack}
       />
     );
   }
 
   const question = questions[currentQ];
+  const qid = questionId(question);
+  const bookmarked = isBookmarked(qid);
   const progressPct = (currentQ / questions.length) * 100;
 
   return (
@@ -128,9 +198,10 @@ export function QuizMode({ onBack }: QuizModeProps) {
               key={t}
               active={filter === t}
               ariaPressed={filter === t}
-              onClick={() => setFilter(t)}
+              onClick={() => handleFilterChange(t)}
             >
               {t}
+              {t === "Đã đánh dấu" && bookmarks.size > 0 ? ` (${bookmarks.size})` : ""}
             </Pill>
           ))}
         </div>
@@ -160,13 +231,17 @@ export function QuizMode({ onBack }: QuizModeProps) {
           className="sr-only"
         />
 
-        <div className="mb-3">
+        <div className="mb-3 flex items-center justify-between gap-2">
           <span
             className="rounded-full px-2.5 py-[3px] text-[11px] font-bold tracking-wider text-white uppercase"
             style={{ background: tagColor[question.tag] }}
           >
             {question.tag}
           </span>
+          <BookmarkButton
+            active={bookmarked}
+            onToggle={() => toggleBookmark(qid)}
+          />
         </div>
 
         <div className="mb-5 rounded-xl border border-border-earth bg-surface px-6 py-5">

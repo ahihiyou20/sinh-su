@@ -8,6 +8,10 @@ export type QuizTag = "Văn Lang – Âu Lạc" | "Chăm Pa" | "Phù Nam";
     readonly tag: QuizTag;
   }
 
+  export function questionId(q: QuizQuestion): string {
+    return q.q;
+  }
+
   export const quizData: readonly QuizQuestion[] = [
     { q: "Nhà nước đầu tiên được hình thành trên lãnh thổ Việt Nam có tên gọi là?", opts: ["Văn Lang", "Lâm Ấp", "Chăm pa", "Phù Nam"], ans: 0, explain: "Văn Lang là nhà nước đầu tiên trong lịch sử Việt Nam, ra đời khoảng thế kỉ VII TCN.", tag: "Văn Lang – Âu Lạc" },
   { q: "Nền văn minh Văn Lang - Âu Lạc chủ yếu được hình thành trên lưu vực con sông nào?", opts: ["Sông Hằng", "Sông Ấn", "Sông Hồng", "Sông Nin"], ans: 2, explain: "Văn minh Văn Lang – Âu Lạc hình thành chủ yếu trên lưu vực sông Hồng.", tag: "Văn Lang – Âu Lạc" },
