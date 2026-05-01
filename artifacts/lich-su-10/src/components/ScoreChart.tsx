@@ -23,6 +23,14 @@ interface ChartPoint {
   readonly score: number;
   readonly total: number;
   readonly filter: string;
+  readonly durationSecs?: number;
+}
+
+function fmtDur(secs: number): string {
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  if (m === 0) return `${s}s`;
+  return `${m}m${s > 0 ? ` ${s}s` : ""}`;
 }
 
 function shortDate(ts: number): string {
@@ -59,6 +67,9 @@ function CustomTooltip({ active, payload }: TooltipProps) {
         </span>{" "}
         <span className="text-text-dim">({point.pct}%)</span>
       </div>
+      {point.durationSecs !== undefined && point.durationSecs > 0 && (
+        <div className="text-[11px] text-text-dim">⏱ {fmtDur(point.durationSecs)}</div>
+      )}
       <div className="text-[11px] text-text-dim">{point.filter}</div>
     </div>
   );
@@ -76,6 +87,7 @@ export function ScoreChart({ history, accentHex }: ScoreChartProps) {
       score: entry.score,
       total: entry.total,
       filter: entry.filter,
+      durationSecs: entry.durationSecs,
     }));
   }, [history]);
 

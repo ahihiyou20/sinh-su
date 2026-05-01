@@ -48,4 +48,8 @@ Single React+Vite study app that hosts both subjects under one artifact.
   - History: `artifacts/lich-su-10/src/data/lich-su/extra.ts` — append entries of type `QuizQuestion` (fields `q`, `opts`, `ans`, `explain`, `tag`).
   - Biology: `artifacts/lich-su-10/src/data/sinh-hoc/extra.ts` — append entries of type `ExtraQuiz` (fields `q`, `options`, `answer`, `explain`, `tag`).
   Each file ships with a commented-out template you can copy/paste. Extras are merged into `subject.questions` in `src/subjects/{lich-su,sinh-hoc}.ts` and pick up stable IDs of the form `{subject}-extra:{index}` so bookmarks/wrong-id tracking remain stable across reloads.
+- **Shuffle**: `selectQuestions()` runs Fisher-Yates shuffle on every fresh quiz start (all, topic, bookmarks) and filter change. Resume restores saved order from `questionIds` in `SavedQuizProgress`.
+- **Quiz timer**: `⏱ MM:SS` clock shown in the quiz progress row. Tracked via `quizStartTimeRef` (persisted in `SavedQuizProgress.startedAt`). On finish, `durationSecs` is stored in `QuizAttempt`, shown on result screen, history list, and chart tooltip.
+- **Short-answer mode** (✍️ Tự điền toggle): teal pill in toolbar. Questions whose correct answer ≤ 10 chars auto-convert to `ShortAnswerInput` (free-text, case-insensitive+trimmed comparison). Shows MC options + explanation after submission. Falls back to MC for longer answers.
+- **User counter**: `src/lib/api.ts` fires `POST /api-server/api/ping` with a per-device UUID on the first quiz answer per session. API server (`artifacts/api-server/src/routes/stats.ts`) logs unique device count at INFO level in the Replit console. `GET /api-server/api/stats` returns JSON stats.
 

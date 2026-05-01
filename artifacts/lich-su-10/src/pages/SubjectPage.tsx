@@ -146,6 +146,7 @@ export function SubjectPage({ subject }: SubjectPageProps) {
     readonly filter: string;
     readonly score: number;
     readonly total: number;
+    readonly durationSecs: number;
   }) => {
     addAttempt(result);
   };

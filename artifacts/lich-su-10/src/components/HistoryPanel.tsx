@@ -27,6 +27,13 @@ function pctToneClass(pct: number): string {
   return "text-wrong";
 }
 
+function formatDuration(secs: number): string {
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  if (m === 0) return `${s}s`;
+  return `${m}m${s > 0 ? ` ${s}s` : ""}`;
+}
+
 export function HistoryPanel({ history, onClear }: HistoryPanelProps) {
   const visible = history.slice(0, MAX_VISIBLE);
 
@@ -76,6 +83,9 @@ export function HistoryPanel({ history, onClear }: HistoryPanelProps) {
                   </span>
                   <span className="text-[11px] text-text-dim">
                     {formatDate(entry.timestamp)}
+                    {entry.durationSecs !== undefined && entry.durationSecs > 0
+                      ? ` · ⏱ ${formatDuration(entry.durationSecs)}`
+                      : ""}
                   </span>
                 </div>
                 <div

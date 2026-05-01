@@ -12,6 +12,7 @@ interface QuizResultProps {
   readonly answers: ReadonlyArray<AnswerRecord>;
   readonly questions: ReadonlyArray<SubjectQuestion>;
   readonly filter: string;
+  readonly durationSecs?: number;
   readonly onRetry: () => void;
   readonly onBack: () => void;
   readonly onSave?: (result: {
@@ -21,6 +22,13 @@ interface QuizResultProps {
   }) => void;
   readonly wrongCount?: number;
   readonly onReviewWrong?: () => void;
+}
+
+function formatDuration(secs: number): string {
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  if (m === 0) return `${s} giây`;
+  return `${m} phút ${s} giây`;
 }
 
 function medal(pct: number): string {
@@ -47,6 +55,7 @@ export function QuizResult({
   answers,
   questions,
   filter,
+  durationSecs,
   onRetry,
   onBack,
   onSave,
@@ -80,9 +89,15 @@ export function QuizResult({
         <div className="mb-2 text-[15px] text-text-dim">
           {pct}% chính xác
         </div>
-        <div className="mb-7 text-[15px] leading-relaxed text-text-dim">
+        <div className="mb-4 text-[15px] leading-relaxed text-text-dim">
           {message(pct)}
         </div>
+        {durationSecs !== undefined && durationSecs > 0 && (
+          <div className="mb-7 text-[13px] text-text-dim">
+            ⏱ Thời gian làm bài:{" "}
+            <strong className="text-text">{formatDuration(durationSecs)}</strong>
+          </div>
+        )}
 
         <ol
           aria-label="Chi tiết kết quả từng câu"

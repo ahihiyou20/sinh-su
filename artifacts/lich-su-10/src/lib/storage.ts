@@ -19,6 +19,7 @@ export interface QuizAttempt {
   readonly filter: string;
   readonly score: number;
   readonly total: number;
+  readonly durationSecs?: number;
 }
 
 function isAttempt(value: unknown): value is QuizAttempt {
@@ -64,7 +65,9 @@ function makeId(): string {
 
 export interface UseHistoryResult {
   readonly history: readonly QuizAttempt[];
-  readonly addAttempt: (attempt: Omit<QuizAttempt, "id" | "timestamp">) => void;
+  readonly addAttempt: (
+    attempt: Omit<QuizAttempt, "id" | "timestamp">,
+  ) => void;
   readonly clearHistory: () => void;
 }
 
@@ -228,6 +231,7 @@ export interface SavedQuizProgress {
   readonly score: number;
   readonly answers: readonly SavedAnswer[];
   readonly updatedAt: number;
+  readonly startedAt?: number;
 }
 
 function isSavedAnswer(v: unknown): v is SavedAnswer {
@@ -465,6 +469,28 @@ export function useCustomQuestions(subject: SubjectId): {
   }, []);
 
   return { items, add, remove };
+}
+
+// ---------------------------------------------------------------------------
+// Device identity — a stable UUID per browser (for user-count ping)
+// ---------------------------------------------------------------------------
+
+const DEVICE_ID_KEY = `${APP_NS}:device-id`;
+
+export function getOrCreateDeviceId(): string {
+  if (typeof window === "undefined") return "ssr";
+  try {
+    const existing = window.localStorage.getItem(DEVICE_ID_KEY);
+    if (existing) return existing;
+    const id =
+      typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
+    window.localStorage.setItem(DEVICE_ID_KEY, id);
+    return id;
+  } catch {
+    return "unknown";
+  }
 }
 
 // ---------------------------------------------------------------------------
