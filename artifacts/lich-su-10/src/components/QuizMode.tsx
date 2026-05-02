@@ -77,6 +77,7 @@ function findFilterByLabel(
 
 // A question can be "short-answerised" if the correct answer is ≤ 10 chars.
 function canBeShortAnswer(q: SubjectQuestion): boolean {
+  if (q.passage) return false;
   const ans = q.opts[q.ans] ?? "";
   return ans.length > 0 && ans.length <= 10;
 }
@@ -638,6 +639,11 @@ export function QuizMode({
 
         {/* Question card */}
         <div className="mb-5 rounded-xl border border-border-earth bg-surface px-6 py-5">
+          {question.passage && (
+            <blockquote className="mb-4 border-l-4 border-gold/60 bg-surface-2 px-4 py-3 text-sm italic leading-relaxed text-text-dim whitespace-pre-line rounded-r-lg">
+              {question.passage}
+            </blockquote>
+          )}
           <p className="m-0 whitespace-pre-line text-base leading-relaxed text-text">
             <strong className="text-gold">Câu {currentQ + 1}:</strong>{" "}
             {question.q}

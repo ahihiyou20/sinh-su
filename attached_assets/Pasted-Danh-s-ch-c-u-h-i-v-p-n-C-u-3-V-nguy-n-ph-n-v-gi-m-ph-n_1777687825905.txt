@@ -1,0 +1,49 @@
+Danh sách câu hỏi và đáp án
+Câu 3: Về nguyên phân và giảm phân, hãy chọn các nhận định đúng (sai không chọn):
+Đáp án đúng:
+Trong nguyên phân, từ 1 tế bào mẹ sau 3 lần phân bào liên tiếp sẽ tạo ra 8 tế bào con.
+Ở kì sau của nguyên phân, các NST kép tách nhau tại tâm động tạo thành các NST đơn.
+Giảm phân góp phần duy trì ổn định bộ NST đặc trưng của loài qua các thế hệ sinh sản hữu tính.
+Câu 4: Biện pháp nào sau đây giúp kéo dài thời gian bảo quản thịt cá bằng cách ức chế sinh trưởng của vi sinh vật?
+Đáp án: Ướp muối đậm đặc.
+Câu 5: Một tế bào sinh dưỡng của người có bộ NST 2n = 46. Ở kì sau của nguyên phân, số NST trong tế bào là:
+Đáp án: 92 (Vì ở kì sau các NST kép tách thành NST đơn và chưa chia tế bào, số lượng tăng gấp đôi).
+Câu 6: Muốn thu được sinh khối vi khuẩn lớn nhất trong nuôi cấy không liên tục, thời điểm thu hoạch thích hợp nhất là:
+Đáp án: Cuối pha lũy thừa, đầu pha cân bằng.
+Câu 7: Về sinh trưởng của quần thể vi khuẩn, hãy chọn các đáp án đúng:
+Đáp án đúng:
+Trong pha lũy thừa, số lượng tế bào tăng rất nhanh.
+Ở pha cân bằng, số tế bào sinh ra và số tế bào chết đi xấp xỉ bằng nhau.
+Câu 8: Cho sơ đồ đường cong sinh trưởng của quần thể vi khuẩn (có hình vẽ). Phát biểu nào sau đây sai?
+Đáp án: Để thu được nhiều sinh khối nhất nên dừng ở giai đoạn giữa của chú thích (4) (Pha suy vong).
+Câu 9: Nhóm sinh vật nào sau đây có kiểu dinh dưỡng hóa dị dưỡng?
+Đáp án: Nấm men.
+Câu 10: Về vi sinh vật và các kiểu dinh dưỡng, hãy chọn các đáp án đúng:
+Đáp án đúng:
+Vi sinh vật có kích thước nhỏ nên thường có tốc độ trao đổi chất nhanh.
+Vi khuẩn lam sử dụng ánh sáng làm nguồn năng lượng và CO_2 làm nguồn carbon.
+Căn cứ vào nguồn carbon và nguồn năng lượng có thể chia vi sinh vật thành 4 kiểu dinh dưỡng cơ bản.
+Câu 11: Vi sinh vật là những cơ thể:
+Đáp án: Kích thước nhỏ bé, phần lớn chỉ quan sát được dưới kính hiển vi.
+Câu 12: Sau giảm phân I, mỗi tế bào con của loài có 2n = 18 sẽ chứa số NST là:
+Đáp án: 9 NST kép.
+Câu 13: Căn cứ để phân loại các kiểu dinh dưỡng ở vi sinh vật là:
+Đáp án: Nguồn carbon và nguồn năng lượng.
+Câu 14: Trong nguyên phân, ở kì giữa, mỗi nhiễm sắc thể tồn tại ở dạng:
+Đáp án: NST kép.
+Câu 15: Trong môi trường nuôi cấy không liên tục, pha mà vi khuẩn thích nghi dần với môi trường là:
+Đáp án: Pha tiềm phát.
+Câu 16: Chu trình nhân lên của phage điển hình gồm mấy giai đoạn?
+Đáp án: 5 (Hấp phụ, xâm nhập, tổng hợp, lắp ráp, giải phóng).
+Câu 17: Một tế bào có bộ NST 2n = 16 nguyên phân liên tiếp 2 lần. Số tế bào con được tạo ra là:
+Đáp án: 4.
+Câu 18: Ở một loài có 2n = 24, số NST trong mỗi giao tử bình thường là:
+Đáp án: 12.
+Câu 19: Điểm kiểm soát nào sau đây không thuộc kì trung gian của chu kì tế bào?
+Đáp án: Điểm kiểm soát thoi phân bào (M checkpoint).
+Câu 20: Một tế bào có bộ NST 2n = 10 nguyên phân 3 lần liên tiếp. Môi trường nội bào cần cung cấp bao nhiêu NST đơn tương đương?
+Đáp án: 70 (Công thức: 2n \times (2^k - 1) = 10 \times (2^3 - 1) = 70).
+Câu 21: Sinh trưởng của quần thể vi sinh vật được hiểu là:
+Đáp án: Sự tăng số lượng tế bào của quần thể qua thời gian.
+Câu 22: Vi sinh vật sử dụng ánh sáng làm nguồn năng lượng và CO_2 làm nguồn carbon thuộc kiểu dinh dưỡng:
+Đáp án: Quang tự dưỡng.

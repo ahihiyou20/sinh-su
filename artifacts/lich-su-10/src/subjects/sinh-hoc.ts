@@ -55,6 +55,7 @@ const bookmarkFilter: SubjectFilter = {
 export const sinhHocSubject: SubjectConfig = {
   id: "sinhhoc",
   path: "/sinhhoc",
+  shortName: "Sinh học",
 
   badge: "Ôn tập • Sinh học 10",
   title: "🧬 ÔN TẬP SINH HỌC LỚP 10",
@@ -63,11 +64,6 @@ export const sinhHocSubject: SubjectConfig = {
   headerGradient: "linear-gradient(135deg, #0F1F18 0%, #081410 100%)",
   accent: "var(--color-jade)",
   accentHex: "#2ECC71",
-
-  otherId: "lichsu",
-  otherPath: "/lichsu",
-  otherShortName: "Lịch sử",
-  otherEmoji: "📜",
 
   tagColors,
   quickRef: sinhHocQuickRef,

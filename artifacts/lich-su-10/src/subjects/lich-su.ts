@@ -1,5 +1,6 @@
 import { LichSuTheory } from "@/components/lich-su/LichSuTheory";
 import { extraQuestions } from "@/data/lich-su/extra";
+import { passageQuestions } from "@/data/lich-su/passages";
 import { quizData } from "@/data/lich-su/quiz";
 import { lichSuQuickRef } from "@/data/lich-su/quick-ref";
 import type { SubjectConfig, SubjectFilter, SubjectQuestion } from "./types";
@@ -26,6 +27,7 @@ const questions: readonly SubjectQuestion[] = [
     tag: q.tag,
     id: `lichsu-extra:${i}`,
   })),
+  ...passageQuestions,
 ];
 
 const allFilter: SubjectFilter = { label: "Tất cả", kind: { type: "all" } };
@@ -37,6 +39,7 @@ const bookmarkFilter: SubjectFilter = {
 export const lichSuSubject: SubjectConfig = {
   id: "lichsu",
   path: "/lichsu",
+  shortName: "Lịch sử",
 
   badge: "Ôn tập • Lịch sử 10",
   title: "📜 ÔN TẬP LỊCH SỬ LỚP 10",
@@ -46,11 +49,6 @@ export const lichSuSubject: SubjectConfig = {
   headerGradient: "linear-gradient(135deg, #2A1810 0%, #1A0F08 100%)",
   accent: "var(--color-gold)",
   accentHex: "#D4A017",
-
-  otherId: "sinhhoc",
-  otherPath: "/sinhhoc",
-  otherShortName: "Sinh học",
-  otherEmoji: "🧬",
 
   tagColors,
   quickRef: lichSuQuickRef,

@@ -155,24 +155,9 @@ export function SubjectPage({ subject }: SubjectPageProps) {
     toggleBookmark(id);
   };
 
-  const currentShortName = subject.id === "lichsu" ? "Lịch sử" : "Sinh học";
   const headerExtras = useMemo(
-    () => (
-      <SubjectSwitcher
-        currentShortName={currentShortName}
-        currentEmoji={subject.emoji}
-        otherShortName={subject.otherShortName}
-        otherEmoji={subject.otherEmoji}
-        otherPath={subject.otherPath}
-      />
-    ),
-    [
-      currentShortName,
-      subject.emoji,
-      subject.otherEmoji,
-      subject.otherPath,
-      subject.otherShortName,
-    ],
+    () => <SubjectSwitcher currentId={subject.id} />,
+    [subject.id],
   );
 
   if (mode.view === "quiz") {

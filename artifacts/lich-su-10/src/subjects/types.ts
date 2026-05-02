@@ -9,9 +9,8 @@ export interface SubjectQuestion {
   readonly ans: number;
   readonly explain: string;
   readonly tag: string;
-  // Optional stable identity. Required for custom (user-added) questions so
-  // bookmarks/wrong-id tracking survive even if two questions share text.
   readonly id?: string;
+  readonly passage?: string;
 }
 
 export type FilterKind =
@@ -39,21 +38,16 @@ export interface QuickRef {
 export interface SubjectConfig {
   readonly id: SubjectId;
   readonly path: string;
+  readonly shortName: string;
 
   // Visual identity
-  readonly badge: string;          // small uppercase label above title
-  readonly title: string;          // main h1
-  readonly subtitle: string;       // sub heading
-  readonly emoji: string;          // small emoji for buttons / switcher
-  readonly headerGradient: string; // CSS background for header
-  readonly accent: string;         // CSS variable name (e.g. "var(--color-gold)")
-  readonly accentHex: string;      // hex code for the chart line
-
-  // Switch button → other subject
-  readonly otherId: SubjectId;
-  readonly otherPath: string;
-  readonly otherShortName: string;
-  readonly otherEmoji: string;
+  readonly badge: string;
+  readonly title: string;
+  readonly subtitle: string;
+  readonly emoji: string;
+  readonly headerGradient: string;
+  readonly accent: string;
+  readonly accentHex: string;
 
   // Topic colours used inside the quiz pill
   readonly tagColors: Record<string, string>;

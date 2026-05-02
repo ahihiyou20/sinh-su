@@ -8,13 +8,11 @@ function NotFound() {
       <h1 className="font-display text-2xl text-gold">404 — Không tìm thấy trang</h1>
       <p className="mt-3 text-text-dim">
         Trang bạn yêu cầu không tồn tại. Quay lại{" "}
-        <a href="/lichsu" className="text-gold underline">
-          phần Lịch sử
-        </a>{" "}
-        hoặc{" "}
-        <a href="/sinhhoc" className="text-gold underline">
-          phần Sinh học
-        </a>
+        <a href="/lichsu" className="text-gold underline">Lịch sử</a>
+        {", "}
+        <a href="/sinhhoc" className="text-gold underline">Sinh học</a>
+        {" hoặc "}
+        <a href="/tiengtrung" className="text-gold underline">Tiếng Trung</a>
         .
       </p>
     </main>
@@ -32,6 +30,9 @@ function App() {
       </Route>
       <Route path="/sinhhoc">
         <SubjectPage subject={getSubject("sinhhoc")} />
+      </Route>
+      <Route path="/tiengtrung">
+        <SubjectPage subject={getSubject("tiengtrung")} />
       </Route>
       <Route>
         <NotFound />
