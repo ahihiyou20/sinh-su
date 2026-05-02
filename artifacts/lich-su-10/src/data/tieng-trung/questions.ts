@@ -209,6 +209,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     opts: ["找", "看", "跟", "请"],
     ans: 0,
     explain: "zhǎo = 找 (tìm/đến rủ). 找明红去吃饭 = đến tìm rủ Minh Hồng đi ăn cơm. Phân biệt: 看 = xem; 跟 = cùng với; 请 = mời (bao ăn).",
+    forceShortAnswer: true,
     tag: "Ngữ pháp HSK 2",
   },
   {
@@ -241,6 +242,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     opts: ["跑步", "游泳", "打篮球", "踢足球"],
     ans: 0,
     explain: "pǎobù = 跑步 (chạy bộ). Nhớ chữ Hán từ phiên âm: pǎo = 跑, bù = 步.",
+    forceShortAnswer: true,
     tag: "Ngữ pháp HSK 2",
   },
   {
@@ -281,6 +283,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     opts: ["怎么不", "为什么不", "怎么", "难道"],
     ans: 0,
     explain: "zěnme bù = 怎么不 (Sao lại không…?). Phân biệt: 为什么不 = wèishénme bù (khác pinyin); 怎么 = zěnme (thiếu 不); 难道 = nándào (câu hỏi tu từ).",
+    forceShortAnswer: true,
     tag: "Ngữ pháp HSK 2",
   },
 
@@ -473,5 +476,69 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Phủ định 是…的: PHẢI dùng 不是…的. 是 không được lược bỏ và 不 đứng trước 是, không tách vào giữa cấu trúc.",
     tag: "Ngữ pháp HSK 2",
+  },
+
+  // ── Section E: Đọc hiểu (Reading Comprehension) ────────────────────────────
+  // Passage: 小明sinh병 (HSK 2 vocabulary scope)
+
+  {
+    id: "tt-rc-75",
+    passage: `上个星期，小明发烧了，头也很疼。妈妈带他去医院看病。医生说他得了感冒，给他开了一些药，让他每天吃两次，要多喝水，多休息，不能吃辣的东西。三天以后，小明出院了，他的病好多了。他说："以后我要每天跑步，这样就不会生病了。"`,
+    q: "小明生病后，谁带他去医院？",
+    opts: ["妈妈", "爸爸", "老师", "朋友"],
+    ans: 0,
+    explain: "Đoạn văn: 妈妈带他去医院看病 (Mẹ đưa anh ấy đến bệnh viện khám bệnh). Đây là thông tin trực tiếp từ đoạn văn.",
+    tag: "Đọc hiểu",
+  },
+  {
+    id: "tt-rc-76",
+    passage: `上个星期，小明发烧了，头也很疼。妈妈带他去医院看病。医生说他得了感冒，给他开了一些药，让他每天吃两次，要多喝水，多休息，不能吃辣的东西。三天以后，小明出院了，他的病好多了。他说："以后我要每天跑步，这样就不会生病了。"`,
+    q: "医生让小明每天吃几次药？",
+    opts: ["两次", "一次", "三次", "四次"],
+    ans: 0,
+    explain: "Đoạn văn: 给他开了一些药，让他每天吃两次 (kê thuốc cho anh ấy, uống hai lần mỗi ngày). 两次 = hai lần.",
+    tag: "Đọc hiểu",
+  },
+  {
+    id: "tt-rc-77",
+    passage: `上个星期，小明发烧了，头也很疼。妈妈带他去医院看病。医生说他得了感冒，给他开了一些药，让他每天吃两次，要多喝水，多休息，不能吃辣的东西。三天以后，小明出院了，他的病好多了。他说："以后我要每天跑步，这样就不会生病了。"`,
+    q: "根据短文，医生不让小明做什么？",
+    opts: ["吃辣的东西", "喝水", "休息", "出院"],
+    ans: 0,
+    explain: "Đoạn văn: 不能吃辣的东西 (không được ăn đồ cay). Các lựa chọn 喝水, 休息 thì được khuyến khích; 出院 là việc xảy ra sau, không liên quan lệnh cấm.",
+    tag: "Đọc hiểu",
+  },
+  {
+    id: "tt-rc-78",
+    passage: `上个星期，小明发烧了，头也很疼。妈妈带他去医院看病。医生说他得了感冒，给他开了一些药，让他每天吃两次，要多喝水，多休息，不能吃辣的东西。三天以后，小明出院了，他的病好多了。他说："以后我要每天跑步，这样就不会生病了。"`,
+    q: "小明出院后打算怎样预防生病？",
+    opts: ["每天跑步", "每天吃药", "不吃辣的东西", "多睡觉"],
+    ans: 0,
+    explain: "Đoạn văn: 以后我要每天跑步，这样就不会生病了 (Sau này tôi muốn chạy bộ mỗi ngày, như vậy sẽ không bị bệnh nữa). Đây là lời của chính 小明.",
+    tag: "Đọc hiểu",
+  },
+
+  // ── Section F: Điền vào đoạn văn (Cloze Test) ──────────────────────────────
+  // Blanks use ___ as marker; blanks[] stores answers in order.
+
+  {
+    id: "tt-cz-79",
+    passage: "大卫每天早上都___。他觉得每天运动很重要。他的朋友小明不爱运动，现在60___公斤了。大卫常常叫小明一起去___足球，但小明更喜欢看电视。",
+    blanks: ["跑步", "多", "踢"],
+    q: "Điền từ còn thiếu vào đoạn văn sau:",
+    opts: [],
+    ans: 0,
+    explain: "空格1: 跑步 (pǎobù = chạy bộ, hoạt động thể thao buổi sáng). 空格2: 多 (số tròn chục + 多 = 'hơn' — 60多公斤 = hơn 60 kg). 空格3: 踢 (踢足球 = đá bóng, 踢 là động từ chuyên dùng với bóng đá).",
+    tag: "Điền vào đoạn văn",
+  },
+  {
+    id: "tt-cz-80",
+    passage: "昨天我___（感冒）了，头很___，还发烧了。妈妈带我去医院，医生让我多___，不能吃辣的东西。",
+    blanks: ["生病", "疼", "休息"],
+    q: "Điền từ còn thiếu vào đoạn văn sau:",
+    opts: [],
+    ans: 0,
+    explain: "空格1: 生病 (shēngbìng = bị bệnh). 空格2: 疼 (téng = đau/nhức). 空格3: 休息 (xiūxi = nghỉ ngơi). Đây là từ vựng HSK 2 liên quan chủ đề sức khỏe.",
+    tag: "Điền vào đoạn văn",
   },
 ];

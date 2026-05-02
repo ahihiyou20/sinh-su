@@ -11,6 +11,8 @@ export interface SubjectQuestion {
   readonly tag: string;
   readonly id?: string;
   readonly passage?: string;
+  readonly forceShortAnswer?: boolean;
+  readonly blanks?: readonly string[];
 }
 
 export type FilterKind =

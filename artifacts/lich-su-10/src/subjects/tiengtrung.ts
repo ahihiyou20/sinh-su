@@ -23,6 +23,8 @@ export const tiengTrungSubject: SubjectConfig = {
 
   tagColors: {
     "Ngữ pháp HSK 2": "#C0392B",
+    "Đọc hiểu": "#1A6B3A",
+    "Điền vào đoạn văn": "#5B2CA0",
   },
 
   TheoryView: TiengTrungTheory,
@@ -33,6 +35,8 @@ export const tiengTrungSubject: SubjectConfig = {
     allFilter,
     bookmarkFilter,
     { label: "Ngữ pháp HSK 2", kind: { type: "topic", topic: "Ngữ pháp HSK 2" } },
+    { label: "Đọc hiểu", kind: { type: "topic", topic: "Đọc hiểu" } },
+    { label: "Điền vào đoạn văn", kind: { type: "topic", topic: "Điền vào đoạn văn" } },
   ],
   defaultFilter: allFilter,
   bookmarkFilter,

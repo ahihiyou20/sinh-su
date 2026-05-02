@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   questionId,
   type SubjectFilter,
@@ -75,9 +75,15 @@ function findFilterByLabel(
   return filters.find((f) => f.label === label);
 }
 
+// A cloze question has blanks[] defined.
+function isCloze(q: SubjectQuestion): boolean {
+  return Array.isArray(q.blanks) && q.blanks.length > 0;
+}
+
 // A question can be "short-answerised" if the correct answer is ≤ 10 chars.
 function canBeShortAnswer(q: SubjectQuestion): boolean {
-  if (q.passage) return false;
+  if (q.passage && !q.forceShortAnswer) return false;
+  if (isCloze(q)) return false;
   const ans = q.opts[q.ans] ?? "";
   return ans.length > 0 && ans.length <= 10;
 }
@@ -260,6 +266,140 @@ function ShortAnswerInput({ question, onSubmit }: ShortAnswerInputProps) {
   );
 }
 
+// Cloze (fill-in-the-blank passage) input component
+interface ClozeInputProps {
+  readonly question: SubjectQuestion;
+  readonly onSubmit: (allCorrect: boolean) => void;
+}
+
+function ClozeInput({ question, onSubmit }: ClozeInputProps) {
+  const blanks = question.blanks ?? [];
+  const [values, setValues] = useState<string[]>(() => blanks.map(() => ""));
+  const [results, setResults] = useState<Array<"correct" | "wrong" | null>>(
+    () => blanks.map(() => null),
+  );
+  const [submitted, setSubmitted] = useState(false);
+  const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
+
+  useEffect(() => {
+    inputRefs.current[0]?.focus();
+  }, []);
+
+  const clozeText = question.passage ?? "";
+  const parts = clozeText.split("___");
+
+  const allFilled = values.every((v) => v.trim().length > 0);
+
+  const handleChange = (i: number, val: string) => {
+    if (submitted) return;
+    setValues((prev) => {
+      const next = [...prev];
+      next[i] = val;
+      return next;
+    });
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent, i: number) => {
+    if (e.key === "Enter") {
+      if (i < blanks.length - 1) {
+        inputRefs.current[i + 1]?.focus();
+      } else {
+        handleSubmit();
+      }
+    }
+  };
+
+  const handleSubmit = () => {
+    if (!allFilled || submitted) return;
+    const newResults = blanks.map((ans, i) =>
+      normalizeAnswer(values[i] ?? "") === normalizeAnswer(ans)
+        ? ("correct" as const)
+        : ("wrong" as const),
+    );
+    setResults(newResults);
+    setSubmitted(true);
+    const allCorrect = newResults.every((r) => r === "correct");
+    onSubmit(allCorrect);
+  };
+
+  const correctCount = results.filter((r) => r === "correct").length;
+
+  return (
+    <div className="mt-2 flex flex-col gap-4">
+      {/* Passage with inline inputs */}
+      <div className="rounded-xl border-2 border-border-earth bg-surface px-5 py-4 text-base leading-loose text-text">
+        {parts.map((part, i) => (
+          <Fragment key={i}>
+            <span className="whitespace-pre-wrap">{part}</span>
+            {i < blanks.length && (
+              <span className="inline-flex items-baseline gap-0.5">
+                <input
+                  ref={(el) => {
+                    inputRefs.current[i] = el;
+                  }}
+                  type="text"
+                  value={values[i]}
+                  onChange={(e) => handleChange(i, e.target.value)}
+                  onKeyDown={(e) => handleKeyDown(e, i)}
+                  disabled={submitted}
+                  aria-label={`Ô trống ${i + 1}`}
+                  className={`mx-1 inline-block rounded border-b-2 bg-transparent px-1 text-center text-base outline-none transition-colors duration-200 disabled:opacity-80 ${
+                    results[i] === "correct"
+                      ? "border-correct text-correct"
+                      : results[i] === "wrong"
+                        ? "border-wrong text-wrong line-through"
+                        : "border-gold text-text focus:border-gold/80"
+                  }`}
+                  style={{
+                    width: `${Math.max(3, (blanks[i]?.length ?? 3) + 1)}ch`,
+                  }}
+                />
+                {results[i] === "wrong" && (
+                  <span className="text-sm font-bold text-correct">
+                    {blanks[i]}
+                  </span>
+                )}
+              </span>
+            )}
+          </Fragment>
+        ))}
+      </div>
+
+      {/* Submit button */}
+      {!submitted && (
+        <button
+          type="button"
+          onClick={handleSubmit}
+          disabled={!allFilled}
+          className="w-fit cursor-pointer rounded-[10px] border-0 bg-teal px-5 py-3 font-serif text-sm font-bold text-white disabled:opacity-40"
+        >
+          Kiểm tra tất cả
+        </button>
+      )}
+
+      {/* Result summary */}
+      {submitted && (
+        <div
+          role="status"
+          className={`rounded-[10px] border-2 px-4 py-3 text-sm ${
+            correctCount === blanks.length
+              ? "border-correct bg-correct-bg text-correct"
+              : "border-wrong bg-wrong-bg text-wrong"
+          }`}
+        >
+          {correctCount === blanks.length ? (
+            <span>✓ Xuất sắc! Tất cả {blanks.length} ô đều đúng.</span>
+          ) : (
+            <span>
+              ✗ {correctCount}/{blanks.length} ô đúng. Đáp án đúng đã hiện màu xanh ngay trên bài.
+            </span>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Main component
 // ---------------------------------------------------------------------------
@@ -324,6 +464,8 @@ export function QuizMode({
   const [shortAnswerMode, setShortAnswerMode] = useState(false);
   // Tracks whether the current short-answer question was answered (for "next" button)
   const [shortAnswerDone, setShortAnswerDone] = useState(false);
+  // Tracks whether the current cloze question was submitted
+  const [clozeDone, setClozeDone] = useState(false);
 
   // --- Timer ---
   const quizStartTimeRef = useRef<number>(
@@ -386,6 +528,7 @@ export function QuizMode({
     setFinished(false);
     setAnswers([]);
     setShortAnswerDone(false);
+    setClozeDone(false);
     clearQuizProgress(subjectId);
   };
 
@@ -437,6 +580,15 @@ export function QuizMode({
     setShortAnswerDone(true);
   };
 
+  const handleClozeSubmit = (allCorrect: boolean) => {
+    sendPing();
+    setSelected(0);
+    setShowExplain(true);
+    if (allCorrect) setScore((s) => s + 1);
+    setAnswers((prev) => [...prev, { selected: 0, correct: allCorrect }]);
+    setClozeDone(true);
+  };
+
   const next = () => {
     if (currentQ + 1 >= questions.length) {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -449,6 +601,7 @@ export function QuizMode({
       setSelected(null);
       setShowExplain(false);
       setShortAnswerDone(false);
+      setClozeDone(false);
     }
   };
 
@@ -533,10 +686,13 @@ export function QuizMode({
   // Determine if current question should use short-answer input.
   // Keep showing ShortAnswerInput even after submission (shortAnswerDone=true)
   // so its result panel stays visible until the user navigates to the next Q.
+  // forceShortAnswer overrides the toggle; isCloze questions bypass both
   const useShortAnswerForThis =
-    shortAnswerMode &&
+    (shortAnswerMode || question.forceShortAnswer === true) &&
     canBeShortAnswer(question) &&
     (selected === null || shortAnswerDone);
+
+  const useClozeForThis = isCloze(question) && (selected === null || clozeDone);
 
   return (
     <main className="min-h-screen bg-bg px-4 py-5 font-serif text-text">
@@ -561,19 +717,21 @@ export function QuizMode({
                 : ""}
             </Pill>
           ))}
-          {/* Short-answer mode toggle — locked once current question answered */}
-          <Pill
-            tone="teal"
-            active={shortAnswerMode}
-            ariaPressed={shortAnswerMode}
-            disabled={selected !== null || shortAnswerDone}
-            onClick={() => {
-              setShortAnswerMode((v) => !v);
-              setShortAnswerDone(false);
-            }}
-          >
-            ✍️ Tự điền
-          </Pill>
+          {/* Short-answer toggle — hidden when question forces its own mode */}
+          {!question.forceShortAnswer && !isCloze(question) && (
+            <Pill
+              tone="teal"
+              active={shortAnswerMode}
+              ariaPressed={shortAnswerMode}
+              disabled={selected !== null || shortAnswerDone}
+              onClick={() => {
+                setShortAnswerMode((v) => !v);
+                setShortAnswerDone(false);
+              }}
+            >
+              ✍️ Tự điền
+            </Pill>
+          )}
         </div>
 
         {wasResumed && (
@@ -628,11 +786,15 @@ export function QuizMode({
             {question.tag}
           </span>
           <div className="flex items-center gap-2">
-            {shortAnswerMode && canBeShortAnswer(question) && (
+            {isCloze(question) ? (
+              <span className="rounded-full border border-gold/60 bg-gold/10 px-2.5 py-[3px] text-[11px] font-bold text-gold">
+                📝 Điền từ
+              </span>
+            ) : (question.forceShortAnswer || (shortAnswerMode && canBeShortAnswer(question))) ? (
               <span className="rounded-full border border-teal/60 bg-teal/10 px-2.5 py-[3px] text-[11px] font-bold text-teal">
                 ✍️ Tự điền
               </span>
-            )}
+            ) : null}
             <BookmarkButton
               active={bookmarked}
               onToggle={() => toggleBookmark(qid)}
@@ -642,7 +804,7 @@ export function QuizMode({
 
         {/* Question card */}
         <div className="mb-5 rounded-xl border border-border-earth bg-surface px-6 py-5">
-          {question.passage && (
+          {question.passage && !isCloze(question) && (
             <blockquote className="mb-4 border-l-4 border-gold/60 bg-surface-2 px-4 py-3 text-sm italic leading-relaxed text-text-dim whitespace-pre-line rounded-r-lg">
               {question.passage}
             </blockquote>
@@ -653,8 +815,14 @@ export function QuizMode({
           </p>
         </div>
 
-        {/* Choices or short-answer input */}
-        {useShortAnswerForThis ? (
+        {/* Choices, short-answer input, or cloze input */}
+        {useClozeForThis ? (
+          <ClozeInput
+            key={qid}
+            question={question}
+            onSubmit={handleClozeSubmit}
+          />
+        ) : useShortAnswerForThis ? (
           <ShortAnswerInput
             key={qid}
             question={question}
@@ -715,7 +883,7 @@ export function QuizMode({
               {question.explain}
             </p>
             {/* Show next button after MC answer or after short-answer done */}
-            {(selected !== null || shortAnswerDone) && (
+            {(selected !== null || shortAnswerDone || clozeDone) && (
               <button
                 type="button"
                 onClick={next}
