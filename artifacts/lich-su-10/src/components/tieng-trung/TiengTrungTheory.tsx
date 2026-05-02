@@ -4,7 +4,7 @@ export function TiengTrungTheory() {
 
       {/* 1. 是…的 */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           1. Cấu trúc nhấn mạnh 是…的 (shì…de)
         </h3>
         <div className="rounded-lg border border-[#2980B9] overflow-hidden text-sm">
@@ -42,7 +42,7 @@ export function TiengTrungTheory() {
 
       {/* 2. Bổ ngữ thời lượng */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           2. Bổ ngữ thời lượng (补语时量)
         </h3>
         <div className="rounded-lg border border-[#1E8449] overflow-hidden text-sm">
@@ -58,7 +58,7 @@ export function TiengTrungTheory() {
 
       {/* 3. Trợ động từ */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           3. Hệ thống trợ động từ (能愿动词)
         </h3>
         <div className="overflow-x-auto">
@@ -91,7 +91,7 @@ export function TiengTrungTheory() {
 
       {/* 4. Số ước lượng */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           4. Số ước lượng: 几 (jǐ) và 多 (duō)
         </h3>
         <div className="overflow-x-auto">
@@ -123,7 +123,7 @@ export function TiengTrungTheory() {
 
       {/* 5. Trợ từ ngữ khí */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           5. Trợ từ ngữ khí: 呢 / 吧 / 啊
         </h3>
         <div className="overflow-x-auto">
@@ -152,7 +152,7 @@ export function TiengTrungTheory() {
 
       {/* 6. 一点儿 vs 有点儿 */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           6. Phân biệt 一点儿 và 有点儿
         </h3>
         <div className="rounded-lg border border-[#F39C12] overflow-hidden text-sm">
@@ -169,7 +169,7 @@ export function TiengTrungTheory() {
 
       {/* 7. Phó từ thời gian */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           7. Phó từ & cấu trúc thời gian quan trọng
         </h3>
         <div className="overflow-x-auto">
@@ -202,7 +202,7 @@ export function TiengTrungTheory() {
 
       {/* 8. Lặp động từ */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           8. Động từ lặp lại & lượng từ lặp lại
         </h3>
         <div className="rounded-lg border border-[#2980B9] overflow-hidden text-sm">
@@ -218,7 +218,7 @@ export function TiengTrungTheory() {
 
       {/* 9. Trật tự từ */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           9. Trật tự từ đặc biệt thường gặp trong đề thi
         </h3>
         <div className="overflow-x-auto">
@@ -249,7 +249,7 @@ export function TiengTrungTheory() {
 
       {/* 10. Từ vựng */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-3">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-3">
           10. Từ vựng cốt lõi theo chủ đề
         </h3>
         <div className="space-y-4">
@@ -334,7 +334,7 @@ export function TiengTrungTheory() {
 
       {/* 11. Bảng cấu trúc câu */}
       <section>
-        <h3 className="text-base font-bold text-[#1A3A5C] mb-2">
+        <h3 className="text-base font-bold text-[#E2AF3F] mb-2">
           11. Bảng tóm tắt cấu trúc câu quan trọng
         </h3>
         <div className="overflow-x-auto">
