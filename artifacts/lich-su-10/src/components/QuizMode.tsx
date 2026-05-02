@@ -103,6 +103,7 @@ interface PillProps {
   readonly onClick?: () => void;
   readonly ariaPressed?: boolean;
   readonly tone?: "gold" | "teal" | "wrong";
+  readonly disabled?: boolean;
 }
 
 function Pill({
@@ -111,24 +112,28 @@ function Pill({
   onClick,
   ariaPressed,
   tone = "gold",
+  disabled = false,
 }: PillProps) {
   const base =
-    "cursor-pointer rounded-lg border-0 px-[18px] py-2.5 font-serif text-[13px] font-bold tracking-wide transition-colors duration-200";
+    "rounded-lg border-0 px-[18px] py-2.5 font-serif text-[13px] font-bold tracking-wide transition-colors duration-200";
   let cls: string;
-  if (tone === "teal") {
+  if (disabled) {
+    cls = "cursor-not-allowed opacity-40 bg-surface-2 text-text-dim";
+  } else if (tone === "teal") {
     cls = active
-      ? "bg-teal text-white"
-      : "bg-surface-2 text-teal hover:bg-surface-2/80";
+      ? "cursor-pointer bg-teal text-white"
+      : "cursor-pointer bg-surface-2 text-teal hover:bg-surface-2/80";
   } else {
     cls = active
-      ? "bg-gold text-bg"
-      : "bg-surface-2 text-gold hover:bg-surface-2/80";
+      ? "cursor-pointer bg-gold text-bg"
+      : "cursor-pointer bg-surface-2 text-gold hover:bg-surface-2/80";
   }
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={disabled ? undefined : onClick}
       aria-pressed={ariaPressed}
+      disabled={disabled}
       className={`${base} ${cls}`}
     >
       {children}
@@ -556,17 +561,15 @@ export function QuizMode({
                 : ""}
             </Pill>
           ))}
-          {/* Short-answer mode toggle */}
+          {/* Short-answer mode toggle — locked once current question answered */}
           <Pill
             tone="teal"
             active={shortAnswerMode}
             ariaPressed={shortAnswerMode}
+            disabled={selected !== null || shortAnswerDone}
             onClick={() => {
               setShortAnswerMode((v) => !v);
-              // Reset current question state if toggling mid-question
-              if (selected === null) {
-                setShortAnswerDone(false);
-              }
+              setShortAnswerDone(false);
             }}
           >
             ✍️ Tự điền
