@@ -205,10 +205,10 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   },
   {
     id: "tt-fb-24",
-    q: "美英下了班就 [  ] 明红去吃饭。（Chọn động từ đúng）",
+    q: "美英下了班就zhǎo [  ] 明红去吃饭。（Viết chữ Hán tương ứng với pinyin in nghiêng）",
     opts: ["找", "看", "跟", "请"],
     ans: 0,
-    explain: "找 = đến tìm ai đó để cùng làm gì. 找明红去吃饭 = tìm/rủ Minh Hồng đi ăn cơm.",
+    explain: "zhǎo = 找 (tìm/đến rủ). 找明红去吃饭 = đến tìm rủ Minh Hồng đi ăn cơm. Phân biệt: 看 = xem; 跟 = cùng với; 请 = mời (bao ăn).",
     tag: "Ngữ pháp HSK 2",
   },
   {
@@ -237,10 +237,10 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   },
   {
     id: "tt-fb-28",
-    q: "每天早上我都跟妈妈 [  ]。（Chọn hoạt động thể thao buổi sáng phù hợp nhất）",
+    q: "每天早上我都跟妈妈pǎobù [  ]。（Viết chữ Hán tương ứng với pinyin in nghiêng）",
     opts: ["跑步", "游泳", "打篮球", "踢足球"],
     ans: 0,
-    explain: "跑步 (pǎobù) = chạy bộ — hoạt động buổi sáng thông thường nhất. Ngữ cảnh 每天早上 + 跟妈妈 phù hợp nhất với 跑步.",
+    explain: "pǎobù = 跑步 (chạy bộ). Nhớ chữ Hán từ phiên âm: pǎo = 跑, bù = 步.",
     tag: "Ngữ pháp HSK 2",
   },
   {
@@ -277,10 +277,10 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   },
   {
     id: "tt-fb-33",
-    q: "王老师这星期天 [  ] 休息？（Chọn cách hỏi nguyên nhân kèm phủ định phù hợp）",
+    q: "王老师这星期天zěnme bù [  ] 休息？（Viết chữ Hán tương ứng với pinyin in nghiêng）",
     opts: ["怎么不", "为什么不", "怎么", "难道"],
     ans: 0,
-    explain: "怎么不 hỏi nguyên nhân ngạc nhiên kèm phủ định: 'Sao lại không nghỉ?'. 为什么不 cũng đúng nghĩa nhưng ít tự nhiên hơn trong hội thoại; 怎么 thiếu phủ định; 难道 là câu hỏi tu từ.",
+    explain: "zěnme bù = 怎么不 (Sao lại không…?). Phân biệt: 为什么不 = wèishénme bù (khác pinyin); 怎么 = zěnme (thiếu 不); 难道 = nándào (câu hỏi tu từ).",
     tag: "Ngữ pháp HSK 2",
   },
 
