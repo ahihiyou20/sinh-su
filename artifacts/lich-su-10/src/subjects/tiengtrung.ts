@@ -17,9 +17,9 @@ export const tiengTrungSubject: SubjectConfig = {
   title: "🀄 ÔN TẬP TIẾNG TRUNG HSK 2",
   subtitle: "Ngữ pháp • Từ vựng • Cấu trúc câu HSK 2",
   emoji: "🀄",
-  headerGradient: "linear-gradient(135deg, #1A0A0A 0%, #2C0A0A 100%)",
-  accent: "var(--color-red, #C0392B)",
-  accentHex: "#C0392B",
+  headerGradient: "linear-gradient(135deg, #0D2137 0%, #1A3A5C 100%)",
+  accent: "var(--color-gold, #D4A017)",
+  accentHex: "#D4A017",
 
   tagColors: {
     "Ngữ pháp HSK 2": "#C0392B",

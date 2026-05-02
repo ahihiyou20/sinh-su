@@ -1,0 +1,920 @@
+const {
+  Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
+  AlignmentType, HeadingLevel, BorderStyle, WidthType, ShadingType,
+  LevelFormat, PageNumber, Footer, PageBreak, VerticalAlign
+} = require('docx');
+const fs = require('fs');
+
+// =========================================================
+// COLOR PALETTE
+// =========================================================
+const RED      = "C0392B";
+const NAVY     = "1A3A5C";
+const BLUE     = "2980B9";
+const LIGHTBLUE = "D6EAF8";
+const YELLOW   = "FEF9E7";
+const ORANGE   = "E67E22";
+const GREEN    = "1E8449";
+const LIGHTGREEN = "D5F5E3";
+const GRAY     = "F2F3F4";
+const DARKGRAY = "555555";
+const WHITE    = "FFFFFF";
+const GOLD     = "F39C12";
+
+// =========================================================
+// HELPERS
+// =========================================================
+function h1(text) {
+  return new Paragraph({
+    heading: HeadingLevel.HEADING_1,
+    spacing: { before: 360, after: 200 },
+    border: { bottom: { style: BorderStyle.SINGLE, size: 8, color: NAVY, space: 4 } },
+    children: [new TextRun({ text, font: "Arial", size: 32, bold: true, color: NAVY })]
+  });
+}
+
+function h2(text, color = BLUE) {
+  return new Paragraph({
+    heading: HeadingLevel.HEADING_2,
+    spacing: { before: 280, after: 160 },
+    children: [new TextRun({ text, font: "Arial", size: 26, bold: true, color })]
+  });
+}
+
+function h3(text, color = NAVY) {
+  return new Paragraph({
+    heading: HeadingLevel.HEADING_3,
+    spacing: { before: 200, after: 100 },
+    children: [new TextRun({ text, font: "Arial", size: 22, bold: true, color })]
+  });
+}
+
+function para(runs, spacing = { before: 60, after: 60 }, align = AlignmentType.LEFT) {
+  return new Paragraph({ spacing, alignment: align, children: runs });
+}
+
+function txt(text, opts = {}) {
+  return new TextRun({ text, font: "Arial", size: opts.size || 22, bold: opts.bold || false, color: opts.color || "000000", italics: opts.italic || false });
+}
+
+function pageBreak() {
+  return new Paragraph({ children: [new PageBreak()] });
+}
+
+function spacer(before = 80, after = 80) {
+  return new Paragraph({ spacing: { before, after }, children: [new TextRun("")] });
+}
+
+function divider(color = NAVY) {
+  return new Paragraph({
+    spacing: { before: 120, after: 120 },
+    border: { bottom: { style: BorderStyle.SINGLE, size: 6, color, space: 1 } },
+    children: [new TextRun("")]
+  });
+}
+
+function numberedQuestion(num, chinese, pinyin, meaning) {
+  const children = [
+    txt(`Câu ${num}: `, { bold: true, color: NAVY }),
+    txt(chinese, { bold: true, color: RED, size: 24 }),
+  ];
+  if (pinyin) children.push(txt(`  (${pinyin})`, { italic: true, color: DARKGRAY }));
+  if (meaning) children.push(txt(`  → ${meaning}`, { color: GREEN }));
+  return new Paragraph({ spacing: { before: 80, after: 40 }, children });
+}
+
+function answerLine(label, value, extra = "") {
+  return new Paragraph({
+    spacing: { before: 30, after: 30 },
+    indent: { left: 360 },
+    children: [
+      txt(`${label} `, { bold: true, color: ORANGE }),
+      txt(value, { bold: true, color: RED }),
+      ...(extra ? [txt(`   ${extra}`, { color: DARKGRAY, italic: true })] : [])
+    ]
+  });
+}
+
+function note(text) {
+  return new Paragraph({
+    spacing: { before: 30, after: 40 },
+    indent: { left: 360 },
+    children: [
+      txt("📝 ", { size: 20 }),
+      txt(text, { color: DARKGRAY, size: 20, italic: true })
+    ]
+  });
+}
+
+// Multiple choice question builder
+function mcQuestion(num, questionText, options, correctLetter, explanation) {
+  const items = [];
+  // Question
+  items.push(new Paragraph({
+    spacing: { before: 100, after: 40 },
+    children: [
+      txt(`${num}. `, { bold: true, color: NAVY, size: 23 }),
+      txt(questionText, { size: 23 })
+    ]
+  }));
+  // Options
+  const optLabels = ["A", "B", "C", "D"];
+  options.forEach((opt, i) => {
+    const isCorrect = optLabels[i] === correctLetter;
+    items.push(new Paragraph({
+      spacing: { before: 20, after: 20 },
+      indent: { left: 360 },
+      children: [
+        txt(`${optLabels[i]}. `, { bold: isCorrect, color: isCorrect ? GREEN : DARKGRAY, size: 22 }),
+        txt(opt, { bold: isCorrect, color: isCorrect ? GREEN : "000000", size: 22 })
+      ]
+    }));
+  });
+  // Answer + explanation
+  items.push(new Paragraph({
+    spacing: { before: 30, after: 20 },
+    indent: { left: 360 },
+    children: [
+      txt("✔ Đáp án: ", { bold: true, color: GREEN, size: 21 }),
+      txt(correctLetter, { bold: true, color: RED, size: 21 }),
+      txt("   |   ", { size: 21, color: DARKGRAY }),
+      txt(explanation, { italic: true, color: DARKGRAY, size: 20 })
+    ]
+  }));
+  return items;
+}
+
+// Grammar rule box using table
+function ruleBox(title, content, bgColor = LIGHTBLUE, borderColor = BLUE) {
+  const border = { style: BorderStyle.SINGLE, size: 3, color: borderColor };
+  const borders = { top: border, bottom: border, left: border, right: border };
+  return new Table({
+    width: { size: 9360, type: WidthType.DXA },
+    columnWidths: [9360],
+    margins: { top: 80, bottom: 80 },
+    rows: [
+      new TableRow({
+        children: [new TableCell({
+          borders,
+          width: { size: 9360, type: WidthType.DXA },
+          shading: { fill: borderColor, type: ShadingType.CLEAR },
+          margins: { top: 80, bottom: 80, left: 200, right: 200 },
+          children: [new Paragraph({ children: [txt(title, { bold: true, color: WHITE, size: 22 })] })]
+        })]
+      }),
+      new TableRow({
+        children: [new TableCell({
+          borders,
+          width: { size: 9360, type: WidthType.DXA },
+          shading: { fill: bgColor, type: ShadingType.CLEAR },
+          margins: { top: 100, bottom: 100, left: 200, right: 200 },
+          children: content.map(c => new Paragraph({ spacing: { before: 40, after: 40 }, children: [txt(c, { size: 21 })] }))
+        })]
+      })
+    ]
+  });
+}
+
+// 2-col comparison table
+function twoColTable(headers, rows, col1w = 3000, col2w = 6360) {
+  const hBorder = { style: BorderStyle.SINGLE, size: 2, color: "AAAAAA" };
+  const bAll = { top: hBorder, bottom: hBorder, left: hBorder, right: hBorder };
+  const tableRows = [];
+  // Header
+  tableRows.push(new TableRow({
+    children: headers.map((h, i) => new TableCell({
+      borders: bAll,
+      width: { size: i === 0 ? col1w : col2w, type: WidthType.DXA },
+      shading: { fill: NAVY, type: ShadingType.CLEAR },
+      margins: { top: 80, bottom: 80, left: 120, right: 120 },
+      children: [new Paragraph({ children: [txt(h, { bold: true, color: WHITE, size: 22 })] })]
+    }))
+  }));
+  // Rows
+  rows.forEach((row, ri) => {
+    tableRows.push(new TableRow({
+      children: row.map((cell, ci) => new TableCell({
+        borders: bAll,
+        width: { size: ci === 0 ? col1w : col2w, type: WidthType.DXA },
+        shading: { fill: ri % 2 === 0 ? WHITE : GRAY, type: ShadingType.CLEAR },
+        margins: { top: 60, bottom: 60, left: 120, right: 120 },
+        children: [new Paragraph({ children: [txt(cell, { size: 21 })] })]
+      }))
+    }));
+  });
+  return new Table({ width: { size: 9360, type: WidthType.DXA }, columnWidths: [col1w, col2w], rows: tableRows });
+}
+
+// 4-col table
+function fourColTable(headers, rows, widths = [2000, 2500, 2500, 2360]) {
+  const hBorder = { style: BorderStyle.SINGLE, size: 2, color: "AAAAAA" };
+  const bAll = { top: hBorder, bottom: hBorder, left: hBorder, right: hBorder };
+  const tableRows = [];
+  tableRows.push(new TableRow({
+    children: headers.map((h, i) => new TableCell({
+      borders: bAll,
+      width: { size: widths[i], type: WidthType.DXA },
+      shading: { fill: NAVY, type: ShadingType.CLEAR },
+      margins: { top: 80, bottom: 80, left: 120, right: 120 },
+      children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [txt(h, { bold: true, color: WHITE, size: 20 })] })]
+    }))
+  }));
+  rows.forEach((row, ri) => {
+    tableRows.push(new TableRow({
+      children: row.map((cell, ci) => new TableCell({
+        borders: bAll,
+        width: { size: widths[ci], type: WidthType.DXA },
+        shading: { fill: ri % 2 === 0 ? WHITE : GRAY, type: ShadingType.CLEAR },
+        margins: { top: 60, bottom: 60, left: 120, right: 120 },
+        children: [new Paragraph({ children: [txt(cell, { size: 20, bold: ci === 0 })] })]
+      }))
+    }));
+  });
+  return new Table({ width: { size: 9360, type: WidthType.DXA }, columnWidths: widths, rows: tableRows });
+}
+
+// =========================================================
+// COVER PAGE
+// =========================================================
+function coverPage() {
+  return [
+    spacer(1440, 200),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 0, after: 80 },
+      children: [txt("🇨🇳", { size: 72 })]
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 80, after: 120 },
+      children: [txt("TIẾNG TRUNG HSK 2", { bold: true, size: 52, color: NAVY })]
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 0, after: 80 },
+      children: [txt("Bộ Câu Hỏi Trắc Nghiệm Toàn Diện", { bold: true, size: 34, color: RED })]
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 0, after: 60 },
+      children: [txt("&", { size: 28, color: DARKGRAY })]
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 0, after: 200 },
+      children: [txt("Tổng Hợp Ngữ Pháp & Từ Vựng Cốt Lõi", { bold: true, size: 34, color: NAVY })]
+    }),
+    divider(GOLD),
+    spacer(200, 200),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 0, after: 80 },
+      children: [txt("Chương trình THPT Chuyên Ngoại ngữ  •  Cấp độ HSK 2", { size: 22, color: DARKGRAY, italic: true })]
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 0, after: 80 },
+      children: [txt("100+ Câu hỏi  •  Đáp án & Giải thích chi tiết  •  Bảng ngữ pháp hệ thống", { size: 22, color: DARKGRAY, italic: true })]
+    }),
+    spacer(600, 0),
+    pageBreak()
+  ];
+}
+
+// =========================================================
+// PART 1: MULTIPLE CHOICE QUESTIONS
+// =========================================================
+function part1() {
+  const children = [];
+
+  children.push(h1("PHẦN I: CÂU HỎI TRẮC NGHIỆM"));
+  children.push(para([
+    txt("Phần này tổng hợp toàn bộ các câu hỏi trắc nghiệm được trích xuất từ đề thi học kỳ và học liệu HSK 2. Mỗi câu bao gồm đáp án đúng (in xanh) và giải thích ngữ pháp ngắn gọn.", { size: 21, color: DARKGRAY, italic: true })
+  ], { before: 80, after: 160 }));
+
+  // ---- SECTION A: Chọn đáp án đúng ----
+  children.push(h2("A. Chọn Đáp Án Đúng (Câu 1–20)", NAVY));
+  children.push(divider(BLUE));
+  children.push(spacer(60, 60));
+
+  const mcqs = [
+    {
+      q: "Anh ấy rất thích đá bóng. Chọn câu đúng về cách dùng bổ ngữ thời lượng:",
+      opts: ["他踢足球十年了。", "他踢了足球十年了。", "他踢足球踢了十年了。", "他了踢足球十年。"],
+      ans: "C", exp: "Khi có tân ngữ, phải lặp lại động từ: V + O + V + 了 + thời lượng."
+    },
+    {
+      q: "你觉得什么时候去看李老师 [  ] 好？",
+      opts: ["很", "最", "都", "也"],
+      ans: "B", exp: "最 + Adj/好: dùng để hỏi phương án tối ưu nhất."
+    },
+    {
+      q: "你 [  ] 要买新的椅子？（Sắc thái ngạc nhiên）",
+      opts: ["为什么", "怎么", "什么", "哪里"],
+      ans: "B", exp: "怎么 hỏi nguyên nhân với sắc thái ngạc nhiên (Sao mà/Tại sao lại…)."
+    },
+    {
+      q: "那个足球很漂亮，哥哥很 [  ] 买。",
+      opts: ["想", "要", "会", "能"],
+      ans: "A", exp: "很 + 想: diễn đạt mong muốn chủ quan. 很 không đi trực tiếp với 买."
+    },
+    {
+      q: "爷爷听医生的话，每天 [  ] 药，今天他的病好了。",
+      opts: ["吃", "喝", "用", "服"],
+      ans: "A", exp: "Trong tiếng Trung, uống thuốc dùng động từ 吃 (ăn), không dùng 喝."
+    },
+    {
+      q: "爸爸还在外面工作，不 [  ] 奶奶已经住院了。",
+      opts: ["认识", "了解", "知道", "听说"],
+      ans: "C", exp: "知道: biết một thông tin/sự thật. 认识: quen biết người."
+    },
+    {
+      q: "王医生的儿子 [  ]？（Hỏi chiều cao）",
+      opts: ["多大", "多重", "多高", "多长"],
+      ans: "C", exp: "多 + Adj hỏi mức độ. 多高 = cao bao nhiêu."
+    },
+    {
+      q: "现在他身体 [  ]，下个星期能出院。",
+      opts: ["好多了", "好一点", "很好了", "好些了"],
+      ans: "A", exp: "好多了: bổ ngữ mức độ chỉ sự thay đổi đáng kể (tốt hơn nhiều)."
+    },
+    {
+      q: "她们都去看王老师了，我们也 [  ] 去吧。",
+      opts: ["一起", "一下", "一点", "一会"],
+      ans: "A", exp: "一起 (yīqǐ): đứng trước động từ, chỉ hành động cùng nhau."
+    },
+    {
+      q: "你等等我，好吗？谢老师 [  ] 我给他帮一下儿忙。",
+      opts: ["叫", "让", "使", "请"],
+      ans: "B", exp: "让 trong câu kiêm ngữ: A + 让 + B + V. Ý nghĩa: yêu cầu/cho phép."
+    },
+    {
+      q: "大卫说他在北京的 [  ]，会找 [  ] 去看他姐姐。",
+      opts: ["时候 / 时间", "时间 / 时候", "时候 / 时候", "时间 / 时间"],
+      ans: "A", exp: "…的时候: mốc thời gian. 时间: khoảng thời gian/dịp."
+    },
+    {
+      q: "同学们经常问我："你 [  ] 认识 [  ] 多朋友？"",
+      opts: ["怎么 / 这么", "什么 / 那么", "为什么 / 那么", "怎么 / 那么"],
+      ans: "A", exp: "怎么: nguyên nhân ngạc nhiên. 这么: chỉ mức độ (nhiều đến thế này)."
+    },
+    {
+      q: "明天有考试，今天我要在家 [  ]。",
+      opts: ["准备", "准备一下", "准备准备", "准备着"],
+      ans: "C", exp: "Lặp ABAB (准备准备) của động từ song âm tiết: hành động nhẹ nhàng, thư thả."
+    },
+    {
+      q: "张老师每天回来 [  ] 很累。",
+      opts: ["也", "都", "还", "又"],
+      ans: "B", exp: "每…都: nhấn mạnh tính toàn thể và quy luật lặp đi lặp lại."
+    },
+    {
+      q: "你女儿的房间太漂亮了！（Chọn câu có nghĩa tương đương）",
+      opts: ["你女儿的房间非常漂亮！", "你女儿的房间真漂亮！", "你女儿的房间很漂亮！", "你女儿的房间比较漂亮！"],
+      ans: "B", exp: "真漂亮 và 太…了 đều dùng cảm thán mức độ cao; 真 = thật sự/thật là."
+    },
+    {
+      q: "这个星期天天都吃羊肉，不想吃了，来一点儿面条吧。（Điền vào chỗ trống动词）",
+      opts: ["要", "想", "给", "叫"],
+      ans: "A", exp: "Trong ngữ cảnh gọi món ăn/đặt hàng: 要 hoặc 来 đứng trước món."
+    },
+    {
+      q: "桌子上有很多手表，右边那个 [  ] 的是我妹妹的。（Điền màu sắc phù hợp về vị trí）",
+      opts: ["粉色", "在粉色", "是粉色", "了粉色"],
+      ans: "A", exp: "Tính từ màu sắc (粉色) đứng trực tiếp trước 的 làm định ngữ."
+    },
+    {
+      q: "明方现在在外面呢，你等他回来以后 [  ] 找他吧。",
+      opts: ["再", "就", "还", "也"],
+      ans: "A", exp: "再 chỉ hành động thực hiện sau khi điều kiện được đáp ứng (hãy đợi rồi mới…)."
+    },
+    {
+      q: "最近两年他身体很好，[  ] 生病。",
+      opts: ["不", "没有", "很少", "一点"],
+      ans: "C", exp: "很少 (rất ít khi) + V: tần suất thấp, khác với 不 (phủ định hoàn toàn)."
+    },
+    {
+      q: "服务员，我房间的门打不开了。（Câu nào hỏi lại phù hợp nhất？）",
+      opts: ["门在哪里？", "你怎么了？", "怎么打开？", "打开哪个门？"],
+      ans: "C", exp: "Hỏi phương thức: 怎么 + V?"
+    }
+  ];
+
+  mcqs.forEach((item, i) => {
+    const parts = mcQuestion(i + 1, item.q, item.opts, item.ans, item.exp);
+    parts.forEach(p => children.push(p));
+    children.push(spacer(40, 40));
+  });
+
+  // ---- SECTION B: Điền từ vào chỗ trống ----
+  children.push(pageBreak());
+  children.push(h2("B. Điền Từ Vào Chỗ Trống (Câu 21–50)", NAVY));
+  children.push(divider(BLUE));
+  children.push(para([txt("Chọn từ đúng điền vào chỗ [  ] trong mỗi câu sau:", { size: 21, italic: true, color: DARKGRAY })], { before: 80, after: 80 }));
+
+  const fillBlanks = [
+    { n: 21, q: "他 [A] 早上 [B] 出去跑步 [C]，[D] 身体很好。（Điền: 每天）", ans: "A", exp: "Trạng ngữ tần suất đứng trước trạng ngữ thời gian cụ thể." },
+    { n: 22, q: "他不爱运动，现在 60 [  ] 公斤了。（Điền: 多）", ans: "多 — sau số tròn chục", exp: "Số tròn chục + 多 + lượng từ: ý nghĩa 'hơn 60kg'." },
+    { n: 23, q: "明方现在在外面呢，你等他回来以后来 [  ] 找他吧。（Điền: 再）", ans: "再", exp: "再 chỉ hành động sau khi điều kiện xảy ra." },
+    { n: 24, q: "星期日他常去踢足球，[  ] 去游泳。（Điền: 很少）", ans: "很少", exp: "Phân bổ tần suất: 常 cho hoạt động 1, 很少 cho hoạt động 2." },
+    { n: 25, q: "[  ] 王老师工作的，她丈夫开车去医院了。（Điền: 时候）", ans: "时候 — sau 工作的", exp: "…的时候 = khi…đang…, tạo thành trạng ngữ thời gian." },
+    { n: 26, q: "上课的时候，老师常 [  ] 我问题。（Điền: 问）", ans: "问", exp: "Cấu trúc: A + 问 + B + 问题 (A hỏi B câu hỏi)." },
+    { n: 27, q: "我有三百 [  ] 美元。（Điền: 多）", ans: "多", exp: "Số tròn trăm + 多: ý nghĩa 'hơn 300'." },
+    { n: 28, q: "美英下了班就 [  ] 明红去吃饭。（Điền: 找）", ans: "找", exp: "找 = đến tìm ai đó để cùng làm gì." },
+    { n: 29, q: "告诉你一个好消息，我已经 [  ] 院回家了。（Điền: 出）", ans: "出", exp: "出院 = xuất viện (ra khỏi bệnh viện)." },
+    { n: 30, q: "等我 [  ] 好了，我们再一起去跑步。（Điền: 病）", ans: "病", exp: "病好了 = bệnh khỏi rồi." },
+    { n: 31, q: "你喜欢什么 [  ] 动？（Điền: 运）", ans: "运", exp: "运动 (yùndòng) = thể thao/vận động." },
+    { n: 32, q: "下午我们一起去 [  ] 足球吧。（Điền: 踢）", ans: "踢", exp: "踢 (tī) là động từ chuyên dùng cho bóng đá." },
+    { n: 33, q: "这些旧书 [  ] 不 [  ] 我的。（Điền: 都 / 是）", ans: "都 / 是", exp: "都不是: phủ định hoàn toàn — không cái nào là của tôi cả." },
+    { n: 34, q: "每天早上我都跟妈妈 [  ]。（Điền: 跑步）", ans: "跑步", exp: "跑步 (pǎobù) = chạy bộ." },
+    { n: 35, q: "他还在 [  ]，你中午再打吧。（Điền: 睡觉）", ans: "睡觉", exp: "睡觉 (shuìjiào) = ngủ." },
+    { n: 36, q: "他早就 [  ] 了，你不知道？（Điền: 出院）", ans: "出院", exp: "出院 = ra viện." },
+    { n: 37, q: "我这几天很 [  ]，没有 [  ] 休息。（Điền: 忙 / 时间）", ans: "忙 / 时间", exp: "没有时间 = không có thời gian." },
+    { n: 38, q: "坐在你 [  ] 的那个人是谁？（Điền: 旁边）", ans: "旁边", exp: "旁边 (pángbiān) = bên cạnh." },
+    { n: 39, q: "我觉得 [  ] 的最漂亮。（Điền: 粉色）", ans: "粉色", exp: "粉色 (fěnsè) = màu hồng." },
+    { n: 40, q: "你休息 [  ]，喝 [  ] 水。（Điền: 一下儿 / 一点儿）", ans: "一下儿 / 一点儿", exp: "一下儿 sau V (thử/một chút), 一点儿 sau V/Adj (một ít)." },
+    { n: 41, q: "明天 [  ] 下大雨，不能去公园了。（Điền: 会）", ans: "会", exp: "会 dự đoán khả năng xảy ra trong tương lai." },
+    { n: 42, q: "医生说我 [  ] 多运动。（Điền: 要）", ans: "要", exp: "要 (yào) = phải/cần, biểu thị yêu cầu hoặc khuyên bảo." },
+    { n: 43, q: "听 [  ] 音乐。（Điền: 一会儿）", ans: "一会儿", exp: "一会儿 = một lát, chỉ khoảng thời gian ngắn." },
+    { n: 44, q: "这件衣服小了 [  ]。（Điền: 一点儿）", ans: "一点儿", exp: "Adj + 了 + 一点儿: hơi … một chút (biểu thị nhẹ nhàng)." },
+    { n: 45, q: "刚才好 [  ] 了。（Điền: 一点儿）", ans: "一点儿", exp: "好一点儿了: khỏe hơn một chút rồi." },
+    { n: 46, q: "他来北京 [  ] 2 个月了。（Điền: 多）", ans: "多", exp: "2 个多月: hơn 2 tháng." },
+    { n: 47, q: "这件衣服三十多 [  ] 钱。（Điền: 块）", ans: "块", exp: "块 (kuài) = đồng (đơn vị tiền tệ Trung Quốc)." },
+    { n: 48, q: "吃完晚饭以后，他们就到 [  ] 散步。（Điền: 外面）", ans: "外面", exp: "外面 (wàimiàn) = bên ngoài." },
+    { n: 49, q: "王老师这星期天 [  ] 休息？（Điền: 怎么不）", ans: "怎么不", exp: "怎么不: tại sao lại không…? — câu hỏi ngạc nhiên." },
+    { n: 50, q: "我们班 [  ] 有很多同学发烧了。（Điền: 这两天）", ans: "这两天", exp: "这两天 = hai ngày nay/gần đây." },
+  ];
+
+  fillBlanks.forEach(item => {
+    children.push(new Paragraph({
+      spacing: { before: 80, after: 30 },
+      children: [
+        txt(`${item.n}. `, { bold: true, color: NAVY, size: 22 }),
+        txt(item.q, { size: 22 })
+      ]
+    }));
+    children.push(new Paragraph({
+      spacing: { before: 20, after: 40 },
+      indent: { left: 360 },
+      children: [
+        txt("✔ Đáp án: ", { bold: true, color: GREEN, size: 21 }),
+        txt(item.ans, { bold: true, color: RED, size: 21 }),
+        txt("   →  ", { color: DARKGRAY, size: 21 }),
+        txt(item.exp, { italic: true, color: DARKGRAY, size: 20 })
+      ]
+    }));
+  });
+
+  // ---- SECTION C: Sắp xếp câu ----
+  children.push(pageBreak());
+  children.push(h2("C. Sắp Xếp Thành Câu Đúng (Câu 51–60)", NAVY));
+  children.push(divider(BLUE));
+  children.push(para([txt("Sắp xếp các từ sau thành câu hoàn chỉnh và đúng ngữ pháp:", { size: 21, italic: true, color: DARKGRAY })], { before: 80, after: 80 }));
+
+  const arrange = [
+    { n: 51, words: "大的、那个、教室、旁边、是、我们的", ans: "旁边那个大的教室是我们的。", exp: "Trật tự định ngữ: Vị trí + Chỉ thị từ + Tính từ + N." },
+    { n: 52, words: "王小姐、呢、还、在、的、路上、去机场", ans: "王小姐还在去机场的路上呢。", exp: "Cấu trúc: 在…路上 = đang trên đường đến…" },
+    { n: 53, words: "中国、这儿、不远、有、离、一个、饭馆", ans: "离这儿不远有一个中国饭馆。", exp: "Cấu trúc tồn tại: 离…+đánh giá+ 有 + chủ thể." },
+    { n: 54, words: "有点儿、这个、颜色、还可以、就是、电脑、小", ans: "这个电脑颜色还可以，就是有点儿小。", exp: "就是 chuyển ý (nhưng điểm duy nhất là…)." },
+    { n: 55, words: "他、已经、起床、多了、怎么、8点、还没有", ans: "怎么8点多了他还没有起床？", exp: "怎么đứng đầu câu hỏi nguyên nhân ngạc nhiên." },
+    { n: 56, words: "看、每个、都、星期日、去、我、电影", ans: "我每个星期日都去看电影。", exp: "每…都: S + 每 + T + 都 + VP." },
+    { n: 57, words: "打、这、星期六、篮球、我们、好、一起、去、吗", ans: "我们这星期六一起去打篮球好吗？", exp: "好吗? cuối câu đề nghị." },
+    { n: 58, words: "不、我、喜欢、在家、喜欢、看电视、出去", ans: "我喜欢在家看电视，不喜欢出去。", exp: "Đối lập 喜欢 và 不喜欢." },
+    { n: 59, words: "杂志、桌子上有、中文、两本", ans: "桌子上有两本中文杂志。", exp: "Cấu trúc tồn tại: Địa điểm + 有 + Số + Lượng từ + N." },
+    { n: 60, words: "送、报纸、的、今天、怎么、没来", ans: "送报纸的今天怎么没来？", exp: "送报纸的 = người giao báo (kết cấu 的 thay cho danh từ)." },
+  ];
+
+  arrange.forEach(item => {
+    children.push(new Paragraph({
+      spacing: { before: 80, after: 30 },
+      children: [
+        txt(`${item.n}. `, { bold: true, color: NAVY, size: 22 }),
+        txt("Từ cho sẵn: ", { size: 21, color: DARKGRAY }),
+        txt(item.words, { size: 22, bold: true })
+      ]
+    }));
+    children.push(new Paragraph({
+      spacing: { before: 20, after: 10 },
+      indent: { left: 360 },
+      children: [
+        txt("✔ Đáp án: ", { bold: true, color: GREEN, size: 21 }),
+        txt(item.ans, { bold: true, color: RED, size: 22 })
+      ]
+    }));
+    children.push(new Paragraph({
+      spacing: { before: 10, after: 50 },
+      indent: { left: 360 },
+      children: [
+        txt("💡 ", { size: 20 }),
+        txt(item.exp, { italic: true, color: DARKGRAY, size: 20 })
+      ]
+    }));
+  });
+
+  // ---- SECTION D: Sửa lỗi sai ----
+  children.push(pageBreak());
+  children.push(h2("D. Sửa Lỗi Sai (Câu 61–70)", NAVY));
+  children.push(divider(BLUE));
+  children.push(para([txt("Tìm và sửa lỗi trong các câu sau:", { size: 21, italic: true, color: DARKGRAY })], { before: 80, after: 80 }));
+
+  const errors = [
+    { n: 61, wrong: "你让我看看一下儿，再告诉你。", right: "你让我看一下儿 / 看看，再告诉你。", exp: "Không dùng đồng thời lặp động từ (看看) và 一下儿." },
+    { n: 62, wrong: "那个公司离这儿很近，去几分钟就到。", right: "…走几分钟就到。", exp: "Di chuyển giữa hai nơi gần nhau: dùng 走 (đi bộ), không dùng 去." },
+    { n: 63, wrong: "越英同学不在家，他去旅游南京了。", right: "…他去南京旅游了。", exp: "Trật tự: 去 + Địa điểm + Hoạt động." },
+    { n: 64, wrong: "老师家离学校很远，要开车一个多小时呢。", right: "…开车要一个多小时呢。", exp: "Phương tiện (开车) đứng trước động từ chính (要)." },
+    { n: 65, wrong: "坐公共汽车太慢了，我们还去坐出租车吧。", right: "…我们还是坐出租车吧。", exp: "还是 = thà/hay là, dùng để đề xuất lựa chọn sau so sánh." },
+    { n: 66, wrong: "他非常喜欢踢足球，已经踢了十年了 (câu trình bày)。", right: "他非常喜欢踢足球，已经踢足球踢了十年了。", exp: "Phải lặp lại động từ khi có tân ngữ + bổ ngữ thời lượng." },
+    { n: 67, wrong: "桌子上有很多手表，右边的那粉色是我妹妹的。", right: "…右边那个粉色的是我妹妹的。", exp: "Trật tự: Phương vị + Chỉ thị từ + Tính từ + 的." },
+    { n: 68, wrong: "他明天下午三多点回来。", right: "他明天下午三点多回来。", exp: "Thứ tự: số + 点 + 多 (hơn 3 giờ)." },
+    { n: 69, wrong: "我们班一共有四十多个同学 (muốn nói khoảng 30 mấy)。", right: "我们班一共有三十多个同学。", exp: "多đứng sau số tròn chục: 三十多 = hơn 30." },
+    { n: 70, wrong: "这本英文书二十多块很贵。", right: "这本英文书二十多块，不贵。/ 这本书很贵。", exp: "二十多块là con số cụ thể, không thêm nhận xét mâu thuẫn." },
+  ];
+
+  errors.forEach(item => {
+    children.push(new Paragraph({
+      spacing: { before: 80, after: 30 },
+      children: [
+        txt(`${item.n}. `, { bold: true, color: NAVY, size: 22 }),
+        txt("Câu sai: ", { bold: true, color: RED, size: 21 }),
+        txt(item.wrong, { size: 22, color: RED })
+      ]
+    }));
+    children.push(new Paragraph({
+      spacing: { before: 20, after: 10 },
+      indent: { left: 360 },
+      children: [
+        txt("✔ Sửa thành: ", { bold: true, color: GREEN, size: 21 }),
+        txt(item.right, { bold: true, color: GREEN, size: 22 })
+      ]
+    }));
+    children.push(new Paragraph({
+      spacing: { before: 10, after: 50 },
+      indent: { left: 360 },
+      children: [
+        txt("💡 ", { size: 20 }),
+        txt(item.exp, { italic: true, color: DARKGRAY, size: 20 })
+      ]
+    }));
+  });
+
+  // ---- SECTION E: Viết lại câu ----
+  children.push(pageBreak());
+  children.push(h2("E. Viết Lại Câu (Câu 71–80)", NAVY));
+  children.push(divider(BLUE));
+  children.push(para([txt("Viết lại câu theo yêu cầu trong ngoặc:", { size: 21, italic: true, color: DARKGRAY })], { before: 80, after: 80 }));
+
+  const rewrite = [
+    { n: 71, orig: "今天朋友帮他做羊肉。", req: "Dùng cấu trúc 是...的", ans: "是今天朋友帮他做羊肉的。", exp: "Nhấn mạnh thời gian hoặc đối tượng của hành động đã xảy ra." },
+    { n: 72, orig: "明天不下雨，我想出去跑步。", req: "Dùng động từ lặp lại", ans: "明天不下雨，我想出去跑跑步。", exp: "跑跑步: hành động nhẹ nhàng, mang sắc thái thư giãn." },
+    { n: 73, orig: "他生病了，他没去打篮球。", req: "Dùng 因为…所以", ans: "因为他生病了，所以他没去打篮球。", exp: "Cặp liên từ nhân quả." },
+    { n: 74, orig: "姐姐的衣服都很漂亮。", req: "Dùng lượng từ lặp lại", ans: "姐姐的衣服件件都很漂亮。", exp: "件件 = mọi bộ quần áo (lặp lượng từ nhấn mạnh toàn bộ)." },
+    { n: 75, orig: "这是昨天买的杯子。", req: "Dùng kết cấu 是...的", ans: "这个杯子是昨天买的。", exp: "Chuyển định ngữ thành vị ngữ, nhấn mạnh thời điểm mua." },
+    { n: 76, orig: "我要吃米饭。", req: "Viết câu phủ định", ans: "我不要吃米饭。", exp: "要 phủ định bằng 不要 (không muốn/không cần)." },
+    { n: 77, orig: "他们是坐飞机来的。", req: "Viết câu phủ định", ans: "他们不是坐飞机来的。", exp: "是...的 phủ định: 不是...的 (是 không thể lược bỏ)." },
+    { n: 78, orig: "他们在写汉字呢。", req: "Viết câu phủ định", ans: "他们没写汉字。", exp: "Hành động chưa/không xảy ra: dùng 没 (méi)." },
+    { n: 79, orig: "我会说一点儿汉语。", req: "Viết câu phủ định", ans: "我不会说汉语。", exp: "会 phủ định bằng 不会: không có khả năng/kỹ năng." },
+    { n: 80, orig: "王兰买了很多衣服。", req: "Viết câu phủ định", ans: "王兰没买衣服。", exp: "Động từ có 了 (hoàn thành) phủ định bằng 没." },
+  ];
+
+  rewrite.forEach(item => {
+    children.push(new Paragraph({
+      spacing: { before: 80, after: 30 },
+      children: [
+        txt(`${item.n}. `, { bold: true, color: NAVY, size: 22 }),
+        txt(item.orig, { size: 22 }),
+        txt(`  (${item.req})`, { italic: true, color: DARKGRAY, size: 20 })
+      ]
+    }));
+    children.push(new Paragraph({
+      spacing: { before: 20, after: 10 },
+      indent: { left: 360 },
+      children: [
+        txt("✔ Viết lại: ", { bold: true, color: GREEN, size: 21 }),
+        txt(item.ans, { bold: true, color: RED, size: 22 })
+      ]
+    }));
+    children.push(new Paragraph({
+      spacing: { before: 10, after: 50 },
+      indent: { left: 360 },
+      children: [
+        txt("💡 ", { size: 20 }),
+        txt(item.exp, { italic: true, color: DARKGRAY, size: 20 })
+      ]
+    }));
+  });
+
+  return children;
+}
+
+// =========================================================
+// PART 2: GRAMMAR & VOCABULARY
+// =========================================================
+function part2() {
+  const children = [];
+
+  children.push(pageBreak());
+  children.push(h1("PHẦN II: TỔNG HỢP NGỮ PHÁP & TỪ VỰNG CỐT LÕI"));
+  children.push(para([
+    txt("Phần này chắt lọc những kiến thức ngữ pháp và từ vựng quan trọng nhất trong tài liệu, được hệ thống hóa thành bảng và quy tắc để dễ ôn tập.", { size: 21, color: DARKGRAY, italic: true })
+  ], { before: 80, after: 160 }));
+
+  // --- 1. Cấu trúc 是...的 ---
+  children.push(h2("1. Cấu Trúc Nhấn Mạnh 是…的 (shì…de)", NAVY));
+  children.push(ruleBox(
+    "📌 Công thức & Nguyên tắc",
+    [
+      "Cấu trúc: S + 是 + [Thành phần nhấn mạnh: thời gian / địa điểm / phương thức] + VP + 的",
+      "Mục đích: Nhấn mạnh một yếu tố cụ thể của hành động ĐÃ xảy ra (hành động đã biết, chỉ hỏi chi tiết).",
+      "Phủ định: PHẢI dùng 不是…的  — không được lược bỏ 是.",
+      "Tân ngữ: có thể đứng trước hoặc sau 的. Ví dụ: 是昨天买的书  ↔  是昨天买书的.",
+    ],
+    LIGHTBLUE, BLUE
+  ));
+  children.push(spacer(100, 60));
+  children.push(twoColTable(
+    ["Câu gốc", "Cấu trúc 是…的 (nhấn mạnh thời gian)"],
+    [
+      ["今天朋友帮他做羊肉。", "是今天朋友帮他做羊肉的。"],
+      ["他们坐飞机来。(Phủ định)", "他们不是坐飞机来的。"],
+      ["这是昨天买的杯子。", "这个杯子是昨天买的。"],
+    ]
+  ));
+  children.push(spacer(120, 60));
+
+  // --- 2. Bổ ngữ thời lượng ---
+  children.push(h2("2. Bổ Ngữ Thời Lượng (补语时量)", NAVY));
+  children.push(ruleBox(
+    "📌 Ba cách xử lý khi động từ có tân ngữ",
+    [
+      "Cách 1 — Lặp động từ: V + O + V + (了) + Thời lượng  →  他踢足球踢了十年了。",
+      "Cách 2 — Đưa tân ngữ ra trước: O + S + V + (了) + Thời lượng  →  足球他踢了十年了。",
+      "Cách 3 — Xen giữa: V + (了) + Thời lượng + 的 + O  →  他踢了十年的足球。",
+      "Chú ý: 了 cuối câu (语气了) biểu thị hành động VẪN TIẾP DIỄN đến hiện tại.",
+    ],
+    LIGHTGREEN, GREEN
+  ));
+  children.push(spacer(120, 60));
+
+  // --- 3. Trợ động từ ---
+  children.push(h2("3. Hệ Thống Trợ Động Từ (能愿动词)", NAVY));
+  children.push(fourColTable(
+    ["Trợ động từ", "Cơ chế ngữ nghĩa", "Ví dụ tiêu biểu", "Lưu ý quan trọng"],
+    [
+      ["会 (huì)", "Khả năng qua học tập/rèn luyện", "我会说汉语。", "Kỹ năng cần thời gian tích lũy"],
+      ["能 (néng)", "Khả năng do điều kiện thực tế", "我今天能来。", "Nhất thời hoặc điều kiện vật lý"],
+      ["可以 (kěyǐ)", "Cho phép / khả năng khách quan", "这里可以坐。", "Lịch sự hoặc xin phép"],
+      ["要 (yào)", "Ý muốn mạnh / kế hoạch chắc chắn", "我要买新书。", "Phủ định: dùng 不想 cho nhẹ hơn"],
+      ["想 (xiǎng)", "Mong muốn chủ quan, nhẹ hơn 要", "很想去旅游。", "Hay đi với 很: 很想"],
+    ],
+    [1800, 2400, 2500, 2660]
+  ));
+  children.push(spacer(120, 60));
+
+  // --- 4. Số ước lượng ---
+  children.push(h2("4. Số Ước Lượng: 几 (jǐ) và 多 (duō)", NAVY));
+  children.push(fourColTable(
+    ["Từ", "Ngưỡng số", "Vị trí cú pháp", "Ví dụ"],
+    [
+      ["几 (jǐ)", "< 10", "几 + Lượng từ + N", "几个人, 几本书"],
+      ["几 (jǐ)", "10 – 99", "十几 / 几十 + Lượng từ", "十几个人, 几十块"],
+      ["多 (duō)", "Số tròn chục (>10)", "Số + 多 + Lượng từ + N", "三十多块钱"],
+      ["多 (duō)", "< 10 (sau lượng từ)", "Số + Lượng từ + 多", "三个多星期"],
+    ],
+    [1400, 2200, 2600, 3160]
+  ));
+  children.push(spacer(120, 60));
+
+  // --- 5. Trợ từ ngữ khí ---
+  children.push(h2("5. Trợ Từ Ngữ Khí: 呢 / 吧 / 啊 (ne/ba/a)", NAVY));
+  children.push(twoColTable(
+    ["Trợ từ", "Chức năng & Sắc thái"],
+    [
+      ["呢 (ne)", "Nhấn mạnh trạng thái tiếp diễn hoặc tương phản; cũng dùng hỏi ngược lại (你呢?)"],
+      ["吧 (ba)", "Làm giảm sắc thái mệnh lệnh → đề nghị; biểu thị phỏng đoán nhẹ"],
+      ["啊 (a)", "Biến đổi âm theo ngữ cảnh (ya/wa/na); cảm thán, nhắc nhở, xác nhận"],
+    ], 1800, 7560
+  ));
+  children.push(spacer(120, 60));
+
+  // --- 6. Một điểm / Có điểm ---
+  children.push(h2("6. Phân Biệt 一点儿 và 有点儿", NAVY));
+  children.push(ruleBox(
+    "📌 Quy tắc phân biệt then chốt",
+    [
+      "有点儿 (yǒudiǎnr): Phó từ, đứng TRƯỚC tính từ, biểu thị sự không hài lòng hoặc vấn đề nhỏ.",
+      "   Ví dụ: 这个电脑有点儿小。 (Cái máy tính này hơi nhỏ một chút — tôi không thích lắm.)",
+      "一点儿 (yīdiǎnr): Đứng SAU tính từ (trong cấu trúc so sánh) hoặc trước danh từ (số lượng ít).",
+      "   Ví dụ: 这件衣服小了一点儿。 (Bộ quần áo này nhỏ hơn một chút.)",
+      "   Ví dụ: 喝一点儿水吧。 (Uống một chút nước đi.)",
+    ],
+    YELLOW, GOLD
+  ));
+  children.push(spacer(120, 60));
+
+  // --- 7. Phó từ thời gian ---
+  children.push(h2("7. Phó Từ & Cấu Trúc Thời Gian Quan Trọng", NAVY));
+  children.push(twoColTable(
+    ["Từ / Cấu trúc", "Chức năng & Ví dụ"],
+    [
+      ["再 (zài)", "Hành động sau khi điều kiện đáp ứng: 他回来再找他。"],
+      ["还是 (háishi)", "Lựa chọn sau so sánh: 我们还是坐出租车吧。"],
+      ["每…都 (měi…dōu)", "Nhấn mạnh toàn bộ/quy luật: 每天都很累。"],
+      ["…的时候 (de shíhòu)", "Mốc thời gian: 王老师工作的时候…"],
+      ["因为…所以 (yīnwèi…suǒyǐ)", "Nhân quả: 因为生病了，所以没去。"],
+      ["怎么 (zěnme)", "Hỏi nguyên nhân ngạc nhiên: 怎么还没来？"],
+      ["一起 (yīqǐ)", "Đồng hành: 我们一起去吧。"],
+    ], 2200, 7160
+  ));
+  children.push(spacer(120, 60));
+
+  // --- 8. Lặp động từ ---
+  children.push(h2("8. Động Từ Lặp Lại & Lượng Từ Lặp Lại", NAVY));
+  children.push(ruleBox(
+    "📌 Nguyên tắc lặp từ",
+    [
+      "Đơn âm tiết AA: 看看, 走走 — sắc thái thư thả, thử nhẹ.",
+      "Song âm tiết ABAB: 准备准备, 休息休息 — sắc thái nhẹ nhàng, không áp lực.",
+      "KHÔNG dùng đồng thời lặp động từ và 一下儿: 看看一下儿 ✗  →  chọn 看看 hoặc 看一下儿.",
+      "Lượng từ lặp: 件件都很漂亮 = mỗi cái/mọi cái đều… (nhấn mạnh tính toàn thể).",
+    ],
+    LIGHTBLUE, BLUE
+  ));
+  children.push(spacer(120, 60));
+
+  // --- 9. Trật tự từ đặc biệt ---
+  children.push(h2("9. Trật Tự Từ Đặc Biệt Thường Gặp Trong Đề Thi", NAVY));
+  children.push(twoColTable(
+    ["Quy tắc", "Ví dụ đúng"],
+    [
+      ["去 + Địa điểm + Hoạt động (KHÔNG đảo)", "去南京旅游了。(✓)  |  去旅游南京了。(✗)"],
+      ["Phương tiện + 要 + Thời gian", "开车要一个多小时。(✓)  |  要开车一个多小时。(✗)"],
+      ["Trạng ngữ tần suất đứng trước thời gian cụ thể", "每天早上 (✓)  |  早上每天 (✗)"],
+      ["Định ngữ: Vị trí + Chỉ thị + Lượng + Tính + N", "旁边那个大的教室 (✓)"],
+      ["数 + 点 + 多 (giờ lẻ)", "三点多 (✓)  |  三多点 (✗)"],
+    ], 3500, 5860
+  ));
+  children.push(spacer(120, 60));
+
+  // --- 10. Từ vựng cốt lõi ---
+  children.push(pageBreak());
+  children.push(h2("10. Từ Vựng Cốt Lõi Theo Chủ Đề", NAVY));
+
+  const vocabGroups = [
+    {
+      title: "🏃 Thể thao & Vận động",
+      color: GREEN,
+      bg: LIGHTGREEN,
+      words: [
+        ["运动 (yùndòng)", "thể thao", "你喜欢什么运动？"],
+        ["踢足球 (tī zúqiú)", "đá bóng", "一起去踢足球吧。"],
+        ["打篮球 (dǎ lánqiú)", "chơi bóng rổ", "他喜欢打篮球。"],
+        ["跑步 (pǎobù)", "chạy bộ", "每天早上跑步。"],
+        ["游泳 (yóuyǒng)", "bơi lội", "他很少去游泳。"],
+        ["散步 (sànbù)", "đi dạo", "吃完饭去散步。"],
+      ]
+    },
+    {
+      title: "🏥 Sức khỏe & Bệnh viện",
+      color: RED,
+      bg: "FADBD8",
+      words: [
+        ["生病 (shēngbìng)", "bị bệnh", "他生病了。"],
+        ["住院 (zhùyuàn)", "nhập viện", "奶奶住院了。"],
+        ["出院 (chūyuàn)", "xuất viện", "他早就出院了。"],
+        ["发烧 (fāshāo)", "sốt", "很多同学发烧了。"],
+        ["吃药 (chī yào)", "uống thuốc", "每天吃药。"],
+        ["好多了 (hǎo duō le)", "khỏe hơn nhiều", "现在身体好多了。"],
+      ]
+    },
+    {
+      title: "⏰ Thời gian & Tần suất",
+      color: BLUE,
+      bg: LIGHTBLUE,
+      words: [
+        ["时候 (shíhou)", "lúc, khi", "…的时候 = khi…"],
+        ["时间 (shíjiān)", "thời gian / dịp", "没有时间。"],
+        ["这两天 (zhè liǎng tiān)", "hai ngày nay", "这两天很忙。"],
+        ["每天 (měitiān)", "mỗi ngày", "每天都锻炼。"],
+        ["一会儿 (yīhuìr)", "một lúc/lát", "等一会儿。"],
+        ["很少 (hěn shǎo)", "rất ít khi", "很少生病。"],
+      ]
+    },
+    {
+      title: "🏠 Nơi chốn & Phương vị",
+      color: ORANGE,
+      bg: "FDEBD0",
+      words: [
+        ["旁边 (pángbiān)", "bên cạnh", "坐在旁边。"],
+        ["外面 (wàimiàn)", "bên ngoài", "在外面散步。"],
+        ["路上 (lùshang)", "trên đường", "在去机场的路上。"],
+        ["附近 (fùjìn)", "gần đây", "附近有饭馆。"],
+      ]
+    },
+  ];
+
+  vocabGroups.forEach(group => {
+    const hBorder = { style: BorderStyle.SINGLE, size: 2, color: "AAAAAA" };
+    const bAll = { top: hBorder, bottom: hBorder, left: hBorder, right: hBorder };
+
+    // Group header
+    children.push(new Paragraph({
+      spacing: { before: 160, after: 80 },
+      children: [txt(group.title, { bold: true, size: 24, color: group.color })]
+    }));
+
+    const widths = [2400, 2200, 4760];
+    const tableRows = [
+      new TableRow({
+        children: ["Từ & Pinyin", "Nghĩa", "Ví dụ"].map((h, i) => new TableCell({
+          borders: bAll,
+          width: { size: widths[i], type: WidthType.DXA },
+          shading: { fill: group.color, type: ShadingType.CLEAR },
+          margins: { top: 80, bottom: 80, left: 120, right: 120 },
+          children: [new Paragraph({ children: [txt(h, { bold: true, color: WHITE, size: 20 })] })]
+        }))
+      })
+    ];
+
+    group.words.forEach((row, ri) => {
+      tableRows.push(new TableRow({
+        children: row.map((cell, ci) => new TableCell({
+          borders: bAll,
+          width: { size: widths[ci], type: WidthType.DXA },
+          shading: { fill: ri % 2 === 0 ? WHITE : group.bg, type: ShadingType.CLEAR },
+          margins: { top: 60, bottom: 60, left: 120, right: 120 },
+          children: [new Paragraph({ children: [txt(cell, { size: 20, bold: ci === 0 })] })]
+        }))
+      }));
+    });
+
+    children.push(new Table({ width: { size: 9360, type: WidthType.DXA }, columnWidths: widths, rows: tableRows }));
+    children.push(spacer(60, 60));
+  });
+
+  // --- 11. Cấu trúc câu hay gặp ---
+  children.push(spacer(120, 60));
+  children.push(h2("11. Bảng Tóm Tắt Cấu Trúc Câu Quan Trọng", NAVY));
+  children.push(fourColTable(
+    ["Cấu trúc", "Công thức", "Ý nghĩa", "Ví dụ"],
+    [
+      ["是…的", "S + 是 + [Focus] + VP + 的", "Nhấn mạnh chi tiết đã qua", "是昨天买的。"],
+      ["离…+đánh giá", "A + 离 + B + 近/远", "Khoảng cách", "离这儿不远。"],
+      ["在…路上", "在 + VP + 的路上", "Đang trên đường", "在去机场的路上。"],
+      ["…的时候", "VP + 的时候, …", "Mốc thời gian", "工作的时候…"],
+      ["每…都", "每 + T/N + 都 + VP", "Tất cả đều / luôn luôn", "每天都跑步。"],
+      ["因为…所以", "因为 + S1, 所以 + S2", "Quan hệ nhân quả", "因为生病，所以…"],
+      ["还是…吧", "还是 + VP + 吧", "Lựa chọn tốt hơn", "还是走路吧。"],
+      ["再 (sau điều kiện)", "…以后 + 再 + VP", "Hành động sau điều kiện", "他回来再找他。"],
+    ],
+    [1800, 2400, 2000, 3160]
+  ));
+
+  children.push(spacer(200, 100));
+  children.push(divider(GOLD));
+  children.push(new Paragraph({
+    alignment: AlignmentType.CENTER,
+    spacing: { before: 160, after: 80 },
+    children: [txt("— Chúc bạn ôn tập hiệu quả và đạt kết quả tốt trong kỳ thi HSK 2! —", { italic: true, size: 22, color: DARKGRAY })]
+  }));
+
+  return children;
+}
+
+// =========================================================
+// DOCUMENT ASSEMBLY
+// =========================================================
+const doc = new Document({
+  styles: {
+    default: { document: { run: { font: "Arial", size: 22 } } },
+    paragraphStyles: [
+      { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true,
+        run: { size: 32, bold: true, font: "Arial", color: NAVY },
+        paragraph: { spacing: { before: 360, after: 200 }, outlineLevel: 0 } },
+      { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true,
+        run: { size: 26, bold: true, font: "Arial", color: BLUE },
+        paragraph: { spacing: { before: 280, after: 160 }, outlineLevel: 1 } },
+      { id: "Heading3", name: "Heading 3", basedOn: "Normal", next: "Normal", quickFormat: true,
+        run: { size: 22, bold: true, font: "Arial", color: NAVY },
+        paragraph: { spacing: { before: 200, after: 100 }, outlineLevel: 2 } },
+    ]
+  },
+  numbering: { config: [] },
+  sections: [{
+    properties: {
+      page: {
+        size: { width: 11906, height: 16838 },
+        margin: { top: 1134, right: 1134, bottom: 1134, left: 1134 }
+      }
+    },
+    children: [
+      ...coverPage(),
+      ...part1(),
+      ...part2()
+    ]
+  }]
+});
+
+Packer.toBuffer(doc).then(buffer => {
+  fs.writeFileSync('/home/claude/HSK2_TracNghiem_TongHop.docx', buffer);
+  console.log('Done!');
+}).catch(err => console.error(err));

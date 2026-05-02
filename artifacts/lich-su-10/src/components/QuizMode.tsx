@@ -653,6 +653,7 @@ export function QuizMode({
         {/* Choices or short-answer input */}
         {useShortAnswerForThis ? (
           <ShortAnswerInput
+            key={qid}
             question={question}
             onSubmit={handleShortAnswerSubmit}
           />
