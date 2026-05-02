@@ -1,6 +1,6 @@
 export function TiengTrungTheory() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-[#222222]">
 
       {/* 1. 是…的 */}
       <section>
