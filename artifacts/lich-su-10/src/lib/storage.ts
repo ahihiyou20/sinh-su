@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 
-export type SubjectId = "lichsu" | "sinhhoc" | "tiengtrung";
+export type SubjectId = "lichsu" | "sinhhoc" | "tiengtrung" | "vatly";
 
 const APP_NS = "revision-app";
 const HISTORY_MAX = 30;
@@ -119,6 +119,7 @@ const bookmarkStores: Record<SubjectId, BookmarkStoreEntry> = {
   lichsu: { current: new Set(), listeners: new Set() },
   sinhhoc: { current: new Set(), listeners: new Set() },
   tiengtrung: { current: new Set(), listeners: new Set() },
+  vatly: { current: new Set(), listeners: new Set() },
 };
 
 function readBookmarks(subject: SubjectId): ReadonlySet<string> {
@@ -154,9 +155,10 @@ if (typeof window !== "undefined") {
   bookmarkStores.lichsu.current = readBookmarks("lichsu");
   bookmarkStores.sinhhoc.current = readBookmarks("sinhhoc");
   bookmarkStores.tiengtrung.current = readBookmarks("tiengtrung");
+  bookmarkStores.vatly.current = readBookmarks("vatly");
   window.addEventListener("storage", (event) => {
     if (!event.key) return;
-    for (const subject of ["lichsu", "sinhhoc", "tiengtrung"] as const) {
+    for (const subject of ["lichsu", "sinhhoc", "tiengtrung", "vatly"] as const) {
       if (event.key === ns("bookmarks", subject)) {
         bookmarkStores[subject].current = readBookmarks(subject);
         for (const l of bookmarkStores[subject].listeners) l();

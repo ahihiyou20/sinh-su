@@ -28,11 +28,11 @@ See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and pa
 
 ## Artifacts
 
-### `lich-su-10` — Ôn tập Lịch sử & Sinh học 10 (`/lichsu`, `/sinhhoc`)
+### `lich-su-10` — Ôn tập Lịch sử, Sinh học, Tiếng Trung & Vật lý 10
 
-Single React+Vite study app that hosts both subjects under one artifact.
+Single React+Vite study app that hosts all four subjects under one artifact.
 
-- **Routing**: `wouter` (`/` → redirects to `/lichsu`; routes `/lichsu`, `/sinhhoc`).
+- **Routing**: `wouter` (`/` → redirects to `/lichsu`; routes `/lichsu`, `/sinhhoc`, `/tiengtrung`, `/vatly`).
 - **Subjects** are configured in `src/subjects/` (`lich-su.ts`, `sinh-hoc.ts`, shared `types.ts`). The `SubjectConfig` carries identity, branding, theory renderer, quiz pool, filters, and tag colors. `SubjectPage` is generic and is parameterised by the config.
 - **Storage** (`src/lib/storage.ts`): per-subject namespaced `localStorage` under `revision-app:{kind}:{subject}:v1` for:
   - `history` — list of `QuizAttempt` (filter, score, total, timestamp), capped at 30.
