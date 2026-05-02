@@ -82,8 +82,9 @@ function isCloze(q: SubjectQuestion): boolean {
 
 // A question can be "short-answerised" if the correct answer is ≤ 10 chars.
 function canBeShortAnswer(q: SubjectQuestion): boolean {
-  if (q.passage && !q.forceShortAnswer) return false;
   if (isCloze(q)) return false;
+  if (q.forceShortAnswer) return true; // explicitly forced — always short-answer
+  if (q.passage) return false;
   const ans = q.opts[q.ans] ?? "";
   return ans.length > 0 && ans.length <= 10;
 }
@@ -249,7 +250,7 @@ function ShortAnswerInput({ question, onSubmit }: ShortAnswerInputProps) {
         </div>
       )}
 
-      {result !== null && (
+      {result !== null && question.opts.length > 1 && (
         <div className="rounded-[10px] border border-border-earth bg-surface-2 px-4 py-2 text-[12px] text-text-dim">
           <span className="font-bold text-text-dim">Các lựa chọn: </span>
           {question.opts.map((opt, i) => (
