@@ -214,9 +214,11 @@ export const quizData: Quiz[] = [
     answer: 1,
     explain:
       "Khi dinh dưỡng được bổ sung, vi khuẩn ngay lập tức quay lại phân chia mạnh → chuyển sang PHA LŨY THỪA.",
+    scenarioId: "ecoli-glucose-21-23",
+    scenarioTitle: "Bối cảnh E. coli + glucose",
   },
   {
-    q: "Câu 22. Sau 3 giờ bổ sung glucose cho quần thể E. coli, sinh trưởng sẽ chuyển sang pha nào?",
+    q: "Câu 22. (Tiếp Câu 21) Sau 3 giờ bổ sung glucose, sinh trưởng quần thể E. coli sẽ chuyển sang pha nào?",
     options: [
       "Pha cân bằng",
       "Pha lũy thừa và cân bằng",
@@ -226,6 +228,8 @@ export const quizData: Quiz[] = [
     answer: 2,
     explain:
       "Sau 3h, ngừng bổ sung glucose → glucose dần cạn kiệt và độc tố tích lũy → quần thể lần lượt chuyển sang PHA CÂN BẰNG rồi PHA SUY VONG.",
+    scenarioId: "ecoli-glucose-21-23",
+    scenarioTitle: "Bối cảnh E. coli + glucose",
   },
   {
     q: "Câu 23. Chất ức chế sinh trưởng đối với quần thể E. coli tích lũy NHIỀU NHẤT khi nào?",
