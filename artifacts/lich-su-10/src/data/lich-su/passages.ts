@@ -33,6 +33,9 @@ export const passageQuestions: readonly SubjectQuestion[] = [
   {
     id: "ls-tf-vl1-a",
     passage: PASSAGE_VL1,
+    scenarioId: "vl1",
+    scenarioTitle: "Bối cảnh: Nước Âu Lạc tiếp nối Văn Lang",
+    scenarioLead: "Đọc tư liệu chung dưới đây, rồi xác định các nhận định đúng/sai.",
     q: "Nhà nước Âu Lạc phát triển hơn về nhiều mặt so với nhà nước Văn Lang và độc lập hoàn toàn so với nhà nước Văn Lang.",
     opts: ["Đúng", "Sai"],
     ans: 1,
@@ -42,6 +45,9 @@ export const passageQuestions: readonly SubjectQuestion[] = [
   {
     id: "ls-tf-vl1-b",
     passage: PASSAGE_VL1,
+    scenarioId: "vl1",
+    scenarioTitle: "Bối cảnh: Nước Âu Lạc tiếp nối Văn Lang",
+    scenarioLead: "Đọc tư liệu chung dưới đây, rồi xác định các nhận định đúng/sai.",
     q: "Nếu như kinh đô của nhà nước Văn Lang đặt tại trung du, miền núi thì kinh đô của nhà nước Âu Lạc đã di chuyển xuống khu vực trung tâm đồng bằng.",
     opts: ["Đúng", "Sai"],
     ans: 0,
@@ -51,6 +57,9 @@ export const passageQuestions: readonly SubjectQuestion[] = [
   {
     id: "ls-tf-vl1-c",
     passage: PASSAGE_VL1,
+    scenarioId: "vl1",
+    scenarioTitle: "Bối cảnh: Nước Âu Lạc tiếp nối Văn Lang",
+    scenarioLead: "Đọc tư liệu chung dưới đây, rồi xác định các nhận định đúng/sai.",
     q: "Hai nhà nước Văn Lang và Âu Lạc đều được hình thành trên cơ sở nền văn hóa Đông Sơn và đều được hình thành sau một cuộc kháng chiến chống ngoại xâm.",
     opts: ["Đúng", "Sai"],
     ans: 1,
@@ -60,6 +69,9 @@ export const passageQuestions: readonly SubjectQuestion[] = [
   {
     id: "ls-tf-vl1-d",
     passage: PASSAGE_VL1,
+    scenarioId: "vl1",
+    scenarioTitle: "Bối cảnh: Nước Âu Lạc tiếp nối Văn Lang",
+    scenarioLead: "Đọc tư liệu chung dưới đây, rồi xác định các nhận định đúng/sai.",
     q: "Việc chế tạo ra nỏ Liên Châu và xây thành Cổ Loa (Hà Nội) của nhà nước Âu Lạc đều xuất phát từ nhu cầu bảo vệ đất nước.",
     opts: ["Đúng", "Sai"],
     ans: 0,

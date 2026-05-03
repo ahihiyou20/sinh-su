@@ -61,6 +61,13 @@ function selectQuestions(
       return shuffle(all.filter((q) => bookmarks.has(questionId(q))));
     case "wrong":
       return all.filter((q) => wrongIds.has(questionId(q)));
+    case "difficulty":
+      return shuffle(
+        all.filter((q) => {
+          if (filter.kind.type !== "difficulty") return false;
+          return q.difficulty === filter.kind.level;
+        }),
+      );
     case "topic": {
       const topic = filter.kind.topic;
       return shuffle(all.filter((q) => q.tag === topic));
@@ -87,6 +94,21 @@ function canBeShortAnswer(q: SubjectQuestion): boolean {
   if (q.passage) return false;
   const ans = q.opts[q.ans] ?? "";
   return ans.length > 0 && ans.length <= 10;
+}
+
+function renderDifficultyLabel(level?: "easy" | "medium" | "hard"): string {
+  if (level === "easy") return "Dễ";
+  if (level === "medium") return "Vừa";
+  if (level === "hard") return "Khó";
+  return "";
+}
+
+function getScenarioKey(q: SubjectQuestion): string | null {
+  return q.scenarioId ?? q.passage ?? null;
+}
+
+function getScenarioGroup(q: SubjectQuestion): string | null {
+  return q.scenarioTitle ?? q.scenarioLead ?? null;
 }
 
 // Normalize text for comparison: trim + lowercase.
@@ -681,6 +703,8 @@ export function QuizMode({
   const bookmarked = isBookmarked(qid);
   const progressPct = (currentQ / questions.length) * 100;
   const tagColor = tagColors[question.tag] ?? "#5A3820";
+  const scenarioKey = getScenarioKey(question);
+  const scenarioGroup = getScenarioGroup(question);
   const wasResumed =
     !!initial && answers.length > 0 && currentQ === initial.saved.currentQ;
 
@@ -787,6 +811,11 @@ export function QuizMode({
             {question.tag}
           </span>
           <div className="flex items-center gap-2">
+            {question.difficulty && (
+              <span className="rounded-full border border-border-earth bg-surface-2 px-2.5 py-[3px] text-[11px] font-bold text-text-dim">
+                {renderDifficultyLabel(question.difficulty)}
+              </span>
+            )}
             {isCloze(question) ? (
               <span className="rounded-full border border-gold/60 bg-gold/10 px-2.5 py-[3px] text-[11px] font-bold text-gold">
                 📝 Điền từ
@@ -805,6 +834,11 @@ export function QuizMode({
 
         {/* Question card */}
         <div className="mb-5 rounded-xl border border-border-earth bg-surface px-6 py-5">
+          {scenarioGroup && !isCloze(question) && (
+            <div className="mb-3 rounded-lg border border-gold/30 bg-gold/10 px-3 py-2 text-[12px] text-gold">
+              {scenarioGroup}
+            </div>
+          )}
           {question.passage && !isCloze(question) && (
             <blockquote className="mb-4 border-l-4 border-gold/60 bg-surface-2 px-4 py-3 text-sm italic leading-relaxed text-text-dim whitespace-pre-line rounded-r-lg">
               {question.passage}

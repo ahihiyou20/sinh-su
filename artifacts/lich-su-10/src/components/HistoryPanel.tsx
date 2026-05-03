@@ -36,6 +36,8 @@ function formatDuration(secs: number): string {
 
 export function HistoryPanel({ history, onClear }: HistoryPanelProps) {
   const visible = history.slice(0, MAX_VISIBLE);
+  const byFilter = new Map<string, number>();
+  for (const entry of history) byFilter.set(entry.filter, (byFilter.get(entry.filter) ?? 0) + 1);
 
   return (
     <section
@@ -100,6 +102,16 @@ export function HistoryPanel({ history, onClear }: HistoryPanelProps) {
             );
           })}
         </ol>
+      )}
+
+      {history.length > 0 && (
+        <div className="mb-3 rounded-lg bg-surface-2 px-3 py-2 text-[12px] text-text-dim">
+          <span className="font-semibold text-text">Theo bộ đề:</span>{" "}
+          {[...byFilter.entries()]
+            .slice(0, 3)
+            .map(([k, v]) => `${k} (${v})`)
+            .join(" · ")}
+        </div>
       )}
 
       {history.length > MAX_VISIBLE && (

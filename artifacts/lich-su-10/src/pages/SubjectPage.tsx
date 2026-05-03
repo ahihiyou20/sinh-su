@@ -79,6 +79,11 @@ export function SubjectPage({ subject }: SubjectPageProps) {
   //   - + "Câu tự thêm" if there are user custom questions
   const dynamicFilters = useMemo<readonly SubjectFilter[]>(() => {
     const result: SubjectFilter[] = [...subject.filters];
+    result.push(
+      { label: "Dễ", kind: { type: "difficulty", level: "easy" } },
+      { label: "Vừa", kind: { type: "difficulty", level: "medium" } },
+      { label: "Khó", kind: { type: "difficulty", level: "hard" } },
+    );
     if (wrongIds.length > 0) {
       result.splice(2, 0, {
         label: `🔁 Câu sai (${wrongIds.length})`,
@@ -151,6 +156,16 @@ export function SubjectPage({ subject }: SubjectPageProps) {
     addAttempt(result);
   };
 
+  const stats = useMemo(() => {
+    const difficultyCounts = { easy: 0, medium: 0, hard: 0 };
+    const tagCounts = new Map<string, number>();
+    for (const q of allQuestions) {
+      if (q.difficulty) difficultyCounts[q.difficulty] += 1;
+      tagCounts.set(q.tag, (tagCounts.get(q.tag) ?? 0) + 1);
+    }
+    return { difficultyCounts, tagCounts };
+  }, [allQuestions]);
+
   const removeBookmark = (id: string) => {
     toggleBookmark(id);
   };
@@ -206,6 +221,25 @@ export function SubjectPage({ subject }: SubjectPageProps) {
         {subject.quickRef && <QuickRefTable data={subject.quickRef} />}
 
         <ScoreChart history={history} accentHex={subject.accentHex} />
+        <section className="my-5 rounded-xl border border-border-earth bg-surface px-5 py-4">
+          <h2 className="m-0 mb-3 font-display text-base font-bold text-gold">
+            📌 Thống kê nhanh
+          </h2>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-lg bg-surface-2 p-3 text-sm">
+              <div className="text-text-dim">Dễ</div>
+              <div className="font-bold text-text">{stats.difficultyCounts.easy}</div>
+            </div>
+            <div className="rounded-lg bg-surface-2 p-3 text-sm">
+              <div className="text-text-dim">Vừa</div>
+              <div className="font-bold text-text">{stats.difficultyCounts.medium}</div>
+            </div>
+            <div className="rounded-lg bg-surface-2 p-3 text-sm">
+              <div className="text-text-dim">Khó</div>
+              <div className="font-bold text-text">{stats.difficultyCounts.hard}</div>
+            </div>
+          </div>
+        </section>
 
         <HistoryPanel history={history} onClear={clearHistory} />
 

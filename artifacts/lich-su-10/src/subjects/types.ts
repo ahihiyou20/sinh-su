@@ -13,12 +13,17 @@ export interface SubjectQuestion {
   readonly passage?: string;
   readonly forceShortAnswer?: boolean;
   readonly blanks?: readonly string[];
+  readonly difficulty?: "easy" | "medium" | "hard";
+  readonly scenarioId?: string;
+  readonly scenarioTitle?: string;
+  readonly scenarioLead?: string;
 }
 
 export type FilterKind =
   | { readonly type: "all" }
   | { readonly type: "bookmarks" }
   | { readonly type: "wrong" }
+  | { readonly type: "difficulty"; readonly level: "easy" | "medium" | "hard" }
   | { readonly type: "topic"; readonly topic: string };
 
 export interface SubjectFilter {
