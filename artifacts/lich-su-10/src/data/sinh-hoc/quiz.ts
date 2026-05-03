@@ -349,6 +349,7 @@ export const quizData: Quiz[] = [
     answer: 1,
     explain:
       "Sản xuất kháng sinh chủ yếu dùng: Xạ khuẩn Streptomyces (streptomycin), vi khuẩn Bacillus (bacitracin), nấm Penicillium (penicillin). Động vật nguyên sinh KHÔNG sản xuất kháng sinh.",
+    difficulty: "medium",
   },
   {
     q: "Câu 35. Nhóm vi sinh vật được sử dụng để sản xuất kháng sinh tự nhiên CHỦ YẾU là?",
@@ -361,6 +362,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Hai nhóm chủ yếu sản xuất kháng sinh tự nhiên là XẠ KHUẨN (Streptomyces) và NẤM (Penicillium, Cephalosporium).",
+    difficulty: "easy",
   },
   {
     q: "Câu 36. (Nối cột) Phát biểu nào sau đây đúng về thành phần cấu tạo virus?",
@@ -373,6 +375,7 @@ export const quizData: Quiz[] = [
     answer: 1,
     explain:
       "Đáp án B đúng. Các đáp án khác đều sai mô tả: (A) đúng cho NUCLEOCAPSID; (C) đúng cho GAI GLYCOPROTEIN; (D) đúng cho VỎ CAPSID.",
+    difficulty: "hard",
   },
   {
     q: "Câu 37. Vì sao một số virus có vỏ ngoài có thể xâm nhập vào tế bào chủ bằng cách DUNG HỢP MÀNG?",
@@ -385,6 +388,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Vỏ ngoài của virus có màng bọc và màng sinh chất tế bào chủ đều có cấu tạo từ lớp KÉP PHOSPHOLIPID → có thể dung hợp với nhau để đưa nucleocapsid vào trong tế bào.",
+    difficulty: "medium",
   },
   {
     q: "Câu 38. Virus TRẦN xâm nhập vào tế bào chủ bằng cách nào?",
@@ -397,6 +401,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Virus trần (không có màng bọc) xâm nhập vào tế bào động vật bằng cơ chế THỰC BÀO – tế bào chủ nuốt cả virus vào, sau đó cởi áo (giải phóng vật chất di truyền) trong tế bào.",
+    difficulty: "medium",
   },
   {
     q: "Câu 39. Virus là?",
@@ -409,6 +414,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Virus là dạng sống đặc biệt: KHÔNG có cấu tạo tế bào, KÍCH THƯỚC NHỎ (nm), sống KÍ SINH NỘI BÀO BẮT BUỘC (phải vào tế bào sinh vật mới nhân lên được).",
+    difficulty: "easy",
   },
   {
     q: "Câu 40. Vì sao virus phải sống kí sinh nội bào BẮT BUỘC?",
@@ -421,6 +427,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Vì virus KHÔNG có cấu tạo tế bào, không có bộ máy enzyme và ribosome riêng → phải dùng nguyên liệu, năng lượng và bộ máy của tế bào chủ để tổng hợp các thành phần và nhân lên.",
+    difficulty: "medium",
   },
   {
     q: "Câu 41. Thành phần CẤU TẠO CHÍNH của virus là?",
@@ -433,6 +440,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Cấu tạo CHÍNH (luôn có ở mọi virus) gồm 2 phần: LÕI NUCLEIC ACID (DNA hoặc RNA) và VỎ CAPSID (protein). Màng bọc và gai glycoprotein chỉ có ở virus có màng bọc.",
+    difficulty: "easy",
   },
   {
     q: "Câu 42. Dựa vào đặc điểm có hay không có màng phospholipid kép, virus được chia làm 2 loại là?",
@@ -445,6 +453,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Theo có/không có màng bọc: VIRUS TRẦN (không có) và VIRUS CÓ MÀNG BỌC (có lớp phospholipid kép bên ngoài).",
+    difficulty: "easy",
   },
   {
     q: "Câu 43. Virus TRẦN khác virus có màng bọc ở điểm là?",
@@ -457,6 +466,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Khác biệt cốt lõi: virus trần dùng PROTEIN CỦA VỎ CAPSID làm thụ thể bám vào tế bào chủ; còn virus có màng bọc dùng GAI GLYCOPROTEIN trên màng bọc làm thụ thể.",
+    difficulty: "medium",
   },
   {
     q: "Câu 44. Chu trình nhân lên của virus gồm?",
@@ -464,6 +474,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Chu trình nhân lên của virus gồm 5 giai đoạn: HẤP PHỤ → XÂM NHẬP → SINH TỔNG HỢP → LẮP RÁP → PHÓNG THÍCH.",
+    difficulty: "easy",
   },
   {
     q: "Câu 45. Virus cố định trên bề mặt tế bào chủ nhờ mối liên kết đặc hiệu giữa thụ thể của virus và thụ thể của tế bào chủ là giai đoạn nào?",
@@ -471,6 +482,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Đây là giai đoạn HẤP PHỤ – giai đoạn 1 của chu trình. Sự liên kết đặc hiệu giữa thụ thể của virus và thụ thể tế bào chủ là cơ sở của tính đặc hiệu vật chủ.",
+    difficulty: "easy",
   },
   {
     q: "Câu 46. Phát biểu nào sau đây ĐÚNG về sự khác nhau trong giai đoạn xâm nhập của virus trần và virus có màng bọc?",
@@ -483,6 +495,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Virus trần (như Phage T4) bơm trực tiếp DNA vào tế bào chủ, vỏ capsid để lại bên ngoài. Virus có màng bọc đưa cả nucleocapsid (hoặc cả virus) vào trong rồi mới cởi áo trong tế bào chủ.",
+    difficulty: "hard",
   },
   {
     q: "Câu 47. Điều nào sau đây là KHÔNG đúng khi nói về sự phóng thích của virus có MÀNG BỌC ra khỏi tế bào vật chủ?",
@@ -495,6 +508,7 @@ export const quizData: Quiz[] = [
     answer: 2,
     explain:
       "Việc tiết enzyme phá vỡ màng tế bào để giải phóng đồng loạt là cách phóng thích của VIRUS TRẦN (ví dụ Phage T4 dùng lysozyme), KHÔNG phải của virus có màng bọc. Virus có màng bọc chui ra theo kiểu xuất bào, kéo theo màng sinh chất tạo thành vỏ ngoài.",
+    difficulty: "hard",
   },
   {
     q: "Câu 48. Virus có thể phá hủy tế bào vật chủ để giải phóng đồng thời các hạt virus, hoặc chui từ từ ra ngoài và làm tế bào chủ chết dần là đặc điểm của giai đoạn?",
@@ -502,6 +516,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Đây là mô tả giai đoạn 5 – PHÓNG THÍCH. Có 2 kiểu phóng thích: (1) Ly giải đồng loạt (virus trần) và (2) Xuất bào từ từ (virus có màng bọc) → tế bào chủ chết dần.",
+    difficulty: "medium",
   },
   {
     q: "Câu 49. Vì sao sự nhân lên của virus KHÔNG được gọi là quá trình sinh sản?",
@@ -514,6 +529,7 @@ export const quizData: Quiz[] = [
     answer: 2,
     explain:
       "Sinh sản đòi hỏi sinh vật tự thực hiện được. Virus KHÔNG tự nhân lên được – hoàn toàn phải dựa vào nguyên liệu, enzyme, ribosome và năng lượng của tế bào chủ → gọi là 'nhân lên' chứ không gọi là sinh sản.",
+    difficulty: "medium",
   },
   {
     q: "Câu 50. Vì sao mỗi loại virus chỉ xâm nhập vào một số tế bào vật chủ NHẤT ĐỊNH?",
@@ -526,6 +542,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Tính đặc hiệu vật chủ: virus chỉ vào được tế bào khi THỤ THỂ của virus (gai glycoprotein hoặc protein vỏ capsid) khớp đặc hiệu với phân tử bề mặt tế bào chủ. Ví dụ: HIV chỉ tấn công tế bào có thụ thể CD4 (lympho T).",
+    difficulty: "hard",
   },
 
   // ========== Bonus: 6 câu Nguyên phân – Giảm phân ==========

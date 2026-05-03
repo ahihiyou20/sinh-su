@@ -547,6 +547,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Trong va chạm, thời gian rất ngắn nên nội lực >> ngoại lực → hệ coi là kín → bảo toàn động lượng. Động năng chỉ bảo toàn trong va chạm đàn hồi hoàn toàn.",
     tag: "Chiến lược làm bài",
+    difficulty: "medium",
   },
   {
     q: "Bài toán vật trượt không ma sát từ độ cao h xuống đáy, hỏi vận tốc ở đáy. Nên dùng phương pháp nào?",
@@ -560,6 +561,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Không có ma sát → bảo toàn cơ năng rất tiện: v = √(2gh). Định lý động năng cũng cho kết quả tương tự vì A_hợp_lực = mgh = ΔWđ.",
     tag: "Chiến lược làm bài",
+    difficulty: "medium",
   },
   {
     q: "Để xe đi qua đỉnh cầu vồng mà không bị 'bay' khỏi mặt đường, điều kiện là:",
@@ -573,6 +575,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "N = mg - mv²/R ≥ 0 → v ≤ √(gR). Nếu v > √(gR), xe rời mặt đường (N âm, không thể xảy ra thực tế).",
     tag: "Chiến lược làm bài",
+    difficulty: "hard",
   },
   {
     q: "Điều kiện để vật quay tròn trên dây không bị đứt dây là:",
@@ -586,6 +589,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Dây đứt khi lực căng T vượt quá giới hạn chịu lực T_max. Điểm nguy hiểm nhất (T lớn nhất) là điểm thấp nhất trong quỹ đạo thẳng đứng.",
     tag: "Chiến lược làm bài",
+    difficulty: "medium",
   },
   {
     q: "Trong bài toán về động lượng, nên chọn chiều dương như thế nào?",
@@ -599,6 +603,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Nên chọn chiều dương theo chiều chuyển động ban đầu của một vật (thường là vật 1 hoặc vật chuyển động trước). Vật ngược chiều sẽ mang giá trị âm.",
     tag: "Chiến lược làm bài",
+    difficulty: "easy",
   },
   {
     q: "Trong bài toán 'người nhảy khỏi thuyền', ta áp dụng:",
@@ -612,6 +617,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Người + thuyền ban đầu đứng yên, p_hệ = 0. Khi người nhảy với vận tốc v₁ về một phía, thuyền chuyển động ngược lại để tổng động lượng = 0.",
     tag: "Chiến lược làm bài",
+    difficulty: "medium",
   },
 
   // ── CÂU HỎI TỔNG HỢP ───────────────────────────────────────────────────
@@ -627,6 +633,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "F_ht = mv²/R. Khi v tăng 2 lần, F_ht tăng v² = 4 lần. (F_ht tỉ lệ bình phương tốc độ)",
     tag: "Chuyển động tròn đều",
+    difficulty: "medium",
   },
   {
     q: "Hai vật A và B có cùng động năng. Khối lượng m_A = 4m_B. So sánh động lượng:",
@@ -640,6 +647,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Wđ = p²/(2m) → p = √(2mWđ). Vì Wđ bằng nhau: p_A/p_B = √(m_A/m_B) = √4 = 2. Vật nặng hơn có động lượng lớn hơn.",
     tag: "Năng lượng",
+    difficulty: "hard",
   },
   {
     q: "Điều nào sau đây KHÔNG phải đặc điểm của chuyển động tròn đều?",
@@ -653,6 +661,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Vectơ vận tốc liên tục thay đổi phương (tiếp tuyến với đường tròn) dù độ lớn không đổi. Đây chính là lý do có gia tốc hướng tâm.",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Đơn vị nào sau đây KHÔNG phải đơn vị của xung lượng?",
@@ -661,6 +670,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Xung lượng J = F·Δt có đơn vị N·s = kg·m/s = (kg·m/s²)·s. Đơn vị J (Jun) là đơn vị năng lượng, không phải xung lượng.",
     tag: "Động lượng",
+    difficulty: "easy",
   },
   {
     q: "Cơ năng của vật được bảo toàn trong trường hợp nào sau đây?",
@@ -674,5 +684,6 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Con lắc đơn không ma sát chỉ chịu lực hấp dẫn và lực căng dây (vuông góc chuyển động, không sinh công) → cơ năng bảo toàn.",
     tag: "Năng lượng",
+    difficulty: "medium",
   },
 ];
