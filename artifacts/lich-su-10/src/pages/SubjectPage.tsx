@@ -74,21 +74,19 @@ export function SubjectPage({ subject }: SubjectPageProps) {
   );
 
   // Build the filter list dynamically:
-  //   - subject defaults
+  //   - Difficulty filters first (Dễ, Vừa, Khó)
+  //   - + "Tất cả", "Đã đánh dấu", + subject topic filters
   //   - + "🔁 Câu sai (N)" if there are wrong IDs from the last quiz
   //   - + "Câu tự thêm" if there are user custom questions
   const dynamicFilters = useMemo<readonly SubjectFilter[]>(() => {
-    const result: SubjectFilter[] = [...subject.filters];
-    // Insert difficulty filters after bookmark filter (at position 2)
-    result.splice(
-      2,
-      0,
+    const result: SubjectFilter[] = [
       { label: "Dễ", kind: { type: "difficulty", level: "easy" } },
       { label: "Vừa", kind: { type: "difficulty", level: "medium" } },
       { label: "Khó", kind: { type: "difficulty", level: "hard" } },
-    );
+      ...subject.filters,
+    ];
     if (wrongIds.length > 0) {
-      result.splice(5, 0, {
+      result.push({
         label: `🔁 Câu sai (${wrongIds.length})`,
         kind: { type: "wrong" },
       });
