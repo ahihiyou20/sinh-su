@@ -3,7 +3,7 @@ import type { Quiz } from "./types";
 export const quizData: Quiz[] = [
   // ========== Câu 1-9 (Image 1) ==========
   {
-    q: "Câu 1. Cho 4 phát biểu về kiểu dinh dưỡng của vi sinh vật:\n(1) Nấm men chuyển hóa tinh bột trong cơm gạo nếp tạo ethanol → nấm men có kiểu dinh dưỡng là HÓA TỰ DƯỠNG.\n(2) Khi muối chua rau củ, cần bổ sung đường làm nguồn năng lượng và carbon cho vi khuẩn lactic sinh trưởng nhanh.\n(3) Tảo Zooxanthellae cộng sinh với san hô, cung cấp carbohydrate qua phản ứng 6CO₂ + 6H₂O + Ánh sáng → C₆H₁₂O₆ + 6O₂ → có kiểu dinh dưỡng QUANG TỰ DƯỠNG.\n(4) Chế phẩm EMZEO chứa các vi sinh vật phân giải protein, lipid, cellulose trong rác hữu cơ → các VSV này có kiểu dinh dưỡng QUANG TỰ DƯỠNG.\nSố phát biểu ĐÚNG là?",
+    q: "Cho 4 phát biểu về kiểu dinh dưỡng của vi sinh vật:\n(1) Nấm men chuyển hóa tinh bột trong cơm gạo nếp tạo ethanol → nấm men có kiểu dinh dưỡng là HÓA TỰ DƯỠNG.\n(2) Khi muối chua rau củ, cần bổ sung đường làm nguồn năng lượng và carbon cho vi khuẩn lactic sinh trưởng nhanh.\n(3) Tảo Zooxanthellae cộng sinh với san hô, cung cấp carbohydrate qua phản ứng 6CO₂ + 6H₂O + Ánh sáng → C₆H₁₂O₆ + 6O₂ → có kiểu dinh dưỡng QUANG TỰ DƯỠNG.\n(4) Chế phẩm EMZEO chứa các vi sinh vật phân giải protein, lipid, cellulose trong rác hữu cơ → các VSV này có kiểu dinh dưỡng QUANG TỰ DƯỠNG.\nSố phát biểu ĐÚNG là?",
     options: ["1", "2", "3", "4"],
     answer: 1,
     explain:
@@ -11,7 +11,7 @@ export const quizData: Quiz[] = [
     difficulty: "hard",
   },
   {
-    q: "Câu 2. Loại vi sinh vật nào sau đây cần có trong quá trình sản xuất sữa chua?",
+    q: "Loại vi sinh vật nào sau đây cần có trong quá trình sản xuất sữa chua?",
     options: ["Vi khuẩn lactic", "Nấm men", "Nấm sợi", "Vi khuẩn axetic"],
     answer: 0,
     explain:
@@ -19,7 +19,7 @@ export const quizData: Quiz[] = [
     difficulty: "easy",
   },
   {
-    q: "Câu 3. Loài nào sau đây KHÔNG PHẢI vi sinh vật?",
+    q: "Loài nào sau đây KHÔNG PHẢI vi sinh vật?",
     options: ["Vi khuẩn lam", "Tảo đơn bào", "Trùng biến hình", "Nấm rơm"],
     answer: 3,
     explain:
@@ -27,7 +27,7 @@ export const quizData: Quiz[] = [
     difficulty: "easy",
   },
   {
-    q: "Câu 4. Vi sinh vật thuộc những giới nào trong hệ thống phân loại 5 giới?",
+    q: "Vi sinh vật thuộc những giới nào trong hệ thống phân loại 5 giới?",
     options: [
       "Giới Khởi sinh, giới Nấm, giới Thực vật",
       "Giới Khởi sinh, giới Nguyên sinh, giới Nấm",
@@ -40,7 +40,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 5. Cho các sinh vật sau: vi khuẩn lactic, nấm men, trùng roi, trùng giày, tảo silic, cây rêu, giun đất. Số vi sinh vật trong danh sách là?",
+    q: "Cho các sinh vật sau: vi khuẩn lactic, nấm men, trùng roi, trùng giày, tảo silic, cây rêu, giun đất. Số vi sinh vật trong danh sách là?",
     options: ["4", "5", "6", "7"],
     answer: 1,
     explain:
@@ -48,7 +48,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 6. Cho các đặc điểm: (1) Kích thước nhỏ bé, thường không nhìn thấy bằng mắt thường; (2) Khả năng phân bố rộng trong mọi môi trường; (3) Hấp thu và chuyển hóa vật chất nhanh; (4) Sinh trưởng và sinh sản nhanh. Số đặc điểm chung của vi sinh vật là?",
+    q: "Cho các đặc điểm: (1) Kích thước nhỏ bé, thường không nhìn thấy bằng mắt thường; (2) Khả năng phân bố rộng trong mọi môi trường; (3) Hấp thu và chuyển hóa vật chất nhanh; (4) Sinh trưởng và sinh sản nhanh. Số đặc điểm chung của vi sinh vật là?",
     options: ["1", "2", "3", "4"],
     answer: 3,
     explain:
@@ -56,7 +56,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 7. Kích thước vi sinh vật càng nhỏ thì?",
+    q: "Kích thước vi sinh vật càng nhỏ thì?",
     options: [
       "Tốc độ trao đổi chất càng cao, sinh trưởng và sinh sản càng nhanh",
       "Tốc độ trao đổi chất càng cao, sinh trưởng và sinh sản càng chậm",
@@ -69,7 +69,7 @@ export const quizData: Quiz[] = [
     difficulty: "easy",
   },
   {
-    q: "Câu 8. Đặc điểm nào của vi sinh vật đã trở thành thế mạnh mà công nghệ sinh học đang tập trung khai thác?",
+    q: "Đặc điểm nào của vi sinh vật đã trở thành thế mạnh mà công nghệ sinh học đang tập trung khai thác?",
     options: [
       "Có kích thước rất nhỏ",
       "Có khả năng gây bệnh cho nhiều loài",
@@ -82,7 +82,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 9. Căn cứ để phân loại các kiểu dinh dưỡng ở vi sinh vật là?",
+    q: "Căn cứ để phân loại các kiểu dinh dưỡng ở vi sinh vật là?",
     options: [
       "Dựa vào nguồn carbon và nguồn cung cấp vật chất",
       "Dựa vào nguồn oxygen và nguồn cung cấp năng lượng",
@@ -97,7 +97,7 @@ export const quizData: Quiz[] = [
 
   // ========== Câu 10-20 (Image 2) ==========
   {
-    q: "Câu 10. Căn cứ vào nguồn năng lượng, các kiểu dinh dưỡng ở vi sinh vật gồm?",
+    q: "Căn cứ vào nguồn năng lượng, các kiểu dinh dưỡng ở vi sinh vật gồm?",
     options: [
       "Tự dưỡng và dị dưỡng",
       "Quang dưỡng và hóa dưỡng",
@@ -109,20 +109,20 @@ export const quizData: Quiz[] = [
       "Theo nguồn năng lượng: ánh sáng → QUANG dưỡng; hóa học → HÓA dưỡng. (Theo nguồn carbon mới chia tự dưỡng – dị dưỡng.)",
   },
   {
-    q: "Câu 11. Vi sinh vật sử dụng nguồn năng lượng là ánh sáng và nguồn carbon là CO₂ thì có kiểu dinh dưỡng là?",
+    q: "Vi sinh vật sử dụng nguồn năng lượng là ánh sáng và nguồn carbon là CO₂ thì có kiểu dinh dưỡng là?",
     options: ["Quang dị dưỡng", "Hóa dị dưỡng", "Quang tự dưỡng", "Hóa tự dưỡng"],
     answer: 2,
     explain: "Năng lượng = ánh sáng → QUANG; carbon = CO₂ → TỰ DƯỠNG → quang tự dưỡng (ví dụ: vi khuẩn lam, tảo).",
   },
   {
-    q: "Câu 12. Tảo, vi khuẩn lam có kiểu dinh dưỡng là?",
+    q: "Tảo, vi khuẩn lam có kiểu dinh dưỡng là?",
     options: ["Quang dị dưỡng", "Hóa dị dưỡng", "Quang tự dưỡng", "Hóa tự dưỡng"],
     answer: 2,
     explain:
       "Tảo và vi khuẩn lam quang hợp được: dùng năng lượng ánh sáng và CO₂ làm nguồn carbon → QUANG TỰ DƯỠNG.",
   },
   {
-    q: "Câu 13. Sinh trưởng của vi sinh vật là?",
+    q: "Sinh trưởng của vi sinh vật là?",
     options: [
       "Sự tăng lên về số lượng tế bào của QUẦN THỂ vi sinh vật thông qua sinh sản",
       "Sự tăng lên về số lượng tế bào của QUẦN THỂ vi sinh vật thông qua nguyên phân",
@@ -134,13 +134,13 @@ export const quizData: Quiz[] = [
       "Sinh trưởng VSV được nghiên cứu ở mức QUẦN THỂ (không nghiên cứu cá thể vì kích thước quá nhỏ) – là sự tăng số lượng tế bào quần thể qua quá trình sinh sản.",
   },
   {
-    q: "Câu 14. Sự sinh trưởng của quần thể vi khuẩn được nuôi trong môi trường KHÔNG được bổ sung dinh dưỡng và không rút sản phẩm/chất thải, diễn ra theo bao nhiêu pha?",
+    q: "Sự sinh trưởng của quần thể vi khuẩn được nuôi trong môi trường KHÔNG được bổ sung dinh dưỡng và không rút sản phẩm/chất thải, diễn ra theo bao nhiêu pha?",
     options: ["4 pha", "2 pha", "3 pha", "1 pha"],
     answer: 0,
     explain: "Đó là nuôi cấy KHÔNG LIÊN TỤC (theo mẻ) → có 4 pha: tiềm phát → lũy thừa → cân bằng → suy vong.",
   },
   {
-    q: "Câu 15. Trình tự các pha sinh trưởng của quần thể vi khuẩn trong môi trường nuôi cấy không liên tục là?",
+    q: "Trình tự các pha sinh trưởng của quần thể vi khuẩn trong môi trường nuôi cấy không liên tục là?",
     options: [
       "Pha tiềm phát → pha lũy thừa → pha cân bằng → pha suy vong",
       "Pha tiềm phát → pha cân bằng → pha lũy thừa → pha suy vong",
@@ -152,7 +152,7 @@ export const quizData: Quiz[] = [
       "Thứ tự đúng: Tiềm phát (thích nghi) → Lũy thừa (phân chia mạnh) → Cân bằng (sinh = chết) → Suy vong (chết > sinh).",
   },
   {
-    q: "Câu 16. Pha tiềm phát KHÔNG có đặc điểm nào sau đây?",
+    q: "Pha tiềm phát KHÔNG có đặc điểm nào sau đây?",
     options: [
       "Dinh dưỡng đầy đủ cho sự sinh trưởng của vi khuẩn",
       "Vi khuẩn thích ứng dần với môi trường và tổng hợp các enzyme trao đổi chất",
@@ -164,14 +164,14 @@ export const quizData: Quiz[] = [
       "Ở pha tiềm phát, dinh dưỡng còn dư thừa và VSV chưa hoạt động mạnh → chất độc CHƯA tích lũy nhiều. Việc chất độc tích lũy nhiều xảy ra ở pha cân bằng – suy vong.",
   },
   {
-    q: "Câu 17. Trong nuôi cấy không liên tục, để thu được lượng sinh khối vi khuẩn TỐI ĐA nên thu hoạch vào thời điểm nào?",
+    q: "Trong nuôi cấy không liên tục, để thu được lượng sinh khối vi khuẩn TỐI ĐA nên thu hoạch vào thời điểm nào?",
     options: ["Đầu pha lũy thừa", "Giữa pha lũy thừa", "Cuối pha cân bằng", "Đầu pha cân bằng"],
     answer: 3,
     explain:
       "Sinh khối đạt cực đại ở ĐẦU pha cân bằng (khi quần thể vừa kết thúc tăng theo cấp số nhân và chưa bị chết nhiều) → đây là thời điểm thu hoạch tối ưu.",
   },
   {
-    q: "Câu 18. Để khắc phục hiện tượng mật độ tế bào vi khuẩn KHÔNG tăng ở pha cân bằng, có thể thực hiện biện pháp nào?",
+    q: "Để khắc phục hiện tượng mật độ tế bào vi khuẩn KHÔNG tăng ở pha cân bằng, có thể thực hiện biện pháp nào?",
     options: [
       "Bổ sung thêm một lượng vi sinh vật giống thích hợp",
       "Bổ sung thêm nguồn chất dinh dưỡng vào môi trường",
@@ -183,7 +183,7 @@ export const quizData: Quiz[] = [
       "Pha cân bằng xảy ra do dinh dưỡng bắt đầu cạn kiệt → bổ sung thêm chất dinh dưỡng sẽ giúp quần thể tiếp tục sinh trưởng (chuyển sang nuôi cấy liên tục).",
   },
   {
-    q: "Câu 19. Sự sinh trưởng của quần thể vi sinh vật được đánh giá thông qua?",
+    q: "Sự sinh trưởng của quần thể vi sinh vật được đánh giá thông qua?",
     options: [
       "Sự tăng lên về số lượng tế bào của quần thể",
       "Sự tăng lên về kích thước của từng tế bào trong quần thể",
@@ -195,7 +195,7 @@ export const quizData: Quiz[] = [
       "Vì kích thước cá thể VSV quá nhỏ → đánh giá sinh trưởng quần thể VSV bằng sự thay đổi SỐ LƯỢNG tế bào của quần thể.",
   },
   {
-    q: "Câu 20. Định nghĩa đúng nhất về thời gian thế hệ ở vi khuẩn là?",
+    q: "Định nghĩa đúng nhất về thời gian thế hệ ở vi khuẩn là?",
     options: [
       "Khoảng thời gian cần thiết để tế bào vi khuẩn bắt đầu phân chia",
       "Khoảng thời gian cần thiết để tế bào trong quần thể tăng GẤP ĐÔI",
@@ -209,7 +209,7 @@ export const quizData: Quiz[] = [
 
   // ========== Câu 21-23: Bối cảnh E.coli + glucose ==========
   {
-    q: "Câu 21. (Bối cảnh: E. coli được nuôi cấy theo mẻ với glucose. Khi đến pha cân bằng và glucose < 2 g/L, người ta bổ sung glucose để duy trì 5 g/L thêm 3 giờ.) Sau khi BỔ SUNG dinh dưỡng, sinh trưởng quần thể E. coli chuyển sang pha nào?",
+    q: "(Bối cảnh: E. coli được nuôi cấy theo mẻ với glucose. Khi đến pha cân bằng và glucose < 2 g/L, người ta bổ sung glucose để duy trì 5 g/L thêm 3 giờ.) Sau khi BỔ SUNG dinh dưỡng, sinh trưởng quần thể E. coli chuyển sang pha nào?",
     options: ["Pha tiềm phát", "Pha lũy thừa", "Pha cân bằng", "Pha suy vong"],
     answer: 1,
     explain:
@@ -218,7 +218,7 @@ export const quizData: Quiz[] = [
     scenarioTitle: "Bối cảnh E. coli + glucose",
   },
   {
-    q: "Câu 22. (Tiếp Câu 21) Sau 3 giờ bổ sung glucose, sinh trưởng quần thể E. coli sẽ chuyển sang pha nào?",
+    q: "(Tiếp Câu 21) Sau 3 giờ bổ sung glucose, sinh trưởng quần thể E. coli sẽ chuyển sang pha nào?",
     options: [
       "Pha cân bằng",
       "Pha lũy thừa và cân bằng",
@@ -232,7 +232,7 @@ export const quizData: Quiz[] = [
     scenarioTitle: "Bối cảnh E. coli + glucose",
   },
   {
-    q: "Câu 23. Chất ức chế sinh trưởng đối với quần thể E. coli tích lũy NHIỀU NHẤT khi nào?",
+    q: "Chất ức chế sinh trưởng đối với quần thể E. coli tích lũy NHIỀU NHẤT khi nào?",
     options: [
       "Trước khi bổ sung glucose",
       "Trong 3h bổ sung glucose",
@@ -245,7 +245,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 24. Khi nói về pha cân bằng trong nuôi cấy không liên tục, có bao nhiêu phát biểu sau ĐÚNG?\nI. Dinh dưỡng bắt đầu thiếu hụt cho sinh trưởng của quần thể.\nII. Một số tế bào bị chết và một số khác tiếp tục phân chia.\nIII. Không có tế bào phân chia cũng như không có tế bào chết đi.\nIV. Số lượng tế bào sinh ra nhỏ hơn số lượng tế bào chết đi.",
+    q: "Khi nói về pha cân bằng trong nuôi cấy không liên tục, có bao nhiêu phát biểu sau ĐÚNG?\nI. Dinh dưỡng bắt đầu thiếu hụt cho sinh trưởng của quần thể.\nII. Một số tế bào bị chết và một số khác tiếp tục phân chia.\nIII. Không có tế bào phân chia cũng như không có tế bào chết đi.\nIV. Số lượng tế bào sinh ra nhỏ hơn số lượng tế bào chết đi.",
     options: ["1", "2", "3", "4"],
     answer: 1,
     explain:
@@ -253,7 +253,7 @@ export const quizData: Quiz[] = [
     difficulty: "hard",
   },
   {
-    q: "Câu 25. Trong công nghệ sinh học, người ta sử dụng phương pháp nuôi cấy LIÊN TỤC nhằm mục đích nào?",
+    q: "Trong công nghệ sinh học, người ta sử dụng phương pháp nuôi cấy LIÊN TỤC nhằm mục đích nào?",
     options: [
       "Làm tăng tốc độ sinh trưởng của vi sinh vật",
       "Khảo sát đường cong sinh trưởng của vi sinh vật",
@@ -266,7 +266,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 26. Một chủng vi khuẩn lactic Lactobacillus có thể dùng cả glucose và sorbitol. Khi nuôi trong môi trường chứa CẢ HAI nguồn carbon này, đường cong sinh trưởng có các pha theo trình tự nào? (Hiện tượng diauxie – ưu tiên dùng glucose trước)",
+    q: "Một chủng vi khuẩn lactic Lactobacillus có thể dùng cả glucose và sorbitol. Khi nuôi trong môi trường chứa CẢ HAI nguồn carbon này, đường cong sinh trưởng có các pha theo trình tự nào? (Hiện tượng diauxie – ưu tiên dùng glucose trước)",
     options: [
       "Pha tiềm phát (glucose) → Pha lũy thừa (glucose) → Pha cân bằng (sorbitol) → Pha suy vong",
       "Pha tiềm phát (glucose) → Pha lũy thừa (glucose) → Pha tiềm phát (sorbitol) → Pha lũy thừa (sorbitol) → Pha cân bằng → Pha suy vong",
@@ -279,14 +279,14 @@ export const quizData: Quiz[] = [
     difficulty: "hard",
   },
   {
-    q: "Câu 27. Hầu hết các kháng sinh đã biết được sản xuất bởi loại vi sinh vật nào?",
+    q: "Hầu hết các kháng sinh đã biết được sản xuất bởi loại vi sinh vật nào?",
     options: ["Nấm", "Vi khuẩn Gram dương", "Xạ khuẩn", "Vi khuẩn Gram âm"],
     answer: 2,
     explain:
       "Hơn 70% kháng sinh đã biết được sản xuất bởi XẠ KHUẨN (đặc biệt chi Streptomyces) – như streptomycin, tetracycline, erythromycin, vancomycin…",
   },
   {
-    q: "Câu 28. Vì sao một số chất hoá học như phenol, kim loại nặng, alcohol thường được dùng làm chất diệt khuẩn?",
+    q: "Vì sao một số chất hoá học như phenol, kim loại nặng, alcohol thường được dùng làm chất diệt khuẩn?",
     options: [
       "Vì các chất này có thể gây biến tính và làm bất hoạt protein, phá hủy cấu trúc màng sinh chất",
       "Vì các chất này có thể tiêu diệt hoặc ức chế đặc hiệu sự sinh trưởng của một hoặc một vài nhóm vi sinh vật",
@@ -298,7 +298,7 @@ export const quizData: Quiz[] = [
       "Chất diệt khuẩn hoạt động không chọn lọc – gây biến tính protein (phenol, alcohol) hoặc liên kết với nhóm -SH của enzyme (kim loại nặng) và phá hủy màng sinh chất.",
   },
   {
-    q: "Câu 29. Chất kháng sinh KHÁC chất diệt khuẩn ở đặc điểm là?",
+    q: "Chất kháng sinh KHÁC chất diệt khuẩn ở đặc điểm là?",
     options: [
       "Có khả năng tiêu diệt hoặc ức chế vi sinh vật một cách CHỌN LỌC",
       "Không làm tổn thương đến da và mô sống của cơ thể người",
@@ -310,14 +310,14 @@ export const quizData: Quiz[] = [
       "Đặc điểm cốt lõi của kháng sinh là tính CHỌN LỌC – chỉ tiêu diệt/ức chế một số nhóm VSV nhất định, ít gây hại cho tế bào người. Chất diệt khuẩn thì không chọn lọc.",
   },
   {
-    q: "Câu 30. Cho 4 phát biểu về thuốc kháng sinh:\n(1) Thuốc kháng sinh là chế phẩm có khả năng tiêu diệt hoặc ức chế đặc hiệu sự sinh trưởng của một hoặc một vài nhóm vi sinh vật.\n(2) Thuốc kháng sinh được dùng để điều trị các bệnh nhiễm trùng ở người, động vật và thực vật.\n(3) Việc lạm dụng thuốc kháng sinh gây hiện tượng nhờn thuốc (kháng kháng sinh) nhanh chóng ở nhiều VSV gây bệnh.\n(4) Dung dịch cồn-iodine có khả năng ức chế và tiêu diệt VSV nhưng KHÔNG được coi là chất kháng sinh.\nSố phát biểu ĐÚNG là?",
+    q: "Cho 4 phát biểu về thuốc kháng sinh:\n(1) Thuốc kháng sinh là chế phẩm có khả năng tiêu diệt hoặc ức chế đặc hiệu sự sinh trưởng của một hoặc một vài nhóm vi sinh vật.\n(2) Thuốc kháng sinh được dùng để điều trị các bệnh nhiễm trùng ở người, động vật và thực vật.\n(3) Việc lạm dụng thuốc kháng sinh gây hiện tượng nhờn thuốc (kháng kháng sinh) nhanh chóng ở nhiều VSV gây bệnh.\n(4) Dung dịch cồn-iodine có khả năng ức chế và tiêu diệt VSV nhưng KHÔNG được coi là chất kháng sinh.\nSố phát biểu ĐÚNG là?",
     options: ["1", "2", "3", "4"],
     answer: 3,
     explain:
       "Cả 4 phát biểu đều ĐÚNG. Cồn-iodine là chất sát khuẩn/diệt khuẩn (tác dụng không chọn lọc, dùng ngoài da), không phải kháng sinh.",
   },
   {
-    q: "Câu 31. Có thể giữ thức ăn tương đối lâu trong tủ lạnh vì?",
+    q: "Có thể giữ thức ăn tương đối lâu trong tủ lạnh vì?",
     options: [
       "Nhiệt độ thấp KÌM HÃM sự sinh trưởng của vi sinh vật gây hư hỏng thức ăn",
       "Nhiệt độ thấp tiêu diệt hết tất cả vi sinh vật gây hư hỏng thức ăn",
@@ -329,14 +329,14 @@ export const quizData: Quiz[] = [
       "Nhiệt độ thấp chỉ KÌM HÃM (làm chậm) các phản ứng trao đổi chất, ức chế sự sinh trưởng của VSV gây hư hỏng – KHÔNG tiêu diệt hết VSV. Khi đưa thức ăn ra ngoài lâu, VSV sẽ phát triển trở lại.",
   },
   {
-    q: "Câu 32. Cho 4 đặc điểm:\n(1) VSV có vai trò quan trọng trong phân giải hữu cơ, chuyển hoá vô cơ → tạo nhiều sản phẩm hữu ích.\n(2) Nhiều VSV sinh trưởng nhanh hoặc sống được trong môi trường cực khắc nghiệt.\n(3) VSV có khả năng phân hủy gây hư hỏng lương thực, đồ gỗ, nhà cửa.\n(4) Nhiều VSV sinh độc tố lây nhiễm vào nguyên liệu sản xuất, gây thiệt hại lớn.\nSố đặc điểm là CƠ SỞ KHOA HỌC của việc ỨNG DỤNG vi sinh vật trong thực tiễn là?",
+    q: "Cho 4 đặc điểm:\n(1) VSV có vai trò quan trọng trong phân giải hữu cơ, chuyển hoá vô cơ → tạo nhiều sản phẩm hữu ích.\n(2) Nhiều VSV sinh trưởng nhanh hoặc sống được trong môi trường cực khắc nghiệt.\n(3) VSV có khả năng phân hủy gây hư hỏng lương thực, đồ gỗ, nhà cửa.\n(4) Nhiều VSV sinh độc tố lây nhiễm vào nguyên liệu sản xuất, gây thiệt hại lớn.\nSố đặc điểm là CƠ SỞ KHOA HỌC của việc ỨNG DỤNG vi sinh vật trong thực tiễn là?",
     options: ["1", "2", "3", "4"],
     answer: 1,
     explain:
       "Đúng (1) và (2) – đây là các đặc điểm có lợi → cơ sở để ứng dụng VSV. (3) và (4) là tác hại của VSV → cơ sở để phòng chống chứ không phải để ứng dụng.",
   },
   {
-    q: "Câu 33. Cơ sở khoa học của việc ứng dụng vi sinh vật trong sản xuất THUỐC điều trị bệnh cho con người là?",
+    q: "Cơ sở khoa học của việc ứng dụng vi sinh vật trong sản xuất THUỐC điều trị bệnh cho con người là?",
     options: [
       "Nhiều VSV có khả năng tổng hợp nhiều chất có hoạt tính sinh học như kháng sinh, enzyme,…",
       "Nhiều VSV chỉ có khả năng sinh trưởng trong những giới hạn nhất định của các yếu tố môi trường",
@@ -348,7 +348,7 @@ export const quizData: Quiz[] = [
       "Cơ sở để sản xuất thuốc là khả năng tổng hợp các chất có hoạt tính sinh học (kháng sinh, enzyme, vitamin, hormone…) của VSV.",
   },
   {
-    q: "Câu 34. Để sản xuất chất kháng sinh, người ta thường sử dụng chủ yếu những nhóm vi sinh vật nào sau đây?\n(1) Xạ khuẩn (chi Streptomyces); (2) Vi khuẩn (chi Bacillus); (3) Động vật nguyên sinh; (4) Nấm (chi Penicillium).",
+    q: "Để sản xuất chất kháng sinh, người ta thường sử dụng chủ yếu những nhóm vi sinh vật nào sau đây?\n(1) Xạ khuẩn (chi Streptomyces); (2) Vi khuẩn (chi Bacillus); (3) Động vật nguyên sinh; (4) Nấm (chi Penicillium).",
     options: ["(1), (2), (3)", "(1), (2), (4)", "(2), (3)", "(1), (4)"],
     answer: 1,
     explain:
@@ -356,7 +356,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 35. Nhóm vi sinh vật được sử dụng để sản xuất kháng sinh tự nhiên CHỦ YẾU là?",
+    q: "Nhóm vi sinh vật được sử dụng để sản xuất kháng sinh tự nhiên CHỦ YẾU là?",
     options: [
       "Xạ khuẩn và vi khuẩn",
       "Xạ khuẩn và vi tảo",
@@ -369,7 +369,7 @@ export const quizData: Quiz[] = [
     difficulty: "easy",
   },
   {
-    q: "Câu 36. (Nối cột) Phát biểu nào sau đây đúng về thành phần cấu tạo virus?",
+    q: "(Nối cột) Phát biểu nào sau đây đúng về thành phần cấu tạo virus?",
     options: [
       "Gai glycoprotein là phức hợp gồm acid nucleic và capsid",
       "Màng bọc là lớp phospholipid kép bao bọc bên ngoài vỏ capsid, không có ở virus trần",
@@ -382,7 +382,7 @@ export const quizData: Quiz[] = [
     difficulty: "hard",
   },
   {
-    q: "Câu 37. Vì sao một số virus có vỏ ngoài có thể xâm nhập vào tế bào chủ bằng cách DUNG HỢP MÀNG?",
+    q: "Vì sao một số virus có vỏ ngoài có thể xâm nhập vào tế bào chủ bằng cách DUNG HỢP MÀNG?",
     options: [
       "Vì vỏ ngoài virus có cấu tạo là lớp kép phospholipid",
       "Vì vỏ ngoài của virus và màng tế bào có cấu tạo hoàn toàn giống nhau",
@@ -395,7 +395,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 38. Virus TRẦN xâm nhập vào tế bào chủ bằng cách nào?",
+    q: "Virus TRẦN xâm nhập vào tế bào chủ bằng cách nào?",
     options: [
       "Xâm nhập vào tế bào chủ nhờ cơ chế thực bào",
       "Tiết enzyme lyzozyme làm tan màng tế bào vật chủ để chui vào trong",
@@ -408,7 +408,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 39. Virus là?",
+    q: "Virus là?",
     options: [
       "Dạng sống KHÔNG có cấu tạo tế bào, kích thước rất nhỏ, sống KÍ SINH BẮT BUỘC trong tế bào của sinh vật",
       "Dạng sống ĐƠN BÀO, kích thước rất nhỏ, sống kí sinh bắt buộc trong tế bào của sinh vật",
@@ -421,7 +421,7 @@ export const quizData: Quiz[] = [
     difficulty: "easy",
   },
   {
-    q: "Câu 40. Vì sao virus phải sống kí sinh nội bào BẮT BUỘC?",
+    q: "Vì sao virus phải sống kí sinh nội bào BẮT BUỘC?",
     options: [
       "Vì virus không có cấu tạo tế bào nên phải kí sinh nội bào để sử dụng vật chất có sẵn trong tế bào chủ khi nhân lên",
       "Vì virus có kích thước rất nhỏ nên phải kí sinh nội bào để được bảo vệ trước tác động của ngoại cảnh",
@@ -434,7 +434,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 41. Thành phần CẤU TẠO CHÍNH của virus là?",
+    q: "Thành phần CẤU TẠO CHÍNH của virus là?",
     options: [
       "Màng bọc và vỏ capsid",
       "Vỏ capsid và gai glycoprotein",
@@ -447,7 +447,7 @@ export const quizData: Quiz[] = [
     difficulty: "easy",
   },
   {
-    q: "Câu 42. Dựa vào đặc điểm có hay không có màng phospholipid kép, virus được chia làm 2 loại là?",
+    q: "Dựa vào đặc điểm có hay không có màng phospholipid kép, virus được chia làm 2 loại là?",
     options: [
       "Virus trần và virus có màng bọc",
       "Virus DNA và virus RNA",
@@ -460,7 +460,7 @@ export const quizData: Quiz[] = [
     difficulty: "easy",
   },
   {
-    q: "Câu 43. Virus TRẦN khác virus có màng bọc ở điểm là?",
+    q: "Virus TRẦN khác virus có màng bọc ở điểm là?",
     options: [
       "Có màng phospholipid kép bao bọc bên ngoài vỏ capsid",
       "Chỉ có vật chất di truyền là DNA mạch thẳng, dạng kép",
@@ -473,7 +473,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 44. Chu trình nhân lên của virus gồm?",
+    q: "Chu trình nhân lên của virus gồm?",
     options: ["2 giai đoạn", "3 giai đoạn", "4 giai đoạn", "5 giai đoạn"],
     answer: 3,
     explain:
@@ -481,7 +481,7 @@ export const quizData: Quiz[] = [
     difficulty: "easy",
   },
   {
-    q: "Câu 45. Virus cố định trên bề mặt tế bào chủ nhờ mối liên kết đặc hiệu giữa thụ thể của virus và thụ thể của tế bào chủ là giai đoạn nào?",
+    q: "Virus cố định trên bề mặt tế bào chủ nhờ mối liên kết đặc hiệu giữa thụ thể của virus và thụ thể của tế bào chủ là giai đoạn nào?",
     options: ["Hấp phụ", "Xâm nhập", "Sinh tổng hợp", "Lắp ráp"],
     answer: 0,
     explain:
@@ -489,7 +489,7 @@ export const quizData: Quiz[] = [
     difficulty: "easy",
   },
   {
-    q: "Câu 46. Phát biểu nào sau đây ĐÚNG về sự khác nhau trong giai đoạn xâm nhập của virus trần và virus có màng bọc?",
+    q: "Phát biểu nào sau đây ĐÚNG về sự khác nhau trong giai đoạn xâm nhập của virus trần và virus có màng bọc?",
     options: [
       "Virus trần đưa TRỰC TIẾP vật chất di truyền vào trong tế bào chủ. Còn virus có màng bọc thì đưa cấu trúc nucleocapsid hoặc cả virus vào trong tế bào chủ rồi mới phá bỏ các cấu trúc bao quanh (cởi áo) để giải phóng vật chất di truyền.",
       "Virus trần đưa cấu trúc nucleocapsid hoặc cả virus vào trong tế bào chủ rồi mới cởi áo. Còn virus có màng bọc thì đưa trực tiếp vật chất di truyền vào tế bào chủ.",
@@ -502,7 +502,7 @@ export const quizData: Quiz[] = [
     difficulty: "hard",
   },
   {
-    q: "Câu 47. Điều nào sau đây là KHÔNG đúng khi nói về sự phóng thích của virus có MÀNG BỌC ra khỏi tế bào vật chủ?",
+    q: "Điều nào sau đây là KHÔNG đúng khi nói về sự phóng thích của virus có MÀNG BỌC ra khỏi tế bào vật chủ?",
     options: [
       "Tổng hợp các đoạn màng có gắn glycoprotein và hợp với màng sinh chất",
       "Tổ hợp vỏ capsid và hệ gene đi ra ngoài theo kiểu xuất bào",
@@ -515,7 +515,7 @@ export const quizData: Quiz[] = [
     difficulty: "hard",
   },
   {
-    q: "Câu 48. Virus có thể phá hủy tế bào vật chủ để giải phóng đồng thời các hạt virus, hoặc chui từ từ ra ngoài và làm tế bào chủ chết dần là đặc điểm của giai đoạn?",
+    q: "Virus có thể phá hủy tế bào vật chủ để giải phóng đồng thời các hạt virus, hoặc chui từ từ ra ngoài và làm tế bào chủ chết dần là đặc điểm của giai đoạn?",
     options: ["Giải phóng (phóng thích)", "Hấp phụ", "Lắp ráp", "Sinh tổng hợp"],
     answer: 0,
     explain:
@@ -523,7 +523,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 49. Vì sao sự nhân lên của virus KHÔNG được gọi là quá trình sinh sản?",
+    q: "Vì sao sự nhân lên của virus KHÔNG được gọi là quá trình sinh sản?",
     options: [
       "Vì từ một virus ban đầu có thể tạo ra vô số virus mới",
       "Vì từ một virus ban đầu chỉ có thể tạo ra hai virus mới",
@@ -536,7 +536,7 @@ export const quizData: Quiz[] = [
     difficulty: "medium",
   },
   {
-    q: "Câu 50. Vì sao mỗi loại virus chỉ xâm nhập vào một số tế bào vật chủ NHẤT ĐỊNH?",
+    q: "Vì sao mỗi loại virus chỉ xâm nhập vào một số tế bào vật chủ NHẤT ĐỊNH?",
     options: [
       "Vì bề mặt của tế bào vật chủ được bảo vệ bởi một lớp protein chống lại sự xâm nhập của virus",
       "Vì bề mặt của virus có lớp vỏ ngoài hoặc vỏ capsid trợ với các thụ thể của tế bào vật chủ",
@@ -551,38 +551,38 @@ export const quizData: Quiz[] = [
 
   // ========== Bonus: 6 câu Nguyên phân – Giảm phân ==========
   {
-    q: "Câu 51 (Nguyên phân). Một tế bào có 2n = 24 nguyên phân liên tiếp 3 lần. Số NST đơn tương đương mà môi trường cần cung cấp là?",
+    q: "(Nguyên phân). Một tế bào có 2n = 24 nguyên phân liên tiếp 3 lần. Số NST đơn tương đương mà môi trường cần cung cấp là?",
     options: ["144", "168", "192", "96"],
     answer: 1,
     explain: "Công thức: (2ᵏ − 1) × 2n = (2³ − 1) × 24 = 7 × 24 = 168 NST đơn.",
   },
   {
-    q: "Câu 52 (Nguyên phân). Số NST trong một tế bào ở KÌ CUỐI nguyên phân ở người (2n = 46) là?",
+    q: "(Nguyên phân). Số NST trong một tế bào ở KÌ CUỐI nguyên phân ở người (2n = 46) là?",
     options: ["46 NST đơn", "92 NST đơn", "23 NST kép", "46 NST kép"],
     answer: 0,
     explain:
       "Kì cuối nguyên phân: tế bào đã phân chia → mỗi tế bào con có 2n = 46 NST ĐƠN (bằng tế bào mẹ ban đầu).",
   },
   {
-    q: "Câu 53 (Giảm phân). Ở người, tế bào sinh tinh có 2n = 46 NST. Số NST trong giao tử tạo ra sau giảm phân là?",
+    q: "(Giảm phân). Ở người, tế bào sinh tinh có 2n = 46 NST. Số NST trong giao tử tạo ra sau giảm phân là?",
     options: ["46 NST đơn", "23 NST kép", "23 NST đơn", "92 NST đơn"],
     answer: 2,
     explain: "Sau giảm phân: tạo 4 giao tử đơn bội, mỗi giao tử có n = 23 NST ĐƠN.",
   },
   {
-    q: "Câu 54 (Giảm phân). Một loài có 2n = 16. Sau GIẢM PHÂN II, số NST trong mỗi tế bào con là?",
+    q: "(Giảm phân). Một loài có 2n = 16. Sau GIẢM PHÂN II, số NST trong mỗi tế bào con là?",
     options: ["8 NST đơn", "16 NST đơn", "8 NST kép", "4 NST đơn"],
     answer: 0,
     explain: "Sau GP II: 4 tế bào con đơn bội, mỗi tế bào có n = 8 NST ĐƠN.",
   },
   {
-    q: "Câu 55 (Nguyên phân). Từ 1 tế bào lưỡng bội (2n) trải qua 5 lần nguyên phân liên tiếp sẽ tạo ra bao nhiêu tế bào con?",
+    q: "(Nguyên phân). Từ 1 tế bào lưỡng bội (2n) trải qua 5 lần nguyên phân liên tiếp sẽ tạo ra bao nhiêu tế bào con?",
     options: ["10", "16", "32", "64"],
     answer: 2,
     explain: "Số tế bào con = 2ᵏ = 2⁵ = 32 tế bào.",
   },
   {
-    q: "Câu 56 (Nguyên phân). Trong nguyên phân, tế bào có 2n = 8. Số NST ở KÌ GIỮA là bao nhiêu?",
+    q: "(Nguyên phân). Trong nguyên phân, tế bào có 2n = 8. Số NST ở KÌ GIỮA là bao nhiêu?",
     options: ["8 NST đơn", "8 NST kép", "16 NST đơn", "4 NST kép"],
     answer: 1,
     explain:

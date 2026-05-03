@@ -148,11 +148,6 @@ function formatElapsed(secs: number): string {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-function stripQuestionNumber(text: string): string {
-  // Remove "Câu N. " or "Câu N: " from the beginning of question text
-  return text.replace(/^Câu\s+\d+[\.:]\s*/, '');
-}
-
 // ---------------------------------------------------------------------------
 // Sub-components
 // ---------------------------------------------------------------------------
@@ -876,7 +871,7 @@ export function QuizMode({
           )}
           <p className="m-0 whitespace-pre-line text-base leading-relaxed text-text">
             <strong className="text-gold">Câu {currentQ + 1}:</strong>{" "}
-            {stripQuestionNumber(question.q)}
+            {question.q}
           </p>
         </div>
 
