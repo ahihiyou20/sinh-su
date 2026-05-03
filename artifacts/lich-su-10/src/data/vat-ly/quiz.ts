@@ -262,6 +262,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "H = A_có_ích / A_toàn_phần (× 100%). Hiệu suất luôn nhỏ hơn 1 (hay 100%) vì luôn có hao phí.",
     tag: "Năng lượng",
+    difficulty: "easy",
   },
   {
     q: "Một vật được ném lên thẳng đứng. Tại điểm cao nhất, nhận xét nào ĐÚNG?",
@@ -275,6 +276,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Tại điểm cao nhất, vật dừng lại (v = 0) nên Wđ = 0, thế năng đạt cực đại. Cơ năng vẫn bảo toàn.",
     tag: "Năng lượng",
+    difficulty: "easy",
   },
   {
     q: "Vật trượt xuống mặt phẳng nghiêng có ma sát. Cơ năng của vật:",
@@ -288,6 +290,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Khi có lực ma sát (lực không bảo toàn), cơ năng bị giảm. Phần giảm chuyển thành nhiệt năng.",
     tag: "Năng lượng",
+    difficulty: "medium",
   },
   {
     q: "Động năng của vật tăng khi:",
@@ -301,6 +304,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Theo định lý động năng: ΔWđ = A_hợp_lực. Khi A > 0, Wđ tăng; khi A < 0, Wđ giảm.",
     tag: "Năng lượng",
+    difficulty: "medium",
   },
 
   // ── CHUYỂN ĐỘNG TRÒN ĐỀU ────────────────────────────────────────────────
@@ -316,6 +320,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Chuyển động tròn đều: quỹ đạo tròn, tốc độ (độ lớn vận tốc) không đổi trên mọi cung. Tuy nhiên phương vận tốc luôn thay đổi.",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Trong chuyển động tròn đều, vectơ vận tốc có đặc điểm:",
@@ -329,6 +334,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Vận tốc có phương tiếp tuyến với đường tròn, nên hướng liên tục thay đổi. Độ lớn (tốc độ) không đổi.",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Trong chuyển động tròn đều, gia tốc hướng tâm:",
@@ -342,6 +348,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Gia tốc hướng tâm luôn hướng vào tâm, vuông góc với vectơ vận tốc, đặc trưng cho sự thay đổi phương của vận tốc.",
     tag: "Chuyển động tròn đều",
+    difficulty: "medium",
   },
   {
     q: "Chu kì T trong chuyển động tròn đều là:",
@@ -354,6 +361,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     answer: 1,
     explain: "Chu kì T là thời gian để vật quay hết một vòng (đơn vị: giây).",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Tần số f trong chuyển động tròn đều là:",
