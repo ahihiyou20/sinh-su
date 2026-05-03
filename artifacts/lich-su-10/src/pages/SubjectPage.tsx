@@ -79,13 +79,16 @@ export function SubjectPage({ subject }: SubjectPageProps) {
   //   - + "Câu tự thêm" if there are user custom questions
   const dynamicFilters = useMemo<readonly SubjectFilter[]>(() => {
     const result: SubjectFilter[] = [...subject.filters];
-    result.push(
+    // Insert difficulty filters after bookmark filter (at position 2)
+    result.splice(
+      2,
+      0,
       { label: "Dễ", kind: { type: "difficulty", level: "easy" } },
       { label: "Vừa", kind: { type: "difficulty", level: "medium" } },
       { label: "Khó", kind: { type: "difficulty", level: "hard" } },
     );
     if (wrongIds.length > 0) {
-      result.splice(2, 0, {
+      result.splice(5, 0, {
         label: `🔁 Câu sai (${wrongIds.length})`,
         kind: { type: "wrong" },
       });

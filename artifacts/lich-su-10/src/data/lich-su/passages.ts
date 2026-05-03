@@ -41,6 +41,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Âu Lạc TIẾP NỐI và phát triển từ Văn Lang chứ không độc lập hoàn toàn; cơ sở kinh tế – văn hóa Đông Sơn là chung của cả hai.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "easy",
   },
   {
     id: "ls-tf-vl1-b",
@@ -53,6 +54,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Phong Châu (Phú Thọ) của Văn Lang là vùng trung du; Cổ Loa (Đông Anh, Hà Nội) của Âu Lạc thuộc trung tâm đồng bằng Bắc Bộ.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "medium",
   },
   {
     id: "ls-tf-vl1-c",
@@ -65,6 +67,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Cả hai đều dựa trên văn hóa Đông Sơn là đúng, nhưng nhà nước Văn Lang ra đời từ nhu cầu nội tại (trị thủy, liên kết bộ lạc), không phải sau kháng chiến.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "hard",
   },
   {
     id: "ls-tf-vl1-d",
@@ -77,6 +80,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Cả nỏ Liên Châu lẫn thành Cổ Loa đều được tạo ra do 'yêu cầu bức thiết của cuộc chiến đấu chống ngoại xâm' theo đoạn tư liệu.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "easy",
   },
 
   // ── Văn Lang – Âu Lạc: Câu 2 ──────────────────────────────────────────────
@@ -88,6 +92,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Tư liệu ghi rõ xã hội Văn Lang 'chưa hình thành giai cấp đối kháng gay gắt' mà chỉ có sự phân hóa thành các giai tầng xã hội.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "medium",
   },
   {
     id: "ls-tf-vl2-b",
@@ -97,6 +102,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Tư liệu chỉ khẳng định Văn Lang 'vào loại sớm nhất ở vùng Đông Nam Á', không nói đến phạm vi toàn thế giới.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "hard",
   },
   {
     id: "ls-tf-vl2-c",
@@ -106,6 +112,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Tầng lớp thống trị là quý tộc; dân tự do (thành viên công xã) là tầng lớp bị trị. Ngoài ra còn có tầng lớp nô tì.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "easy",
   },
   {
     id: "ls-tf-vl2-d",
@@ -115,6 +122,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Tư liệu nêu rõ 'yêu cầu phát triển nông nghiệp lúa nước gắn liền với yêu cầu thủy lợi và cả yêu cầu tự vệ' là những nguyên nhân thúc đẩy nhà nước ra đời.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "medium",
   },
 
   // ── Văn Lang – Âu Lạc: Câu 3 ──────────────────────────────────────────────
@@ -126,6 +134,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Tư liệu ghi rõ Văn Lang tồn tại 'vào khoảng thế kỉ thứ VII đến thế kỉ thứ III TCN', tức ra đời từ thế kỉ VII TCN, không phải thế kỉ III TCN.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "hard",
   },
   {
     id: "ls-tf-vl3-b",
@@ -135,6 +144,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Tư liệu mô tả đây là 'thời đại đồng thau phát triển đến đỉnh cao và bước sang thời đại sắt sớm'.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "easy",
   },
   {
     id: "ls-tf-vl3-c",
@@ -144,6 +154,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Theo tư liệu, Văn Lang tồn tại khoảng thế kỉ VII – III TCN (≈ 4 thế kỉ) và 'có thể coi nhà nước Văn Lang là nhà nước đầu tiên trong lịch sử của dân tộc Việt Nam'.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "medium",
   },
   {
     id: "ls-tf-vl3-d",
@@ -153,6 +164,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Tư liệu viết đây là 'một bước chuyển cách mạng từ thời đại hoang sơ nguyên thủy sang thời đại văn minh hơn'.",
     tag: "Văn Lang – Âu Lạc",
+    difficulty: "hard",
   },
 
   // ── Chăm Pa: Câu 1 ─────────────────────────────────────────────────────────
@@ -164,6 +176,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Tư liệu chủ yếu mô tả ảnh hưởng trong lĩnh vực kiến trúc, điêu khắc và thần thoại Hin-đu giáo; không cung cấp thông tin chi tiết về chính trị.",
     tag: "Chăm Pa",
+    difficulty: "easy",
   },
   {
     id: "ls-tf-cp1-b",
@@ -173,6 +186,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Ví dụ Thừa Thiên Huế chỉ là một trường hợp tiêu biểu; toàn bộ nghệ thuật Chăm – pa ở miền Trung đều nằm trong 'truyền thống chung' chịu ảnh hưởng Ấn Độ.",
     tag: "Chăm Pa",
+    difficulty: "medium",
   },
   {
     id: "ls-tf-cp1-c",
@@ -182,6 +196,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Tư liệu khẳng định đề tài điêu khắc 'phản ánh một cách đậm nét nội dung tư tưởng trong thần thoại Ấn Độ' — các thần của Hin-đu giáo và thú thần huyền thoại.",
     tag: "Chăm Pa",
+    difficulty: "hard",
   },
   {
     id: "ls-tf-cp1-d",
@@ -191,6 +206,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Si-va, Bra-ma, Vít-xnu đều là thần trong Hin-đu giáo; tư liệu không đề cập đến đạo Phật.",
     tag: "Chăm Pa",
+    difficulty: "easy",
   },
 
   // ── Chăm Pa: Câu 2 ─────────────────────────────────────────────────────────
@@ -202,6 +218,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Tư liệu chủ yếu đề cập đến tổ chức bộ máy nhà nước (vua, quan lại, hình phạt), không đề cập trực tiếp đến cơ cấu xã hội (giai tầng, dân chúng).",
     tag: "Chăm Pa",
+    difficulty: "medium",
   },
   {
     id: "ls-tf-cp2-b",
@@ -211,6 +228,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Việc sử dụng vương hiệu theo tiếng Ấn (Varman) và chức danh theo tiếng Phạn (Senapati, Tapatica) cho thấy nhà nước Chăm Pa tiếp thu mô hình nhà nước Ấn Độ.",
     tag: "Chăm Pa",
+    difficulty: "hard",
   },
   {
     id: "ls-tf-cp2-c",
@@ -220,6 +238,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Tư liệu liệt kê rõ: tôn quan (Đại thần), thuộc quan và ngoại quan là ba cấp trong hệ thống quan lại Chăm Pa.",
     tag: "Chăm Pa",
+    difficulty: "easy",
   },
   {
     id: "ls-tf-cp2-d",
@@ -229,6 +248,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Chăm Pa là quân chủ chuyên chế nhưng tư liệu ghi rõ 'Chăm pa chưa có luật thành văn', do đó không thể là nhà nước pháp trị.",
     tag: "Chăm Pa",
+    difficulty: "medium",
   },
 
   // ── Phù Nam: Câu 3 ─────────────────────────────────────────────────────────
@@ -240,6 +260,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Tư liệu chủ yếu mô tả đời sống VẬT CHẤT (trang phục, nhà ở, ăn uống, chiến tranh), không đề cập đến đời sống tinh thần.",
     tag: "Phù Nam",
+    difficulty: "hard",
   },
   {
     id: "ls-tf-pn3-b",
@@ -249,6 +270,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Tư liệu viết 'đánh chiếm các nước láng giềng không thần phục, bắt dân họ làm nô tì' — chứng tỏ Phù Nam tiến hành chiến tranh xâm lược mở rộng lãnh thổ.",
     tag: "Phù Nam",
+    difficulty: "easy",
   },
   {
     id: "ls-tf-pn3-c",
@@ -258,6 +280,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Tư liệu ghi rõ 'biết đẵn gỗ làm nhà', 'vua họ ở gác nhiều tầng', lá cây đại nhược được 'bện lại để lợp nhà'. Dân thường cũng 'làm nhà gác để ở'.",
     tag: "Phù Nam",
+    difficulty: "medium",
   },
   {
     id: "ls-tf-pn3-d",
@@ -267,6 +290,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. 'Con trai nhà giầu sang thì cắt gấm làm quần…người nghèo thì lấy vải mà che' — cho thấy trang phục phân biệt theo tầng lớp giàu nghèo.",
     tag: "Phù Nam",
+    difficulty: "hard",
   },
 
   // ── Phù Nam: Câu 4 ─────────────────────────────────────────────────────────
@@ -278,6 +302,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Tư liệu nhấn mạnh 'Văn hóa Phù Nam nổi bật lên tính cách của một nền văn hóa biển và văn hóa thương mại' và Phù Nam 'trở nên giàu mạnh là từ kinh tế biển và thương mại'.",
     tag: "Phù Nam",
+    difficulty: "easy",
   },
   {
     id: "ls-tf-pn4-b",
@@ -287,6 +312,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. 'Văn hóa Óc Eo chứng tỏ Phù Nam đã có quan hệ giao lưu rộng rãi với thế giới Đông Á, Nam Á và cả Tây Á, La Mã'.",
     tag: "Phù Nam",
+    difficulty: "medium",
   },
   {
     id: "ls-tf-pn4-c",
@@ -296,6 +322,7 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "ĐÚNG. Tư liệu ghi rõ 'còn có hai vua người Ấn Độ theo Bà La Môn là Thiên Trúc Chiên Đàn và Kiều Trấn Như'.",
     tag: "Phù Nam",
+    difficulty: "hard",
   },
   {
     id: "ls-tf-pn4-d",
@@ -305,5 +332,6 @@ export const passageQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "SAI. Nông nghiệp và lâm thổ sản 'giữ vai trò cung cấp lương thực cho cộng đồng cư dân'; nhưng Phù Nam giàu mạnh nhờ kinh tế biển và thương mại với nhiều vùng, chứng tỏ có buôn bán đối ngoại.",
     tag: "Phù Nam",
+    difficulty: "easy",
   },
 ];
