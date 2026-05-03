@@ -8,7 +8,7 @@ export function TiengTrungTheory() {
           1. Cấu trúc nhấn mạnh 是…的 (shì…de)
         </h3>
         <div className="rounded-lg border border-[#2980B9] overflow-hidden text-sm">
-          <div className="bg-[#2980B9] text-white px-3 py-1.5 font-semibold">📌 Công thức & Nguyên tắc</div>
+          <div className="bg-[#2980B9] text-white px-3 py-1.5 font-semibold">Công thức &amp; Nguyên tắc</div>
           <div className="bg-[#D6EAF8] px-3 py-2 space-y-1 text-[#1A3A5C]">
             <p>Cấu trúc: <b>S + 是 + [Thành phần nhấn mạnh: thời gian / địa điểm / phương thức] + VP + 的</b></p>
             <p>Mục đích: Nhấn mạnh một yếu tố cụ thể của hành động <b>ĐÃ</b> xảy ra.</p>
@@ -46,12 +46,12 @@ export function TiengTrungTheory() {
           2. Bổ ngữ thời lượng (补语时量)
         </h3>
         <div className="rounded-lg border border-[#1E8449] overflow-hidden text-sm">
-          <div className="bg-[#1E8449] text-white px-3 py-1.5 font-semibold">📌 Ba cách xử lý khi động từ có tân ngữ</div>
+          <div className="bg-[#1E8449] text-white px-3 py-1.5 font-semibold">Ba cách xử lý khi động từ có tân ngữ</div>
           <div className="bg-[#D5F5E3] px-3 py-2 space-y-1 text-[#1A3A5C]">
             <p><b>Cách 1 — Lặp động từ:</b> V + O + V + (了) + Thời lượng → <b>他踢足球踢了十年了。</b></p>
             <p><b>Cách 2 — Đưa tân ngữ ra trước:</b> O + S + V + (了) + Thời lượng → <b>足球他踢了十年了。</b></p>
             <p><b>Cách 3 — Xen giữa:</b> V + (了) + Thời lượng + 的 + O → <b>他踢了十年的足球。</b></p>
-            <p className="text-[#E67E22] font-semibold">⚠ Chú ý: 了 cuối câu (语气了) biểu thị hành động vẫn tiếp diễn đến hiện tại.</p>
+            <p className="text-[#E67E22] font-semibold">Chú ý: 了 cuối câu (语气了) biểu thị hành động vẫn tiếp diễn đến hiện tại.</p>
           </div>
         </div>
       </section>
@@ -156,7 +156,7 @@ export function TiengTrungTheory() {
           6. Phân biệt 一点儿 và 有点儿
         </h3>
         <div className="rounded-lg border border-[#F39C12] overflow-hidden text-sm">
-          <div className="bg-[#F39C12] text-white px-3 py-1.5 font-semibold">📌 Quy tắc phân biệt then chốt</div>
+          <div className="bg-[#F39C12] text-white px-3 py-1.5 font-semibold">Quy tắc phân biệt then chốt</div>
           <div className="bg-[#FEF9E7] px-3 py-2 space-y-1.5 text-[#1A3A5C]">
             <p><b>有点儿</b>: Phó từ đứng <b>TRƯỚC</b> tính từ, biểu thị sự không hài lòng hoặc vấn đề nhỏ.</p>
             <p className="pl-4 text-[#C0392B]">这个电脑有点儿小。 <span className="text-gray-500 italic">(Hơi nhỏ — tôi không thích lắm.)</span></p>
@@ -206,11 +206,11 @@ export function TiengTrungTheory() {
           8. Động từ lặp lại & lượng từ lặp lại
         </h3>
         <div className="rounded-lg border border-[#2980B9] overflow-hidden text-sm">
-          <div className="bg-[#2980B9] text-white px-3 py-1.5 font-semibold">📌 Nguyên tắc lặp từ</div>
+          <div className="bg-[#2980B9] text-white px-3 py-1.5 font-semibold">Nguyên tắc lặp từ</div>
           <div className="bg-[#D6EAF8] px-3 py-2 space-y-1 text-[#1A3A5C]">
             <p><b>Đơn âm tiết AA:</b> 看看, 走走 — sắc thái thư thả, thử nhẹ.</p>
             <p><b>Song âm tiết ABAB:</b> 准备准备, 休息休息 — sắc thái nhẹ nhàng, không áp lực.</p>
-            <p className="text-[#C0392B]">⚠ KHÔNG dùng đồng thời lặp động từ và 一下儿: <b>看看一下儿 ✗</b> → chọn 看看 hoặc 看一下儿.</p>
+            <p className="text-[#C0392B]">KHÔNG dùng đồng thời lặp động từ và 一下儿: <b>看看一下儿 ✗</b> → chọn 看看 hoặc 看一下儿.</p>
             <p><b>Lượng từ lặp:</b> 件件都很漂亮 = mỗi cái đều… (nhấn mạnh tính toàn thể).</p>
           </div>
         </div>
@@ -255,7 +255,7 @@ export function TiengTrungTheory() {
         <div className="space-y-4">
           {[
             {
-              title: "🏃 Thể thao & Vận động",
+              title: "Thể thao & Vận động",
               color: "#1E8449",
               bg: "#D5F5E3",
               words: [
@@ -268,7 +268,7 @@ export function TiengTrungTheory() {
               ],
             },
             {
-              title: "🏥 Sức khỏe & Bệnh viện",
+              title: "Sức khỏe & Bệnh viện",
               color: "#C0392B",
               bg: "#FADBD8",
               words: [
@@ -281,7 +281,7 @@ export function TiengTrungTheory() {
               ],
             },
             {
-              title: "⏰ Thời gian & Tần suất",
+              title: "Thời gian & Tần suất",
               color: "#2980B9",
               bg: "#D6EAF8",
               words: [
@@ -294,7 +294,7 @@ export function TiengTrungTheory() {
               ],
             },
             {
-              title: "🏠 Nơi chốn & Phương vị",
+              title: "Nơi chốn & Phương vị",
               color: "#E67E22",
               bg: "#FDEBD0",
               words: [

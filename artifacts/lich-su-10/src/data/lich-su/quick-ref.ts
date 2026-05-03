@@ -1,7 +1,7 @@
 import type { QuickRef } from "@/subjects/types";
 
 export const lichSuQuickRef: QuickRef = {
-  heading: "📊 Bảng so sánh nhanh ba nền văn minh",
+  heading: "Bảng so sánh nhanh ba nền văn minh",
   headers: [
     "Nhà nước",
     "Ra đời",

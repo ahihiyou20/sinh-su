@@ -62,7 +62,7 @@ export const sinhHocSubject: SubjectConfig = {
   shortName: "Sinh học",
 
   badge: "Ôn tập • Sinh học 10",
-  title: "🧬 ÔN TẬP SINH HỌC LỚP 10",
+  title: "ÔN TẬP SINH HỌC LỚP 10",
   subtitle: "Vi sinh vật • Phân bào • Nguyên phân – Giảm phân",
   emoji: "🧬",
   headerGradient: "linear-gradient(135deg, #0F1F18 0%, #081410 100%)",
@@ -73,7 +73,7 @@ export const sinhHocSubject: SubjectConfig = {
   quickRef: sinhHocQuickRef,
 
   TheoryView: SinhHocTheory,
-  theoryHeading: "🧪 Tổng hợp lý thuyết",
+  theoryHeading: "Tổng hợp lý thuyết",
 
   questions,
   filters: [

@@ -1,7 +1,7 @@
 import type { QuickRef } from "@/subjects/types";
 
 export const vatLyQuickRef: QuickRef = {
-  heading: "⚡ Bảng tổng hợp công thức trọng tâm Vật lý HK2",
+  heading: "Bảng tổng hợp công thức trọng tâm Vật lý HK2",
   headers: ["Đại lượng", "Kí hiệu", "Công thức", "Đơn vị"],
   rows: [
     {

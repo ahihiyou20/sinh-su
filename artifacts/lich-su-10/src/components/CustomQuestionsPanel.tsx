@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronRight, Pencil, Plus } from "lucide-react";
 import {
   useCustomQuestions,
   type CustomQuestion,
@@ -6,7 +7,7 @@ import {
 } from "@/lib/storage";
 
 const CUSTOM_TAG = "Tự thêm";
-const CUSTOM_TAG_COLOR = "#1A8B7A";
+const CUSTOM_TAG_COLOR = "#6366F1";
 
 interface CustomQuestionsPanelProps {
   readonly subjectId: SubjectId;
@@ -62,7 +63,7 @@ function CustomQuestionItem({
           type="button"
           onClick={onRemove}
           aria-label="Xoá câu hỏi này"
-          className="cursor-pointer rounded-md border border-border-earth bg-surface px-2 py-1 font-serif text-[11px] font-bold text-text-dim transition-colors duration-200 hover:border-wrong hover:text-wrong"
+          className="cursor-pointer rounded-md border border-border-earth bg-surface px-2 py-1 text-[11px] font-medium text-text-dim transition-colors duration-200 hover:border-wrong/60 hover:text-wrong"
         >
           Xoá
         </button>
@@ -133,7 +134,7 @@ export function CustomQuestionsPanel({
   return (
     <section
       aria-labelledby="custom-q-heading"
-      className="my-5 rounded-xl border border-border-earth bg-surface px-5 py-4"
+      className="my-4 rounded-xl border border-border-earth bg-surface px-5 py-4"
     >
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
         <button
@@ -141,19 +142,16 @@ export function CustomQuestionsPanel({
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="custom-q-body"
-          className="flex cursor-pointer items-center gap-2 border-0 bg-transparent p-0 font-display text-base font-bold text-gold"
+          className="flex cursor-pointer items-center gap-2 border-0 bg-transparent p-0 text-sm font-semibold text-text hover:text-gold transition-colors"
         >
-          <span
-            aria-hidden="true"
-            className={`inline-block transition-transform duration-200 ${
-              open ? "rotate-90" : ""
-            }`}
-          >
-            ▶
-          </span>
+          <Pencil size={14} className="text-gold" />
           <span id="custom-q-heading">
-            ✏️ Câu hỏi của bạn ({items.length})
+            Câu hỏi của bạn ({items.length})
           </span>
+          <ChevronRight
+            size={14}
+            className={`text-text-dim transition-transform duration-200 ${open ? "rotate-90" : ""}`}
+          />
         </button>
         {open && (
           <button
@@ -162,9 +160,13 @@ export function CustomQuestionsPanel({
               setShowForm((v) => !v);
               setError(null);
             }}
-            className="cursor-pointer rounded-md border-0 bg-gold px-3 py-1.5 font-serif text-xs font-bold text-bg transition-colors duration-200 hover:bg-gold/90"
+            className="flex cursor-pointer items-center gap-1.5 rounded-md border-0 bg-indigo-500 hover:bg-indigo-400 px-3 py-1.5 text-xs font-semibold text-white transition-colors duration-200"
           >
-            {showForm ? "Đóng biểu mẫu" : "+ Thêm câu hỏi"}
+            {showForm ? (
+              "Đóng biểu mẫu"
+            ) : (
+              <><Plus size={13} /> Thêm câu hỏi</>
+            )}
           </button>
         )}
       </div>
@@ -186,7 +188,7 @@ export function CustomQuestionsPanel({
               <div className="mb-3">
                 <label
                   htmlFor="cq-q"
-                  className="mb-1 block text-[12px] font-bold text-gold"
+                  className="mb-1 block text-[12px] font-semibold text-gold"
                 >
                   Câu hỏi
                 </label>
@@ -198,13 +200,13 @@ export function CustomQuestionsPanel({
                   }
                   rows={3}
                   required
-                  className="w-full rounded-md border border-border-earth bg-bg p-2 font-serif text-sm text-text"
+                  className="w-full rounded-md border border-border-earth bg-bg p-2 text-sm text-text"
                   placeholder="Nhập câu hỏi…"
                 />
               </div>
 
               <fieldset className="mb-3">
-                <legend className="mb-1.5 text-[12px] font-bold text-gold">
+                <legend className="mb-1.5 text-[12px] font-semibold text-gold">
                   Lựa chọn (chọn đáp án đúng)
                 </legend>
                 {form.opts.map((opt, i) => {
@@ -214,7 +216,7 @@ export function CustomQuestionsPanel({
                       key={i}
                       className="mb-2 flex items-center gap-2 last:mb-0"
                     >
-                      <label className="flex shrink-0 cursor-pointer items-center gap-1.5 text-[12px] font-bold text-text-dim">
+                      <label className="flex shrink-0 cursor-pointer items-center gap-1.5 text-[12px] font-semibold text-text-dim">
                         <input
                           type="radio"
                           name="cq-ans"
@@ -229,7 +231,7 @@ export function CustomQuestionsPanel({
                         value={opt}
                         onChange={(e) => updateOpt(i, e.target.value)}
                         required
-                        className="flex-1 rounded-md border border-border-earth bg-bg px-2 py-1.5 font-serif text-sm text-text"
+                        className="flex-1 rounded-md border border-border-earth bg-bg px-2 py-1.5 text-sm text-text"
                         placeholder={`Lựa chọn ${letter}`}
                       />
                     </div>
@@ -240,7 +242,7 @@ export function CustomQuestionsPanel({
               <div className="mb-3">
                 <label
                   htmlFor="cq-ex"
-                  className="mb-1 block text-[12px] font-bold text-gold"
+                  className="mb-1 block text-[12px] font-semibold text-gold"
                 >
                   Giải thích
                 </label>
@@ -252,7 +254,7 @@ export function CustomQuestionsPanel({
                   }
                   rows={2}
                   required
-                  className="w-full rounded-md border border-border-earth bg-bg p-2 font-serif text-sm text-text"
+                  className="w-full rounded-md border border-border-earth bg-bg p-2 text-sm text-text"
                   placeholder="Giải thích vì sao đáp án này đúng…"
                 />
               </div>
@@ -260,7 +262,7 @@ export function CustomQuestionsPanel({
               <div className="mb-3">
                 <label
                   htmlFor="cq-tag"
-                  className="mb-1 block text-[12px] font-bold text-gold"
+                  className="mb-1 block text-[12px] font-semibold text-gold"
                 >
                   Chủ đề
                 </label>
@@ -270,7 +272,7 @@ export function CustomQuestionsPanel({
                   onChange={(e) =>
                     setForm((f) => ({ ...f, tag: e.target.value }))
                   }
-                  className="w-full rounded-md border border-border-earth bg-bg px-2 py-1.5 font-serif text-sm text-text"
+                  className="w-full rounded-md border border-border-earth bg-bg px-2 py-1.5 text-sm text-text"
                 >
                   {tagOptions.map((t) => (
                     <option key={t} value={t}>
@@ -292,7 +294,7 @@ export function CustomQuestionsPanel({
               <div className="flex flex-wrap gap-2">
                 <button
                   type="submit"
-                  className="cursor-pointer rounded-md border-0 bg-gold px-4 py-1.5 font-serif text-sm font-bold text-bg"
+                  className="cursor-pointer rounded-md border-0 bg-indigo-500 hover:bg-indigo-400 px-4 py-1.5 text-sm font-semibold text-white"
                 >
                   Lưu câu hỏi
                 </button>
@@ -303,7 +305,7 @@ export function CustomQuestionsPanel({
                     setError(null);
                     setShowForm(false);
                   }}
-                  className="cursor-pointer rounded-md border border-border-earth bg-surface px-4 py-1.5 font-serif text-sm font-bold text-text-dim"
+                  className="cursor-pointer rounded-md border border-border-earth bg-surface px-4 py-1.5 text-sm font-medium text-text-dim hover:text-text"
                 >
                   Huỷ
                 </button>
@@ -313,7 +315,7 @@ export function CustomQuestionsPanel({
 
           {items.length === 0 ? (
             <p className="m-0 text-[12px] leading-relaxed text-text-dim">
-              Bạn chưa thêm câu hỏi nào. Bấm "+ Thêm câu hỏi" để tạo câu hỏi
+              Bạn chưa thêm câu hỏi nào. Bấm "Thêm câu hỏi" để tạo câu hỏi
               mới — sẽ được lưu ngay trên thiết bị này.
             </p>
           ) : (

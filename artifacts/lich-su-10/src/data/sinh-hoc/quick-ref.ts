@@ -1,7 +1,7 @@
 import type { QuickRef } from "@/subjects/types";
 
 export const sinhHocQuickRef: QuickRef = {
-  heading: "📊 Bảng so sánh nhanh kiểu dinh dưỡng VSV",
+  heading: "Bảng so sánh nhanh kiểu dinh dưỡng VSV",
   headers: [
     "Kiểu dinh dưỡng",
     "Nguồn năng lượng",

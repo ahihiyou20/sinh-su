@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { RotateCcw } from "lucide-react";
 import { BookmarkedPanel } from "@/components/BookmarkedPanel";
 import { CustomQuestionsPanel } from "@/components/CustomQuestionsPanel";
 import { Header } from "@/components/Header";
@@ -44,9 +45,7 @@ export function SubjectPage({ subject }: SubjectPageProps) {
 
   const { history, addAttempt, clearHistory } = useHistory(subject.id);
   const { bookmarks, toggleBookmark } = useBookmarks(subject.id);
-  const { progress, refresh: refreshProgress } = useSavedQuizProgress(
-    subject.id,
-  );
+  const { progress, refresh: refreshProgress } = useSavedQuizProgress(subject.id);
   const { wrongIds, refresh: refreshWrong } = useLastWrongIds(subject.id);
   const { items: customItems } = useCustomQuestions(subject.id);
 
@@ -76,7 +75,7 @@ export function SubjectPage({ subject }: SubjectPageProps) {
     ];
     if (wrongIds.length > 0) {
       result.push({
-        label: `🔁 Câu sai (${wrongIds.length})`,
+        label: `Câu sai (${wrongIds.length})`,
         kind: { type: "wrong" },
       });
     }
@@ -97,26 +96,18 @@ export function SubjectPage({ subject }: SubjectPageProps) {
   }, [mode.view, refreshProgress, refreshWrong]);
 
   const startFreshQuiz = () => {
-    setMode({
-      view: "quiz",
-      initialFilter: subject.defaultFilter,
-      resumeFrom: null,
-    });
+    setMode({ view: "quiz", initialFilter: subject.defaultFilter, resumeFrom: null });
   };
 
   const startBookmarkQuiz = () => {
-    setMode({
-      view: "quiz",
-      initialFilter: subject.bookmarkFilter,
-      resumeFrom: null,
-    });
+    setMode({ view: "quiz", initialFilter: subject.bookmarkFilter, resumeFrom: null });
   };
 
   const startReviewWrongQuiz = () => {
     setMode({
       view: "quiz",
       initialFilter: {
-        label: `🔁 Câu sai (${wrongIds.length})`,
+        label: `Câu sai (${wrongIds.length})`,
         kind: { type: "wrong" },
       },
       resumeFrom: null,
@@ -143,16 +134,6 @@ export function SubjectPage({ subject }: SubjectPageProps) {
   }) => {
     addAttempt(result);
   };
-
-  const stats = useMemo(() => {
-    const difficultyCounts = { easy: 0, medium: 0, hard: 0 };
-    const tagCounts = new Map<string, number>();
-    for (const q of allQuestions) {
-      if (q.difficulty) difficultyCounts[q.difficulty] += 1;
-      tagCounts.set(q.tag, (tagCounts.get(q.tag) ?? 0) + 1);
-    }
-    return { difficultyCounts, tagCounts };
-  }, [allQuestions]);
 
   const removeBookmark = (id: string) => {
     toggleBookmark(id);
@@ -196,22 +177,25 @@ export function SubjectPage({ subject }: SubjectPageProps) {
 
       <main className="mx-auto max-w-[1100px] px-4 pb-12 sm:px-6">
         {wrongIds.length > 0 && (
-          <div className="mb-6">
+          <div className="mb-5">
             <button
               type="button"
               onClick={startReviewWrongQuiz}
-              className="cursor-pointer border border-wrong/40 bg-wrong/[0.08] rounded-lg px-5 py-2 text-sm font-medium text-wrong hover:bg-wrong/15 transition-colors duration-200"
+              className="flex cursor-pointer items-center gap-2 rounded-lg border border-wrong/40 bg-wrong/[0.08] px-5 py-2 text-sm font-medium text-wrong hover:bg-wrong/15 transition-colors duration-200"
             >
-              🔁 Ôn lại {wrongIds.length} câu sai gần nhất
+              <RotateCcw size={14} />
+              Ôn lại {wrongIds.length} câu sai gần nhất
             </button>
           </div>
         )}
 
         {subject.quickRef && <QuickRefTable data={subject.quickRef} />}
 
-        <ScoreChart history={history} accentHex="#6366F1" />
-
-        <HistoryPanel history={history} onClear={clearHistory} />
+        {/* Two-column layout on large screens */}
+        <div className="grid gap-4 lg:grid-cols-[3fr_2fr]">
+          <ScoreChart history={history} accentHex="#6366F1" />
+          <HistoryPanel history={history} onClear={clearHistory} />
+        </div>
 
         <BookmarkedPanel
           bookmarks={bookmarks}
@@ -229,7 +213,7 @@ export function SubjectPage({ subject }: SubjectPageProps) {
 
         <section
           aria-labelledby="theory-heading"
-          className="mt-2 rounded-2xl border border-border-earth bg-surface p-5"
+          className="mt-4 rounded-2xl border border-border-earth bg-surface p-5"
         >
           <h2
             id="theory-heading"
@@ -246,6 +230,4 @@ export function SubjectPage({ subject }: SubjectPageProps) {
       </main>
     </div>
   );
-
-  void stats;
 }

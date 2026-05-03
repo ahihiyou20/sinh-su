@@ -14,7 +14,7 @@ export const tiengTrungSubject: SubjectConfig = {
   shortName: "Tiếng Trung",
 
   badge: "Ôn tập • Tiếng Trung HSK 2",
-  title: "🀄 ÔN TẬP TIẾNG TRUNG HSK 2",
+  title: "ÔN TẬP TIẾNG TRUNG HSK 2",
   subtitle: "Ngữ pháp • Từ vựng • Cấu trúc câu HSK 2",
   emoji: "🀄",
   headerGradient: "linear-gradient(135deg, #0D2137 0%, #1A3A5C 100%)",
@@ -29,7 +29,7 @@ export const tiengTrungSubject: SubjectConfig = {
   },
 
   TheoryView: TiengTrungTheory,
-  theoryHeading: "📚 Tổng hợp ngữ pháp HSK 2",
+  theoryHeading: "Tổng hợp ngữ pháp HSK 2",
 
   questions: tiengTrungQuestions,
   filters: [

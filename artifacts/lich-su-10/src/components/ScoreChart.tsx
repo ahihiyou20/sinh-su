@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { TrendingUp } from "lucide-react";
 import {
   CartesianGrid,
   Line,
@@ -68,7 +69,7 @@ function CustomTooltip({ active, payload }: TooltipProps) {
         <span className="text-text-dim">({point.pct}%)</span>
       </div>
       {point.durationSecs !== undefined && point.durationSecs > 0 && (
-        <div className="text-[11px] text-text-dim">⏱ {fmtDur(point.durationSecs)}</div>
+        <div className="text-[11px] text-text-dim">{fmtDur(point.durationSecs)}</div>
       )}
       <div className="text-[11px] text-text-dim">{point.filter}</div>
     </div>
@@ -94,17 +95,17 @@ export function ScoreChart({ history, accentHex }: ScoreChartProps) {
     return (
       <section
         aria-labelledby="chart-heading"
-        className="my-5 rounded-xl border border-border-earth bg-surface px-5 py-4"
+        className="my-4 rounded-xl border border-border-earth bg-surface px-5 py-4"
       >
         <h2
           id="chart-heading"
-          className="m-0 mb-2 text-base font-bold text-gold"
+          className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-text"
         >
-          📈 Biểu đồ tiến bộ
+          <TrendingUp size={15} className="text-gold" />
+          Biểu đồ tiến bộ
         </h2>
         <p className="m-0 text-[13px] text-text-dim">
-          Hoàn thành ít nhất một lượt quiz để bắt đầu theo dõi điểm số của bạn
-          theo thời gian.
+          Hoàn thành ít nhất một lượt quiz để bắt đầu theo dõi điểm số của bạn theo thời gian.
         </p>
       </section>
     );
@@ -120,16 +121,18 @@ export function ScoreChart({ history, accentHex }: ScoreChartProps) {
   return (
     <section
       aria-labelledby="chart-heading"
-      className="my-5 rounded-xl border border-border-earth bg-surface px-5 py-4"
+      className="my-4 rounded-xl border border-border-earth bg-surface px-5 py-4"
     >
-      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-3">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
         <h2
           id="chart-heading"
-          className="m-0 text-base font-bold text-gold"
+          className="m-0 flex items-center gap-2 text-sm font-semibold text-text"
         >
-          📈 Biểu đồ tiến bộ ({data.length} lượt)
+          <TrendingUp size={15} className="text-gold" />
+          Biểu đồ tiến bộ
+          <span className="text-text-dim font-normal">({data.length} lượt)</span>
         </h2>
-        <div className="flex flex-wrap gap-3 text-[12px] text-text-dim">
+        <div className="flex flex-wrap gap-4 text-[12px] text-text-dim">
           <span>
             Mới nhất: <strong className="text-text">{last}%</strong>
           </span>
@@ -141,7 +144,7 @@ export function ScoreChart({ history, accentHex }: ScoreChartProps) {
           </span>
         </div>
       </div>
-      <div className="h-[220px] w-full">
+      <div className="h-[200px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={[...data]}

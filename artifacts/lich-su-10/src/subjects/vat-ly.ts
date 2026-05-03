@@ -37,7 +37,7 @@ export const vatLySubject: SubjectConfig = {
   shortName: "Vật lý",
 
   badge: "Ôn tập • Vật lý 10 HK2",
-  title: "⚛️ ÔN TẬP VẬT LÝ LỚP 10",
+  title: "ÔN TẬP VẬT LÝ LỚP 10",
   subtitle: "Động lượng • Năng lượng • Chuyển động tròn đều",
   emoji: "⚛️",
   headerGradient: "linear-gradient(135deg, #1A0A2E 0%, #0D1B3E 100%)",
@@ -48,7 +48,7 @@ export const vatLySubject: SubjectConfig = {
   quickRef: vatLyQuickRef,
 
   TheoryView: VatLyTheory,
-  theoryHeading: "⚡ Tổng hợp lý thuyết & Chiến lược làm bài",
+  theoryHeading: "Tổng hợp lý thuyết & Chiến lược làm bài",
 
   questions,
   filters: [

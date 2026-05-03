@@ -1,4 +1,5 @@
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ArrowLeft, Bookmark, BookmarkCheck, Check, X, Clock, PencilLine, FileText, Lightbulb, RotateCcw } from "lucide-react";
 import {
   questionId,
   type SubjectFilter,
@@ -170,7 +171,7 @@ function Pill({
   disabled = false,
 }: PillProps) {
   const base =
-    "rounded-lg border-0 px-[18px] py-2.5 font-serif text-[13px] font-bold tracking-wide transition-colors duration-200";
+    "rounded-lg border-0 px-[14px] py-2 text-[12px] font-semibold transition-colors duration-200 whitespace-nowrap";
   let cls: string;
   if (disabled) {
     cls = "cursor-not-allowed opacity-40 bg-surface-2 text-text-dim";
@@ -210,15 +211,17 @@ function BookmarkButton({ active, onToggle }: BookmarkButtonProps) {
       aria-pressed={active}
       aria-label={label}
       title={label}
-      className={`flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border transition-colors duration-200 ${
+      className={`flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-lg border transition-colors duration-200 ${
         active
           ? "border-gold bg-gold/15 text-gold"
           : "border-border-earth bg-surface-2 text-text-dim hover:border-gold/60 hover:text-gold"
       }`}
     >
-      <span aria-hidden="true" className="text-lg leading-none">
-        {active ? "★" : "☆"}
-      </span>
+      {active ? (
+        <BookmarkCheck size={15} aria-hidden="true" />
+      ) : (
+        <Bookmark size={15} aria-hidden="true" />
+      )}
     </button>
   );
 }
@@ -288,10 +291,10 @@ function ShortAnswerInput({ question, onSubmit }: ShortAnswerInputProps) {
           }`}
         >
           {result === "correct" ? (
-            <span>✓ Chính xác! Đáp án: <strong>{correctAnswer}</strong></span>
+            <span className="flex items-center gap-1.5"><Check size={14} className="shrink-0" /> Chính xác! Đáp án: <strong>{correctAnswer}</strong></span>
           ) : (
-            <span>
-              ✗ Chưa đúng. Đáp án đúng là:{" "}
+            <span className="flex items-center gap-1.5">
+              <X size={14} className="shrink-0" /> Chưa đúng. Đáp án đúng là:{" "}
               <strong className="text-correct">{correctAnswer}</strong>
             </span>
           )}
@@ -437,10 +440,10 @@ function ClozeInput({ question, onSubmit }: ClozeInputProps) {
           }`}
         >
           {correctCount === blanks.length ? (
-            <span>✓ Xuất sắc! Tất cả {blanks.length} ô đều đúng.</span>
+            <span className="flex items-center gap-1.5"><Check size={14} className="shrink-0" /> Xuất sắc! Tất cả {blanks.length} ô đều đúng.</span>
           ) : (
-            <span>
-              ✗ {correctCount}/{blanks.length} ô đúng. Đáp án đúng đã hiện màu xanh ngay trên bài.
+            <span className="flex items-center gap-1.5">
+              <X size={14} className="shrink-0" /> {correctCount}/{blanks.length} ô đúng. Đáp án đúng đã hiện màu xanh ngay trên bài.
             </span>
           )}
         </div>
@@ -696,30 +699,40 @@ export function QuizMode({
         ? "Bạn chưa đánh dấu câu nào. Hãy bấm ☆ trên câu hỏi để lưu lại ôn sau."
         : "Không có câu hỏi cho chủ đề này.";
     return (
-      <main className="min-h-screen bg-bg p-5 font-serif text-text">
-        <div className="mx-auto max-w-[720px]">
-          <div
-            role="toolbar"
-            aria-label="Bộ lọc câu hỏi"
-            className="mb-6 flex flex-wrap items-center gap-2.5"
-          >
-            <Pill onClick={onBack}>← Quay lại</Pill>
-            {filters.map((t) => (
-              <Pill
-                key={t.label}
-                active={filter.label === t.label}
-                ariaPressed={filter.label === t.label}
-                onClick={() => handleFilterChange(t)}
-              >
-                {t.label}
-              </Pill>
-            ))}
+      <div className="min-h-screen bg-bg text-text">
+        <div className="sticky top-0 z-40 border-b border-border-earth bg-bg/95 backdrop-blur-sm">
+          <div className="mx-auto flex max-w-[760px] items-center gap-2 px-4 py-2.5">
+            <button
+              type="button"
+              onClick={onBack}
+              className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg border border-border-earth bg-surface px-3 py-1.5 text-[13px] font-medium text-text-dim hover:text-text transition-colors"
+            >
+              <ArrowLeft size={14} /> Quay lại
+            </button>
+            <div
+              role="toolbar"
+              aria-label="Bộ lọc câu hỏi"
+              className="flex min-w-0 flex-1 items-center gap-1.5 overflow-x-auto"
+            >
+              {filters.map((t) => (
+                <Pill
+                  key={t.label}
+                  active={filter.label === t.label}
+                  ariaPressed={filter.label === t.label}
+                  onClick={() => handleFilterChange(t)}
+                >
+                  {t.label}
+                </Pill>
+              ))}
+            </div>
           </div>
+        </div>
+        <div className="mx-auto max-w-[760px] px-4 py-8">
           <p className="rounded-xl border border-border-earth bg-surface px-6 py-5 text-text-dim">
             {emptyMsg}
           </p>
         </div>
-      </main>
+      </div>
     );
   }
 
@@ -745,167 +758,131 @@ export function QuizMode({
   const useClozeForThis = isCloze(question) && (selected === null || clozeDone);
 
   return (
-    <main className="min-h-screen bg-bg px-4 py-5 text-text">
-      <div className="mx-auto max-w-[720px]">
-        {/* Filter toolbar */}
-        <div
-          role="toolbar"
-          aria-label="Bộ lọc câu hỏi"
-          className="mb-6 flex flex-wrap items-center gap-2.5"
-        >
-          <Pill onClick={onBack}>← Quay lại</Pill>
-          {filters.map((t) => (
-            <Pill
-              key={t.label}
-              active={filter.label === t.label}
-              ariaPressed={filter.label === t.label}
-              onClick={() => handleFilterChange(t)}
-            >
-              {t.label}
-              {t.kind.type === "bookmarks" && bookmarks.size > 0
-                ? ` (${bookmarks.size})`
-                : ""}
-            </Pill>
-          ))}
-          {/* Short-answer toggle */}
-          {!question.forceShortAnswer && !isCloze(question) && (
-            <Pill
-              tone="teal"
-              active={shortAnswerMode}
-              ariaPressed={shortAnswerMode}
-              disabled={selected !== null || shortAnswerDone}
-              onClick={() => {
-                setShortAnswerMode((v) => !v);
-                setShortAnswerDone(false);
-              }}
-            >
-              ✍️ Tự điền
-            </Pill>
-          )}
+    <div className="min-h-screen bg-bg text-text">
+      {/* Sticky quiz header */}
+      <div className="sticky top-0 z-40 border-b border-border-earth bg-bg/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-[760px] items-center gap-2 px-4 py-2.5">
+          <button
+            type="button"
+            onClick={onBack}
+            className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg border border-border-earth bg-surface px-3 py-1.5 text-[13px] font-medium text-text-dim hover:text-text transition-colors"
+          >
+            <ArrowLeft size={14} /> Quay lại
+          </button>
+          <div
+            role="toolbar"
+            aria-label="Bộ lọc câu hỏi"
+            className="flex min-w-0 flex-1 items-center gap-1.5 overflow-x-auto"
+          >
+            {filters.map((t) => (
+              <Pill
+                key={t.label}
+                active={filter.label === t.label}
+                ariaPressed={filter.label === t.label}
+                onClick={() => handleFilterChange(t)}
+              >
+                {t.label}
+                {t.kind.type === "bookmarks" && bookmarks.size > 0 ? ` (${bookmarks.size})` : ""}
+              </Pill>
+            ))}
+            {!question.forceShortAnswer && !isCloze(question) && (
+              <Pill
+                tone="teal"
+                active={shortAnswerMode}
+                ariaPressed={shortAnswerMode}
+                disabled={selected !== null || shortAnswerDone}
+                onClick={() => { setShortAnswerMode((v) => !v); setShortAnswerDone(false); }}
+              >
+                <span className="flex items-center gap-1"><PencilLine size={11} />Tự điền</span>
+              </Pill>
+            )}
+          </div>
+          <div className="flex shrink-0 items-center gap-3 text-[13px]">
+            <span className="flex items-center gap-1 font-mono tabular-nums text-text-dim" aria-label={`Thời gian: ${formatElapsed(elapsed)}`}>
+              <Clock size={12} />{formatElapsed(elapsed)}
+            </span>
+            <span className="font-semibold text-gold">{score} đ</span>
+          </div>
         </div>
+      </div>
 
+      {/* Scrollable content */}
+      <div className="mx-auto max-w-[760px] px-4 py-6">
         {wasResumed && (
-          <div className="mb-3 rounded-lg border border-gold/40 bg-surface-2 px-3 py-2 text-[12px] text-gold">
-            ↻ Đã khôi phục bài làm dở từ lần trước (câu {currentQ + 1}, điểm{" "}
-            {score}).
+          <div className="mb-4 flex items-center gap-2 rounded-lg border border-gold/40 bg-surface-2 px-3 py-2 text-[12px] text-gold">
+            <RotateCcw size={12} className="shrink-0" />
+            Đã khôi phục bài làm dở từ lần trước (câu {currentQ + 1}, điểm {score}).
           </div>
         )}
 
-        {/* Progress row */}
-        <div className="mb-2.5 flex items-center justify-between text-[13px] text-text-dim">
-          <span>
-            Câu {currentQ + 1} / {questions.length}
-          </span>
-          <div className="flex items-center gap-3">
-            {/* Timer */}
-            <span
-              className="font-mono text-[12px] tabular-nums text-text-dim"
-              aria-label={`Thời gian: ${formatElapsed(elapsed)}`}
-            >
-              ⏱ {formatElapsed(elapsed)}
-            </span>
-            <span className="font-semibold text-gold">Điểm: {score}</span>
+        {/* Progress */}
+        <div className="mb-5">
+          <div className="mb-1.5 flex items-center justify-between text-[12px] text-text-dim">
+            <span>Câu <strong className="text-text">{currentQ + 1}</strong> / {questions.length}</span>
+            <span>{Math.round(progressPct)}%</span>
           </div>
+          <div aria-hidden="true" className="h-1 overflow-hidden rounded-full bg-surface-2">
+            <div className="h-full bg-gold transition-[width] duration-300" style={{ width: `${progressPct}%` }} />
+          </div>
+          <div role="progressbar" aria-valuemin={0} aria-valuemax={questions.length} aria-valuenow={currentQ} aria-label={`Tiến độ: câu ${currentQ + 1} trên ${questions.length}`} className="sr-only" />
         </div>
 
-        {/* Progress bar */}
-        <div
-          aria-hidden="true"
-          className="mb-5 h-[5px] overflow-hidden rounded-md bg-surface-2"
-        >
-          <div
-            className="h-full bg-gold transition-[width] duration-300"
-            style={{ width: `${progressPct}%` }}
-          />
-        </div>
-        <div
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={questions.length}
-          aria-valuenow={currentQ}
-          aria-label={`Tiến độ: câu ${currentQ + 1} trên ${questions.length}`}
-          className="sr-only"
-        />
-
-        {/* Tag + Bookmark row */}
+        {/* Tag + badges + bookmark */}
         <div className="mb-3 flex items-center justify-between gap-2">
-          <span
-            className="rounded-full px-2.5 py-[3px] text-[11px] font-bold tracking-wider text-white uppercase"
-            style={{ background: tagColor }}
-          >
-            {question.tag}
-          </span>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="rounded-full px-2.5 py-[3px] text-[11px] font-bold tracking-wider text-white uppercase" style={{ background: tagColor }}>
+              {question.tag}
+            </span>
             {question.difficulty && (
-              <span className="rounded-full border border-border-earth bg-surface-2 px-2.5 py-[3px] text-[11px] font-bold text-text-dim">
+              <span className="rounded-full border border-border-earth bg-surface-2 px-2.5 py-[3px] text-[11px] font-medium text-text-dim">
                 {renderDifficultyLabel(question.difficulty)}
               </span>
             )}
             {isCloze(question) ? (
-              <span className="rounded-full border border-gold/60 bg-gold/10 px-2.5 py-[3px] text-[11px] font-bold text-gold">
-                📝 Điền từ
+              <span className="flex items-center gap-1 rounded-full border border-gold/60 bg-gold/10 px-2.5 py-[3px] text-[11px] font-semibold text-gold">
+                <FileText size={10} />Điền từ
               </span>
             ) : (shortAnswerMode && canBeShortAnswer(question)) ? (
-              <span className="rounded-full border border-teal/60 bg-teal/10 px-2.5 py-[3px] text-[11px] font-bold text-teal">
-                ✍️ Tự điền
+              <span className="flex items-center gap-1 rounded-full border border-teal/60 bg-teal/10 px-2.5 py-[3px] text-[11px] font-semibold text-teal">
+                <PencilLine size={10} />Tự điền
               </span>
             ) : null}
-            <BookmarkButton
-              active={bookmarked}
-              onToggle={() => toggleBookmark(qid)}
-            />
           </div>
+          <BookmarkButton active={bookmarked} onToggle={() => toggleBookmark(qid)} />
         </div>
 
         {/* Question card */}
         <div className="mb-5 rounded-xl border border-border-earth bg-surface px-6 py-5">
           {scenarioGroup && !isCloze(question) && (
-            <div className="mb-3 rounded-lg border border-gold/30 bg-gold/10 px-3 py-2 text-[12px] text-gold">
+            <div className="mb-3 rounded-lg border border-gold/30 bg-gold/[0.08] px-3 py-2 text-[12px] text-gold">
               {scenarioGroup}
             </div>
           )}
           {question.passage && !isCloze(question) && (
-            <blockquote className="mb-4 border-l-4 border-gold/60 bg-surface-2 px-4 py-3 text-sm italic leading-relaxed text-text-dim whitespace-pre-line rounded-r-lg">
+            <blockquote className="mb-4 border-l-4 border-gold/50 bg-surface-2 px-4 py-3 text-sm italic leading-relaxed text-text-dim whitespace-pre-line rounded-r-lg">
               {question.passage}
             </blockquote>
           )}
           <p className="m-0 whitespace-pre-line text-base leading-relaxed text-text">
-            <strong className="text-gold">Câu {currentQ + 1}:</strong>{" "}
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-text-dim mr-2">Câu {currentQ + 1}.</span>
             {question.q}
           </p>
         </div>
 
-        {/* Choices, short-answer input, or cloze input */}
+        {/* Choices / short-answer / cloze */}
         {useClozeForThis ? (
-          <ClozeInput
-            key={qid}
-            question={question}
-            onSubmit={handleClozeSubmit}
-          />
+          <ClozeInput key={qid} question={question} onSubmit={handleClozeSubmit} />
         ) : useShortAnswerForThis ? (
-          <ShortAnswerInput
-            key={qid}
-            question={question}
-            onSubmit={handleShortAnswerSubmit}
-          />
+          <ShortAnswerInput key={qid} question={question} onSubmit={handleShortAnswerSubmit} />
         ) : (
-          <div
-            role="radiogroup"
-            aria-label={`Câu ${currentQ + 1}`}
-            className="flex flex-col gap-2.5"
-          >
+          <div role="radiogroup" aria-label={`Câu ${currentQ + 1}`} className="flex flex-col gap-2">
             {question.opts.map((opt, idx) => {
               const locked = selected !== null;
-              let stateClasses =
-                "border-border-earth bg-surface-2 text-text hover:border-gold/60";
+              let stateClasses = "border-border-earth bg-surface-2 text-text hover:border-gold/50 hover:bg-surface";
               if (locked) {
-                if (idx === question.ans) {
-                  stateClasses = "border-correct bg-correct-bg text-correct";
-                } else if (idx === selected) {
-                  stateClasses = "border-wrong bg-wrong-bg text-wrong";
-                } else {
-                  stateClasses = "border-border-earth bg-surface-2 text-text/70";
-                }
+                if (idx === question.ans) stateClasses = "border-correct bg-correct-bg text-correct";
+                else if (idx === selected) stateClasses = "border-wrong bg-wrong-bg text-wrong";
+                else stateClasses = "border-border-earth bg-surface-2 text-text/40";
               }
               const letter = String.fromCharCode(65 + idx);
               return (
@@ -917,47 +894,42 @@ export function QuizMode({
                   aria-disabled={locked}
                   disabled={locked}
                   onClick={() => handleAnswer(idx)}
-                  className={`rounded-[10px] border-2 px-4 py-3 text-left text-sm leading-snug transition-all duration-200 ${stateClasses} ${
-                    locked ? "cursor-default" : "cursor-pointer"
-                  }`}
+                  className={`flex items-start gap-3 rounded-xl border-2 px-4 py-3 text-left text-sm leading-snug transition-all duration-200 ${stateClasses} ${locked ? "cursor-default" : "cursor-pointer"}`}
                 >
-                  <span className="sr-only">Đáp án {letter}: </span>
-                  <strong aria-hidden="true" className="mr-2">
-                    {letter}.
-                  </strong>
-                  {opt}
+                  <span aria-hidden="true" className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-black/20 text-[11px] font-bold">
+                    {letter}
+                  </span>
+                  <span className="flex-1">{opt}</span>
                 </button>
               );
             })}
           </div>
         )}
 
-        {/* Explanation box */}
+        {/* Explanation */}
         {showExplain && (
-          <div
-            role="status"
-            className="mt-4 rounded-[10px] border border-correct bg-correct-bg/40 p-4"
-          >
-            <strong className="text-correct">💡 Giải thích:</strong>
-            <p className="m-0 mt-2 whitespace-pre-line text-sm leading-relaxed text-text-dim">
+          <div role="status" className="mt-4 rounded-xl border border-correct/30 bg-correct-bg/40 p-5">
+            <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-correct">
+              <Lightbulb size={15} />Giải thích
+            </div>
+            <p className="m-0 whitespace-pre-line text-sm leading-relaxed text-text-dim">
               {question.explain}
             </p>
-            {/* Show next button after MC answer or after short-answer done */}
             {(selected !== null || shortAnswerDone || clozeDone) && (
               <button
                 type="button"
                 onClick={next}
-                className="mt-3.5 cursor-pointer rounded-lg border-0 bg-teal px-5 py-2.5 font-serif text-sm font-bold text-white"
+                className="mt-4 cursor-pointer rounded-lg border-0 bg-indigo-500 hover:bg-indigo-400 px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
               >
                 {currentQ + 1 >= questions.length
-                  ? "Xem kết quả →"
-                  : "Câu tiếp theo →"}
+                  ? "Xem kết quả"
+                  : "Câu tiếp theo"}
               </button>
             )}
           </div>
         )}
 
       </div>
-    </main>
+    </div>
   );
 }

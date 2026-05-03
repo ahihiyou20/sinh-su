@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Bookmark, ChevronRight, Play } from "lucide-react";
 import {
   questionId,
   type SubjectQuestion,
@@ -31,7 +32,7 @@ export function BookmarkedPanel({
   return (
     <section
       aria-labelledby="bookmarks-heading"
-      className="my-5 rounded-xl border border-border-earth bg-surface px-5 py-4"
+      className="my-4 rounded-xl border border-border-earth bg-surface px-5 py-4"
     >
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
         <button
@@ -39,26 +40,22 @@ export function BookmarkedPanel({
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="bookmarks-list"
-          className="flex cursor-pointer items-center gap-2 border-0 bg-transparent p-0 font-display text-base font-bold text-gold"
+          className="flex cursor-pointer items-center gap-2 border-0 bg-transparent p-0 text-sm font-semibold text-text hover:text-gold transition-colors"
         >
-          <span
-            aria-hidden="true"
-            className={`inline-block transition-transform duration-200 ${
-              open ? "rotate-90" : ""
-            }`}
-          >
-            ▶
-          </span>
-          <span id="bookmarks-heading">
-            ★ Câu đã đánh dấu ({items.length})
-          </span>
+          <Bookmark size={14} className="text-gold" fill={open ? "currentColor" : "none"} style={{ color: "#6366F1" }} />
+          <span id="bookmarks-heading">Câu đã đánh dấu ({items.length})</span>
+          <ChevronRight
+            size={14}
+            className={`text-text-dim transition-transform duration-200 ${open ? "rotate-90" : ""}`}
+          />
         </button>
         <button
           type="button"
           onClick={onStartQuiz}
-          className="cursor-pointer rounded-md border-0 bg-gold px-3 py-1.5 font-serif text-xs font-bold text-bg transition-colors duration-200 hover:bg-gold/90"
+          className="flex cursor-pointer items-center gap-2 rounded-md border-0 bg-indigo-500 hover:bg-indigo-400 px-3 py-1.5 text-xs font-semibold text-white transition-colors duration-200"
         >
-          🎯 Quiz các câu đã đánh dấu
+          <Play size={11} fill="currentColor" />
+          Quiz các câu đã đánh dấu
         </button>
       </div>
 
@@ -70,7 +67,7 @@ export function BookmarkedPanel({
           {items.map((q) => {
             const id = questionId(q);
             const letter = String.fromCharCode(65 + q.ans);
-            const tagColor = tagColors[q.tag] ?? "#5A3820";
+            const tagColor = tagColors[q.tag] ?? "#1e2736";
             return (
               <li
                 key={id}
@@ -86,8 +83,8 @@ export function BookmarkedPanel({
                   <button
                     type="button"
                     onClick={() => onRemove(id)}
-                    aria-label={`Bỏ đánh dấu`}
-                    className="cursor-pointer rounded-md border border-border-earth bg-surface px-2 py-1 font-serif text-[11px] font-bold text-text-dim transition-colors duration-200 hover:border-wrong hover:text-wrong"
+                    aria-label="Bỏ đánh dấu"
+                    className="cursor-pointer rounded-md border border-border-earth bg-surface px-2 py-1 text-[11px] font-medium text-text-dim transition-colors duration-200 hover:border-wrong/60 hover:text-wrong"
                   >
                     Bỏ đánh dấu
                   </button>

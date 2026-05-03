@@ -1,3 +1,4 @@
+import { BarChart2, Clock, Trash2 } from "lucide-react";
 import type { QuizAttempt } from "@/lib/storage";
 
 interface HistoryPanelProps {
@@ -42,21 +43,23 @@ export function HistoryPanel({ history, onClear }: HistoryPanelProps) {
   return (
     <section
       aria-labelledby="history-heading"
-      className="my-5 rounded-xl border border-border-earth bg-surface px-5 py-4"
+      className="my-4 rounded-xl border border-border-earth bg-surface px-5 py-4"
     >
       <div className="mb-3 flex items-center justify-between gap-3">
         <h2
           id="history-heading"
-          className="m-0 font-display text-base font-bold text-gold"
+          className="m-0 flex items-center gap-2 text-sm font-semibold text-text"
         >
-          📊 Lịch sử làm bài
+          <BarChart2 size={15} className="text-gold" />
+          Lịch sử làm bài
         </h2>
         {history.length > 0 && (
           <button
             type="button"
             onClick={onClear}
-            className="cursor-pointer rounded-md border border-border-earth bg-surface-2 px-3 py-1 font-serif text-xs font-bold text-text-dim transition-colors duration-200 hover:border-wrong hover:text-wrong"
+            className="flex cursor-pointer items-center gap-1.5 rounded-md border border-border-earth bg-surface-2 px-3 py-1 text-xs font-medium text-text-dim transition-colors duration-200 hover:border-wrong/60 hover:text-wrong"
           >
+            <Trash2 size={12} />
             Xóa lịch sử
           </button>
         )}
@@ -64,8 +67,7 @@ export function HistoryPanel({ history, onClear }: HistoryPanelProps) {
 
       {history.length === 0 ? (
         <p className="m-0 text-[13px] leading-relaxed text-text-dim">
-          Chưa có lượt làm bài nào. Hãy bắt đầu kiểm tra để theo dõi tiến bộ
-          của bạn.
+          Chưa có lượt làm bài nào. Hãy bắt đầu kiểm tra để theo dõi tiến bộ của bạn.
         </p>
       ) : (
         <ol className="m-0 flex list-none flex-col gap-2 p-0">
@@ -77,26 +79,28 @@ export function HistoryPanel({ history, onClear }: HistoryPanelProps) {
             return (
               <li
                 key={entry.id}
-                className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-surface-2 px-3 py-2 text-[13px]"
+                className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-surface-2 px-3 py-2.5 text-[13px]"
               >
-                <div className="flex flex-col">
-                  <span className="font-semibold text-text">
+                <div className="flex flex-col gap-0.5">
+                  <span className="font-medium text-text">
                     {entry.filter}
                   </span>
-                  <span className="text-[11px] text-text-dim">
+                  <span className="flex items-center gap-1.5 text-[11px] text-text-dim">
                     {formatDate(entry.timestamp)}
-                    {entry.durationSecs !== undefined && entry.durationSecs > 0
-                      ? ` · ⏱ ${formatDuration(entry.durationSecs)}`
-                      : ""}
+                    {entry.durationSecs !== undefined && entry.durationSecs > 0 && (
+                      <>
+                        <span>·</span>
+                        <Clock size={10} className="inline" />
+                        {formatDuration(entry.durationSecs)}
+                      </>
+                    )}
                   </span>
                 </div>
                 <div
-                  className={`flex items-baseline gap-2 font-bold ${pctToneClass(pct)}`}
+                  className={`flex items-baseline gap-1.5 font-bold ${pctToneClass(pct)}`}
                 >
-                  <span>
-                    {entry.score}/{entry.total}
-                  </span>
-                  <span className="text-[12px] font-semibold">({pct}%)</span>
+                  <span>{entry.score}/{entry.total}</span>
+                  <span className="text-[12px] font-semibold opacity-80">({pct}%)</span>
                 </div>
               </li>
             );
@@ -105,8 +109,8 @@ export function HistoryPanel({ history, onClear }: HistoryPanelProps) {
       )}
 
       {history.length > 0 && (
-        <div className="mb-3 rounded-lg bg-surface-2 px-3 py-2 text-[12px] text-text-dim">
-          <span className="font-semibold text-text">Theo bộ đề:</span>{" "}
+        <div className="mt-3 rounded-lg bg-surface-2 px-3 py-2 text-[11px] text-text-dim">
+          <span className="font-medium text-text">Theo bộ đề:</span>{" "}
           {[...byFilter.entries()]
             .slice(0, 3)
             .map(([k, v]) => `${k} (${v})`)

@@ -43,7 +43,7 @@ export const lichSuSubject: SubjectConfig = {
   shortName: "Lịch sử",
 
   badge: "Ôn tập • Lịch sử 10",
-  title: "📜 ÔN TẬP LỊCH SỬ LỚP 10",
+  title: "ÔN TẬP LỊCH SỬ LỚP 10",
   subtitle:
     "Văn minh cổ đại Việt Nam • Văn Lang – Âu Lạc • Chăm Pa • Phù Nam",
   emoji: "📜",
@@ -55,7 +55,7 @@ export const lichSuSubject: SubjectConfig = {
   quickRef: lichSuQuickRef,
 
   TheoryView: LichSuTheory,
-  theoryHeading: "📚 Tổng hợp lý thuyết",
+  theoryHeading: "Tổng hợp lý thuyết",
 
   questions,
   filters: [

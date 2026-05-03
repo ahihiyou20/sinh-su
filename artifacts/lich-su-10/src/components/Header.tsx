@@ -1,4 +1,4 @@
-import { Zap } from "lucide-react";
+import { Zap, Target } from "lucide-react";
 import type { ReactNode } from "react";
 
 interface HeaderProps {
@@ -63,7 +63,8 @@ export function Header({
             className="cursor-pointer bg-indigo-500 hover:bg-indigo-400 text-white font-semibold rounded-lg px-6 py-2.5 transition-all duration-200 active:scale-[0.98] border-0 text-sm flex items-center gap-2"
             style={{ boxShadow: "0 0 15px rgba(99,102,241,0.3)" }}
           >
-            🎯 {hasResume ? "Bắt đầu Quiz mới" : "Bắt đầu Quiz"} ({questionCount} câu)
+            <Target size={15} />
+            {hasResume ? "Bắt đầu Quiz mới" : "Bắt đầu Quiz"} ({questionCount} câu)
           </button>
           {hasResume && onResume && (
             <button
@@ -71,7 +72,7 @@ export function Header({
               onClick={onResume}
               className="cursor-pointer border border-white/[0.12] text-text-dim hover:text-text hover:border-white/25 rounded-lg px-6 py-2.5 text-sm font-medium transition-all duration-200 bg-transparent"
             >
-              ↻ Tiếp tục bài đang làm
+              Tiếp tục bài đang làm
             </button>
           )}
         </div>

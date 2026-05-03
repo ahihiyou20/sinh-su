@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { CheckCircle2, XCircle, RotateCcw, BookOpen, ArrowLeft } from "lucide-react";
 import type { SubjectQuestion } from "@/subjects/types";
 
 export interface AnswerRecord {
@@ -28,25 +29,19 @@ function formatDuration(secs: number): string {
   const m = Math.floor(secs / 60);
   const s = secs % 60;
   if (m === 0) return `${s} giây`;
-  return `${m} phút ${s} giây`;
+  return `${m} phút${s > 0 ? ` ${s} giây` : ""}`;
 }
 
-function medal(pct: number): string {
-  if (pct >= 80) return "🏆";
-  if (pct >= 60) return "🎯";
-  return "📚";
+function scoreGrade(pct: number): { label: string; color: string } {
+  if (pct >= 80) return { label: "Xuất sắc", color: "text-correct" };
+  if (pct >= 60) return { label: "Khá tốt", color: "text-gold" };
+  return { label: "Cần ôn thêm", color: "text-wrong" };
 }
 
-function scoreToneClass(pct: number): string {
-  if (pct >= 80) return "text-correct";
-  if (pct >= 60) return "text-gold";
-  return "text-wrong";
-}
-
-function message(pct: number): string {
-  if (pct >= 80) return "Xuất sắc! Bạn đã nắm vững kiến thức.";
-  if (pct >= 60) return "Tốt! Ôn thêm các điểm còn yếu.";
-  return "Cần ôn tập thêm. Đọc lại lý thuyết nhé!";
+function scoreMessage(pct: number): string {
+  if (pct >= 80) return "Bạn đã nắm vững kiến thức này. Tiếp tục duy trì phong độ!";
+  if (pct >= 60) return "Kết quả tốt. Ôn lại các câu sai để củng cố thêm.";
+  return "Đọc lại lý thuyết và làm lại bài để cải thiện kết quả.";
 }
 
 export function QuizResult({
@@ -63,6 +58,7 @@ export function QuizResult({
   onReviewWrong,
 }: QuizResultProps) {
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+  const { label: gradeLabel, color: gradeColor } = scoreGrade(pct);
   const savedRef = useRef(false);
 
   useEffect(() => {
@@ -72,77 +68,129 @@ export function QuizResult({
     onSave?.({ filter, score, total });
   }, [onSave, filter, score, total]);
 
+  const correctAnswers = answers.filter((a) => a.correct).length;
+  const wrongAnswers = answers.length - correctAnswers;
+
   return (
-    <main className="min-h-screen bg-bg px-4 py-5 text-text">
-      <div className="mx-auto max-w-[720px] px-3 py-12 text-center">
-        <div aria-hidden="true" className="mb-4 text-6xl leading-none">
-          {medal(pct)}
+    <main className="min-h-screen bg-bg text-text">
+      {/* Top nav */}
+      <div className="border-b border-border-earth px-4 py-3">
+        <div className="mx-auto max-w-[720px]">
+          <button
+            type="button"
+            onClick={onBack}
+            className="flex cursor-pointer items-center gap-1.5 rounded-lg border border-border-earth bg-surface px-3 py-1.5 text-sm text-text-dim hover:text-text transition-colors"
+          >
+            <ArrowLeft size={14} />
+            Về trang ôn tập
+          </button>
         </div>
-        <h2 className="m-0 mb-2 text-2xl font-bold text-text">
-          Kết quả kiểm tra
-        </h2>
-        <div
-          className={`mb-2 text-[56px] font-bold leading-tight ${scoreToneClass(pct)}`}
-        >
-          {score}/{total}
-        </div>
-        <div className="mb-2 text-[15px] text-text-dim">
-          {pct}% chính xác
-        </div>
-        <div className="mb-4 text-[15px] leading-relaxed text-text-dim">
-          {message(pct)}
-        </div>
-        {durationSecs !== undefined && durationSecs > 0 && (
-          <div className="mb-8 text-[13px] text-text-dim">
-            ⏱ Thời gian làm bài:{" "}
-            <strong className="text-text">{formatDuration(durationSecs)}</strong>
+      </div>
+
+      <div className="mx-auto max-w-[720px] px-4 py-10">
+        {/* Score card */}
+        <div className="mb-6 rounded-2xl border border-border-earth bg-surface p-8 text-center">
+          {/* Score circle */}
+          <div className="mx-auto mb-5 flex h-28 w-28 items-center justify-center rounded-full border-4 border-border-earth bg-surface-2"
+            style={{ borderColor: pct >= 80 ? "#10B981" : pct >= 60 ? "#6366F1" : "#EF4444" }}
+          >
+            <div>
+              <div className={`text-4xl font-bold leading-none ${gradeColor}`}>
+                {pct}
+              </div>
+              <div className="text-xs text-text-dim mt-0.5">%</div>
+            </div>
           </div>
-        )}
 
-        <ol
-          aria-label="Chi tiết kết quả từng câu"
-          className="m-0 mb-8 max-h-[280px] list-none overflow-y-auto rounded-xl border border-border-earth bg-surface p-4 text-left"
-        >
-          {answers.map((a, i) => {
-            const ansLetter = String.fromCharCode(65 + questions[i].ans);
-            const tone = a.correct ? "text-correct" : "text-wrong";
-            return (
-              <li
-                key={i}
-                className={`mb-1.5 flex gap-2 text-[13px] last:mb-0 ${tone}`}
-              >
-                <span aria-hidden="true">{a.correct ? "✓" : "✗"}</span>
-                <span>
-                  Câu {i + 1}:{" "}
-                  {a.correct ? "Đúng" : `Sai (Đáp án: ${ansLetter})`}
-                </span>
-              </li>
-            );
-          })}
-        </ol>
+          <div className={`mb-1 text-xl font-bold ${gradeColor}`}>{gradeLabel}</div>
+          <div className="mb-4 text-sm text-text-dim">{scoreMessage(pct)}</div>
 
+          {/* Stats row */}
+          <div className="flex justify-center gap-6 text-sm">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-correct">{correctAnswers}</div>
+              <div className="text-xs text-text-dim">Đúng</div>
+            </div>
+            <div className="w-px bg-border-earth" />
+            <div className="text-center">
+              <div className="text-2xl font-bold text-wrong">{wrongAnswers}</div>
+              <div className="text-xs text-text-dim">Sai</div>
+            </div>
+            <div className="w-px bg-border-earth" />
+            <div className="text-center">
+              <div className="text-2xl font-bold text-text">{total}</div>
+              <div className="text-xs text-text-dim">Tổng câu</div>
+            </div>
+          </div>
+
+          {durationSecs !== undefined && durationSecs > 0 && (
+            <div className="mt-4 text-[12px] text-text-dim">
+              Thời gian: <strong className="text-text">{formatDuration(durationSecs)}</strong>
+            </div>
+          )}
+        </div>
+
+        {/* Answer review */}
+        <div className="mb-6 rounded-xl border border-border-earth bg-surface px-5 py-4">
+          <h3 className="m-0 mb-3 text-sm font-semibold text-text">Chi tiết kết quả</h3>
+          <ol
+            aria-label="Chi tiết kết quả từng câu"
+            className="m-0 list-none p-0 grid grid-cols-2 sm:grid-cols-3 gap-1.5"
+          >
+            {answers.map((a, i) => {
+              const ansLetter = String.fromCharCode(65 + questions[i].ans);
+              return (
+                <li
+                  key={i}
+                  className={`flex items-center gap-2 rounded-lg px-3 py-2 text-[12px] ${
+                    a.correct
+                      ? "bg-correct-bg border border-correct/20 text-correct"
+                      : "bg-wrong-bg border border-wrong/20 text-wrong"
+                  }`}
+                >
+                  {a.correct ? (
+                    <CheckCircle2 size={13} className="shrink-0" />
+                  ) : (
+                    <XCircle size={13} className="shrink-0" />
+                  )}
+                  <span>
+                    Câu {i + 1}
+                    {!a.correct && (
+                      <span className="opacity-75"> · {ansLetter}</span>
+                    )}
+                  </span>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+
+        {/* Action buttons */}
         <div className="flex flex-wrap justify-center gap-3">
           {onReviewWrong && wrongCount && wrongCount > 0 ? (
             <button
               type="button"
               onClick={onReviewWrong}
-              className="cursor-pointer rounded-lg border border-wrong/40 bg-wrong/[0.08] px-7 py-2.5 text-sm font-semibold text-wrong hover:bg-wrong/15 transition-colors duration-200"
+              className="flex cursor-pointer items-center gap-2 rounded-lg border border-wrong/40 bg-wrong/[0.08] px-6 py-2.5 text-sm font-semibold text-wrong hover:bg-wrong/15 transition-colors duration-200"
             >
-              🔁 Ôn lại {wrongCount} câu sai
+              <RotateCcw size={14} />
+              Ôn lại {wrongCount} câu sai
             </button>
           ) : null}
           <button
             type="button"
             onClick={onRetry}
-            className="cursor-pointer rounded-lg border-0 bg-indigo-500 hover:bg-indigo-400 px-7 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
+            className="flex cursor-pointer items-center gap-2 rounded-lg border-0 bg-indigo-500 hover:bg-indigo-400 px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
           >
+            <RotateCcw size={14} />
             Làm lại
           </button>
           <button
             type="button"
             onClick={onBack}
-            className="cursor-pointer rounded-lg border border-border-earth bg-surface px-7 py-2.5 text-sm font-semibold text-text-dim hover:text-text hover:border-white/20 transition-colors duration-200"
+            className="flex cursor-pointer items-center gap-2 rounded-lg border border-border-earth bg-surface px-6 py-2.5 text-sm font-medium text-text-dim hover:text-text hover:border-white/20 transition-colors duration-200"
           >
+            <BookOpen size={14} />
             Xem lý thuyết
           </button>
         </div>

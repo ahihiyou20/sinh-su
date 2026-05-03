@@ -26,9 +26,7 @@ export function TheoryCard({ section }: TheoryCardProps) {
             background: `linear-gradient(135deg, ${section.color}DD, ${section.color}88)`,
           }}
         >
-          <span>
-            {section.icon} {section.title}
-          </span>
+          <span>{section.title}</span>
           <span aria-hidden="true" className="text-base opacity-80">
             {open ? "▲" : "▼"}
           </span>
@@ -119,7 +117,7 @@ export function TheoryCard({ section }: TheoryCardProps) {
                       key={i}
                       className="flex gap-2 rounded-lg border border-warn-border/40 bg-warn-bg px-3.5 py-2.5 text-[13px] leading-relaxed text-warn-text"
                     >
-                      <span aria-hidden="true">⚠️</span>
+                      <span aria-hidden="true" className="font-bold">!</span>
                       <span>{item}</span>
                     </div>
                   ))}
