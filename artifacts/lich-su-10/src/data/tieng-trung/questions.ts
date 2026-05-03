@@ -548,7 +548,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   {
     id: "tt-wj-81",
     q: "Hoàn thành câu: ________，我们就去喝咖啡。（dùng kết cấu với 以后）",
-    opts: ["下课以后"],
+    opts: ["下课以后", "下课时候", "上课以后", "上课时候"],
     ans: 0,
     explain: "以后 (yǐhòu) đặt sau cụm thời gian/động từ: 下课以后 = sau giờ học. Câu hoàn chỉnh: 下课以后，我们就去喝咖啡。Đây là câu trả lời mẫu — các cách diễn đạt khác cùng nghĩa cũng đúng.",
     tag: "Viết câu",
@@ -556,7 +556,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   {
     id: "tt-wj-82",
     q: "Hoàn thành câu: ________，数学就不行。（dùng kết cấu với 还）",
-    opts: ["历史还好"],
+    opts: ["历史还好", "历史很好", "历史也好", "历史太好"],
     ans: 0,
     explain: "还 (hái) so sánh tương đối: A还好，B就不行 = A còn ổn, B thì không. Câu hoàn chỉnh: 历史还好，数学就不行。",
     tag: "Viết câu",
@@ -564,7 +564,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   {
     id: "tt-wj-83",
     q: "Hoàn thành câu: ________，有小一点儿的吗？（dùng kết cấu với 有点儿）",
-    opts: ["这件衣服有点儿大"],
+    opts: ["这件衣服有点儿大", "这件衣服很大", "这件衣服太小", "这件衣服一点儿大"],
     ans: 0,
     explain: "有点儿 + Adj (tiêu cực): 这件衣服有点儿大 = cái áo này hơi rộng. Câu hoàn chỉnh: 这件衣服有点儿大，有小一点儿的吗？",
     tag: "Viết câu",
@@ -572,7 +572,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   {
     id: "tt-wj-84",
     q: "Hoàn thành câu: ________，快进屋里坐一会儿吧。（dùng kết cấu với 外面）",
-    opts: ["外面很热"],
+    opts: ["外面很热", "外面很好", "里面很热", "外面不热"],
     ans: 0,
     explain: "外面 (wàimiàn = bên ngoài) làm chủ ngữ. Câu hoàn chỉnh: 外面很热，快进屋里坐一会儿吧 = Bên ngoài nóng lắm, vào trong ngồi một lúc đi.",
     tag: "Viết câu",
@@ -580,7 +580,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   {
     id: "tt-wj-85",
     q: "Hoàn thành câu: ________，你要多运动运动。（dùng kết cấu với 对）",
-    opts: ["对身体不好"],
+    opts: ["对身体不好", "对身体很好", "身体对不好", "对运动不好"],
     ans: 0,
     explain: "对 + N + 不好/有好处 = tốt/không tốt cho...: 对身体不好 = không tốt cho sức khỏe. Câu hoàn chỉnh: 对身体不好，你要多运动运动。",
     tag: "Viết câu",
@@ -588,7 +588,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   {
     id: "tt-wj-86",
     q: "Hoàn thành câu: 我不喜欢吃红烧肉，________。（dùng kết cấu với 有点儿）",
-    opts: ["有点儿腻"],
+    opts: ["有点儿腻", "有点儿好吃", "一点儿腻", "很腻了"],
     ans: 0,
     explain: "有点儿 + Adj tiêu cực: 有点儿腻 = hơi ngán/béo ngậy. Câu hoàn chỉnh: 我不喜欢吃红烧肉，有点儿腻。",
     tag: "Viết câu",
@@ -596,7 +596,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   {
     id: "tt-wj-87",
     q: "Hoàn thành câu: ________，我们班谁都喜欢他。（dùng kết cấu với 对）",
-    opts: ["他对大家都很好"],
+    opts: ["他对大家都很好", "他大家对都很好", "大家对他都很好", "他对大家很好都"],
     ans: 0,
     explain: "对 + người + Adj: 他对大家都很好 = anh ấy tốt bụng với mọi người. Câu hoàn chỉnh: 他对大家都很好，我们班谁都喜欢他。",
     tag: "Viết câu",
@@ -604,7 +604,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   {
     id: "tt-wj-88",
     q: "Hoàn thành câu: 她病得住院了，________。（dùng kết cấu với 考试）",
-    opts: ["没能参加考试"],
+    opts: ["没能参加考试", "能参加考试", "去参加考试了", "考试没能了"],
     ans: 0,
     explain: "得 kết quả bổ ngữ: 病得住院 = bệnh đến mức phải nhập viện. Câu hoàn chỉnh: 她病得住院了，没能参加考试 = Cô ấy nhập viện nên không thể tham dự kỳ thi.",
     tag: "Viết câu",
