@@ -300,7 +300,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   },
   {
     id: "tt-fb-32",
-    q: "他来北京 [  ] 2个月了。（Chọn từ chỉ 'hơn' đúng vị trí）",
+    q: "他来北京2个 [  ] 月了。（Chọn từ chỉ 'hơn' đúng vị trí）",
     opts: ["多", "几", "些", "好"],
     ans: 0,
     explain: "Số + 多 + lượng từ: hơn 2 tháng (2个多月). 多 đứng sau số. 几 dùng để hỏi/ước lượng dưới 10; 些 = một ít; 好 không dùng theo cách này.",

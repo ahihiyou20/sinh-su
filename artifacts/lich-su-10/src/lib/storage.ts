@@ -376,6 +376,7 @@ export function useLastWrongIds(subject: SubjectId): {
 
 export interface CustomQuestion {
   readonly id: string;
+  readonly subjectId?: SubjectId;
   readonly q: string;
   readonly opts: readonly string[];
   readonly ans: number;
@@ -406,7 +407,9 @@ function readCustomQuestions(subject: SubjectId): readonly CustomQuestion[] {
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter(isCustomQuestion);
+    return parsed
+      .filter(isCustomQuestion)
+      .filter((q) => !q.subjectId || q.subjectId === subject);
   } catch {
     return [];
   }
@@ -490,10 +493,11 @@ export function useCustomQuestions(subject: SubjectId): {
   const items = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 
   const add = useCallback(
-    (input: Omit<CustomQuestion, "id" | "createdAt">) => {
+    (input: Omit<CustomQuestion, "id" | "createdAt" | "subjectId">) => {
       const entry: CustomQuestion = {
         id: `custom:${makeId()}`,
         createdAt: Date.now(),
+        subjectId: subject,
         ...input,
       };
       setCustomQuestions(subject, [entry, ...customQuestionsStores[subject].current]);

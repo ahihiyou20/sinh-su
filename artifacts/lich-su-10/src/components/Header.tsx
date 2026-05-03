@@ -31,7 +31,7 @@ export function Header({
             <div className="w-6 h-6 rounded bg-gradient-to-tr from-indigo-600 to-indigo-400 flex items-center justify-center shadow-[0_0_12px_rgba(99,102,241,0.4)]">
               <Zap className="w-3.5 h-3.5 text-white" fill="currentColor" />
             </div>
-            <span className="font-semibold text-sm tracking-wide hidden sm:block">StudyAI</span>
+            <span className="font-semibold text-sm tracking-wide hidden sm:block">Study3N</span>
           </div>
           <div className="flex items-center gap-2 min-w-0 overflow-x-auto">
             {children}
