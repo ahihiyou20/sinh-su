@@ -8,6 +8,7 @@ export const quizData: Quiz[] = [
     answer: 1,
     explain:
       "Đúng (2) và (3). (1) SAI vì nấm men dùng chất hữu cơ (tinh bột) làm cả nguồn năng lượng và carbon → HÓA DỊ DƯỠNG. (4) SAI vì các VSV phân giải chất hữu cơ trong EMZEO dùng chính chất hữu cơ làm nguồn năng lượng và carbon → HÓA DỊ DƯỠNG (không phải quang tự dưỡng).",
+    difficulty: "hard",
   },
   {
     q: "Câu 2. Loại vi sinh vật nào sau đây cần có trong quá trình sản xuất sữa chua?",
@@ -15,6 +16,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Vi khuẩn lactic lên men đường lactose trong sữa thành acid lactic → sữa đông và có vị chua đặc trưng của sữa chua.",
+    difficulty: "easy",
   },
   {
     q: "Câu 3. Loài nào sau đây KHÔNG PHẢI vi sinh vật?",
@@ -22,6 +24,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Nấm rơm là sinh vật ĐA BÀO, có thể quan sát bằng mắt thường → không phải vi sinh vật. Vi khuẩn lam, tảo đơn bào, trùng biến hình đều là VSV.",
+    difficulty: "easy",
   },
   {
     q: "Câu 4. Vi sinh vật thuộc những giới nào trong hệ thống phân loại 5 giới?",
@@ -34,6 +37,7 @@ export const quizData: Quiz[] = [
     answer: 1,
     explain:
       "VSV gồm các sinh vật nhỏ thuộc 3 giới: Khởi sinh (vi khuẩn, vi khuẩn cổ), Nguyên sinh (tảo đơn bào, ĐVNS), Nấm (nấm men, nấm mốc).",
+    difficulty: "medium",
   },
   {
     q: "Câu 5. Cho các sinh vật sau: vi khuẩn lactic, nấm men, trùng roi, trùng giày, tảo silic, cây rêu, giun đất. Số vi sinh vật trong danh sách là?",
@@ -41,6 +45,7 @@ export const quizData: Quiz[] = [
     answer: 1,
     explain:
       "Có 5 vi sinh vật: vi khuẩn lactic, nấm men, trùng roi, trùng giày, tảo silic. Cây rêu (thực vật đa bào) và giun đất (động vật đa bào) KHÔNG phải VSV.",
+    difficulty: "medium",
   },
   {
     q: "Câu 6. Cho các đặc điểm: (1) Kích thước nhỏ bé, thường không nhìn thấy bằng mắt thường; (2) Khả năng phân bố rộng trong mọi môi trường; (3) Hấp thu và chuyển hóa vật chất nhanh; (4) Sinh trưởng và sinh sản nhanh. Số đặc điểm chung của vi sinh vật là?",
@@ -48,6 +53,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Cả 4 đặc điểm đều là đặc điểm chung của vi sinh vật. Trong đó kích thước nhỏ là nguyên nhân dẫn đến tỉ lệ S/V lớn → trao đổi chất, sinh trưởng và sinh sản đều nhanh.",
+    difficulty: "medium",
   },
   {
     q: "Câu 7. Kích thước vi sinh vật càng nhỏ thì?",
@@ -60,6 +66,7 @@ export const quizData: Quiz[] = [
     answer: 0,
     explain:
       "Kích thước nhỏ → tỉ lệ diện tích/thể tích (S/V) lớn → hấp thu, trao đổi chất nhanh → sinh trưởng và sinh sản nhanh.",
+    difficulty: "easy",
   },
   {
     q: "Câu 8. Đặc điểm nào của vi sinh vật đã trở thành thế mạnh mà công nghệ sinh học đang tập trung khai thác?",
@@ -72,6 +79,7 @@ export const quizData: Quiz[] = [
     answer: 2,
     explain:
       "CNSH khai thác đặc điểm sinh trưởng – sinh sản nhanh của VSV để sản xuất nhanh và nhiều sản phẩm (kháng sinh, enzyme, sinh khối, thực phẩm lên men…).",
+    difficulty: "medium",
   },
   {
     q: "Câu 9. Căn cứ để phân loại các kiểu dinh dưỡng ở vi sinh vật là?",
@@ -84,6 +92,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Phân loại kiểu dinh dưỡng VSV dựa vào 2 yếu tố: nguồn năng lượng (ánh sáng/hóa học) và nguồn carbon (CO₂/chất hữu cơ) → 4 kiểu: quang tự dưỡng, quang dị dưỡng, hóa tự dưỡng, hóa dị dưỡng.",
+    difficulty: "hard",
   },
 
   // ========== Câu 10-20 (Image 2) ==========
