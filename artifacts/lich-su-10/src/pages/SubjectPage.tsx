@@ -169,16 +169,6 @@ export function SubjectPage({ subject }: SubjectPageProps) {
     return { difficultyCounts, tagCounts };
   }, [allQuestions]);
 
-  const difficultyCards = useMemo(
-    () =>
-      [
-        { label: "Dễ", value: stats.difficultyCounts.easy },
-        { label: "Vừa", value: stats.difficultyCounts.medium },
-        { label: "Khó", value: stats.difficultyCounts.hard },
-      ].filter((item) => item.value > 0),
-    [stats.difficultyCounts],
-  );
-
   const removeBookmark = (id: string) => {
     toggleBookmark(id);
   };
@@ -234,21 +224,6 @@ export function SubjectPage({ subject }: SubjectPageProps) {
         {subject.quickRef && <QuickRefTable data={subject.quickRef} />}
 
         <ScoreChart history={history} accentHex={subject.accentHex} />
-        {history.length > 0 && difficultyCards.length > 0 && (
-          <section className="my-5 rounded-xl border border-border-earth bg-surface px-5 py-4">
-            <h2 className="m-0 mb-3 font-display text-base font-bold text-gold">
-              📌 Thống kê nhanh
-            </h2>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {difficultyCards.map((item) => (
-                <div key={item.label} className="rounded-lg bg-surface-2 p-3 text-sm">
-                  <div className="text-text-dim">{item.label}</div>
-                  <div className="font-bold text-text">{item.value}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
 
         <HistoryPanel history={history} onClear={clearHistory} />
 
