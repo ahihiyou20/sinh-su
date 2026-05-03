@@ -34,7 +34,11 @@ const questions: readonly SubjectQuestion[] = [
     opts: q.options,
     ans: q.answer,
     explain: q.explain,
-    tag: tagFor(i),
+    tag: q.tag ?? tagFor(i),
+    difficulty: q.difficulty,
+    scenarioId: q.scenarioId,
+    scenarioTitle: q.scenarioTitle,
+    scenarioLead: q.scenarioLead,
   })),
   ...extraQuestions.map((q, i) => ({
     q: q.q,

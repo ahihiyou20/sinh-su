@@ -34,6 +34,11 @@ export type Quiz = {
   options: string[];
   answer: number;
   explain: string;
+  tag?: string;
+  difficulty?: "easy" | "medium" | "hard";
+  scenarioId?: string;
+  scenarioTitle?: string;
+  scenarioLead?: string;
 };
 
 export type AnswerEntry = { q: number; selected: number; correct: boolean };
