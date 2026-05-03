@@ -578,6 +578,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "空格1: 跑步 (pǎobù = chạy bộ, hoạt động thể thao buổi sáng). 空格2: 多 (số tròn chục + 多 = 'hơn' — 60多公斤 = hơn 60 kg). 空格3: 踢 (踢足球 = đá bóng, 踢 là động từ chuyên dùng với bóng đá).",
     tag: "Điền vào đoạn văn",
+    difficulty: "medium",
   },
   {
     id: "tt-cz-80",
@@ -588,6 +589,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "空格1: 生病 (shēngbìng = bị bệnh). 空格2: 疼 (téng = đau/nhức). 空格3: 休息 (xiūxi = nghỉ ngơi). Đây là từ vựng HSK 2 liên quan chủ đề sức khỏe.",
     tag: "Điền vào đoạn văn",
+    difficulty: "easy",
   },
 
   // ── Section G: Viết câu (完成句子 — Sentence Completion) ───────────────────
@@ -600,6 +602,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "以后 (yǐhòu) đặt sau cụm thời gian/động từ: 下课以后 = sau giờ học. Câu hoàn chỉnh: 下课以后，我们就去喝咖啡。Đây là câu trả lời mẫu — các cách diễn đạt khác cùng nghĩa cũng đúng.",
     tag: "Viết câu",
+    difficulty: "medium",
   },
   {
     id: "tt-wj-82",
@@ -608,6 +611,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "还 (hái) so sánh tương đối: A还好，B就不行 = A còn ổn, B thì không. Câu hoàn chỉnh: 历史还好，数学就不行。",
     tag: "Viết câu",
+    difficulty: "medium",
   },
   {
     id: "tt-wj-83",
@@ -616,6 +620,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "有点儿 + Adj (tiêu cực): 这件衣服有点儿大 = cái áo này hơi rộng. Câu hoàn chỉnh: 这件衣服有点儿大，有小一点儿的吗？",
     tag: "Viết câu",
+    difficulty: "medium",
   },
   {
     id: "tt-wj-84",
@@ -624,6 +629,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "外面 (wàimiàn = bên ngoài) làm chủ ngữ. Câu hoàn chỉnh: 外面很热，快进屋里坐一会儿吧 = Bên ngoài nóng lắm, vào trong ngồi một lúc đi.",
     tag: "Viết câu",
+    difficulty: "easy",
   },
   {
     id: "tt-wj-85",
@@ -632,6 +638,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "对 + N + 不好/有好处 = tốt/không tốt cho...: 对身体不好 = không tốt cho sức khỏe. Câu hoàn chỉnh: 对身体不好，你要多运动运动。",
     tag: "Viết câu",
+    difficulty: "medium",
   },
   {
     id: "tt-wj-86",
@@ -640,6 +647,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "有点儿 + Adj tiêu cực: 有点儿腻 = hơi ngán/béo ngậy. Câu hoàn chỉnh: 我不喜欢吃红烧肉，有点儿腻。",
     tag: "Viết câu",
+    difficulty: "medium",
   },
   {
     id: "tt-wj-87",
@@ -648,6 +656,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "对 + người + Adj: 他对大家都很好 = anh ấy tốt bụng với mọi người. Câu hoàn chỉnh: 他对大家都很好，我们班谁都喜欢他。",
     tag: "Viết câu",
+    difficulty: "medium",
   },
   {
     id: "tt-wj-88",
@@ -656,6 +665,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "得 kết quả bổ ngữ: 病得住院 = bệnh đến mức phải nhập viện. Câu hoàn chỉnh: 她病得住院了，没能参加考试 = Cô ấy nhập viện nên không thể tham dự kỳ thi.",
     tag: "Viết câu",
+    difficulty: "hard",
   },
 
   // ── Section H: Đọc hiểu 2 — Ngày sinh nhật (từ đề thi) ──────────────────────
@@ -668,6 +678,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 送给我一些小礼物，像是手写的贺卡和一些小零食 (tặng tôi một số quà nhỏ như thiệp viết tay và đồ ăn vặt).",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
   {
     id: "tt-rc-90",
@@ -677,6 +688,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 我的家人带我去了一家餐厅，这是一个我一直想去的地方 (gia đình đưa tôi đến một nhà hàng, đó là nơi tôi luôn muốn đến).",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
   {
     id: "tt-rc-91",
@@ -686,6 +698,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 我和家人一起吃了生日蛋糕，还打了些小游戏 (ăn bánh sinh nhật cùng gia đình và chơi trò chơi nhỏ).",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
   {
     id: "tt-rc-92",
@@ -700,6 +713,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 我很感谢我的家人和朋友，他们给了我这么美好的一天 (tôi rất biết ơn gia đình và bạn bè đã cho tôi một ngày tuyệt vời như vậy).",
     tag: "Đọc hiểu",
+    difficulty: "medium",
   },
   {
     id: "tt-rc-93",
@@ -709,6 +723,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 我也希望自己可以成为更好的人 (tôi cũng hy vọng bản thân có thể trở thành người tốt hơn). Câu kết của bài.",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
 
   // ── Section I: Đọc hiểu 3 — Cà phê (từ đề thi) ──────────────────────────────
@@ -721,6 +736,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "Đoạn văn: 喝咖啡对身体有五个好处 (uống cà phê có năm lợi ích cho cơ thể). 五 = năm.",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
   {
     id: "tt-rc-95",
@@ -730,6 +746,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "Đoạn văn: 每天喝一杯就没问题 (mỗi ngày uống một tách là ổn). 一杯 = một tách.",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
   {
     id: "tt-rc-96",
@@ -739,6 +756,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 2,
     explain: "Đoạn văn: 美国最有名的咖啡商标是…星巴克 (thương hiệu cà phê nổi tiếng nhất của Mỹ là Starbucks). 商标 = thương hiệu.",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
 
   // ── Section J: Cloze 2 — 帅哥 (10 blanks, từ đề thi IMG_3219) ──────────────
@@ -752,6 +770,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "① 人人 = mọi người. ② 会 = có thể/sẽ. ③ 能 = có thể. ④ 米 → 一米八几 ≈ 1.8m. ⑤ 公斤 = kg → 65公斤. ⑥ 那么 = vậy thì. ⑦ 经常 = thường xuyên. ⑧ 有时候 = đôi khi. ⑨ 怎么 = tại sao/như thế nào. ⑩ 因为 = vì. Cặp 因为…所以 giải thích nguyên nhân.",
     tag: "Điền vào đoạn văn",
+    difficulty: "hard",
   },
 
   // ── Section K: Cloze 3 — 食堂 (5 blanks, từ đề thi IMG_3221) ────────────────
@@ -765,5 +784,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "① 一 → 介绍一下儿 = giới thiệu sơ qua. ② 教 → 教学楼 = tòa nhà giảng dạy. ③ 面 → 面包 = bánh mì. ④ 也 → 也很便宜 = cũng rất rẻ. ⑤ 去 → 去食堂吃饭 = đi căng-tin ăn cơm.",
     tag: "Điền vào đoạn văn",
+    difficulty: "medium",
   },
 ];
