@@ -421,7 +421,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     difficulty: "hard",
   },
   {
-  {
     id: "tt-er-64",
     q: "\"坐公共汽车太慢了，我们还去坐出租车吧。\" — Lỗi sai nằm ở đâu？",
     opts: [
@@ -452,7 +451,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
 
   // ── Section E: Viết lại câu (MCQ version) ─────────────────────────────
 
-  {
   {
     id: "tt-rw-72",
     q: "他生病了，他没去打篮球。（Viết lại dùng 因为…所以）",
@@ -606,7 +604,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     difficulty: "easy",
   },
   {
-  {
     id: "tt-wj-86",
     q: "Hoàn thành câu: 我不喜欢吃红烧肉，________。（dùng kết cấu với 有点儿）",
     opts: ["有点儿腻", "有点儿好吃", "一点儿腻", "很腻了"],
@@ -725,10 +722,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     difficulty: "easy",
   },
 
-  // ── Section J: Cloze 2 — 帅哥 (10 blanks, từ đề thi IMG_3219) ──────────────
-
-  {
-  // ── Section K: Cloze 3 — 食堂 (5 blanks, từ đề thi IMG_3221) ────────────────
+  // ── Section J: Cloze 3 — 食堂 (5 blanks, từ đề thi IMG_3221) ────────────────
 
   {
     id: "tt-cz-98",
