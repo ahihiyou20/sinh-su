@@ -54,23 +54,36 @@ function selectQuestions(
   bookmarks: ReadonlySet<string>,
   wrongIds: ReadonlySet<string>,
 ): readonly SubjectQuestion[] {
+  const grouped = new Map<string, SubjectQuestion[]>();
+  const singles: SubjectQuestion[] = [];
+  for (const q of all) {
+    const key = getScenarioKey(q);
+    if (key) {
+      const list = grouped.get(key);
+      if (list) list.push(q);
+      else grouped.set(key, [q]);
+    } else {
+      singles.push(q);
+    }
+  }
+  const shuffleGrouped = (items: readonly SubjectQuestion[]) =>
+    shuffle(items);
   switch (filter.kind.type) {
     case "all":
-      return shuffle(all);
+      return shuffleGrouped(
+        [...grouped.values()].flatMap((group) => group.length > 1 ? group : group).concat(singles),
+      );
     case "bookmarks":
-      return shuffle(all.filter((q) => bookmarks.has(questionId(q))));
+      return shuffleGrouped(
+        all.filter((q) => bookmarks.has(questionId(q))),
+      );
     case "wrong":
       return all.filter((q) => wrongIds.has(questionId(q)));
     case "difficulty":
-      return shuffle(
-        all.filter((q) => {
-          if (filter.kind.type !== "difficulty") return false;
-          return q.difficulty === filter.kind.level;
-        }),
-      );
+      return shuffleGrouped(all.filter((q) => q.difficulty === filter.kind.level));
     case "topic": {
       const topic = filter.kind.topic;
-      return shuffle(all.filter((q) => q.tag === topic));
+      return shuffleGrouped(all.filter((q) => q.tag === topic));
     }
   }
 }
@@ -104,7 +117,7 @@ function renderDifficultyLabel(level?: "easy" | "medium" | "hard"): string {
 }
 
 function getScenarioKey(q: SubjectQuestion): string | null {
-  return q.scenarioId ?? q.passage ?? null;
+  return q.scenarioId ?? q.scenarioTitle ?? q.scenarioLead ?? q.passage ?? null;
 }
 
 function getScenarioGroup(q: SubjectQuestion): string | null {
