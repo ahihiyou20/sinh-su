@@ -45,6 +45,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "很 + 想: diễn đạt mong muốn chủ quan mạnh. 很 không đi trực tiếp với 要, 会, 能.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-05",
@@ -53,6 +54,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Trong tiếng Trung, uống thuốc dùng động từ 吃 (ăn) chứ không dùng 喝 (uống chất lỏng). 吃药 là cụm từ cố định.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-06",
@@ -61,6 +63,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 2,
     explain: "知道: biết một thông tin/sự thật cụ thể. 认识: quen biết người. 了解: hiểu sâu. 听说: nghe nói (qua người khác).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-mc-07",
@@ -69,6 +72,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 2,
     explain: "多 + Adj hỏi mức độ. 多高 = cao bao nhiêu; 多大 = bao nhiêu tuổi; 多重 = nặng bao nhiêu; 多长 = dài bao nhiêu.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-08",
@@ -77,6 +81,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "好多了: bổ ngữ mức độ chỉ sự thay đổi đáng kể (tốt hơn nhiều). Dùng khi muốn nói cải thiện rõ rệt.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-mc-09",
@@ -85,6 +90,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "一起 (yīqǐ): phó từ đứng trước động từ, chỉ hành động cùng nhau làm. 一下, 一点, 一会 đều không phù hợp về nghĩa.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-10",
@@ -93,6 +99,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "让 trong câu kiêm ngữ: A + 让 + B + V. Ý nghĩa: nhờ/cho phép. 叫 tương tự nhưng ít lịch sự hơn; 使 mang sắc thái thúc đẩy.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-mc-11",
@@ -101,6 +108,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "…的时候: mốc/trạng ngữ thời gian (khi đang ở Bắc Kinh). 时间: khoảng thời gian/dịp (tìm cơ hội đi thăm).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "hard",
   },
   {
     id: "tt-mc-12",
@@ -109,6 +117,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "怎么: hỏi nguyên nhân ngạc nhiên (Làm sao mà…). 这么: chỉ mức độ đang hiện diện trước mắt người nói (nhiều đến thế này).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "hard",
   },
   {
     id: "tt-mc-13",
@@ -117,6 +126,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 2,
     explain: "Lặp ABAB (准备准备) của động từ song âm tiết: thể hiện hành động nhẹ nhàng, thư thả, không áp lực. Khác 准备一下 (thử một lần).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "hard",
   },
   {
     id: "tt-mc-14",
@@ -125,6 +135,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "每…都: nhấn mạnh tính toàn thể và quy luật lặp đi lặp lại. 每天 + 都 = ngày nào cũng (quy luật nhất quán).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-15",
@@ -138,6 +149,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "真漂亮 và 太…了 đều biểu thị cảm thán mức độ cao. 非常 và 很 chỉ là trạng thái bình thường; 比较 là 'tương đối'.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-mc-16",
@@ -146,6 +158,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Trong ngữ cảnh gọi món ăn/đặt hàng, dùng 要 hoặc 来 đứng trước món ăn. 想 biểu thị mong muốn nhưng không phải câu gọi món.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-17",
@@ -154,6 +167,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Tính từ màu sắc (粉色) đứng trực tiếp trước 的 làm định ngữ cho danh từ. Không cần thêm 在/是/了 trước màu.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-18",
@@ -162,6 +176,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "再 chỉ hành động thực hiện SAU KHI điều kiện được đáp ứng (hãy đợi rồi mới…). …以后 + 再 + VP là cấu trúc điều kiện thời gian.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-19",
@@ -170,6 +185,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 2,
     explain: "很少 (rất ít khi) + V: tần suất thấp nhưng không bằng không. Khác 不 (phủ định hoàn toàn) và 没有 (chưa/không có việc xảy ra).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "hard",
   },
   {
     id: "tt-mc-20",
@@ -178,6 +194,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 2,
     explain: "Hỏi phương thức thực hiện: 怎么 + V? = làm thế nào để…? Phù hợp với tình huống nhờ giúp đỡ mở cửa.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
 
   // ── Section B: Điền từ vào chỗ trống (restructured as MCQ) ──────────────
@@ -189,6 +206,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "很少 (rất ít khi) + V: phân bổ tần suất — 常 cho hoạt động chính, 很少 cho hoạt động phụ. 不 phủ định hoàn toàn; 从不 quá tuyệt đối; 常常 sai nghĩa.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-fb-22",
@@ -197,6 +215,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Số tròn chục + 多 + lượng từ = 'hơn 60 kg'. 几 dùng cho số dưới 10; 些 chỉ số lượng mơ hồ; 块 là đơn vị tiền tệ.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-fb-23",
@@ -205,6 +224,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Cấu trúc: A + 问 + B + 问题 (A hỏi B câu hỏi). 说 = nói; 告诉 = nói cho biết; 叫 = gọi/bảo.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-fb-24",
@@ -213,6 +233,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "zhǎo = 找 (tìm/đến rủ). 找明红去吃饭 = đến tìm rủ Minh Hồng đi ăn cơm. Phân biệt: 看 = xem; 跟 = cùng với; 请 = mời (bao ăn).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-fb-25",
@@ -221,6 +242,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "出院 (chūyuàn) = xuất viện. 出 + 院 ghép thành từ cố định. 进院 không dùng; 离院 không phải từ thông dụng.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-fb-26",
@@ -229,6 +251,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "运动 (yùndòng) = thể thao/vận động. 行动 = hành động; 活动 = hoạt động; 体动 không phải từ tiếng Trung.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-fb-27",
@@ -237,6 +260,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "踢 (tī) là động từ chuyên dùng cho bóng đá: 踢足球. 打 dùng cho bóng rổ/bóng bàn; 玩 = chơi chung chung; 看 = xem.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-fb-28",
@@ -245,6 +269,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "pǎobù = 跑步 (chạy bộ). Nhớ chữ Hán từ phiên âm: pǎo = 跑, bù = 步.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-fb-29",
@@ -253,6 +278,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "会 dự đoán khả năng xảy ra trong tương lai (dựa vào tình huống/thời tiết). 要 = cần/sẽ (kế hoạch chủ quan); 能 = có thể (điều kiện); 想 = muốn.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-fb-30",
@@ -261,6 +287,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "要 (yào) = phải/cần, biểu thị yêu cầu hoặc lời khuyên của người có thẩm quyền. 会 = khả năng; 能 = điều kiện; 可以 = được phép.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-fb-31",
@@ -269,6 +296,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Adj + 了 + 一点儿: hơi … một chút (so sánh nhẹ nhàng). 有点儿 đứng TRƯỚC tính từ; 一会儿 = một lúc; 一下儿 đứng sau động từ.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-fb-32",
@@ -277,6 +305,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Số + 多 + lượng từ: hơn 2 tháng (2个多月). 多 đứng sau số. 几 dùng để hỏi/ước lượng dưới 10; 些 = một ít; 好 không dùng theo cách này.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-fb-33",
@@ -285,6 +314,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "zěnme bù = 怎么不 (Sao lại không…?). Phân biệt: 为什么不 = wèishénme bù (khác pinyin); 怎么 = zěnme (thiếu 不); 难道 = nándào (câu hỏi tu từ).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "hard",
   },
 
   // ── Section C: Sắp xếp thành câu đúng ──────────────────────────────────
@@ -301,6 +331,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Trật tự định ngữ: Vị trí (旁边) + Chỉ thị từ (那个) + Tính từ (大的) + N (教室) + 是 + 我们的.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-ar-52",
@@ -314,6 +345,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Cấu trúc tồn tại: 离 + nơi tham chiếu + đánh giá khoảng cách + 有 + chủ thể tồn tại.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-ar-53",
@@ -327,6 +359,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "每…都: S + 每 + Thời gian + 都 + VP. 每个星期日都: 'mỗi chủ nhật đều…'.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-ar-54",
@@ -340,6 +373,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Cấu trúc tồn tại: Địa điểm + 有 + Số (两) + Lượng từ (本) + N (中文杂志).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-ar-55",
@@ -353,6 +387,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Trật tự: S + Thời gian + 一起 + VP + 好吗? Câu đề nghị với 好吗 cuối câu.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
 
   // ── Section D: Sửa lỗi sai (MCQ version) ─────────────────────────────
@@ -369,6 +404,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Không dùng đồng thời lặp động từ (看看) và 一下儿. Phải chọn một: 看看 HOẶC 看一下儿.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-er-62",
@@ -382,6 +418,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Trật tự bắt buộc: 去 + Địa điểm + Hoạt động. 去南京旅游 ✓ — không đảo thành 去旅游南京 ✗.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "hard",
   },
   {
     id: "tt-er-63",
@@ -395,6 +432,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Trật tự: Phương tiện (开车) + 要 + Thời gian. 开车要一个多小时 ✓ — không nói 要开车一个多小时 ✗.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "hard",
   },
   {
     id: "tt-er-64",
@@ -408,6 +446,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "还是 = thà/hay là, dùng để đề xuất lựa chọn sau so sánh. 还去 sai về cú pháp và nghĩa.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-er-65",
@@ -421,6 +460,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Trật tự định ngữ: 那个 (chỉ thị) + 粉色 (màu) + 的. Thiếu 个 và 的 sau màu sắc.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
 
   // ── Section E: Viết lại câu (MCQ version) ─────────────────────────────
@@ -437,6 +477,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Cấu trúc 是…的 nhấn mạnh thời gian/chi tiết của hành động đã qua: 是 + [thành phần nhấn mạnh] + VP + 的.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-rw-72",
@@ -450,6 +491,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Cặp liên từ nhân quả: 因为 + nguyên nhân (S1), 所以 + kết quả (S2). Hai vế có thể cùng chủ ngữ hoặc khác.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-rw-73",
@@ -463,6 +505,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "要 phủ định bằng 不要 (không muốn/không cần). 没要 không đúng ngữ pháp; 要不 = nếu không thì; 不吃了 = thôi không ăn nữa (nghĩa khác).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-rw-74",
@@ -476,6 +519,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Phủ định 是…的: PHẢI dùng 不是…的. 是 không được lược bỏ và 不 đứng trước 是, không tách vào giữa cấu trúc.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
 
   // ── Section E: Đọc hiểu (Reading Comprehension) ────────────────────────────
@@ -489,6 +533,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 妈妈带他去医院看病 (Mẹ đưa anh ấy đến bệnh viện khám bệnh). Đây là thông tin trực tiếp từ đoạn văn.",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
   {
     id: "tt-rc-76",
@@ -498,6 +543,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 给他开了一些药，让他每天吃两次 (kê thuốc cho anh ấy, uống hai lần mỗi ngày). 两次 = hai lần.",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
   {
     id: "tt-rc-77",
@@ -507,6 +553,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 不能吃辣的东西 (không được ăn đồ cay). Các lựa chọn 喝水, 休息 thì được khuyến khích; 出院 là việc xảy ra sau, không liên quan lệnh cấm.",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
   {
     id: "tt-rc-78",
@@ -516,6 +563,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 以后我要每天跑步，这样就不会生病了 (Sau này tôi muốn chạy bộ mỗi ngày, như vậy sẽ không bị bệnh nữa). Đây là lời của chính 小明.",
     tag: "Đọc hiểu",
+    difficulty: "easy",
   },
 
   // ── Section F: Điền vào đoạn văn (Cloze Test) ──────────────────────────────
