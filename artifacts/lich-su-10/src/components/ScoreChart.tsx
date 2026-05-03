@@ -58,7 +58,7 @@ function CustomTooltip({ active, payload }: TooltipProps) {
   const point = payload[0]?.payload;
   if (!point) return null;
   return (
-    <div className="rounded-lg border border-border-earth bg-bg/95 px-3 py-2 text-[12px] text-text shadow-lg backdrop-blur-sm">
+    <div className="rounded-lg border border-border-earth bg-surface px-3 py-2 text-[12px] text-text shadow-lg backdrop-blur-sm">
       <div className="font-semibold text-gold">Lượt #{point.idx}</div>
       <div className="text-text-dim">{point.label}</div>
       <div className="mt-1">
@@ -77,7 +77,6 @@ function CustomTooltip({ active, payload }: TooltipProps) {
 
 export function ScoreChart({ history, accentHex }: ScoreChartProps) {
   const data = useMemo<readonly ChartPoint[]>(() => {
-    // history is newest-first; reverse for chronological chart
     const ordered = [...history].reverse();
     return ordered.map((entry, i) => ({
       idx: i + 1,
@@ -99,7 +98,7 @@ export function ScoreChart({ history, accentHex }: ScoreChartProps) {
       >
         <h2
           id="chart-heading"
-          className="m-0 mb-2 font-display text-base font-bold text-gold"
+          className="m-0 mb-2 text-base font-bold text-gold"
         >
           📈 Biểu đồ tiến bộ
         </h2>
@@ -126,7 +125,7 @@ export function ScoreChart({ history, accentHex }: ScoreChartProps) {
       <div className="mb-3 flex flex-wrap items-baseline justify-between gap-3">
         <h2
           id="chart-heading"
-          className="m-0 font-display text-base font-bold text-gold"
+          className="m-0 text-base font-bold text-gold"
         >
           📈 Biểu đồ tiến bộ ({data.length} lượt)
         </h2>
@@ -148,38 +147,38 @@ export function ScoreChart({ history, accentHex }: ScoreChartProps) {
             data={[...data]}
             margin={{ top: 5, right: 12, bottom: 0, left: -12 }}
           >
-            <CartesianGrid stroke="#5A3820" strokeDasharray="3 3" opacity={0.3} />
+            <CartesianGrid stroke="#1e2736" strokeDasharray="3 3" opacity={0.5} />
             <XAxis
               dataKey="idx"
-              stroke="#A89070"
+              stroke="#475569"
               fontSize={11}
-              tick={showXLabels ? { fill: "#A89070" } : false}
+              tick={showXLabels ? { fill: "#94A3B8" } : false}
               tickLine={false}
-              axisLine={{ stroke: "#5A3820" }}
+              axisLine={{ stroke: "#1e2736" }}
             />
             <YAxis
               domain={[0, 100]}
-              stroke="#A89070"
+              stroke="#475569"
               fontSize={11}
               tickLine={false}
-              axisLine={{ stroke: "#5A3820" }}
+              axisLine={{ stroke: "#1e2736" }}
               tickFormatter={(v: number) => `${v}%`}
             />
-            <Tooltip content={<CustomTooltip />} cursor={{ stroke: "#D4A017", strokeWidth: 1, opacity: 0.4 }} />
+            <Tooltip content={<CustomTooltip />} cursor={{ stroke: "#6366F1", strokeWidth: 1, opacity: 0.4 }} />
             <ReferenceLine
               y={avg}
-              stroke="#D4A017"
+              stroke="#6366F1"
               strokeDasharray="4 4"
-              opacity={0.6}
-              label={{ value: `TB ${avg}%`, position: "right", fill: "#D4A017", fontSize: 10 }}
+              opacity={0.5}
+              label={{ value: `TB ${avg}%`, position: "right", fill: "#6366F1", fontSize: 10 }}
             />
             <Line
               type="monotone"
               dataKey="pct"
               stroke={accentHex}
               strokeWidth={2.5}
-              dot={{ r: 4, strokeWidth: 1.5, fill: "#1C1008", stroke: accentHex }}
-              activeDot={{ r: 6, fill: accentHex, stroke: "#F0E6D0", strokeWidth: 1.5 }}
+              dot={{ r: 4, strokeWidth: 1.5, fill: "#080B11", stroke: accentHex }}
+              activeDot={{ r: 6, fill: accentHex, stroke: "#F8FAFC", strokeWidth: 1.5 }}
               isAnimationActive={false}
             />
           </LineChart>

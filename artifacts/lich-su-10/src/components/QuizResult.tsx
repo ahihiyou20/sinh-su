@@ -73,12 +73,12 @@ export function QuizResult({
   }, [onSave, filter, score, total]);
 
   return (
-    <main className="min-h-screen bg-bg px-4 py-5 font-serif text-text">
-      <div className="mx-auto max-w-[720px] px-3 py-8 text-center">
-        <div aria-hidden="true" className="mb-4 text-7xl leading-none">
+    <main className="min-h-screen bg-bg px-4 py-5 text-text">
+      <div className="mx-auto max-w-[720px] px-3 py-12 text-center">
+        <div aria-hidden="true" className="mb-4 text-6xl leading-none">
           {medal(pct)}
         </div>
-        <h2 className="m-0 mb-2 font-display text-3xl text-gold">
+        <h2 className="m-0 mb-2 text-2xl font-bold text-text">
           Kết quả kiểm tra
         </h2>
         <div
@@ -93,7 +93,7 @@ export function QuizResult({
           {message(pct)}
         </div>
         {durationSecs !== undefined && durationSecs > 0 && (
-          <div className="mb-7 text-[13px] text-text-dim">
+          <div className="mb-8 text-[13px] text-text-dim">
             ⏱ Thời gian làm bài:{" "}
             <strong className="text-text">{formatDuration(durationSecs)}</strong>
           </div>
@@ -101,7 +101,7 @@ export function QuizResult({
 
         <ol
           aria-label="Chi tiết kết quả từng câu"
-          className="m-0 mb-7 max-h-[280px] list-none overflow-y-auto rounded-xl bg-surface p-4 text-left"
+          className="m-0 mb-8 max-h-[280px] list-none overflow-y-auto rounded-xl border border-border-earth bg-surface p-4 text-left"
         >
           {answers.map((a, i) => {
             const ansLetter = String.fromCharCode(65 + questions[i].ans);
@@ -126,7 +126,7 @@ export function QuizResult({
             <button
               type="button"
               onClick={onReviewWrong}
-              className="cursor-pointer rounded-lg border-0 bg-wrong px-7 py-2.5 font-serif text-sm font-bold tracking-wide text-white"
+              className="cursor-pointer rounded-lg border border-wrong/40 bg-wrong/[0.08] px-7 py-2.5 text-sm font-semibold text-wrong hover:bg-wrong/15 transition-colors duration-200"
             >
               🔁 Ôn lại {wrongCount} câu sai
             </button>
@@ -134,14 +134,14 @@ export function QuizResult({
           <button
             type="button"
             onClick={onRetry}
-            className="cursor-pointer rounded-lg border-0 bg-gold px-7 py-2.5 font-serif text-sm font-bold tracking-wide text-bg"
+            className="cursor-pointer rounded-lg border-0 bg-indigo-500 hover:bg-indigo-400 px-7 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
           >
             Làm lại
           </button>
           <button
             type="button"
             onClick={onBack}
-            className="cursor-pointer rounded-lg border border-border-earth bg-surface-2 px-7 py-2.5 font-serif text-sm font-bold tracking-wide text-text"
+            className="cursor-pointer rounded-lg border border-border-earth bg-surface px-7 py-2.5 text-sm font-semibold text-text-dim hover:text-text hover:border-white/20 transition-colors duration-200"
           >
             Xem lý thuyết
           </button>

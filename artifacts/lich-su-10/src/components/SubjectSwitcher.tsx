@@ -8,33 +8,31 @@ interface SubjectSwitcherProps {
 
 export function SubjectSwitcher({ currentId }: SubjectSwitcherProps) {
   return (
-    <div className="mb-3 flex justify-center">
-      <div
-        role="group"
-        aria-label="Chuyển môn học"
-        className="inline-flex items-center overflow-hidden rounded-full border border-gold/40 bg-bg/70 text-[12px] font-bold uppercase tracking-wider backdrop-blur-sm"
-      >
-        {subjectList.map((s, i) => {
-          const isCurrent = s.id === currentId;
-          return isCurrent ? (
-            <span
-              key={s.id}
-              aria-current="page"
-              className={`bg-gold px-3.5 py-1.5 text-bg${i > 0 ? " border-l border-gold/40" : ""}`}
-            >
-              {s.emoji} {s.shortName}
-            </span>
-          ) : (
-            <Link
-              key={s.id}
-              href={s.path}
-              className={`cursor-pointer px-3.5 py-1.5 text-gold transition-colors duration-200 hover:bg-surface-2${i > 0 ? " border-l border-gold/40" : ""}`}
-            >
-              {s.emoji} {s.shortName}
-            </Link>
-          );
-        })}
-      </div>
-    </div>
+    <nav
+      role="group"
+      aria-label="Chuyển môn học"
+      className="flex items-center bg-surface p-1 rounded-full border border-white/[0.07] gap-0.5"
+    >
+      {subjectList.map((s) => {
+        const isCurrent = s.id === currentId;
+        return isCurrent ? (
+          <span
+            key={s.id}
+            aria-current="page"
+            className="px-3.5 py-1.5 rounded-full bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1.5 whitespace-nowrap"
+          >
+            {s.emoji} {s.shortName}
+          </span>
+        ) : (
+          <Link
+            key={s.id}
+            href={s.path}
+            className="cursor-pointer px-3.5 py-1.5 rounded-full text-text-dim hover:text-white hover:bg-white/[0.05] text-xs font-medium transition-all duration-150 flex items-center gap-1.5 whitespace-nowrap"
+          >
+            {s.emoji} {s.shortName}
+          </Link>
+        );
+      })}
+    </nav>
   );
 }

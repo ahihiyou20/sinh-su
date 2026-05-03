@@ -728,7 +728,7 @@ export function QuizMode({
   const qid = questionId(question);
   const bookmarked = isBookmarked(qid);
   const progressPct = (currentQ / questions.length) * 100;
-  const tagColor = tagColors[question.tag] ?? "#5A3820";
+  const tagColor = tagColors[question.tag] ?? "#1e2736";
   const scenarioKey = getScenarioKey(question);
   const scenarioGroup = getScenarioGroup(question);
   const wasResumed =
@@ -745,7 +745,7 @@ export function QuizMode({
   const useClozeForThis = isCloze(question) && (selected === null || clozeDone);
 
   return (
-    <main className="min-h-screen bg-bg px-4 py-5 font-serif text-text">
+    <main className="min-h-screen bg-bg px-4 py-5 text-text">
       <div className="mx-auto max-w-[720px]">
         {/* Filter toolbar */}
         <div

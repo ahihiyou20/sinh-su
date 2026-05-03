@@ -22,7 +22,7 @@ import type {
 } from "@/subjects/types";
 
 const CUSTOM_TAG = "Tự thêm";
-const CUSTOM_TAG_COLOR = "#1A8B7A";
+const CUSTOM_TAG_COLOR = "#6366F1";
 
 interface SubjectPageProps {
   readonly subject: SubjectConfig;
@@ -37,8 +37,6 @@ type Mode =
     };
 
 export function SubjectPage({ subject }: SubjectPageProps) {
-  // Reset mode whenever the subject changes (defensive — different routes mount
-  // separate instances, but this guards against any accidental reuse).
   const [mode, setMode] = useState<Mode>({ view: "study" });
   useEffect(() => {
     setMode({ view: "study" });
@@ -52,8 +50,6 @@ export function SubjectPage({ subject }: SubjectPageProps) {
   const { wrongIds, refresh: refreshWrong } = useLastWrongIds(subject.id);
   const { items: customItems } = useCustomQuestions(subject.id);
 
-  // Merge built-in + extras (already merged in subject.questions) with user's
-  // custom questions. Custom questions get a stable id based on their storage id.
   const allQuestions = useMemo<readonly SubjectQuestion[]>(() => {
     const customAsSubject: readonly SubjectQuestion[] = customItems.map((c) => ({
       id: c.id,
@@ -66,18 +62,11 @@ export function SubjectPage({ subject }: SubjectPageProps) {
     return [...subject.questions, ...customAsSubject];
   }, [subject.questions, customItems]);
 
-  // Effective tag colors include the "Tự thêm" tag so any custom question
-  // tagged with it shows up with a distinct pill color.
   const effectiveTagColors = useMemo<Record<string, string>>(
     () => ({ [CUSTOM_TAG]: CUSTOM_TAG_COLOR, ...subject.tagColors }),
     [subject.tagColors],
   );
 
-  // Build the filter list dynamically:
-  //   - Difficulty filters first (Dễ, Vừa, Khó)
-  //   - + "Tất cả", "Đã đánh dấu", + subject topic filters
-  //   - + "🔁 Câu sai (N)" if there are wrong IDs from the last quiz
-  //   - + "Câu tự thêm" if there are user custom questions
   const dynamicFilters = useMemo<readonly SubjectFilter[]>(() => {
     const result: SubjectFilter[] = [
       { label: "Dễ", kind: { type: "difficulty", level: "easy" } },
@@ -100,8 +89,6 @@ export function SubjectPage({ subject }: SubjectPageProps) {
     return result;
   }, [subject.filters, wrongIds.length, customItems.length]);
 
-  // When we leave/enter study mode, refresh the saved-progress + wrong-ids
-  // snapshots so the home buttons reflect the latest cache.
   useEffect(() => {
     if (mode.view === "study") {
       refreshProgress();
@@ -193,7 +180,7 @@ export function SubjectPage({ subject }: SubjectPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-bg font-serif text-text">
+    <div className="min-h-screen bg-bg text-text">
       <Header
         badge={subject.badge}
         title={subject.title}
@@ -205,23 +192,24 @@ export function SubjectPage({ subject }: SubjectPageProps) {
         onResume={resumeQuiz}
       >
         {headerExtras}
+      </Header>
+
+      <main className="mx-auto max-w-[1100px] px-4 pb-12 sm:px-6">
         {wrongIds.length > 0 && (
-          <div className="mt-3 flex justify-center">
+          <div className="mb-6">
             <button
               type="button"
               onClick={startReviewWrongQuiz}
-              className="cursor-pointer rounded-full border border-wrong/60 bg-bg/70 px-5 py-2 font-display text-[13px] font-bold tracking-wide text-wrong backdrop-blur-sm transition-colors duration-200 hover:bg-surface-2"
+              className="cursor-pointer border border-wrong/40 bg-wrong/[0.08] rounded-lg px-5 py-2 text-sm font-medium text-wrong hover:bg-wrong/15 transition-colors duration-200"
             >
               🔁 Ôn lại {wrongIds.length} câu sai gần nhất
             </button>
           </div>
         )}
-      </Header>
 
-      <main className="mx-auto max-w-[820px] px-4 py-6 sm:px-6">
         {subject.quickRef && <QuickRefTable data={subject.quickRef} />}
 
-        <ScoreChart history={history} accentHex={subject.accentHex} />
+        <ScoreChart history={history} accentHex="#6366F1" />
 
         <HistoryPanel history={history} onClear={clearHistory} />
 
@@ -245,7 +233,7 @@ export function SubjectPage({ subject }: SubjectPageProps) {
         >
           <h2
             id="theory-heading"
-            className="mt-0 mb-4 font-display text-xl font-bold text-gold"
+            className="mt-0 mb-4 text-xl font-bold text-gold"
           >
             {subject.theoryHeading}
           </h2>
@@ -258,4 +246,6 @@ export function SubjectPage({ subject }: SubjectPageProps) {
       </main>
     </div>
   );
+
+  void stats;
 }

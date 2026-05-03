@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #1C1008;
-  --color-surface: #2A1A0E;
-  --color-surface-2: #3A2415;
-  --color-border-earth: #5A3820;
-  --color-gold: #D4A017;
-  --color-gold-dim: #8B6914;
-  --color-jade: #1A6B5A;
-  --color-teal: #0E4D5C;
-  --color-crimson: #7A1F1F;
-  --color-text: #F0E6D0;
-  --color-text-dim: #A89070;
-  --color-correct: #2ECC71;
-  --color-correct-bg: #1A3A1A;
-  --color-wrong: #E74C3C;
-  --color-wrong-bg: #3A1A1A;
-  --color-warn-bg: #2A1800;
-  --color-warn-border: #c08010;
-  --color-warn-text: #F0C080;
+  --color-bg: #080B11;
+  --color-surface: #0D1117;
+  --color-surface-2: #0F1320;
+  --color-border-earth: #1e2736;
+  --color-gold: #6366F1;
+  --color-gold-dim: #4F46E5;
+  --color-jade: #6366F1;
+  --color-teal: #4338CA;
+  --color-crimson: #EF4444;
+  --color-text: #F8FAFC;
+  --color-text-dim: #94A3B8;
+  --color-correct: #10B981;
+  --color-correct-bg: #022c22;
+  --color-wrong: #EF4444;
+  --color-wrong-bg: #200808;
+  --color-warn-bg: #1a1500;
+  --color-warn-border: #6366F1;
+  --color-warn-text: #a5b4fc;
 
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-serif: "Crimson Text", Georgia, serif;
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-serif: "Inter", system-ui, sans-serif;
 }
 
 html,
@@ -32,7 +32,7 @@ body,
   min-height: 100%;
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-serif);
+  font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -41,6 +41,10 @@ body,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.3);
 }
 
 ::-webkit-scrollbar {
