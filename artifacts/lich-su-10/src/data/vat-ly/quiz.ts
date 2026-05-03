@@ -375,6 +375,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Tần số f là số vòng quay trong 1 giây, đơn vị Hz (vòng/giây). f = 1/T.",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Tốc độ góc ω có đơn vị là:",
@@ -383,6 +384,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Tốc độ góc ω = Δφ/Δt đo bằng rad/s (radian trên giây).",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Mối liên hệ giữa tốc độ dài v và tốc độ góc ω là:",
@@ -391,6 +393,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "v = ωR, trong đó R là bán kính quỹ đạo. Vật càng xa tâm, tốc độ dài càng lớn khi ω như nhau.",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Công thức tính gia tốc hướng tâm a_ht là:",
@@ -404,6 +407,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "a_ht = v²/R = ω²R. Hai biểu thức tương đương nhau vì v = ωR.",
     tag: "Chuyển động tròn đều",
+    difficulty: "medium",
   },
   {
     q: "Lực hướng tâm là:",
@@ -417,6 +421,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Lực hướng tâm không phải loại lực mới mà là vai trò của các lực đã biết (hấp dẫn, ma sát, căng dây...) khi gây ra gia tốc hướng tâm.",
     tag: "Chuyển động tròn đều",
+    difficulty: "medium",
   },
   {
     q: "Công thức lực hướng tâm F_ht là:",
@@ -430,6 +435,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "F_ht = m·a_ht = mv²/R = mω²R. Đây là hợp lực hướng vào tâm quỹ đạo.",
     tag: "Chuyển động tròn đều",
+    difficulty: "medium",
   },
   {
     q: "Xe đi qua đỉnh cầu cong vồng lên (điểm cao nhất). Lực nâng N của cầu lên xe tính theo lực hướng tâm là:",
@@ -443,6 +449,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Tại đỉnh cầu vồng lên: P - N = mv²/R (hướng tâm hướng xuống) → N = P - mv²/R. Áp lực lên cầu nhỏ hơn trọng lượng.",
     tag: "Chuyển động tròn đều",
+    difficulty: "hard",
   },
   {
     q: "Xe đi qua đáy cầu cong võng xuống (điểm thấp nhất). Lực nâng N của cầu lên xe tính theo lực hướng tâm là:",
@@ -456,6 +463,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Tại đáy cầu võng: N - P = mv²/R (hướng tâm hướng lên) → N = P + mv²/R. Áp lực lên cầu lớn hơn trọng lượng.",
     tag: "Chuyển động tròn đều",
+    difficulty: "hard",
   },
   {
     q: "Chu kì của đầu kim giây đồng hồ là:",
@@ -464,6 +472,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Kim giây quay 1 vòng trong 60 giây → T = 60 s.",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Trong chuyển động tròn đều, vật có công của lực hướng tâm bằng bao nhiêu?",
@@ -477,6 +486,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Lực hướng tâm luôn vuông góc với vận tốc nên công của nó luôn bằng 0.",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Mối quan hệ giữa tốc độ góc ω và chu kì T là:",
@@ -485,6 +495,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Trong một chu kì T, vật quay góc 2π rad → ω = 2π/T = 2πf.",
     tag: "Chuyển động tròn đều",
+    difficulty: "medium",
   },
   {
     q: "Trái Đất quay quanh Mặt Trời với chu kì xấp xỉ:",
@@ -493,6 +504,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Trái Đất quay quanh Mặt Trời với chu kì T ≈ 365 ngày (1 năm).",
     tag: "Chuyển động tròn đều",
+    difficulty: "easy",
   },
   {
     q: "Một vật quay trên dây trong mặt phẳng thẳng đứng. Tại điểm cao nhất, lực căng dây T được tính:",
@@ -506,6 +518,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Tại điểm cao nhất, cả T và P đều hướng vào tâm: T + P = mv²/R → T = mv²/R - mg. Điều kiện để dây không chùng: T ≥ 0 → v ≥ √(gR).",
     tag: "Chuyển động tròn đều",
+    difficulty: "hard",
   },
 
   // ── CHIẾN LƯỢC LÀM BÀI – LÝ THUYẾT THÊM ──────────────────────────────
@@ -521,6 +534,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Trong bài toán chuyển động tròn, nên chọn chiều dương hướng vào tâm để lực hướng tâm mang dấu dương, giúp thiết lập phương trình rõ ràng.",
     tag: "Chiến lược làm bài",
+    difficulty: "medium",
   },
   {
     q: "Trong bài toán xe đi trên cầu vồng lên hỏi 'áp lực lên cầu lớn nhất', điều kiện để áp lực lớn nhất là:",
