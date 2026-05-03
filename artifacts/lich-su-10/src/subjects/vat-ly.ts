@@ -30,18 +30,6 @@ const bookmarkFilter: SubjectFilter = {
   label: "Đã đánh dấu",
   kind: { type: "bookmarks" },
 };
-const easyFilter: SubjectFilter = {
-  label: "Dễ",
-  kind: { type: "difficulty", level: "easy" },
-};
-const mediumFilter: SubjectFilter = {
-  label: "Vừa",
-  kind: { type: "difficulty", level: "medium" },
-};
-const hardFilter: SubjectFilter = {
-  label: "Khó",
-  kind: { type: "difficulty", level: "hard" },
-};
 
 export const vatLySubject: SubjectConfig = {
   id: "vatly",
@@ -66,9 +54,6 @@ export const vatLySubject: SubjectConfig = {
   filters: [
     allFilter,
     bookmarkFilter,
-    easyFilter,
-    mediumFilter,
-    hardFilter,
     { label: TAG_DONG_LUONG, kind: { type: "topic", topic: TAG_DONG_LUONG } },
     { label: TAG_NANG_LUONG, kind: { type: "topic", topic: TAG_NANG_LUONG } },
     { label: TAG_TRON, kind: { type: "topic", topic: TAG_TRON } },
