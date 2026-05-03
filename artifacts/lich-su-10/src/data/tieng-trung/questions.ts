@@ -535,7 +535,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 以后我要每天跑步，这样就不会生病了 (Sau này tôi muốn chạy bộ mỗi ngày, như vậy sẽ không bị bệnh nữa). Đây là lời của chính 小明.",
     tag: "Đọc hiểu",
-    difficulty: "easy",
+    difficulty: "medium",
   },
 
   // ── Section F: Điền vào đoạn văn (Cloze Test) ──────────────────────────────
@@ -550,7 +550,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "空格1: 跑步 (pǎobù = chạy bộ, hoạt động thể thao buổi sáng). 空格2: 多 (số tròn chục + 多 = 'hơn' — 60多公斤 = hơn 60 kg). 空格3: 踢 (踢足球 = đá bóng, 踢 là động từ chuyên dùng với bóng đá).",
     tag: "Điền vào đoạn văn",
-    difficulty: "medium",
+    difficulty: "easy",
   },
   {
     id: "tt-cz-80",
@@ -641,7 +641,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 送给我一些小礼物，像是手写的贺卡和一些小零食 (tặng tôi một số quà nhỏ như thiệp viết tay và đồ ăn vặt).",
     tag: "Đọc hiểu",
-    difficulty: "easy",
+    difficulty: "medium",
   },
   {
     id: "tt-rc-90",
@@ -651,7 +651,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 我的家人带我去了一家餐厅，这是一个我一直想去的地方 (gia đình đưa tôi đến một nhà hàng, đó là nơi tôi luôn muốn đến).",
     tag: "Đọc hiểu",
-    difficulty: "easy",
+    difficulty: "medium",
   },
   {
     id: "tt-rc-91",
@@ -661,7 +661,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 我和家人一起吃了生日蛋糕，还打了些小游戏 (ăn bánh sinh nhật cùng gia đình và chơi trò chơi nhỏ).",
     tag: "Đọc hiểu",
-    difficulty: "easy",
+    difficulty: "medium",
   },
   {
     id: "tt-rc-92",
@@ -676,7 +676,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 我很感谢我的家人和朋友，他们给了我这么美好的一天 (tôi rất biết ơn gia đình và bạn bè đã cho tôi một ngày tuyệt vời như vậy).",
     tag: "Đọc hiểu",
-    difficulty: "medium",
+    difficulty: "hard",
   },
   {
     id: "tt-rc-93",
@@ -686,7 +686,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "Đoạn văn: 我也希望自己可以成为更好的人 (tôi cũng hy vọng bản thân có thể trở thành người tốt hơn). Câu kết của bài.",
     tag: "Đọc hiểu",
-    difficulty: "easy",
+    difficulty: "medium",
   },
 
   // ── Section I: Đọc hiểu 3 — Cà phê (từ đề thi) ──────────────────────────────
@@ -699,7 +699,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "Đoạn văn: 喝咖啡对身体有五个好处 (uống cà phê có năm lợi ích cho cơ thể). 五 = năm.",
     tag: "Đọc hiểu",
-    difficulty: "easy",
+    difficulty: "medium",
   },
   {
     id: "tt-rc-95",
@@ -709,7 +709,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "Đoạn văn: 每天喝一杯就没问题 (mỗi ngày uống một tách là ổn). 一杯 = một tách.",
     tag: "Đọc hiểu",
-    difficulty: "easy",
+    difficulty: "medium",
   },
   {
     id: "tt-rc-96",
@@ -719,7 +719,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 2,
     explain: "Đoạn văn: 美国最有名的咖啡商标是…星巴克 (thương hiệu cà phê nổi tiếng nhất của Mỹ là Starbucks). 商标 = thương hiệu.",
     tag: "Đọc hiểu",
-    difficulty: "easy",
+    difficulty: "medium",
   },
 
   // ── Section J: Cloze 3 — 食堂 (5 blanks, từ đề thi IMG_3221) ────────────────
@@ -733,6 +733,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 0,
     explain: "① 一 → 介绍一下儿 = giới thiệu sơ qua. ② 教 → 教学楼 = tòa nhà giảng dạy. ③ 面 → 面包 = bánh mì. ④ 也 → 也很便宜 = cũng rất rẻ. ⑤ 去 → 去食堂吃饭 = đi căng-tin ăn cơm.",
     tag: "Điền vào đoạn văn",
-    difficulty: "medium",
+    difficulty: "hard",
   },
 ];
