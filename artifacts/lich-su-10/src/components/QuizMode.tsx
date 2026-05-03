@@ -116,6 +116,20 @@ function normalizeAnswer(s: string): string {
   return s.trim().toLowerCase();
 }
 
+function stripChinesePunctuation(s: string): string {
+  return s
+    .replace(/[，。！？；：、（）()《》〈〉“”"'·\s]/g, "")
+    .trim();
+}
+
+function normalizeChineseAnswer(s: string): string {
+  return stripChinesePunctuation(normalizeAnswer(s));
+}
+
+function isChineseSentenceCompletion(q: SubjectQuestion): boolean {
+  return q.tag === "Viết câu" && !isCloze(q);
+}
+
 function formatElapsed(secs: number): string {
   const m = Math.floor(secs / 60);
   const s = secs % 60;
@@ -334,11 +348,18 @@ function ClozeInput({ question, onSubmit }: ClozeInputProps) {
 
   const handleSubmit = () => {
     if (!allFilled || submitted) return;
-    const newResults = blanks.map((ans, i) =>
-      normalizeAnswer(values[i] ?? "") === normalizeAnswer(ans)
-        ? ("correct" as const)
-        : ("wrong" as const),
-    );
+    const useFlexibleChineseGrading =
+      isChineseSentenceCompletion(question) &&
+      question.q.includes("Hoàn thành câu:");
+    const newResults = blanks.map((ans, i) => {
+      const user = values[i] ?? "";
+      const exactCorrect =
+        normalizeAnswer(user) === normalizeAnswer(ans);
+      const flexibleCorrect =
+        useFlexibleChineseGrading &&
+        normalizeChineseAnswer(user) === normalizeChineseAnswer(ans);
+      return exactCorrect || flexibleCorrect ? ("correct" as const) : ("wrong" as const);
+    });
     setResults(newResults);
     setSubmitted(true);
     const allCorrect = newResults.every((r) => r === "correct");
