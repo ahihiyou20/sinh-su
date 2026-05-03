@@ -7,6 +7,18 @@ const bookmarkFilter: SubjectFilter = {
   label: "Đã đánh dấu",
   kind: { type: "bookmarks" },
 };
+const easyFilter: SubjectFilter = {
+  label: "Dễ",
+  kind: { type: "difficulty", level: "easy" },
+};
+const mediumFilter: SubjectFilter = {
+  label: "Vừa",
+  kind: { type: "difficulty", level: "medium" },
+};
+const hardFilter: SubjectFilter = {
+  label: "Khó",
+  kind: { type: "difficulty", level: "hard" },
+};
 
 export const tiengTrungSubject: SubjectConfig = {
   id: "tiengtrung",
@@ -35,6 +47,9 @@ export const tiengTrungSubject: SubjectConfig = {
   filters: [
     allFilter,
     bookmarkFilter,
+    easyFilter,
+    mediumFilter,
+    hardFilter,
     { label: "Ngữ pháp HSK 2", kind: { type: "topic", topic: "Ngữ pháp HSK 2" } },
     { label: "Đọc hiểu", kind: { type: "topic", topic: "Đọc hiểu" } },
     { label: "Điền vào đoạn văn", kind: { type: "topic", topic: "Điền vào đoạn văn" } },

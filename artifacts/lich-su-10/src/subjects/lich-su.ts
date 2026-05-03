@@ -18,6 +18,7 @@ const questions: readonly SubjectQuestion[] = [
     ans: q.ans,
     explain: q.explain,
     tag: q.tag,
+    difficulty: q.difficulty,
   })),
   ...extraQuestions.map((q, i) => ({
     q: q.q,
@@ -34,6 +35,18 @@ const allFilter: SubjectFilter = { label: "Tất cả", kind: { type: "all" } };
 const bookmarkFilter: SubjectFilter = {
   label: "Đã đánh dấu",
   kind: { type: "bookmarks" },
+};
+const easyFilter: SubjectFilter = {
+  label: "Dễ",
+  kind: { type: "difficulty", level: "easy" },
+};
+const mediumFilter: SubjectFilter = {
+  label: "Vừa",
+  kind: { type: "difficulty", level: "medium" },
+};
+const hardFilter: SubjectFilter = {
+  label: "Khó",
+  kind: { type: "difficulty", level: "hard" },
 };
 
 export const lichSuSubject: SubjectConfig = {
@@ -60,6 +73,9 @@ export const lichSuSubject: SubjectConfig = {
   filters: [
     allFilter,
     bookmarkFilter,
+    easyFilter,
+    mediumFilter,
+    hardFilter,
     { label: "Văn Lang – Âu Lạc", kind: { type: "topic", topic: "Văn Lang – Âu Lạc" } },
     { label: "Chăm Pa", kind: { type: "topic", topic: "Chăm Pa" } },
     { label: "Phù Nam", kind: { type: "topic", topic: "Phù Nam" } },

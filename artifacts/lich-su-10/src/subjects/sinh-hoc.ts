@@ -55,6 +55,18 @@ const bookmarkFilter: SubjectFilter = {
   label: "Đã đánh dấu",
   kind: { type: "bookmarks" },
 };
+const easyFilter: SubjectFilter = {
+  label: "Dễ",
+  kind: { type: "difficulty", level: "easy" },
+};
+const mediumFilter: SubjectFilter = {
+  label: "Vừa",
+  kind: { type: "difficulty", level: "medium" },
+};
+const hardFilter: SubjectFilter = {
+  label: "Khó",
+  kind: { type: "difficulty", level: "hard" },
+};
 
 export const sinhHocSubject: SubjectConfig = {
   id: "sinhhoc",
@@ -79,6 +91,9 @@ export const sinhHocSubject: SubjectConfig = {
   filters: [
     allFilter,
     bookmarkFilter,
+    easyFilter,
+    mediumFilter,
+    hardFilter,
     { label: TAG_DINHDUONG, kind: { type: "topic", topic: TAG_DINHDUONG } },
     { label: TAG_TRAODOI, kind: { type: "topic", topic: TAG_TRAODOI } },
     { label: TAG_VIRUS, kind: { type: "topic", topic: TAG_VIRUS } },
