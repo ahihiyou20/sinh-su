@@ -427,34 +427,67 @@ function writeCustomQuestions(
   }
 }
 
+// ---------------------------------------------------------------------------
+// Custom-questions external store — same pattern as bookmarks so all hook
+// instances in the same tab share one source of truth and re-render together.
+// ---------------------------------------------------------------------------
+
+interface CustomQuestionsStoreEntry {
+  current: readonly CustomQuestion[];
+  listeners: Set<() => void>;
+}
+
+const customQuestionsStores: Record<SubjectId, CustomQuestionsStoreEntry> = {
+  lichsu: { current: [], listeners: new Set() },
+  sinhhoc: { current: [], listeners: new Set() },
+  tiengtrung: { current: [], listeners: new Set() },
+  vatly: { current: [], listeners: new Set() },
+};
+
+if (typeof window !== "undefined") {
+  for (const subject of ["lichsu", "sinhhoc", "tiengtrung", "vatly"] as const) {
+    customQuestionsStores[subject].current = readCustomQuestions(subject);
+  }
+  window.addEventListener("storage", (event) => {
+    if (!event.key) return;
+    for (const subject of ["lichsu", "sinhhoc", "tiengtrung", "vatly"] as const) {
+      if (event.key === ns("custom-questions", subject)) {
+        customQuestionsStores[subject].current = readCustomQuestions(subject);
+        for (const l of customQuestionsStores[subject].listeners) l();
+      }
+    }
+  });
+}
+
+function setCustomQuestions(
+  subject: SubjectId,
+  next: readonly CustomQuestion[],
+): void {
+  customQuestionsStores[subject].current = next;
+  writeCustomQuestions(subject, next);
+  for (const l of customQuestionsStores[subject].listeners) l();
+}
+
 export function useCustomQuestions(subject: SubjectId): {
   readonly items: readonly CustomQuestion[];
   readonly add: (input: Omit<CustomQuestion, "id" | "createdAt">) => void;
   readonly remove: (id: string) => void;
 } {
-  const [items, setItems] = useState<readonly CustomQuestion[]>(() =>
-    readCustomQuestions(subject),
+  const subscribe = useCallback(
+    (listener: () => void) => {
+      customQuestionsStores[subject].listeners.add(listener);
+      return () => {
+        customQuestionsStores[subject].listeners.delete(listener);
+      };
+    },
+    [subject],
+  );
+  const getSnapshot = useCallback(
+    () => customQuestionsStores[subject].current,
+    [subject],
   );
 
-  useEffect(() => {
-    setItems(readCustomQuestions(subject));
-  }, [subject]);
-
-  useEffect(() => {
-    writeCustomQuestions(subject, items);
-  }, [subject, items]);
-
-  // Cross-tab sync
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const handler = (event: StorageEvent) => {
-      if (event.key === ns("custom-questions", subject)) {
-        setItems(readCustomQuestions(subject));
-      }
-    };
-    window.addEventListener("storage", handler);
-    return () => window.removeEventListener("storage", handler);
-  }, [subject]);
+  const items = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 
   const add = useCallback(
     (input: Omit<CustomQuestion, "id" | "createdAt">) => {
@@ -463,14 +496,20 @@ export function useCustomQuestions(subject: SubjectId): {
         createdAt: Date.now(),
         ...input,
       };
-      setItems((prev) => [entry, ...prev]);
+      setCustomQuestions(subject, [entry, ...customQuestionsStores[subject].current]);
     },
-    [],
+    [subject],
   );
 
-  const remove = useCallback((id: string) => {
-    setItems((prev) => prev.filter((c) => c.id !== id));
-  }, []);
+  const remove = useCallback(
+    (id: string) => {
+      setCustomQuestions(
+        subject,
+        customQuestionsStores[subject].current.filter((c) => c.id !== id),
+      );
+    },
+    [subject],
+  );
 
   return { items, add, remove };
 }
