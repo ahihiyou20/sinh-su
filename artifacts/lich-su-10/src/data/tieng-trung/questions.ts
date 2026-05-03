@@ -18,6 +18,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 2,
     explain: "Khi có tân ngữ, phải lặp lại động từ: V + O + V + 了 + thời lượng → 他踢足球踢了十年了。",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-02",
@@ -26,6 +27,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "最 + Adj/好: dùng để hỏi phương án tối ưu nhất (tốt nhất/thuận tiện nhất).",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "easy",
   },
   {
     id: "tt-mc-03",
@@ -34,6 +36,7 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     ans: 1,
     explain: "怎么 hỏi nguyên nhân với sắc thái ngạc nhiên (Sao mà/Tại sao lại…), khác 为什么 dùng trong câu hỏi bình thường.",
     tag: "Ngữ pháp HSK 2",
+    difficulty: "medium",
   },
   {
     id: "tt-mc-04",

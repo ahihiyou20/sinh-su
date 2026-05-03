@@ -4,6 +4,7 @@ export interface VatLyQuestion {
   answer: number;
   explain: string;
   tag: string;
+  difficulty?: "easy" | "medium" | "hard";
 }
 
 export const vatLyQuizData: VatLyQuestion[] = [
@@ -20,6 +21,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Xung lượng J = F·Δt, là tích của lực F và thời gian Δt lực tác dụng lên vật.",
     tag: "Động lượng",
+    difficulty: "easy",
   },
   {
     q: "Động lượng của một vật là đại lượng:",
@@ -33,6 +35,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Động lượng p = mv là đại lượng vectơ có cùng chiều với vectơ vận tốc v.",
     tag: "Động lượng",
+    difficulty: "easy",
   },
   {
     q: "Đơn vị của động lượng là:",
@@ -41,6 +44,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Động lượng p = mv, đơn vị là kg·m/s = N·s (vì 1 N = 1 kg·m/s²).",
     tag: "Động lượng",
+    difficulty: "easy",
   },
   {
     q: "Phát biểu nào sau đây về định luật bảo toàn động lượng là ĐÚNG?",
@@ -54,6 +58,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Định luật bảo toàn động lượng chỉ áp dụng cho hệ kín (hệ không có ngoại lực, hoặc tổng ngoại lực bằng 0).",
     tag: "Động lượng",
+    difficulty: "medium",
   },
   {
     q: "Hệ kín là hệ thỏa mãn điều kiện nào sau đây?",
@@ -67,6 +72,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Hệ kín thỏa mãn một trong ba điều kiện: chỉ có nội lực; tổng ngoại lực = 0; hoặc ngoại lực rất nhỏ so với nội lực.",
     tag: "Động lượng",
+    difficulty: "medium",
   },
   {
     q: "Dạng khác của định luật II Newton theo động lượng là:",
@@ -80,6 +86,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "F·Δt = Δp, tức là xung lượng của hợp lực bằng độ biến thiên động lượng của vật.",
     tag: "Động lượng",
+    difficulty: "medium",
   },
   {
     q: "Hai vật có khối lượng m₁ = m₂ chuyển động ngược chiều nhau với cùng tốc độ v. Tổng động lượng của hệ là:",
@@ -88,6 +95,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Hai vật ngược chiều: p₁ = mv, p₂ = -mv → p_hệ = mv + (-mv) = 0.",
     tag: "Động lượng",
+    difficulty: "medium",
   },
   {
     q: "Trong va chạm mềm (hai vật dính vào nhau sau va chạm), đại lượng nào được bảo toàn?",
@@ -101,6 +109,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Trong va chạm mềm, động lượng bảo toàn nhưng động năng không bảo toàn (một phần chuyển thành nhiệt năng, âm thanh...).",
     tag: "Động lượng",
+    difficulty: "medium",
   },
   {
     q: "Nguyên lý hoạt động của tên lửa dựa trên:",
@@ -114,6 +123,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Tên lửa phụt khí ra phía sau, theo bảo toàn động lượng, tên lửa tiến về phía trước.",
     tag: "Động lượng",
+    difficulty: "hard",
   },
   {
     q: "Hai vật chuyển động cùng chiều, p₁ cùng chiều p₂. Tổng động lượng hệ bằng:",
@@ -127,6 +137,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Khi p₁ và p₂ cùng phương, cùng chiều thì p_hệ = p₁ + p₂.",
     tag: "Động lượng",
+    difficulty: "hard",
   },
   {
     q: "Hai vật có p₁ vuông góc với p₂. Độ lớn tổng động lượng hệ bằng:",
@@ -140,6 +151,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Khi p₁ ⊥ p₂, theo định lý Pythagore: p_hệ = √(p₁² + p₂²).",
     tag: "Động lượng",
+    difficulty: "hard",
   },
   {
     q: "Một người đứng trên xe trượt băng ném quả bóng về phía trước. Xe sẽ:",
@@ -153,6 +165,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Theo bảo toàn động lượng, người + xe chuyển động ngược chiều bóng để tổng động lượng hệ bằng 0 (ban đầu đứng yên).",
     tag: "Động lượng",
+    difficulty: "hard",
   },
 
   // ── ĐỘNG NĂNG – THẾ NĂNG – CƠ NĂNG ──────────────────────────────────────
@@ -162,6 +175,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     answer: 1,
     explain: "Động năng Wđ = ½mv², trong đó m là khối lượng, v là vận tốc.",
     tag: "Năng lượng",
+    difficulty: "easy",
   },
   {
     q: "Đơn vị của động năng, thế năng và cơ năng là:",
@@ -170,6 +184,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Năng lượng đo bằng Jun (J = N·m = kg·m²/s²).",
     tag: "Năng lượng",
+    difficulty: "easy",
   },
   {
     q: "Thế năng trọng trường của vật tại độ cao h được tính bằng:",
@@ -178,6 +193,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Thế năng trọng trường Wt = mgh, phụ thuộc vào khối lượng, gia tốc trọng trường và độ cao so với mốc thế năng.",
     tag: "Năng lượng",
+    difficulty: "easy",
   },
   {
     q: "Cơ năng của vật là:",
@@ -190,6 +206,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     answer: 1,
     explain: "Cơ năng W = Wđ + Wt = ½mv² + mgh.",
     tag: "Năng lượng",
+    difficulty: "easy",
   },
   {
     q: "Định luật bảo toàn cơ năng áp dụng khi:",
@@ -203,6 +220,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Cơ năng bảo toàn khi vật chỉ chịu tác dụng của lực bảo toàn (lực hấp dẫn, lực đàn hồi), không có lực ma sát hay lực cản.",
     tag: "Năng lượng",
+    difficulty: "medium",
   },
   {
     q: "Khi vật rơi tự do (bỏ qua không khí), cơ năng của vật:",
@@ -216,6 +234,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Rơi tự do chỉ chịu trọng lực (lực bảo toàn), cơ năng được bảo toàn: khi Wt giảm thì Wđ tăng và ngược lại.",
     tag: "Năng lượng",
+    difficulty: "medium",
   },
   {
     q: "Mối liên hệ giữa động lượng p và động năng Wđ là:",
@@ -229,6 +248,7 @@ export const vatLyQuizData: VatLyQuestion[] = [
     explain:
       "Wđ = ½mv² = (mv)²/(2m) = p²/(2m). Quan hệ hữu ích khi biết p để tính Wđ.",
     tag: "Năng lượng",
+    difficulty: "hard",
   },
   {
     q: "Hiệu suất H của một máy được tính bằng:",

@@ -6,6 +6,7 @@ export type QuizTag = "Văn Lang – Âu Lạc" | "Chăm Pa" | "Phù Nam";
     readonly ans: 0 | 1 | 2 | 3;
     readonly explain: string;
     readonly tag: QuizTag;
+  readonly difficulty?: "easy" | "medium" | "hard";
   }
 
   export function questionId(q: QuizQuestion): string {
@@ -13,11 +14,11 @@ export type QuizTag = "Văn Lang – Âu Lạc" | "Chăm Pa" | "Phù Nam";
   }
 
   export const quizData: readonly QuizQuestion[] = [
-    { q: "Nhà nước đầu tiên được hình thành trên lãnh thổ Việt Nam có tên gọi là?", opts: ["Văn Lang", "Lâm Ấp", "Chăm pa", "Phù Nam"], ans: 0, explain: "Văn Lang là nhà nước đầu tiên trong lịch sử Việt Nam, ra đời khoảng thế kỉ VII TCN.", tag: "Văn Lang – Âu Lạc" },
-  { q: "Nền văn minh Văn Lang - Âu Lạc chủ yếu được hình thành trên lưu vực con sông nào?", opts: ["Sông Hằng", "Sông Ấn", "Sông Hồng", "Sông Nin"], ans: 2, explain: "Văn minh Văn Lang – Âu Lạc hình thành chủ yếu trên lưu vực sông Hồng.", tag: "Văn Lang – Âu Lạc" },
+  { q: "Nhà nước đầu tiên được hình thành trên lãnh thổ Việt Nam có tên gọi là?", opts: ["Văn Lang", "Lâm Ấp", "Chăm pa", "Phù Nam"], ans: 0, explain: "Văn Lang là nhà nước đầu tiên trong lịch sử Việt Nam, ra đời khoảng thế kỉ VII TCN.", tag: "Văn Lang – Âu Lạc", difficulty: "easy" },
+  { q: "Nền văn minh Văn Lang - Âu Lạc chủ yếu được hình thành trên lưu vực con sông nào?", opts: ["Sông Hằng", "Sông Ấn", "Sông Hồng", "Sông Nin"], ans: 2, explain: "Văn minh Văn Lang – Âu Lạc hình thành chủ yếu trên lưu vực sông Hồng.", tag: "Văn Lang – Âu Lạc", difficulty: "easy" },
   { q: "Nền văn minh Văn Lang - Âu Lạc được hình thành ở khu vực nào của Việt Nam?", opts: ["Khu vực Bắc Bộ và Bắc Trung Bộ", "Vùng duyên hải và cao nguyên miền Trung", "Khu vực Bắc Trung Bộ và Nam Bộ", "Vùng ven biển Nam Trung Bộ và Nam Bộ"], ans: 0, explain: "Văn minh Văn Lang – Âu Lạc hình thành ở khu vực Bắc Bộ và Bắc Trung Bộ Việt Nam ngày nay.", tag: "Văn Lang – Âu Lạc" },
   { q: "Điều kiện tự nhiên nào tạo thuận lợi cho cư dân Văn Lang – Âu Lạc phát triển nông nghiệp lúa nước?", opts: ["Tài nguyên khoáng sản phong phú", "Khí hậu khô hạn, lượng nhiệt lớn", "Hệ thống sông lớn bồi đắp đất phù sa màu mỡ", "Tiếp giáp với các nền văn minh lớn"], ans: 2, explain: "Hệ thống sông lớn bồi đắp phù sa màu mỡ là điều kiện thuận lợi chính cho nông nghiệp lúa nước.", tag: "Văn Lang – Âu Lạc" },
-  { q: "Cơ sở kinh tế dẫn đến sự hình thành nền văn minh Văn Lang - Âu Lạc là?", opts: ["Hoạt động thương nghiệp đường biển đặc biệt phát triển", "Bắt đầu xuất hiện sự phân hóa giữa các tầng lớp xã hội", "Nhu cầu chống giặc ngoại xâm ngày càng bức thiết", "Nông nghiệp trồng lúa nước đạt trình độ phát triển cao"], ans: 3, explain: "Cơ sở KINH TẾ = nông nghiệp trồng lúa nước đạt trình độ cao. Lưu ý: phân hóa xã hội là cơ sở XÃ HỘI.", tag: "Văn Lang – Âu Lạc" },
+  { q: "Cơ sở kinh tế dẫn đến sự hình thành nền văn minh Văn Lang - Âu Lạc là?", opts: ["Hoạt động thương nghiệp đường biển đặc biệt phát triển", "Bắt đầu xuất hiện sự phân hóa giữa các tầng lớp xã hội", "Nhu cầu chống giặc ngoại xâm ngày càng bức thiết", "Nông nghiệp trồng lúa nước đạt trình độ phát triển cao"], ans: 3, explain: "Cơ sở KINH TẾ = nông nghiệp trồng lúa nước đạt trình độ cao. Lưu ý: phân hóa xã hội là cơ sở XÃ HỘI.", tag: "Văn Lang – Âu Lạc", difficulty: "medium" },
   { q: "Cư dân Văn Lang – Âu Lạc sớm phát triển nghề luyện kim nhờ điều kiện tự nhiên nào?", opts: ["Tài nguyên khoáng sản phong phú", "Khí hậu nhiệt đới ẩm gió mùa", "Các vùng đồng bằng phù sa màu mỡ", "Hệ thống sông ngòi chằng chịt"], ans: 0, explain: "Tài nguyên khoáng sản phong phú là điều kiện để phát triển nghề luyện kim, đúc đồng.", tag: "Văn Lang – Âu Lạc" },
   { q: "Văn minh Văn Lang – Âu Lạc được hình thành trên cơ sở của nền văn hóa nào?", opts: ["Phùng Nguyên", "Óc Eo", "Đông Sơn", "Đồng Đậu"], ans: 2, explain: "Văn minh Văn Lang – Âu Lạc hình thành trên nền văn hóa Đông Sơn. (Óc Eo là nền tảng của Phù Nam).", tag: "Văn Lang – Âu Lạc" },
   { q: "Cơ sở xã hội dẫn đến sự hình thành nền văn minh Văn Lang - Âu Lạc là?", opts: ["Xuất hiện sự phân hóa giữa các tầng lớp trong xã hội", "Nhu cầu xâm lược, mở rộng lãnh thổ trở nên bức thiết", "Hoạt động thủ công nghiệp đạt trình độ phát triển cao", "Công cụ lao động bằng kim khí được sử dụng phổ biến"], ans: 0, explain: "Cơ sở XÃ HỘI = xã hội phân hóa thành các giai cấp, tầng lớp khác nhau.", tag: "Văn Lang – Âu Lạc" },
