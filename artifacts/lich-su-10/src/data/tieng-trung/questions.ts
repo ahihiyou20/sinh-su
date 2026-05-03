@@ -421,19 +421,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     difficulty: "hard",
   },
   {
-    id: "tt-er-63",
-    q: "\"老师家离学校很远，要开车一个多小时呢。\" — Lỗi sai nằm ở đâu？",
-    opts: [
-      "要开车 → phải là 开车要",
-      "离学校 → phải là 到学校",
-      "很远 → phải là 太远了",
-      "Câu đúng, không có lỗi",
-    ],
-    ans: 0,
-    explain: "Trật tự: Phương tiện (开车) + 要 + Thời gian. 开车要一个多小时 ✓ — không nói 要开车一个多小时 ✗.",
-    tag: "Ngữ pháp HSK 2",
-    difficulty: "hard",
-  },
   {
     id: "tt-er-64",
     q: "\"坐公共汽车太慢了，我们还去坐出租车吧。\" — Lỗi sai nằm ở đâu？",
@@ -466,19 +453,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   // ── Section E: Viết lại câu (MCQ version) ─────────────────────────────
 
   {
-    id: "tt-rw-71",
-    q: "今天朋友帮他做羊肉。（Viết lại dùng cấu trúc 是…的）",
-    opts: [
-      "是今天朋友帮他做羊肉的。",
-      "是今天朋友帮他做了羊肉。",
-      "朋友是今天帮他做羊肉的了。",
-      "今天是朋友帮他做羊肉了的。",
-    ],
-    ans: 0,
-    explain: "Cấu trúc 是…的 nhấn mạnh thời gian/chi tiết của hành động đã qua: 是 + [thành phần nhấn mạnh] + VP + 的.",
-    tag: "Ngữ pháp HSK 2",
-    difficulty: "medium",
-  },
   {
     id: "tt-rw-72",
     q: "他生病了，他没去打篮球。（Viết lại dùng 因为…所以）",
@@ -632,14 +606,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     difficulty: "easy",
   },
   {
-    id: "tt-wj-85",
-    q: "Hoàn thành câu: ________，你要多运动运动。（dùng kết cấu với 对）",
-    opts: ["对身体不好", "对身体很好", "身体对不好", "对运动不好"],
-    ans: 0,
-    explain: "对 + N + 不好/有好处 = tốt/không tốt cho...: 对身体不好 = không tốt cho sức khỏe. Câu hoàn chỉnh: 对身体不好，你要多运动运动。",
-    tag: "Viết câu",
-    difficulty: "medium",
-  },
   {
     id: "tt-wj-86",
     q: "Hoàn thành câu: 我不喜欢吃红烧肉，________。（dùng kết cấu với 有点儿）",
@@ -762,17 +728,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   // ── Section J: Cloze 2 — 帅哥 (10 blanks, từ đề thi IMG_3219) ──────────────
 
   {
-    id: "tt-cz-97",
-    passage: `朋友们都说黄海是个帅哥。没错儿！见到他的人___都说："真帅啊！"。也许你___问"真的吗？"。我___可以回答你说："真的。漂亮的脸，个子一___八几，体重65___。"你想见见他，是吧？___你要早上到健美房。他每天早上___到那儿健身。___他也到游泳池游泳。你知道他___这么帅吗？___他不生病，所以才这么帅！`,
-    blanks: ["人人", "会", "能", "米", "公斤", "那么", "经常", "有时候", "怎么", "因为"],
-    q: "Điền từ còn thiếu vào đoạn văn sau:",
-    opts: [],
-    ans: 0,
-    explain: "① 人人 = mọi người. ② 会 = có thể/sẽ. ③ 能 = có thể. ④ 米 → 一米八几 ≈ 1.8m. ⑤ 公斤 = kg → 65公斤. ⑥ 那么 = vậy thì. ⑦ 经常 = thường xuyên. ⑧ 有时候 = đôi khi. ⑨ 怎么 = tại sao/như thế nào. ⑩ 因为 = vì. Cặp 因为…所以 giải thích nguyên nhân.",
-    tag: "Điền vào đoạn văn",
-    difficulty: "hard",
-  },
-
   // ── Section K: Cloze 3 — 食堂 (5 blanks, từ đề thi IMG_3221) ────────────────
 
   {
