@@ -218,7 +218,7 @@ export const quizData: Quiz[] = [
     scenarioTitle: "Bối cảnh E. coli + glucose",
   },
   {
-    q: "(Tiếp Câu 21) Sau 3 giờ bổ sung glucose, sinh trưởng quần thể E. coli sẽ chuyển sang pha nào?",
+    q: "Sau 3 giờ bổ sung glucose, sinh trưởng quần thể E. coli sẽ chuyển sang pha nào?",
     options: [
       "Pha cân bằng",
       "Pha lũy thừa và cân bằng",
