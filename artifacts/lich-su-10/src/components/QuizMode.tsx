@@ -54,36 +54,49 @@ function selectQuestions(
   bookmarks: ReadonlySet<string>,
   wrongIds: ReadonlySet<string>,
 ): readonly SubjectQuestion[] {
-  const grouped = new Map<string, SubjectQuestion[]>();
-  const singles: SubjectQuestion[] = [];
-  for (const q of all) {
-    const key = getScenarioKey(q);
-    if (key) {
-      const list = grouped.get(key);
-      if (list) list.push(q);
-      else grouped.set(key, [q]);
-    } else {
-      singles.push(q);
+  // Helper: shuffle groups as blocks, then flatten to questions
+  const buildShuffledQuestions = (
+    questions: readonly SubjectQuestion[],
+  ): SubjectQuestion[] => {
+    const grouped = new Map<string, SubjectQuestion[]>();
+    const singles: SubjectQuestion[] = [];
+    // Group by scenario/passage key
+    for (const q of questions) {
+      const key = getScenarioKey(q);
+      if (key) {
+        const list = grouped.get(key);
+        if (list) list.push(q);
+        else grouped.set(key, [q]);
+      } else {
+        singles.push(q);
+      }
     }
-  }
-  const shuffleGrouped = (items: readonly SubjectQuestion[]) =>
-    shuffle(items);
+    // Shuffle groups as atomic blocks
+    const blocks: SubjectQuestion[][] = [...grouped.values()];
+    const shuffledBlocks = shuffle(blocks);
+    const shuffledSingles = shuffle(singles);
+    // Flatten blocks and append singles
+    const result: SubjectQuestion[] = [];
+    for (const block of shuffledBlocks) {
+      result.push(...block);
+    }
+    result.push(...shuffledSingles);
+    return result;
+  };
+
   switch (filter.kind.type) {
     case "all":
-      return shuffleGrouped(
-        [...grouped.values()].flatMap((group) => group.length > 1 ? group : group).concat(singles),
-      );
+      return buildShuffledQuestions(all);
     case "bookmarks":
-      return shuffleGrouped(
-        all.filter((q) => bookmarks.has(questionId(q))),
-      );
+      return buildShuffledQuestions(all.filter((q) => bookmarks.has(questionId(q))));
     case "wrong":
       return all.filter((q) => wrongIds.has(questionId(q)));
     case "difficulty":
-      return shuffleGrouped(all.filter((q) => q.difficulty === filter.kind.level));
+      if (filter.kind.type !== "difficulty") return all;
+      return buildShuffledQuestions(all.filter((q) => q.difficulty === filter.kind.level));
     case "topic": {
       const topic = filter.kind.topic;
-      return shuffleGrouped(all.filter((q) => q.tag === topic));
+      return buildShuffledQuestions(all.filter((q) => q.tag === topic));
     }
   }
 }
