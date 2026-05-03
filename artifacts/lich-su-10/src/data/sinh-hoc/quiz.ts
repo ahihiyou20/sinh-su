@@ -238,6 +238,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Trong nuôi cấy không liên tục, chất độc/chất ức chế tích lũy trong suốt quá trình nuôi và đạt cực đại ở thời điểm KẾT THÚC NUÔI CẤY (cuối pha suy vong).",
+    difficulty: "medium",
   },
   {
     q: "Câu 24. Khi nói về pha cân bằng trong nuôi cấy không liên tục, có bao nhiêu phát biểu sau ĐÚNG?\nI. Dinh dưỡng bắt đầu thiếu hụt cho sinh trưởng của quần thể.\nII. Một số tế bào bị chết và một số khác tiếp tục phân chia.\nIII. Không có tế bào phân chia cũng như không có tế bào chết đi.\nIV. Số lượng tế bào sinh ra nhỏ hơn số lượng tế bào chết đi.",
@@ -245,6 +246,7 @@ export const quizData: Quiz[] = [
     answer: 1,
     explain:
       "Đúng I và II. Sai III (vẫn có tế bào phân chia và chết – chỉ là sinh = chết → mật độ ổn định) và IV (sinh ra nhỏ hơn chết là đặc điểm pha SUY VONG, không phải cân bằng).",
+    difficulty: "hard",
   },
   {
     q: "Câu 25. Trong công nghệ sinh học, người ta sử dụng phương pháp nuôi cấy LIÊN TỤC nhằm mục đích nào?",
@@ -257,6 +259,7 @@ export const quizData: Quiz[] = [
     answer: 3,
     explain:
       "Nuôi cấy liên tục liên tục bổ sung dinh dưỡng – rút bớt sản phẩm → duy trì quần thể ở pha lũy thừa lâu dài → thu được nhiều sản phẩm (kháng sinh, enzyme…) và sinh khối VSV.",
+    difficulty: "medium",
   },
   {
     q: "Câu 26. Một chủng vi khuẩn lactic Lactobacillus có thể dùng cả glucose và sorbitol. Khi nuôi trong môi trường chứa CẢ HAI nguồn carbon này, đường cong sinh trưởng có các pha theo trình tự nào? (Hiện tượng diauxie – ưu tiên dùng glucose trước)",
@@ -269,6 +272,7 @@ export const quizData: Quiz[] = [
     answer: 1,
     explain:
       "Đây là hiện tượng diauxie cổ điển: VSV ưu tiên dùng đường ưa thích trước (glucose). Khi glucose cạn, VSV cần thời gian thích nghi và tổng hợp enzyme mới để dùng sorbitol → bắt đầu lại bằng pha tiềm phát (sorbitol), rồi lũy thừa (sorbitol), cuối cùng là cân bằng và suy vong.",
+    difficulty: "hard",
   },
   {
     q: "Câu 27. Hầu hết các kháng sinh đã biết được sản xuất bởi loại vi sinh vật nào?",
