@@ -711,9 +711,8 @@ export function QuizMode({
   // Determine if current question should use short-answer input.
   // Keep showing ShortAnswerInput even after submission (shortAnswerDone=true)
   // so its result panel stays visible until the user navigates to the next Q.
-  // forceShortAnswer overrides the toggle; isCloze questions bypass both
   const useShortAnswerForThis =
-    (shortAnswerMode || question.forceShortAnswer === true) &&
+    shortAnswerMode &&
     canBeShortAnswer(question) &&
     (selected === null || shortAnswerDone);
 
@@ -742,7 +741,7 @@ export function QuizMode({
                 : ""}
             </Pill>
           ))}
-          {/* Short-answer toggle — hidden when question forces its own mode */}
+          {/* Short-answer toggle */}
           {!question.forceShortAnswer && !isCloze(question) && (
             <Pill
               tone="teal"
@@ -820,7 +819,7 @@ export function QuizMode({
               <span className="rounded-full border border-gold/60 bg-gold/10 px-2.5 py-[3px] text-[11px] font-bold text-gold">
                 📝 Điền từ
               </span>
-            ) : (question.forceShortAnswer || (shortAnswerMode && canBeShortAnswer(question))) ? (
+            ) : (shortAnswerMode && canBeShortAnswer(question)) ? (
               <span className="rounded-full border border-teal/60 bg-teal/10 px-2.5 py-[3px] text-[11px] font-bold text-teal">
                 ✍️ Tự điền
               </span>

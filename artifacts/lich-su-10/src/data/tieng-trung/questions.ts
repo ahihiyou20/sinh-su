@@ -212,7 +212,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     opts: ["找", "看", "跟", "请"],
     ans: 0,
     explain: "zhǎo = 找 (tìm/đến rủ). 找明红去吃饭 = đến tìm rủ Minh Hồng đi ăn cơm. Phân biệt: 看 = xem; 跟 = cùng với; 请 = mời (bao ăn).",
-    forceShortAnswer: true,
     tag: "Ngữ pháp HSK 2",
   },
   {
@@ -245,7 +244,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     opts: ["跑步", "游泳", "打篮球", "踢足球"],
     ans: 0,
     explain: "pǎobù = 跑步 (chạy bộ). Nhớ chữ Hán từ phiên âm: pǎo = 跑, bù = 步.",
-    forceShortAnswer: true,
     tag: "Ngữ pháp HSK 2",
   },
   {
@@ -286,7 +284,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     opts: ["怎么不", "为什么不", "怎么", "难道"],
     ans: 0,
     explain: "zěnme bù = 怎么不 (Sao lại không…?). Phân biệt: 为什么不 = wèishénme bù (khác pinyin); 怎么 = zěnme (thiếu 不); 难道 = nándào (câu hỏi tu từ).",
-    forceShortAnswer: true,
     tag: "Ngữ pháp HSK 2",
   },
 
@@ -546,7 +543,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
   },
 
   // ── Section G: Viết câu (完成句子 — Sentence Completion) ───────────────────
-  // forceShortAnswer: true — student must type the missing phrase.
   // opts[0] is the model answer shown after submission.
 
   {
@@ -554,7 +550,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     q: "Hoàn thành câu: ________，我们就去喝咖啡。（dùng kết cấu với 以后）",
     opts: ["下课以后"],
     ans: 0,
-    forceShortAnswer: true,
     explain: "以后 (yǐhòu) đặt sau cụm thời gian/động từ: 下课以后 = sau giờ học. Câu hoàn chỉnh: 下课以后，我们就去喝咖啡。Đây là câu trả lời mẫu — các cách diễn đạt khác cùng nghĩa cũng đúng.",
     tag: "Viết câu",
   },
@@ -563,7 +558,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     q: "Hoàn thành câu: ________，数学就不行。（dùng kết cấu với 还）",
     opts: ["历史还好"],
     ans: 0,
-    forceShortAnswer: true,
     explain: "还 (hái) so sánh tương đối: A还好，B就不行 = A còn ổn, B thì không. Câu hoàn chỉnh: 历史还好，数学就不行。",
     tag: "Viết câu",
   },
@@ -572,7 +566,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     q: "Hoàn thành câu: ________，有小一点儿的吗？（dùng kết cấu với 有点儿）",
     opts: ["这件衣服有点儿大"],
     ans: 0,
-    forceShortAnswer: true,
     explain: "有点儿 + Adj (tiêu cực): 这件衣服有点儿大 = cái áo này hơi rộng. Câu hoàn chỉnh: 这件衣服有点儿大，有小一点儿的吗？",
     tag: "Viết câu",
   },
@@ -581,7 +574,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     q: "Hoàn thành câu: ________，快进屋里坐一会儿吧。（dùng kết cấu với 外面）",
     opts: ["外面很热"],
     ans: 0,
-    forceShortAnswer: true,
     explain: "外面 (wàimiàn = bên ngoài) làm chủ ngữ. Câu hoàn chỉnh: 外面很热，快进屋里坐一会儿吧 = Bên ngoài nóng lắm, vào trong ngồi một lúc đi.",
     tag: "Viết câu",
   },
@@ -590,7 +582,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     q: "Hoàn thành câu: ________，你要多运动运动。（dùng kết cấu với 对）",
     opts: ["对身体不好"],
     ans: 0,
-    forceShortAnswer: true,
     explain: "对 + N + 不好/有好处 = tốt/không tốt cho...: 对身体不好 = không tốt cho sức khỏe. Câu hoàn chỉnh: 对身体不好，你要多运动运动。",
     tag: "Viết câu",
   },
@@ -599,7 +590,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     q: "Hoàn thành câu: 我不喜欢吃红烧肉，________。（dùng kết cấu với 有点儿）",
     opts: ["有点儿腻"],
     ans: 0,
-    forceShortAnswer: true,
     explain: "有点儿 + Adj tiêu cực: 有点儿腻 = hơi ngán/béo ngậy. Câu hoàn chỉnh: 我不喜欢吃红烧肉，有点儿腻。",
     tag: "Viết câu",
   },
@@ -608,7 +598,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     q: "Hoàn thành câu: ________，我们班谁都喜欢他。（dùng kết cấu với 对）",
     opts: ["他对大家都很好"],
     ans: 0,
-    forceShortAnswer: true,
     explain: "对 + người + Adj: 他对大家都很好 = anh ấy tốt bụng với mọi người. Câu hoàn chỉnh: 他对大家都很好，我们班谁都喜欢他。",
     tag: "Viết câu",
   },
@@ -617,7 +606,6 @@ export const tiengTrungQuestions: readonly SubjectQuestion[] = [
     q: "Hoàn thành câu: 她病得住院了，________。（dùng kết cấu với 考试）",
     opts: ["没能参加考试"],
     ans: 0,
-    forceShortAnswer: true,
     explain: "得 kết quả bổ ngữ: 病得住院 = bệnh đến mức phải nhập viện. Câu hoàn chỉnh: 她病得住院了，没能参加考试 = Cô ấy nhập viện nên không thể tham dự kỳ thi.",
     tag: "Viết câu",
   },
