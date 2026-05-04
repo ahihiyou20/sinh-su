@@ -49,6 +49,21 @@ function shuffle<T>(arr: readonly T[]): readonly T[] {
   return result;
 }
 
+function shuffleQuestionOptions(q: SubjectQuestion): SubjectQuestion {
+  if (isCloze(q) || q.opts.length <= 1) return q;
+  const n = q.opts.length;
+  const indices = Array.from({ length: n }, (_, i) => i);
+  for (let i = n - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = indices[i]!;
+    indices[i] = indices[j]!;
+    indices[j] = tmp;
+  }
+  const shuffledOpts = indices.map((i) => q.opts[i]!);
+  const newAns = indices.indexOf(q.ans);
+  return { ...q, opts: shuffledOpts, ans: newAns };
+}
+
 function selectQuestions(
   filter: SubjectFilter,
   all: readonly SubjectQuestion[],
@@ -501,7 +516,9 @@ export function QuizMode({
   const [questions, setQuestions] = useState<readonly SubjectQuestion[]>(
     () =>
       initial?.questions ??
-      selectQuestions(initialFilter, allQuestions, bookmarks, wrongIds),
+      selectQuestions(initialFilter, allQuestions, bookmarks, wrongIds).map(
+        shuffleQuestionOptions,
+      ),
   );
   const [currentQ, setCurrentQ] = useState(initial?.saved.currentQ ?? 0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -587,14 +604,18 @@ export function QuizMode({
   const handleFilterChange = (next: SubjectFilter) => {
     resetQuizState(
       next,
-      selectQuestions(next, allQuestions, bookmarks, wrongIds),
+      selectQuestions(next, allQuestions, bookmarks, wrongIds).map(
+        shuffleQuestionOptions,
+      ),
     );
   };
 
   const handleRetry = () => {
     resetQuizState(
       filter,
-      selectQuestions(filter, allQuestions, bookmarks, wrongIds),
+      selectQuestions(filter, allQuestions, bookmarks, wrongIds).map(
+        shuffleQuestionOptions,
+      ),
     );
   };
 
@@ -664,7 +685,8 @@ export function QuizMode({
     const handleReviewWrong = () => {
       const wrongQs = answers
         .map((a, i) => (!a.correct ? questions[i] : null))
-        .filter((q): q is SubjectQuestion => q !== null);
+        .filter((q): q is SubjectQuestion => q !== null)
+        .map(shuffleQuestionOptions);
       const reviewFilter: SubjectFilter = {
         label: "Câu sai gần nhất",
         kind: { type: "wrong" },

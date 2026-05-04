@@ -549,6 +549,49 @@ export const quizData: Quiz[] = [
     difficulty: "hard",
   },
 
+  // ========== Câu bổ sung: VSV & Virus (từ đề thi) ==========
+  {
+    q: "Một lọ sữa chua để ở nhiệt độ 35°C trong 2 ngày bị chua gắt, tách nước, có mùi lạ. Quần thể vi khuẩn trong lọ đang ở pha nào?",
+    options: ["Pha tiềm phát", "Pha lũy thừa", "Pha cân bằng", "Pha suy vong"],
+    answer: 3,
+    explain:
+      "Sau 2 ngày ở 35°C, vi khuẩn đã trải qua đầy đủ các pha sinh trưởng. Sữa chua bị chua gắt (acid tích lũy nhiều), tách nước, có mùi lạ là dấu hiệu dinh dưỡng cạn kiệt, chất thải/chất độc tích lũy nhiều → vi khuẩn chết nhiều hơn sinh ra → pha suy vong.",
+    tag: "Trao đổi chất VSV",
+    difficulty: "medium",
+  },
+  {
+    q: "Phơi khô thóc, đậu nhằm hạn chế vi sinh vật gây hư hỏng dựa vào yếu tố nào?",
+    options: ["Nhiệt độ", "Độ ẩm", "pH", "Ánh sáng"],
+    answer: 1,
+    explain:
+      "Phơi khô làm GIẢM ĐỘ ẨM của hạt → vi sinh vật không có đủ nước để sinh trưởng và phát triển → hạn chế nấm mốc, vi khuẩn gây hỏng lương thực. Đây là ứng dụng của việc kiểm soát yếu tố độ ẩm để bảo quản thực phẩm.",
+    tag: "Sinh trưởng & Virus",
+    difficulty: "easy",
+  },
+  {
+    q: "Ghép đúng thành phần cấu tạo virus với chức năng:\n(1) Gai glycoprotein  (2) Màng bọc  (3) Nucleocapsid\n(a) Phức hợp gồm nucleic acid và capsid\n(b) Tham gia nhận biết và bám vào tế bào chủ\n(c) Lớp phospholipid bao ngoài capsid\n\nPhương án ghép đúng là:",
+    options: ["1–a, 2–b, 3–c", "1–c, 2–b, 3–a", "1–b, 2–a, 3–c", "1–b, 2–c, 3–a"],
+    answer: 3,
+    explain:
+      "Gai glycoprotein (1) → (b): là thụ thể của virus có màng bọc, tham gia nhận biết và bám vào tế bào chủ. Màng bọc (2) → (c): lớp phospholipid kép bao bên ngoài capsid. Nucleocapsid (3) → (a): phức hợp gồm lõi nucleic acid và vỏ capsid.",
+    tag: "Sinh trưởng & Virus",
+    difficulty: "medium",
+  },
+  {
+    q: "Nước muối đậm đặc có khả năng diệt khuẩn do cơ chế nào?",
+    options: [
+      "Phá vỡ màng sinh chất vi khuẩn",
+      "Làm biến tính protein của vi khuẩn",
+      "Gây co nguyên sinh làm vi khuẩn mất nước",
+      "Ức chế tổng hợp thành tế bào vi khuẩn",
+    ],
+    answer: 2,
+    explain:
+      "Dung dịch muối đậm đặc tạo môi trường ƯU TRƯƠNG → nước trong tế bào vi khuẩn thẩm thấu ra ngoài theo gradient nồng độ → tế bào vi khuẩn mất nước, xảy ra CO NGUYÊN SINH → vi khuẩn không phát triển được hoặc chết.",
+    tag: "Sinh trưởng & Virus",
+    difficulty: "easy",
+  },
+
   // ========== Bonus: 6 câu Nguyên phân – Giảm phân ==========
   {
     q: "(Nguyên phân). Một tế bào có 2n = 24 nguyên phân liên tiếp 3 lần. Số NST đơn tương đương mà môi trường cần cung cấp là?",
@@ -587,5 +630,46 @@ export const quizData: Quiz[] = [
     answer: 1,
     explain:
       "Kì giữa nguyên phân: NST đã nhân đôi, chưa tách → có 2n = 8 NST KÉP (tương đương 16 chromatid).",
+  },
+
+  // ========== Câu bổ sung: Nguyên phân – Giảm phân (từ đề thi) ==========
+  {
+    q: "(Nguyên phân). Một tế bào lưỡng bội (2n) nguyên phân liên tiếp 8 lần. Số tế bào con tạo thành là bao nhiêu?",
+    options: ["64", "128", "256", "512"],
+    answer: 2,
+    explain: "Số tế bào con = 2ᵏ = 2⁸ = 256 tế bào.",
+    difficulty: "easy",
+  },
+  {
+    q: "(Nguyên phân). Tế bào có 2n = 12 NST. Môi trường nội bào cần cung cấp 180 NST đơn để hoàn thành các lần nguyên phân. Số lần nguyên phân là?",
+    options: ["3", "4", "5", "6"],
+    answer: 1,
+    explain:
+      "Áp dụng công thức: Số NST môi trường cung cấp = (2ᵏ − 1) × 2n\n→ 180 = (2ᵏ − 1) × 12\n→ 2ᵏ − 1 = 15\n→ 2ᵏ = 16 → k = 4 lần nguyên phân.",
+    difficulty: "medium",
+  },
+  {
+    q: "(Nguyên phân). Số NST trong một tế bào ở KÌ SAU nguyên phân ở người (2n = 46) là bao nhiêu?",
+    options: ["46 NST đơn", "46 NST kép", "92 NST đơn", "23 NST đơn"],
+    answer: 2,
+    explain:
+      "Kì sau nguyên phân: các chromatid chị em tách nhau tại tâm động và di chuyển về 2 cực. Lúc này tế bào (chưa phân chia) chứa 4n NST đơn = 2 × 46 = 92 NST ĐƠN.",
+    difficulty: "medium",
+  },
+  {
+    q: "(Giảm phân). Loài có 2n = 16. Sau GIẢM PHÂN I, số NST trong mỗi tế bào con là bao nhiêu?",
+    options: ["16 NST đơn", "8 NST đơn", "16 NST kép", "8 NST kép"],
+    answer: 3,
+    explain:
+      "Sau giảm phân I: tế bào chia đôi nhưng các NST kép CHƯA tách chromatid. Mỗi tế bào con nhận n NST kép = 16/2 = 8 NST KÉP.",
+    difficulty: "medium",
+  },
+  {
+    q: "Chu kì tế bào có các điểm kiểm soát: G1/S, G2/M và điểm kiểm soát thoi phân bào. Có bao nhiêu điểm kiểm soát nằm trong kì trung gian?",
+    options: ["1", "2", "3", "0"],
+    answer: 1,
+    explain:
+      "Kì trung gian gồm các pha G1, S, G2. Điểm kiểm soát G1/S (nằm ở G1) và G2/M (nằm ở G2) đều thuộc kì trung gian. Điểm kiểm soát thoi phân bào nằm ở kì giữa của phân bào → KHÔNG thuộc kì trung gian. Vậy có 2 điểm kiểm soát trong kì trung gian.",
+    difficulty: "hard",
   },
 ];

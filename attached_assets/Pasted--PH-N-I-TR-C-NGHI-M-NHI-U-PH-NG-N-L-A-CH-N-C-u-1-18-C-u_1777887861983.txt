@@ -1,0 +1,1161 @@
+## PHẦN I – TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (Câu 1–18)
+
+Câu 1. Virus là
+A. dạng sống không tế bào, sống tự do
+B. dạng sống đơn bào, kí sinh nội bào
+C. dạng sống không có cấu tạo tế bào, kí sinh nội bào bắt buộc  ← ĐÁP ÁN
+D. dạng sống đa bào, kí sinh ngoại bào
+
+Giải thích: Virus không có cấu tạo tế bào (không có màng sinh chất, không có ribosome, không
+tự trao đổi chất). Virus chỉ có thể nhân lên khi ở bên trong tế bào chủ, vì vậy là kí sinh nội bào
+bắt buộc. Virus không thể sống tự do ngoài tế bào chủ một cách bình thường.
+
+-----
+
+Câu 2. Một lọ sữa chua để ở nhiệt độ 35°C trong 2 ngày bị chua gắt, tách nước, có mùi lạ.
+Quần thể vi khuẩn đang ở pha nào?
+A. Tiềm phát
+B. Lũy thừa
+C. Cân bằng
+D. Suy vong  ← ĐÁP ÁN
+
+Giải thích: Sau 2 ngày ở 35°C, vi khuẩn đã trải qua đầy đủ các pha sinh trưởng. Lọ sữa chua
+bị chua gắt (acid tích lũy nhiều), tách nước, có mùi lạ là dấu hiệu dinh dưỡng cạn kiệt, chất
+thải/chất độc tích lũy nhiều → vi khuẩn chết nhiều hơn sinh ra → pha suy vong.
+
+-----
+
+Câu 3. Một cơ sở sản xuất enzyme từ vi khuẩn cần thu sinh khối tối đa. Thời điểm thu hoạch
+thích hợp nhất là
+A. Cuối pha suy vong
+B. Đầu pha cân bằng  ← ĐÁP ÁN
+C. Giữa pha lũy thừa
+D. Cuối pha tiềm phát
+
+Giải thích: Sinh khối vi khuẩn đạt cao nhất vào cuối pha lũy thừa / đầu pha cân bằng – lúc
+này mật độ tế bào sống đạt cực đại, tế bào chết chưa nhiều. Thu ở đầu pha cân bằng đảm bảo
+lượng tế bào sống (chứa enzyme) là nhiều nhất.
+
+-----
+
+Câu 4. Phát biểu đúng về sự xâm nhập của virus:
+A. Virus trần đưa trực tiếp nucleic acid vào  ← ĐÁP ÁN
+B. Virus có màng bọc luôn đưa nucleic acid trực tiếp
+C. Cả hai đều đưa capsid vào trước
+D. Cả hai đều dung hợp màng
+
+Giải thích: Virus trần (phage) bơm trực tiếp lõi nucleic acid vào tế bào chủ, để lại vỏ capsid
+bên ngoài. Virus có màng bọc (như HIV) đưa cả nucleocapsid vào, rồi mới cởi vỏ để giải
+phóng nucleic acid.
+
+-----
+
+Câu 5. Phơi khô thóc, đậu nhằm hạn chế vi sinh vật dựa vào yếu tố
+A. nhiệt độ
+B. độ ẩm  ← ĐÁP ÁN
+C. pH
+D. ánh sáng
+
+Giải thích: Phơi khô làm giảm độ ẩm của hạt → vi sinh vật không có đủ nước để sinh trưởng
+và phát triển → hạn chế nấm mốc, vi khuẩn gây hỏng lương thực.
+
+-----
+
+Câu 6. Cho các thành phần của virus và chức năng tương ứng:
+(1) Gai glycoprotein   (2) Màng bọc   (3) Nucleocapsid
+(a) Phức hợp gồm nucleic acid và capsid
+(b) Tham gia nhận biết và bám vào tế bào chủ
+(c) Lớp phospholipid bao ngoài capsid
+
+Phương án ghép đúng là:
+A. 1–a, 2–b, 3–c
+B. 1–c, 2–b, 3–a
+C. 1–b, 2–a, 3–c
+D. 1–b, 2–c, 3–a  ← ĐÁP ÁN
+
+Giải thích:
+
+- Gai glycoprotein (1) → (b): đây là thụ thể của virus có màng bọc, tham gia nhận biết và
+  bám vào tế bào chủ.
+- Màng bọc (2) → (c): là lớp phospholipid kép bao bên ngoài capsid (chỉ có ở virus có màng bọc).
+- Nucleocapsid (3) → (a): là phức hợp gồm lõi nucleic acid và vỏ capsid.
+
+-----
+
+Câu 7. Giai đoạn virus phá vỡ tế bào hoặc nảy chồi là
+A. Hấp phụ
+B. Xâm nhập
+C. Lắp ráp
+D. Giải phóng  ← ĐÁP ÁN
+
+Giải thích: Ở giai đoạn giải phóng, các hạt virus mới được lắp ráp xong sẽ thoát ra ngoài
+bằng cách: phá vỡ tế bào chủ (nổ tung – lytic cycle) hoặc nảy chồi từ từ qua màng sinh chất
+(exocytosis – ở một số virus có màng bọc).
+
+-----
+
+Câu 8. Virus không được coi là sinh sản vì
+A. số lượng tăng nhanh
+B. phụ thuộc hoàn toàn vào tế bào chủ  ← ĐÁP ÁN
+C. không có giao tử
+D. kích thước nhỏ
+
+Giải thích: Sinh sản thực sự đòi hỏi sinh vật tự tổng hợp vật chất và nhân lên. Virus không
+có cơ chế trao đổi chất riêng, không tự tổng hợp được thành phần của mình mà phải dùng
+toàn bộ bộ máy tế bào chủ → sự nhân lên của virus hoàn toàn phụ thuộc tế bào chủ, nên
+không gọi là sinh sản.
+
+-----
+
+Câu 9. Vi sinh vật sử dụng ánh sáng và CO₂ thuộc kiểu
+A. Quang dị dưỡng
+B. Hóa tự dưỡng
+C. Quang tự dưỡng  ← ĐÁP ÁN
+D. Hóa dị dưỡng
+
+Giải thích: Phân loại kiểu dinh dưỡng dựa vào nguồn năng lượng và nguồn carbon:
+
+- Nguồn năng lượng = ánh sáng → Quang dưỡng
+- Nguồn carbon = CO₂ (vô cơ) → Tự dưỡng
+  → Kết hợp: Quang tự dưỡng. Ví dụ: vi khuẩn lam, tảo đơn bào, vi khuẩn lưu huỳnh màu tía.
+
+-----
+
+Câu 10. Lạm dụng kháng sinh dẫn đến
+A. tiêu chảy
+B. kháng kháng sinh  ← ĐÁP ÁN
+C. tăng miễn dịch
+D. giảm vi khuẩn có lợi
+
+Giải thích: Lạm dụng kháng sinh tạo áp lực chọn lọc, các vi khuẩn có đột biến kháng thuốc
+sẽ sống sót và sinh sản nhiều hơn → quần thể vi khuẩn dần trở nên kháng kháng sinh (nhờn
+thuốc). Đây là vấn đề y tế nghiêm trọng toàn cầu.
+
+-----
+
+Câu 11. Vi sinh vật thuộc các giới
+A. Khởi sinh, Nguyên sinh, Nấm  ← ĐÁP ÁN
+B. Nấm, Thực vật, Động vật
+C. Khởi sinh, Thực vật, Động vật
+D. Nguyên sinh, Thực vật, Động vật
+
+Giải thích: Vi sinh vật là những sinh vật có kích thước hiển vi, thuộc 3 giới trong hệ thống
+5 giới: Giới Khởi sinh (vi khuẩn), Giới Nguyên sinh (động vật nguyên sinh, tảo đơn bào,
+nấm nhầy), Giới Nấm (nấm men, nấm sợi). Thực vật và Động vật không phải vi sinh vật.
+
+-----
+
+Câu 12. Ở pha tiềm phát
+A. tế bào chết nhiều
+B. vi khuẩn phân chia nhanh
+C. tổng hợp enzyme, thích nghi  ← ĐÁP ÁN
+D. số lượng giảm
+
+Giải thích: Pha tiềm phát (lag phase) là giai đoạn vi khuẩn thích nghi với môi trường mới,
+tổng hợp enzyme và DNA, chuẩn bị cho phân bào. Mật độ tế bào gần như không thay đổi
+vì vi khuẩn chưa phân chia, không phải vì tế bào chết.
+
+-----
+
+Câu 13. Virus phải kí sinh nội bào vì
+A. không có hệ trao đổi chất  ← ĐÁP ÁN
+B. kích thước nhỏ
+C. không có màng
+D. dễ chết
+
+Giải thích: Virus không có ribosome, không có enzyme trao đổi chất, không có màng sinh
+chất → không thể tự tổng hợp protein hay nucleic acid. Virus bắt buộc phải dùng bộ máy
+sinh tổng hợp của tế bào chủ để nhân lên, vì vậy phải kí sinh nội bào bắt buộc.
+
+-----
+
+Câu 14. Có bao nhiêu đặc điểm đúng của VSV: nhỏ, rộng, nhanh, mạnh
+A. 4
+B. 3
+C. 1
+D. 2  ← ĐÁP ÁN
+
+Giải thích: Xét 4 đặc điểm:
+
+- Nhỏ (kích thước hiển vi): ĐÚNG
+- Rộng (phân bố rộng): ĐÚNG
+- Nhanh (sinh trưởng, sinh sản nhanh): ĐÚNG
+- Mạnh: không phải đặc điểm chung được nêu trong sách giáo khoa → SAI
+  → Có 3 đặc điểm đúng. Tuy nhiên, theo đáp án đã khoanh trên đề là B (2). Lưu ý: đây có
+  thể là câu hỏi bẫy về từ “mạnh” và “rộng” – nếu “rộng” không được tính là đặc điểm chung
+  thì còn 2 đặc điểm (nhỏ và nhanh). Theo đáp án đề: B (2).
+
+-----
+
+Câu 15. Vi khuẩn nhỏ có lợi thế vì
+A. không chịu môi trường
+B. tỉ lệ S/V lớn → trao đổi nhanh  ← ĐÁP ÁN
+C. không cần enzyme
+D. ít tiêu hao năng lượng
+
+Giải thích: Vi khuẩn có kích thước nhỏ nên tỉ lệ diện tích bề mặt (S) / thể tích (V) lớn.
+Điều này giúp vi khuẩn hấp thu chất dinh dưỡng và thải chất thải nhanh hơn → tốc độ trao
+đổi chất cao → sinh trưởng và sinh sản nhanh.
+
+-----
+
+Câu 16. Virus có màng bọc khác virus trần ở
+A. chỉ chứa RNA
+B. Không có lớp phospholipid  ← ĐÁP ÁN (đây là đặc điểm của virus TRẦN, không phải màng bọc)
+C. không có capsid
+D. chỉ chứa DNA
+
+Giải thích: Câu hỏi hỏi virus CÓ MÀNG BỌC khác virus TRẦN ở điểm nào. Virus có màng
+bọc có thêm lớp phospholipid kép bên ngoài capsid (và gai glycoprotein). Virus trần thì KHÔNG
+có lớp phospholipid này. Đáp án B mô tả đặc điểm của virus trần → đây là điểm khác nhau.
+
+-----
+
+Câu 17. Virus bám vào tế bào là giai đoạn
+A. xâm nhập
+B. lắp ráp
+C. hấp phụ  ← ĐÁP ÁN
+D. sinh tổng hợp
+
+Giải thích: Hấp phụ (adsorption) là giai đoạn đầu tiên, virus nhận biết và gắn vào thụ thể
+đặc hiệu trên bề mặt tế bào chủ nhờ liên kết đặc hiệu giữa phân tử bề mặt virus (gai
+glycoprotein hoặc protein capsid) và thụ thể tế bào chủ.
+
+-----
+
+Câu 18. Nước muối diệt khuẩn do
+A. phá màng
+B. trương nước
+C. co nguyên sinh  ← ĐÁP ÁN
+D. đông protein
+
+Giải thích: Dung dịch muối đậm đặc tạo môi trường ưu trương → nước trong tế bào vi khuẩn
+thẩm thấu ra ngoài → tế bào vi khuẩn bị mất nước, co nguyên sinh → vi khuẩn không phát
+triển được hoặc chết.
+
+================================================================================
+
+-----
+
+## PHẦN II – TRẮC NGHIỆM ĐÚNG/SAI (Câu 1–4, mỗi câu có 4 ý a, b, c, d)
+
+Câu 1. Kháng sinh
+a) Diệt/ức chế đặc hiệu VSV → ĐÚNG
+Giải thích: Kháng sinh có tác dụng tiêu diệt hoặc ức chế đặc hiệu sự sinh trưởng của một
+hoặc một vài nhóm vi sinh vật.
+
+b) Dùng cho bệnh vi khuẩn → ĐÚNG
+Giải thích: Kháng sinh được dùng để điều trị các bệnh nhiễm khuẩn (do vi khuẩn gây ra),
+không có tác dụng với bệnh do virus.
+
+c) Ngừng thuốc sớm → kháng thuốc → ĐÚNG (SAI theo đáp án trên bài)
+Giải thích: Theo đáp án đề (dấu X), ý này SAI. Thực ra ngừng kháng sinh sớm (không
+đủ liệu trình) làm vi khuẩn chưa bị tiêu diệt hết, những cá thể sống sót có thể trở nên
+kháng thuốc. Tuy nhiên bản thân việc “ngừng sớm” không trực tiếp gây kháng thuốc ngay
+mà là yếu tố gián tiếp. Theo đề: SAI.
+
+d) Cồn iodine là kháng sinh → ĐÚNG (theo đáp án đề)
+Giải thích: Cồn iodine (cồn iốt) là chất sát khuẩn/khử trùng, không phải kháng sinh theo
+định nghĩa y học (kháng sinh là chất có nguồn gốc sinh học, tác dụng đặc hiệu). Tuy nhiên
+theo đáp án đề: ĐÚNG (có thể đề dùng nghĩa rộng).
+
+-----
+
+Câu 2. Chất khử trùng
+a) Biến tính protein → ĐÚNG
+Giải thích: Các chất khử trùng như phenol, alcohol, kim loại nặng có thể làm biến tính
+protein – phá hủy cấu trúc không gian của protein màng và enzyme của vi sinh vật.
+
+b) Đặc hiệu như kháng sinh → SAI
+Giải thích: Chất khử trùng tác dụng không đặc hiệu, diệt nhiều loại vi sinh vật và cả tế
+bào sinh vật khác. Kháng sinh mới có tính đặc hiệu (chỉ tác dụng lên một số nhóm VSV
+nhất định, không gây hại tế bào cơ thể người ở liều điều trị).
+
+c) Kim loại nặng bất hoạt enzyme → SAI (theo đáp án đề)
+Giải thích: Thực ra kim loại nặng (Hg, Ag, Cu…) CÓ khả năng bất hoạt enzyme bằng
+cách gắn vào nhóm –SH của enzyme. Theo đáp án đề đánh X (SAI) – có thể do cách diễn
+đạt không chính xác trong đề.
+
+d) Chủ yếu gây mất nước → SAI
+Giải thích: Cơ chế chính của chất khử trùng là biến tính protein, phá màng tế bào, oxy
+hóa… Gây mất nước là cơ chế của dung dịch muối/đường đậm đặc, không phải của chất
+khử trùng nói chung.
+
+-----
+
+Câu 3. Dinh dưỡng VSV
+a) Nấm men → hóa dị dưỡng → ĐÚNG
+Giải thích: Nấm men sử dụng chất hữu cơ (đường) làm nguồn carbon và năng lượng →
+hóa dị dưỡng (nguồn năng lượng từ hóa học, nguồn carbon từ chất hữu cơ).
+
+b) Muối dưa thêm đường → nhanh lên men → ĐÚNG (theo đáp án đề)
+Giải thích: Thêm đường cung cấp thêm nguồn carbon và năng lượng cho vi khuẩn lactic
+→ vi khuẩn sinh trưởng nhanh hơn → lên men nhanh hơn.
+
+c) Tảo → quang tự dưỡng → ĐÚNG
+Giải thích: Tảo sử dụng ánh sáng làm nguồn năng lượng và CO₂ làm nguồn carbon →
+quang tự dưỡng (tương tự thực vật quang hợp).
+
+d) EMZEO → quang tự dưỡng → SAI
+Giải thích: EMZEO là chế phẩm vi sinh xử lý chất thải hữu cơ (phân, rơm, rác…). Các
+vi sinh vật trong EMZEO phân giải hợp chất hữu cơ → sử dụng chất hữu cơ làm nguồn
+carbon → hóa dị dưỡng, không phải quang tự dưỡng.
+
+-----
+
+Câu 4. Virus và thụ thể
+a) Có tính đặc hiệu → ĐÚNG
+Giải thích: Virus chỉ xâm nhập vào tế bào có thụ thể phù hợp – đây là tính đặc hiệu của
+tương tác giữa virus và tế bào chủ.
+
+b) Virus xâm nhập mọi tế bào → SAI
+Giải thích: Virus KHÔNG xâm nhập mọi tế bào. Mỗi loại virus chỉ xâm nhập được vào
+tế bào có thụ thể đặc hiệu tương ứng. Ví dụ HIV chỉ xâm nhập tế bào có thụ thể CD4.
+
+c) Không có thụ thể → không xâm nhập → ĐÚNG
+Giải thích: Nếu tế bào không có thụ thể phù hợp với virus, virus không thể bám vào và
+xâm nhập → đây là cơ sở của tính đặc hiệu vật chủ của virus.
+
+d) Phụ thuộc tương tác phân tử → ĐÚNG (theo đáp án đề)
+Giải thích: Sự bám dính của virus vào tế bào chủ phụ thuộc vào tương tác đặc hiệu ở
+mức độ phân tử giữa phân tử bề mặt của virus (gai glycoprotein/protein capsid) và thụ
+thể trên màng tế bào chủ.
+
+================================================================================
+
+-----
+
+## PHẦN III – TRẮC NGHIỆM TRẢ LỜI NGẮN (Câu 1–6)
+
+Câu 1. Cho: vi khuẩn lam, nấm men, trùng roi, trùng giày, tảo rong mơ, cây dương xỉ, giun tròn.
+Có bao nhiêu VSV?
+
+ĐÁP ÁN: 4 vi sinh vật
+
+Giải thích:
+Vi sinh vật là sinh vật đơn bào, kích thước hiển vi:
+
+- Vi khuẩn lam (Cyanobacteria): VSV ✓ (giới Khởi sinh)
+- Nấm men: VSV ✓ (giới Nấm, đơn bào)
+- Trùng roi: VSV ✓ (giới Nguyên sinh)
+- Trùng giày: VSV ✓ (giới Nguyên sinh)
+- Tảo rong mơ: KHÔNG phải VSV (đa bào, nhìn thấy bằng mắt thường)
+- Cây dương xỉ: KHÔNG phải VSV (thực vật đa bào)
+- Giun tròn: KHÔNG phải VSV (động vật đa bào)
+  → Có 4 VSV.
+
+-----
+
+Câu 2. Một tế bào lưỡng bội (2n) nguyên phân liên tiếp 8 lần. Số tế bào con tạo thành là bao nhiêu?
+
+ĐÁP ÁN: 256 tế bào con
+
+Giải thích:
+Công thức: Số tế bào con = 2^k (với k = số lần nguyên phân)
+→ 2^8 = 256 tế bào con
+
+-----
+
+Câu 3. Loài có 2n = 16, kì đầu có bao nhiêu NST kép?
+
+ĐÁP ÁN: 16 NST kép
+
+Giải thích:
+Ở kì đầu của nguyên phân, NST đã nhân đôi ở pha S (kì trung gian) và đang ở trạng thái
+kép (mỗi NST gồm 2 chromatid chị em dính nhau ở tâm động). Số lượng NST kép = 2n = 16.
+NST chưa phân li, vẫn còn 16 NST kép (chứ chưa tách thành 32 NST đơn như ở kì sau).
+
+-----
+
+Câu 4. Loài 2n = 20 → sau giảm phân II có bao nhiêu NST?
+
+ĐÁP ÁN: 10 NST đơn
+
+Giải thích:
+Sau giảm phân II, tế bào là giao tử với bộ NST đơn bội:
+
+- n = 2n/2 = 20/2 = 10
+- Các NST ở trạng thái đơn (đã tách chromatid ở kì sau GP II)
+  → Mỗi tế bào con sau GP II có 10 NST đơn.
+
+-----
+
+Câu 5. Tế bào 2n = 12, môi trường cung cấp 180 NST đơn → số lần nguyên phân?
+
+ĐÁP ÁN: 4 lần nguyên phân
+
+Giải thích:
+Công thức số NST đơn môi trường cung cấp cho nguyên phân:
+Số NST = (2^k - 1) × 2n
+→ 180 = (2^k - 1) × 12
+→ 2^k - 1 = 180/12 = 15
+→ 2^k = 16
+→ k = 4
+
+Vậy tế bào nguyên phân 4 lần.
+
+-----
+
+Câu 6. Tế bào 2n = 8 ở kì giữa của nguyên phân. Số nhiễm sắc thể trong tế bào là bao nhiêu?
+
+ĐÁP ÁN: 8 NST kép
+
+Giải thích:
+Ở kì giữa của nguyên phân, NST co ngắn cực đại và xếp thành một hàng ở mặt phẳng xích
+đạo. NST vẫn ở trạng thái kép (chưa phân li). Số NST = 2n = 8 (NST kép).
+(Lưu ý: số chromatid = 16, nhưng số NST tính theo NST kép = 8)
+
+# ================================================================================
+
+# PHẦN B – ĐỀ CƯƠNG KIỂM TRA HỌC KÌ 2
+
+# ================================================================================
+CHƯƠNG I – NGUYÊN PHÂN VÀ GIẢM PHÂN (Bài tập từ đề cương)
+
+Câu 1. Số NST trong một tế bào ở kì cuối của nguyên phân ở người (2n = 46) là bao nhiêu?
+
+ĐÁP ÁN: 46 NST đơn
+
+Giải thích:
+Ở kì cuối nguyên phân, màng nhân xuất hiện trở lại, NST giãn xoắn. Ở kì sau, 92 NST đơn
+đã tách ra và di chuyển về 2 cực tế bào. Đến kì cuối, tế bào phân chia thành 2 tế bào con,
+mỗi tế bào có 46 NST đơn (= 2n = bộ lưỡng bội bình thường).
+
+-----
+
+Câu 2. Một tế bào có 2n = 24 NST đơn nguyên phân liên tiếp 3 lần. Tính số NST đơn tương
+đương mà môi trường cần cung cấp.
+
+ĐÁP ÁN: 24 × (2³ – 1) = 24 × 7 = 168 NST đơn
+
+Giải thích:
+Công thức: Số NST MT cung cấp = (2^k - 1) × 2n
+= (2^3 - 1) × 24
+= 7 × 24
+= 168 NST đơn
+
+-----
+
+Câu 3. Từ một tế bào lưỡng bội (2n) trải qua 5 lần nguyên phân liên tiếp sẽ tạo ra bao nhiêu
+tế bào con?
+
+ĐÁP ÁN: 32 tế bào con (= 2^5)
+
+Giải thích:
+Công thức: Số tế bào con = 2^k = 2^5 = 32
+
+-----
+
+Câu 4. Cho các điểm kiểm soát chu kì tế bào: G1/S, G2/M, thoi phân bào. Có bao nhiêu điểm
+kiểm soát ở trong kì trung gian?
+
+ĐÁP ÁN: 2 điểm kiểm soát
+
+Giải thích:
+Kì trung gian gồm G1, S, G2. Trong đó:
+
+- Điểm G1/S: nằm ở kì trung gian ✓
+- Điểm G2/M: nằm ở kì trung gian (giữa G2 và kì phân bào) ✓
+- Điểm thoi phân bào: nằm trong quá trình phân bào (kì giữa) ✗
+  → Có 2 điểm kiểm soát trong kì trung gian.
+
+-----
+
+Câu 5. Tế bào lúa nước (2n = 14) tại kì giữa có bao nhiêu NST kép?
+
+ĐÁP ÁN: 14 NST kép
+
+Giải thích:
+Ở kì giữa nguyên phân, NST co xoắn cực đại, xếp hàng ở mặt phẳng xích đạo. NST vẫn ở
+trạng thái kép (mỗi NST gồm 2 chromatid). Số NST kép = 2n = 14.
+
+-----
+
+Câu 6. Ở người, tế bào sinh tinh (2n = 46). Số lượng NST trong giao tử tạo ra sau giảm phân là?
+
+ĐÁP ÁN: 23 NST đơn
+
+Giải thích:
+Giảm phân tạo giao tử với bộ NST đơn bội: n = 46/2 = 23.
+Sau giảm phân II, các chromatid tách ra → 23 NST đơn trong mỗi tinh trùng.
+
+-----
+
+Câu 7. Loài có 2n = 16. Sau giảm phân II, số NST trong mỗi tế bào con là?
+
+ĐÁP ÁN: 8 NST đơn
+
+Giải thích:
+Sau giảm phân II: n = 16/2 = 8 NST đơn (các chromatid đã tách ra ở kì sau GP II).
+
+-----
+
+Câu 8. Số NST trong một tế bào ở kì sau của nguyên phân ở người (2n = 46) là?
+
+ĐÁP ÁN: 92 NST đơn
+
+Giải thích:
+Ở kì sau nguyên phân, các chromatid chị em tách nhau ra, di chuyển về 2 cực tế bào. Lúc
+này tế bào (chưa phân chia) có 4n NST đơn = 4 × 46/2… Thực ra: 2n NST kép → tách ra
+thành 4n NST đơn = 2 × 46 = 92 NST đơn trong một tế bào ở kì sau.
+
+-----
+
+Câu 9. Trong nguyên phân, tế bào có 2n = 8. Số NST ở kì giữa của nguyên phân là?
+
+ĐÁP ÁN: 8 NST kép
+
+Giải thích:
+Ở kì giữa nguyên phân, NST co xoắn cực đại, xếp ở mặt phẳng xích đạo, NST vẫn ở trạng
+thái kép. Số NST kép = 2n = 8.
+
+-----
+
+Câu 10. Loài có 2n = 16. Sau giảm phân I, số NST trong mỗi tế bào con là?
+
+ĐÁP ÁN: 8 NST kép
+
+Giải thích:
+Sau giảm phân I: mỗi tế bào con nhận n NST kép (các chromatid CHƯA tách ở GP I).
+n = 16/2 = 8 NST kép.
+
+# ================================================================================
+
+# CHƯƠNG II – VI SINH VẬT, SINH TRƯỞNG Ở VI SINH VẬT (Câu từ đề cương)
+
+Câu 1 (ĐC). Tại sao ở pha tiềm phát, chất dinh dưỡng đầy đủ mà mật độ quần thể vi khuẩn
+gần như không thay đổi?
+
+ĐÁP ÁN:
+Vì vi khuẩn đang thích nghi với môi trường mới, chuẩn bị phân bào (tổng hợp enzyme, DNA).
+Vi khuẩn chưa bắt đầu phân chia nên số lượng tế bào không tăng, dù dinh dưỡng đầy đủ.
+
+-----
+
+Câu 2 (ĐC). Sinh khối vi khuẩn đạt cao nhất vào thời điểm nào? Nên thu hoạch lúc nào?
+
+ĐÁP ÁN:
+
+- Sinh khối đạt cao nhất vào cuối pha lũy thừa và đầu pha cân bằng.
+- Nên thu hoạch vào cuối pha lũy thừa (hoặc đầu pha cân bằng) vì:
+  - Mật độ tế bào sống đạt cực đại
+  - Tế bào chết còn ít
+  - Chất dinh dưỡng chưa cạn kiệt hoàn toàn
+
+-----
+
+Câu 3 (ĐC). Vì sao số tế bào chết tăng dần từ pha cân bằng đến pha suy vong?
+
+ĐÁP ÁN:
+
+- Chất dinh dưỡng cạn kiệt dần → không đủ cho tế bào duy trì sống.
+- Chất độc, chất thải tích lũy ngày càng nhiều → ức chế và làm chết tế bào.
+
+-----
+
+Câu 4 (ĐC). Làm thế nào để khắc phục hiện tượng mật độ quần thể không tăng?
+
+ĐÁP ÁN:
+
+- Bổ sung dinh dưỡng mới vào môi trường.
+- Loại bỏ hoặc làm giảm chất độc tích lũy.
+  → Chuyển sang nuôi cấy liên tục để duy trì điều kiện tối ưu.
+
+# ================================================================================
+TRẮC NGHIỆM ĐỀ CƯƠNG (Câu 1–50)
+
+Câu 1. Loại VSV nào cần có trong sản xuất sữa chua?
+A. Vi khuẩn lactic  ← ĐÁP ÁN
+B. Nấm men
+C. Nấm sợi
+D. Vi khuẩn axetic
+
+Giải thích: Sữa chua được tạo ra nhờ vi khuẩn lactic (Lactobacillus, Streptococcus…) lên
+men lactic: đường (lactose) → acid lactic. Acid lactic làm đông tụ casein sữa tạo cấu trúc
+đặc trưng của sữa chua.
+
+-----
+
+Câu 2. Loài nào KHÔNG PHẢI vi sinh vật?
+A. Vi khuẩn lam
+B. Tảo đơn bào
+C. Trùng biến hình
+D. Nấm rơm  ← ĐÁP ÁN
+
+Giải thích: Nấm rơm (Volvariella volvacea) là nấm đa bào, có thể nhìn thấy bằng mắt thường
+→ không phải vi sinh vật. Vi khuẩn lam, tảo đơn bào, trùng biến hình đều có kích thước hiển vi.
+
+-----
+
+Câu 3. Vi sinh vật thuộc những giới nào?
+A. Giới Khởi sinh, giới Nấm, giới Thực vật
+B. Giới Khởi sinh, giới Nguyên sinh, giới Nấm  ← ĐÁP ÁN
+C. Giới Nấm, giới Thực vật, giới Động vật
+D. Giới Khởi sinh, Giới Thực vật, giới Động vật
+
+Giải thích: VSV gồm: vi khuẩn (Giới Khởi sinh), động vật nguyên sinh và tảo đơn bào (Giới
+Nguyên sinh), nấm men và nấm sợi (Giới Nấm). Thực vật và Động vật không phải VSV.
+
+-----
+
+Câu 4. Cho: vi khuẩn lactic, nấm men, trùng roi, trùng giày, tảo silic, cây rêu, giun đất.
+Số VSV là
+A. 4
+B. 5  ← ĐÁP ÁN
+C. 6
+D. 7
+
+Giải thích:
+
+- Vi khuẩn lactic: VSV ✓
+- Nấm men: VSV ✓
+- Trùng roi: VSV ✓
+- Trùng giày: VSV ✓
+- Tảo silic: VSV ✓ (tảo đơn bào, kích thước hiển vi)
+- Cây rêu: KHÔNG (thực vật đa bào)
+- Giun đất: KHÔNG (động vật đa bào)
+  → 5 VSV.
+
+-----
+
+Câu 5. Số đặc điểm chung của vi sinh vật (từ 4 đặc điểm đã cho) là
+A. 1
+B. 2
+C. 3
+D. 4  ← ĐÁP ÁN
+
+Giải thích: Cả 4 đặc điểm đều đúng với VSV:
+(1) Kích thước nhỏ bé ✓
+(2) Phân bố rộng ✓
+(3) Hấp thu và chuyển hóa vật chất nhanh ✓
+(4) Sinh trưởng và sinh sản nhanh ✓
+
+-----
+
+Câu 6. Kích thước vi sinh vật càng nhỏ thì
+A. tốc độ trao đổi chất càng cao, tốc độ sinh trưởng và sinh sản càng nhanh  ← ĐÁP ÁN
+B. tốc độ trao đổi chất càng cao, sinh trưởng và sinh sản càng chậm
+C. tốc độ trao đổi chất càng thấp, sinh trưởng và sinh sản càng nhanh
+D. tốc độ trao đổi chất càng thấp, sinh trưởng và sinh sản càng chậm
+
+Giải thích: Kích thước nhỏ → tỉ lệ S/V lớn → diện tích trao đổi chất lớn hơn so với thể tích
+→ tốc độ trao đổi chất cao → sinh trưởng và sinh sản nhanh.
+
+-----
+
+Câu 7. Đặc điểm nào của VSV là thế mạnh công nghệ sinh học đang khai thác?
+A. Có kích thước rất nhỏ
+B. Có khả năng gây bệnh cho nhiều loài
+C. Có khả năng sinh trưởng và sinh sản nhanh  ← ĐÁP ÁN
+D. Có khả năng phân bố rộng
+
+Giải thích: Khả năng sinh trưởng và sinh sản nhanh của VSV được ứng dụng để sản xuất
+các sản phẩm sinh học (enzyme, kháng sinh, vaccine, amino acid…) với số lượng lớn trong
+thời gian ngắn, chi phí thấp.
+
+-----
+
+Câu 8. Căn cứ phân loại kiểu dinh dưỡng ở vi sinh vật là
+A. nguồn carbon và nguồn cung cấp vật chất
+B. nguồn oxygen và nguồn cung cấp năng lượng
+C. nguồn oxygen và nguồn cung cấp vật chất
+D. nguồn carbon và nguồn cung cấp năng lượng  ← ĐÁP ÁN
+
+Giải thích: Kiểu dinh dưỡng của VSV được phân loại dựa vào 2 tiêu chí:
+
+- Nguồn năng lượng (ánh sáng → quang dưỡng; hóa học → hóa dưỡng)
+- Nguồn carbon (CO₂/vô cơ → tự dưỡng; chất hữu cơ → dị dưỡng)
+
+-----
+
+Câu 9. Căn cứ vào nguồn năng lượng, các kiểu dinh dưỡng ở VSV gồm
+A. tự dưỡng và dị dưỡng
+B. quang dưỡng và hóa dưỡng  ← ĐÁP ÁN
+C. quang dưỡng và dị dưỡng
+D. hóa dưỡng và tự dưỡng
+
+Giải thích: Căn cứ vào nguồn năng lượng:
+
+- Ánh sáng → Quang dưỡng (quang tự dưỡng và quang dị dưỡng)
+- Hóa học (oxy hóa chất vô cơ/hữu cơ) → Hóa dưỡng (hóa tự dưỡng và hóa dị dưỡng)
+
+-----
+
+Câu 10. Vi sinh vật dùng ánh sáng và CO₂ sẽ có kiểu dinh dưỡng là
+A. quang dị dưỡng
+B. hoá dị dưỡng
+C. quang tự dưỡng  ← ĐÁP ÁN
+D. hóa tự dưỡng
+
+Giải thích: Ánh sáng = nguồn năng lượng → quang dưỡng; CO₂ = nguồn carbon vô cơ → tự
+dưỡng. Kết hợp: Quang tự dưỡng.
+
+-----
+
+Câu 11. Tảo, vi khuẩn lam có kiểu dinh dưỡng là
+A. quang dị dưỡng
+B. hoá dị dưỡng
+C. quang tự dưỡng  ← ĐÁP ÁN
+D. hoá tự dưỡng
+
+Giải thích: Tảo và vi khuẩn lam đều quang hợp: dùng ánh sáng làm nguồn năng lượng và
+CO₂ làm nguồn carbon → quang tự dưỡng (tương tự thực vật).
+
+-----
+
+Câu 12. Sinh trưởng của vi sinh vật là
+A. sự tăng lên về số lượng tế bào của quần thể VSV thông qua quá trình sinh sản  ← ĐÁP ÁN
+B. sự tăng lên về số lượng tế bào của quần thể VSV thông qua quá trình nguyên phân
+C. sự tăng lên về số lượng tế bào của cơ thể VSV thông qua quá trình sinh sản
+D. sự tăng lên về số lượng tế bào của cơ thể VSV thông qua quá trình nguyên phân
+
+Giải thích: Vì VSV có kích thước hiển vi nên không thể đánh giá sinh trưởng qua sự tăng
+kích thước cá thể. Sinh trưởng của VSV được hiểu là sự tăng số lượng tế bào của cả quần
+thể thông qua sinh sản (phân đôi ở vi khuẩn).
+
+-----
+
+Câu 13. Sinh trưởng của quần thể vi khuẩn trong môi trường nuôi cấy không liên tục diễn ra theo
+A. 4 pha  ← ĐÁP ÁN
+B. 2 pha
+C. 3 pha
+D. 1 pha
+
+Giải thích: Trong môi trường nuôi cấy không liên tục (batch culture), quần thể vi khuẩn trải
+qua 4 pha: (1) tiềm phát, (2) lũy thừa, (3) cân bằng, (4) suy vong.
+
+-----
+
+Câu 14. Trình tự các pha sinh trưởng của quần thể vi khuẩn trong môi trường nuôi cấy không
+liên tục là
+A. pha tiềm phát → pha lũy thừa → pha cân bằng → pha suy vong  ← ĐÁP ÁN
+B. pha tiềm phát → pha cân bằng → pha luỹ thừa → pha suy vong
+C. pha lũy thừa → pha tiềm phát → pha suy vong → pha cân bằng
+D. pha lũy thừa → pha tiềm phát → pha cân bằng → pha suy vong
+
+Giải thích: Thứ tự chuẩn: Tiềm phát (thích nghi) → Lũy thừa (tăng mạnh) → Cân bằng
+(ổn định) → Suy vong (giảm).
+
+-----
+
+Câu 15. Pha tiềm phát KHÔNG có đặc điểm nào sau đây?
+A. Dinh dưỡng đầy đủ cho sự sinh trưởng
+B. Vi khuẩn thích ứng dần và tổng hợp enzyme trao đổi chất
+C. Các chất độc hại tích lũy nhiều  ← ĐÁP ÁN (đặc điểm này KHÔNG có ở pha tiềm phát)
+D. Mật độ tế bào gần như không thay đổi
+
+Giải thích: Ở pha tiềm phát, dinh dưỡng đầy đủ, chất độc chưa tích lũy (đó là đặc điểm của
+pha suy vong). Pha tiềm phát: vi khuẩn thích nghi, tổng hợp enzyme/DNA, mật độ gần như
+không thay đổi.
+
+-----
+
+Câu 16. Trong nuôi cấy không liên tục, để thu lượng sinh khối vi khuẩn tối đa nên thu hoạch vào
+A. Đầu pha lũy thừa
+B. Giữa pha lũy thừa
+C. Cuối pha cân bằng
+D. Cuối pha luỹ thừa, đầu pha cân bằng  ← ĐÁP ÁN
+
+Giải thích: Cuối pha lũy thừa / đầu pha cân bằng là thời điểm mật độ tế bào sống đạt cực
+đại, chất độc chưa tích lũy nhiều, tế bào còn sinh lực → sinh khối tối đa.
+
+-----
+
+Câu 17. Để khắc phục hiện tượng mật độ không tăng ở pha cân bằng có thể
+A. Bổ sung thêm vi sinh vật giống thích hợp
+B. Bổ sung thêm nguồn chất dinh dưỡng vào môi trường  ← ĐÁP ÁN
+C. Bổ sung thêm khí oxygen
+D. Bổ sung thêm khí nitrogen
+
+Giải thích: Pha cân bằng xảy ra do dinh dưỡng cạn kiệt và chất thải tích lũy. Bổ sung dinh
+dưỡng mới giúp vi khuẩn tiếp tục sinh trưởng, đưa quần thể trở lại pha lũy thừa. Đây là
+nguyên lý của nuôi cấy liên tục.
+
+-----
+
+Câu 18. Sự sinh trưởng của quần thể VSV được đánh giá thông qua
+A. Sự tăng lên về số lượng tế bào của quần thể  ← ĐÁP ÁN
+B. Sự tăng lên về kích thước của từng tế bào
+C. Sự tăng lên về khối lượng của từng tế bào
+D. Sự tăng lên về cả kích thước và khối lượng từng tế bào
+
+Giải thích: Do VSV có kích thước hiển vi, không thể quan sát dễ dàng sự thay đổi kích thước
+từng tế bào. Sinh trưởng VSV được đánh giá bằng sự tăng số lượng tế bào của quần thể.
+
+-----
+
+Câu 19. Sau khi bổ sung dinh dưỡng (glucose) ở pha cân bằng, quần thể vi khuẩn E. coli
+chuyển sang pha nào?
+A. pha tiềm phát
+B. Pha lũy thừa  ← ĐÁP ÁN
+C. pha cân bằng
+D. pha suy vong
+
+Giải thích: Khi bổ sung dinh dưỡng mới, vi khuẩn có nguồn năng lượng và carbon trở lại →
+tốc độ phân chia tăng nhanh → quần thể chuyển sang pha lũy thừa (log phase).
+
+-----
+
+Câu 20. Sau 3 giờ bổ sung glucose thì quần thể E. coli chuyển sang pha nào?
+A. Pha cân bằng
+B. Pha lũy thừa và cân bằng
+C. Pha cân bằng và suy vong  ← ĐÁP ÁN
+D. Pha suy vong
+
+Giải thích: Sau 3 giờ bổ sung glucose, glucose sẽ dần cạn kiệt → quần thể đi qua pha cân
+bằng rồi chuyển sang suy vong. Đáp án C: pha cân bằng và suy vong.
+
+-----
+
+Câu 21. Chất ức chế sinh trưởng đối với E. coli tích lũy nhiều nhất khi nào?
+A. Trước khi bổ sung glucose
+B. Trong 3 giờ bổ sung glucose
+C. Ngay khi dừng bổ sung glucose
+D. Kết thúc nuôi cấy  ← ĐÁP ÁN
+
+Giải thích: Chất ức chế (chất thải, acid, CO₂…) tích lũy tăng dần trong suốt quá trình nuôi
+cấy. Khi kết thúc nuôi cấy (pha suy vong muộn), lượng chất ức chế đạt cao nhất vì dinh
+dưỡng cạn kiệt và tế bào chết phân hủy tiếp tục thải chất độc.
+
+-----
+
+Câu 22. Khi nói về pha cân bằng trong nuôi cấy không liên tục, có bao nhiêu phát biểu đúng?
+I. Dinh dưỡng bắt đầu thiếu hụt cho sinh trưởng.
+II. Một số tế bào bị chết và một số khác tiếp tục phân chia.
+III. Không có tế bào phân chia cũng như không có tế bào chết.
+IV. Số lượng tế bào sinh ra nhỏ hơn số lượng tế bào chết.
+
+A. 1
+B. 2  ← ĐÁP ÁN
+C. 3
+D. 4
+
+Giải thích:
+
+- I: ĐÚNG (dinh dưỡng bắt đầu thiếu ở pha cân bằng)
+- II: ĐÚNG (pha cân bằng: số tế bào sinh = số tế bào chết, tức vẫn có cả hai)
+- III: SAI (vẫn có tế bào phân chia và tế bào chết)
+- IV: SAI (pha cân bằng: sinh = chết, không phải sinh < chết; sinh < chết là pha suy vong)
+  → 2 phát biểu đúng (I và II).
+
+-----
+
+Câu 23. Công nghệ sinh học sử dụng nuôi cấy liên tục nhằm mục đích nào?
+A. Làm tăng tốc độ sinh trưởng của vi sinh vật
+B. Khảo sát đường cong sinh trưởng
+C. Duy trì quần thể VSV ở trạng thái cân bằng
+D. Thu được nhiều sản phẩm và sinh khối tế bào  ← ĐÁP ÁN
+
+Giải thích: Nuôi cấy liên tục liên tục bổ sung dinh dưỡng và loại bỏ sản phẩm → duy trì
+điều kiện tối ưu → quần thể luôn ở pha lũy thừa → thu được nhiều sinh khối và sản phẩm
+(enzyme, kháng sinh…) liên tục với sản lượng cao.
+
+-----
+
+Câu 24. Hầu hết kháng sinh được sản xuất bởi
+A. Nấm
+B. Vi khuẩn Gram dương
+C. Xạ khuẩn  ← ĐÁP ÁN
+D. Vi khuẩn Gram âm
+
+Giải thích: Xạ khuẩn (đặc biệt chi Streptomyces) sản xuất trên 70-80% số loại kháng sinh
+đã biết (streptomycin, tetracycline, erythromycin…). Nấm (Penicillium) tạo penicillin nổi
+tiếng nhưng về số lượng kháng sinh thì xạ khuẩn vượt trội.
+
+-----
+
+Câu 25. Một số chất hóa học như phenol, kim loại nặng, alcohol dùng làm chất diệt khuẩn vì
+A. có thể gây biến tính và làm bất hoạt protein, phá hủy cấu trúc màng sinh chất  ← ĐÁP ÁN
+B. tiêu diệt hoặc ức chế đặc hiệu sự sinh trưởng của một vài nhóm VSV
+C. gây biến đổi vật chất di truyền
+D. ngăn cản sự hấp thụ nước
+
+Giải thích: Cơ chế diệt khuẩn của các chất hóa học này:
+
+- Phenol, alcohol: biến tính protein và phá hủy màng sinh chất
+- Kim loại nặng (Hg, Ag): gắn vào nhóm –SH của enzyme, bất hoạt enzyme
+  → Làm vi sinh vật chết. Đây là tác động không đặc hiệu (khác kháng sinh).
+
+-----
+
+Câu 26. Chất kháng sinh khác chất diệt khuẩn ở điểm là
+A. có khả năng tiêu diệt hoặc ức chế VSV một cách chọn lọc  ← ĐÁP ÁN
+B. không làm tổn thương đến da và mô sống
+C. có khả năng làm biến tính protein, màng tế bào
+D. có khả năng sinh oxygen nguyên tử oxi hóa mạnh
+
+Giải thích: Kháng sinh tác dụng chọn lọc (đặc hiệu) lên một số nhóm VSV nhất định, không
+(hoặc ít) gây hại tế bào vật chủ ở liều điều trị. Chất diệt khuẩn tác dụng rộng, không đặc
+hiệu, có thể gây độc cả tế bào người.
+
+-----
+
+Câu 27. Số phát biểu đúng khi nói về thuốc kháng sinh (4 phát biểu đã cho)?
+A. 1
+B. 2
+C. 3
+D. 4  ← ĐÁP ÁN
+
+Giải thích: Cả 4 phát biểu đều đúng:
+(1) Kháng sinh tiêu diệt hoặc ức chế đặc hiệu một/vài nhóm VSV ✓
+(2) Dùng điều trị bệnh nhiễm trùng ở người, động vật, thực vật ✓
+(3) Lạm dụng gây kháng kháng sinh ✓
+(4) Cồn-iodine ức chế VSV nhưng không phải kháng sinh ✓
+→ 4 phát biểu đúng.
+
+-----
+
+Câu 28. Có thể giữ thức ăn tương đối lâu trong tủ lạnh vì
+A. nhiệt độ thấp sẽ kìm hãm sự sinh trưởng của VSV gây hư hỏng thức ăn  ← ĐÁP ÁN
+B. nhiệt độ thấp tiêu diệt hết vi sinh vật
+C. nhiệt độ thấp làm biến tính acid nucleic
+D. nhiệt độ thấp gây co nguyên sinh
+
+Giải thích: Nhiệt độ thấp (0-5°C trong tủ lạnh) không tiêu diệt vi sinh vật mà chỉ kìm hãm
+(ức chế) enzyme và quá trình trao đổi chất → VSV sinh trưởng rất chậm hoặc ngừng hẳn
+→ thức ăn bảo quản được lâu hơn.
+
+-----
+
+Câu 29. Số đặc điểm là cơ sở khoa học của ứng dụng VSV trong thực tiễn (từ 4 đặc điểm đã cho)?
+A. 1
+B. 2  ← ĐÁP ÁN
+C. 3
+D. 4
+
+Giải thích:
+(1) Phân giải hữu cơ, chuyển hóa vô cơ → ứng dụng được ✓ (cơ sở của ứng dụng)
+(2) Sinh trưởng nhanh, chịu điều kiện khắc nghiệt → ứng dụng được ✓
+(3) Phân hủy lương thực, gây hư hỏng → đây là tác hại, không phải cơ sở ứng dụng ✗
+(4) Sinh độc tố → đây là tác hại ✗
+→ 2 đặc điểm là cơ sở ứng dụng.
+
+-----
+
+Câu 30. Cơ sở khoa học của ứng dụng VSV trong sản xuất thuốc điều trị bệnh là
+A. nhiều VSV có khả năng tổng hợp chất có hoạt tính sinh học như kháng sinh, enzyme  ← ĐÁP ÁN
+B. nhiều VSV chỉ sinh trưởng trong giới hạn nhất định
+C. nhiều VSV tổng hợp chất độc, ức chế sinh trưởng côn trùng
+D. nhiều VSV tổng hợp hữu cơ từ vô cơ nhờ ánh sáng
+
+Giải thích: Xạ khuẩn và nấm có thể tổng hợp kháng sinh, nhiều VSV tổng hợp enzyme
+(amylase, protease, lipase…) và các chất có hoạt tính sinh học khác → ứng dụng để sản
+xuất thuốc và chế phẩm y tế.
+
+-----
+
+Câu 31. Để sản xuất chất kháng sinh, người ta dùng chủ yếu
+A. (1), (2), (3): Xạ khuẩn, Vi khuẩn, Động vật nguyên sinh
+B. (1), (2), (4): Xạ khuẩn, Vi khuẩn, Nấm  ← ĐÁP ÁN
+C. (2), (3): Vi khuẩn, Động vật nguyên sinh
+D. (1), (4): Xạ khuẩn, Nấm
+
+Giải thích: Kháng sinh chủ yếu được sản xuất từ:
+
+- Xạ khuẩn (Streptomyces): streptomycin, tetracycline, erythromycin…
+- Vi khuẩn (Bacillus): bacitracin, polymyxin…
+- Nấm (Penicillium, Cephalosporium): penicillin, cephalosporin…
+  Động vật nguyên sinh không được dùng sản xuất kháng sinh.
+
+-----
+
+Câu 32. Nhóm VSV dùng sản xuất kháng sinh tự nhiên chủ yếu là
+A. xạ khuẩn và vi khuẩn
+B. xạ khuẩn và vi tảo
+C. vi khuẩn và nấm
+D. xạ khuẩn và nấm  ← ĐÁP ÁN
+
+Giải thích: Hai nhóm chính sản xuất kháng sinh tự nhiên: xạ khuẩn (chiếm >70%) và nấm
+(penicillin từ Penicillium). Đây là nguồn kháng sinh tự nhiên quan trọng nhất.
+
+# ================================================================================
+CHƯƠNG III – VIRUS (Câu từ đề cương)
+
+Câu 33. Vì sao người bị HIV/AIDS dễ mắc lở loét da và tiêu chảy?
+
+ĐÁP ÁN:
+HIV phá hủy tế bào T-CD4 (T4) của hệ miễn dịch → suy giảm miễn dịch → VSV gây bệnh
+cơ hội (vi khuẩn, nấm, ký sinh trùng) dễ dàng tấn công cơ thể → gây các bệnh cơ hội như
+lở loét da, tiêu chảy, viêm phổi…
+
+-----
+
+Câu 34. Tại sao mỗi loại virus chỉ gây bệnh ở một số loài nhất định?
+
+ĐÁP ÁN:
+Virus phải bám vào thụ thể đặc hiệu trên bề mặt tế bào. Nếu tế bào không có thụ thể phù
+hợp với phân tử bề mặt của virus (gai glycoprotein hoặc protein capsid), virus không thể
+hấp phụ và xâm nhập → không gây bệnh. Ví dụ: HIV chỉ xâm nhập tế bào có thụ thể CD4;
+phage T4 chỉ xâm nhập E. coli.
+
+-----
+
+Câu 35. Virus là (chọn đúng nhất)
+A. dạng sống không có cấu tạo tế bào, kích thước rất nhỏ, sống kí sinh bắt buộc trong tế bào  ← ĐÁP ÁN
+B. dạng sống đơn bào, kích thước rất nhỏ, sống kí sinh bắt buộc
+C. dạng sống không có cấu tạo tế bào, sống kí sinh ngoại bào hoặc nội bào
+D. dạng sống đa bào, kích thước rất nhỏ, sống kí sinh
+
+Giải thích: Định nghĩa đầy đủ và chính xác nhất: Virus là dạng sống không có cấu tạo tế
+bào, kích thước rất nhỏ (nano mét), sống kí sinh bắt buộc trong tế bào của sinh vật.
+
+-----
+
+Câu 36. Vì sao virus phải sống kí sinh nội bào bắt buộc?
+A. Vì virus không có cấu tạo tế bào nên phải dùng vật chất của tế bào chủ khi nhân lên  ← ĐÁP ÁN
+B. Kích thước rất nhỏ cần được bảo vệ
+C. Quá trình trao đổi chất mạnh cần nhiều dinh dưỡng
+D. Mẫn cảm với kháng sinh cần bảo vệ
+
+Giải thích: Virus không có ribosome, không có enzyme trao đổi chất riêng → không tự tổng
+hợp được protein hay nhân đôi nucleic acid. Phải dùng ribosome, enzyme, ATP và nguyên
+liệu của tế bào chủ → bắt buộc phải kí sinh nội bào.
+
+-----
+
+Câu 37. Thành phần cấu tạo chính của virus là
+A. màng bọc và vỏ capsid
+B. vỏ capsid và gai glycoprotein
+C. màng bọc và gai glycoprotein
+D. lõi nucleic acid và vỏ capsid  ← ĐÁP ÁN
+
+Giải thích: Mọi virus đều có 2 thành phần chính bắt buộc: lõi nucleic acid (vật chất di truyền,
+DNA hoặc RNA) và vỏ capsid (protein). Màng bọc và gai glycoprotein chỉ có ở virus có màng bọc.
+
+-----
+
+Câu 38. Dựa vào màng phospholipid kép, virus được chia làm 2 loại là
+A. virus trần và virus có màng bọc  ← ĐÁP ÁN
+B. virus DNA và virus RNA
+C. virus ở thực vật và virus ở động vật
+D. virus trần và virus DNA
+
+Giải thích: Tiêu chí phân chia: có hay không có màng phospholipid kép bên ngoài capsid:
+
+- Có: virus có màng bọc (enveloped virus) - VD: HIV, virus cúm, virus herpes
+- Không có: virus trần (naked virus) - VD: phage T4, adenovirus, poliovirus
+
+-----
+
+Câu 39. Virus trần khác virus có màng bọc ở điểm là
+A. có màng phospholipid kép bao bọc bên ngoài vỏ capsid
+B. chỉ có vật chất di truyền là DNA mạch thẳng, dạng kép
+C. chỉ có vật chất di truyền là RNA mạch vòng, dạng đơn
+D. có thụ thể là protein của vỏ capsid  ← ĐÁP ÁN
+
+Giải thích: Virus trần không có màng bọc → protein của vỏ capsid trực tiếp đóng vai trò
+thụ thể (nhận diện và bám vào tế bào chủ). Virus có màng bọc dùng gai glycoprotein trên
+màng bọc làm thụ thể. Đây là điểm khác biệt cơ bản.
+
+-----
+
+Câu 40. Chu trình nhân lên của virus gồm
+A. 2 giai đoạn
+B. 3 giai đoạn
+C. 4 giai đoạn
+D. 5 giai đoạn  ← ĐÁP ÁN
+
+Giải thích: 5 giai đoạn của chu trình nhân lên virus:
+(1) Hấp phụ → (2) Xâm nhập → (3) Sinh tổng hợp → (4) Lắp ráp → (5) Giải phóng
+
+-----
+
+Câu 41. Virus cố định trên bề mặt tế bào chủ nhờ liên kết đặc hiệu là giai đoạn nào?
+A. Hấp phụ  ← ĐÁP ÁN
+B. Xâm nhập
+C. Sinh tổng hợp
+D. Lắp ráp
+
+Giải thích: Hấp phụ (adsorption) là giai đoạn đầu tiên: virus nhận biết và gắn đặc hiệu vào
+thụ thể trên bề mặt tế bào chủ. Sự kết hợp này mang tính chọn lọc cao (chìa khóa – ổ khóa).
+
+-----
+
+Câu 42. Phát biểu nào ĐÚNG về sự khác nhau trong giai đoạn xâm nhập của virus trần và virus
+có màng bọc?
+A. Virus trần đưa trực tiếp vật chất di truyền vào; virus có màng bọc đưa nucleocapsid hoặc
+cả virus vào rồi mới cởi áo  ← ĐÁP ÁN
+B. Virus trần đưa nucleocapsid vào; virus có màng bọc đưa trực tiếp nucleic acid
+C. Virus trần đưa trực tiếp vỏ capsid vào; virus có màng bọc đưa nucleocapsid vào
+D. Virus trần đưa nucleocapsid vào; virus có màng bọc đưa trực tiếp vỏ capsid
+
+Giải thích:
+
+- Virus trần (phage): bơm trực tiếp lõi nucleic acid vào tế bào chủ, để vỏ capsid bên ngoài.
+- Virus có màng bọc (HIV): dung hợp màng bọc với màng tế bào, đưa nucleocapsid (hoặc
+  toàn bộ virus) vào, sau đó “cởi áo” (uncoating) để giải phóng nucleic acid.
+
+-----
+
+Câu 43. Điều KHÔNG đúng về sự phóng thích của virus có màng bọc ra khỏi tế bào vật chủ?
+A. Tổng hợp các đoạn màng có gắn glycoprotein và hợp với màng sinh chất
+B. Tổ hợp vỏ capsid, hệ gene đi ra ngoài theo kiểu xuất bào
+C. Tiết enzyme làm tan màng tế bào và chui ra ngoài  ← ĐÁP ÁN (SAI)
+D. Kéo theo màng sinh chất của tế bào chủ tạo vỏ ngoài
+
+Giải thích: Virus có màng bọc không tiết enzyme làm tan màng để chui ra. Chúng giải phóng
+bằng cách nảy chồi (budding) qua màng sinh chất, kéo theo một phần màng tế bào chủ tạo
+thành màng bọc. Tiết enzyme làm tan màng là cơ chế của một số virus khác (phage dùng
+lysozyme để phá vỡ tế bào vi khuẩn).
+
+-----
+
+Câu 44. Virus phá hủy tế bào chủ để giải phóng đồng thời hoặc chui từ từ ra ngoài là giai đoạn
+A. giải phóng  ← ĐÁP ÁN
+B. hấp phụ
+C. lắp ráp
+D. sinh tổng hợp
+
+Giải thích: Giai đoạn giải phóng (release): virus mới được lắp ráp xong thoát ra ngoài tế bào
+chủ, hoặc bằng cách phá vỡ tế bào (lytic cycle – phage) hoặc nảy chồi từ từ (virus có màng bọc).
+
+-----
+
+Câu 45. Vì sao sự nhân lên của virus không được gọi là quá trình sinh sản?
+A. Vì từ một virus ban đầu có thể tạo ra vô số virus mới
+B. Vì từ một virus ban đầu chỉ tạo ra hai virus mới
+C. Vì sự nhân lên của virus hoàn toàn phụ thuộc vào tế bào chủ  ← ĐÁP ÁN
+D. Vì không có sự kết hợp của giao tử
+
+Giải thích: Sinh sản thực sự là quá trình sinh vật tự nhân lên bằng vật chất của chính mình.
+Virus không có bộ máy trao đổi chất riêng, hoàn toàn phụ thuộc tế bào chủ để tổng hợp
+protein, nucleic acid, lắp ráp → không được gọi là sinh sản.
+
+-----
+
+Câu 46. Vì sao mỗi loại virus chỉ xâm nhập vào một số tế bào vật chủ nhất định?
+A. Bề mặt tế bào vật chủ được bảo vệ bởi protein chống virus
+B. Virus có lớp vỏ ngoài trơ với thụ thể tế bào vật chủ
+C. Virus chỉ xâm nhập khi có khớp đặc hiệu giữa phân tử bề mặt virus và thụ thể tế bào
+D. Virus chỉ xâm nhập khi có khớp đặc hiệu giữa thụ thể virus và phân tử bề mặt tế bào  ← ĐÁP ÁN
+
+Giải thích: Virus hấp phụ vào tế bào nhờ tương tác đặc hiệu giữa thụ thể của virus (protein
+capsid hoặc gai glycoprotein) và phân tử thụ thể đặc hiệu trên bề mặt tế bào chủ. Nếu tế
+bào không có thụ thể phù hợp, virus không thể bám → không xâm nhập được.
+
+# ================================================================================
+PHẦN C – MỘT SỐ CÂU HỎI ĐỌC THÊM TỪ ĐỀ CƯƠNG
+
+Câu hỏi đúng/sai từ đề cương (Câu 1 – Trang 5 đề cương):
+
+1a. Nấm men chuyển hóa tinh bột tạo ethanol → kiểu dinh dưỡng hóa tự dưỡng
+→ SAI
+Giải thích: Nấm men sử dụng tinh bột (chất hữu cơ) làm nguồn carbon và năng lượng →
+hóa DỊ dưỡng (không phải tự dưỡng). Hóa tự dưỡng dùng chất vô cơ làm nguồn carbon.
+
+1b. Muối chua rau củ cần thêm đường cho vi khuẩn lactic sinh trưởng nhanh hơn
+→ ĐÚNG
+Giải thích: Đường là nguồn carbon và năng lượng trực tiếp cho vi khuẩn lactic. Thêm đường
+giúp vi khuẩn có đủ cơ chất để lên men và tăng sinh nhanh.
+
+1c. Tảo Zooxanthellae cộng sinh với san hô, cung cấp carbohydrate → quang tự dưỡng
+→ ĐÚNG
+Giải thích: Tảo dùng ánh sáng và CO₂ để quang hợp tạo carbohydrate → quang tự dưỡng.
+Phương trình: 6CO₂ + 6H₂O + ánh sáng → C₆H₁₂O₆ + 6O₂ ✓
+
+1d. Vi sinh vật trong chế phẩm EMZEO phân giải hữu cơ → quang tự dưỡng
+→ SAI
+Giải thích: Vi sinh vật phân giải chất hữu cơ (protein, lipid, cellulose) → dùng chất hữu cơ
+làm nguồn carbon → hóa DỊ dưỡng. EMZEO không dùng ánh sáng làm năng lượng chính.
+
+HẾT
