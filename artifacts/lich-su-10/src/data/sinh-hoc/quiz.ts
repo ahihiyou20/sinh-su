@@ -225,9 +225,9 @@ export const quizData: Quiz[] = [
       "Pha cân bằng và suy vong",
       "Pha suy vong",
     ],
-    answer: 2,
+    answer: 3,
     explain:
-      "Sau 3h, ngừng bổ sung glucose → glucose dần cạn kiệt và độc tố tích lũy → quần thể lần lượt chuyển sang PHA CÂN BẰNG rồi PHA SUY VONG.",
+      "Sau 3h, ngừng bổ sung glucose → glucose dần cạn kiệt và độc tố tích lũy → quần thể lần lượt chuyển sang PHA SUY VONG.",
     scenarioId: "ecoli-glucose-21-23",
     scenarioTitle: "Bối cảnh E. coli + glucose",
   },
