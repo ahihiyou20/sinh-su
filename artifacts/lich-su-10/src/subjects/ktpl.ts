@@ -22,6 +22,7 @@ export const ktplSubject: SubjectConfig = {
   accentHex: "#D4A017",
 
   tagColors: {
+    "Hệ thống chính trị": "#17607A",
     "Quốc hội": "#1A5276",
     "Chủ tịch nước": "#6C3483",
     "Chính phủ": "#1E8449",
@@ -36,6 +37,7 @@ export const ktplSubject: SubjectConfig = {
   filters: [
     allFilter,
     bookmarkFilter,
+    { label: "Hệ thống CT", kind: { type: "topic", topic: "Hệ thống chính trị" } },
     { label: "Quốc hội", kind: { type: "topic", topic: "Quốc hội" } },
     { label: "Chủ tịch nước", kind: { type: "topic", topic: "Chủ tịch nước" } },
     { label: "Chính phủ", kind: { type: "topic", topic: "Chính phủ" } },

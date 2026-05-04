@@ -460,10 +460,315 @@ export const ktplQuestions: readonly SubjectQuestion[] = [
   {
     id: "ktpl-35",
     q: "Viện kiểm sát quân sự hoạt động theo cơ chế mấy cấp?",
-    opts: ["3 cấp", "4 cấp", "5 cấp", "2 cấp"],
+    opts: ["3 cấp", "4 cấp", "2 cấp", "5 cấp"],
     ans: 0,
     explain: "Viện kiểm sát quân sự hoạt động theo cơ chế 3 cấp: VKSQS Trung ương, VKSQS cấp quân khu và VKSQS khu vực.",
     tag: "Viện kiểm sát nhân dân",
     difficulty: "medium",
+  },
+
+  // ── Bài 22: Viện kiểm sát — các câu bổ sung ────────────────────────────
+
+  {
+    id: "ktpl-36",
+    q: "Theo quy định của pháp luật, Viện Kiểm sát nhân dân do ai lãnh đạo?",
+    opts: [
+      "Bộ trưởng Bộ Công an.",
+      "Chủ tịch Quốc hội.",
+      "Viện trưởng.",
+      "Bộ trưởng Bộ Tư pháp.",
+    ],
+    ans: 2,
+    explain: "Viện kiểm sát nhân dân do Viện trưởng lãnh đạo. Viện trưởng VKSND tối cao do Quốc hội bầu theo đề nghị của Chủ tịch nước.",
+    tag: "Viện kiểm sát nhân dân",
+    difficulty: "easy",
+  },
+  {
+    id: "ktpl-37",
+    q: "Hệ thống Viện kiểm sát nhân dân (từ 01/7/2025) không có cấp nào dưới đây?",
+    opts: [
+      "Viện kiểm sát nhân dân huyện",
+      "Viện kiểm sát nhân dân tối cao",
+      "Viện kiểm sát nhân dân tỉnh",
+      "Viện kiểm sát quân sự trung ương",
+    ],
+    ans: 0,
+    explain: "Từ 01/7/2025, hệ thống VKSND được tổ chức lại, không còn cấp huyện. Hệ thống gồm: VKSND tối cao, VKSND cấp cao, VKSND cấp tỉnh và VKSND khu vực (thay thế cấp huyện).",
+    tag: "Viện kiểm sát nhân dân",
+    difficulty: "medium",
+  },
+
+  // ── Bài 19: Hệ thống chính trị ─────────────────────────────────────────
+
+  {
+    id: "ktpl-38",
+    q: "Hệ thống chính trị Việt Nam được thực hiện theo mấy nguyên tắc?",
+    opts: ["3", "4", "5", "2"],
+    ans: 1,
+    explain: "Hệ thống chính trị Việt Nam hoạt động theo 4 nguyên tắc: (1) Đảm bảo sự lãnh đạo của Đảng CSVN; (2) Quyền lực nhà nước thuộc về nhân dân; (3) Nguyên tắc tập trung dân chủ; (4) Nguyên tắc pháp chế xã hội chủ nghĩa.",
+    tag: "Hệ thống chính trị",
+    difficulty: "easy",
+  },
+  {
+    id: "ktpl-39",
+    q: "Trong hệ thống chính trị Việt Nam, tổ chức đóng vai trò cầm quyền, lãnh đạo Nhà nước và xã hội là",
+    opts: [
+      "Đảng Cộng sản Việt Nam.",
+      "Mặt trận tổ quốc Việt Nam.",
+      "các tổ chức chính trị - xã hội.",
+      "Quốc hội và Hội đồng nhân dân.",
+    ],
+    ans: 0,
+    explain: "Đảng Cộng sản Việt Nam giữ vai trò cầm quyền, lãnh đạo Nhà nước và xã hội — đây là nguyên tắc được khẳng định trong Hiến pháp và trong hệ thống chính trị Việt Nam.",
+    tag: "Hệ thống chính trị",
+    difficulty: "easy",
+  },
+  {
+    id: "ktpl-40",
+    q: "Các cơ quan, tổ chức trong hệ thống chính trị Việt Nam đều có địa vị pháp lí vững chắc và hoạt động trong khuôn khổ của pháp luật là nội dung đề cập đến nguyên tắc nào dưới đây?",
+    opts: [
+      "Nguyên tắc đảm bảo sự lãnh đạo của Đảng.",
+      "Nguyên tắc pháp chế xã hội chủ nghĩa.",
+      "Quyền lực nhà nước thuộc về nhân dân",
+      "Nguyên tắc tập trung dân chủ.",
+    ],
+    ans: 1,
+    explain: "Nguyên tắc pháp chế xã hội chủ nghĩa yêu cầu mọi cơ quan, tổ chức và cá nhân đều phải hoạt động trong khuôn khổ pháp luật, có địa vị pháp lí vững chắc.",
+    tag: "Hệ thống chính trị",
+    difficulty: "medium",
+  },
+  {
+    id: "ktpl-41",
+    q: "Hệ thống chính trị Việt Nam có chung một mục đích là gì?",
+    opts: [
+      "đại diện cho quyền lợi của giai cấp thống trị.",
+      "đại diện cho quyền lợi của một giai cấp.",
+      "đại diện cho quyền lợi của giai cấp và dân tộc.",
+      "đại diện cho quyền lợi của một tổ chức.",
+    ],
+    ans: 2,
+    explain: "Mặc dù gồm nhiều tổ chức khác nhau, hệ thống chính trị Việt Nam có chung một mục đích là đại diện và bảo vệ quyền lợi của giai cấp (công nhân, nông dân, trí thức) và của toàn dân tộc Việt Nam.",
+    tag: "Hệ thống chính trị",
+    difficulty: "medium",
+  },
+  {
+    id: "ktpl-42",
+    q: "Những vấn đề quan trọng nhất của đất nước được quyết định bởi tập thể theo chế độ tập thể lãnh đạo, cá nhân phụ trách, thiểu số phục tùng đa số, cấp dưới phục tùng cấp trên là nội dung thể hiện nguyên tắc nào trong tổ chức và hoạt động của hệ thống chính trị Việt Nam?",
+    opts: [
+      "Nguyên tắc quyền lực nhà nước thuộc về nhân dân.",
+      "Nguyên tắc đảm bảo sự lãnh đạo của Đảng Cộng sản Việt Nam.",
+      "Nguyên tắc tập trung dân chủ.",
+      "Nguyên tắc pháp chế xã hội chủ nghĩa.",
+    ],
+    ans: 2,
+    explain: "Nguyên tắc tập trung dân chủ thể hiện qua: tập thể lãnh đạo, cá nhân phụ trách; thiểu số phục tùng đa số; cấp dưới phục tùng cấp trên; vừa đảm bảo sự lãnh đạo tập trung thống nhất, vừa phát huy tính chủ động sáng tạo của địa phương.",
+    tag: "Hệ thống chính trị",
+    difficulty: "medium",
+  },
+  {
+    id: "ktpl-43",
+    q: "Trong hệ thống chính trị Việt Nam, Đảng Cộng sản Việt Nam là:",
+    opts: [
+      "Tổ chức có vai trò trung tâm trong hệ thống chính trị.",
+      "Một bộ phận của hệ thống chính trị, đồng thời là tổ chức giữ vai trò lãnh đạo của cả hệ thống chính trị Việt Nam.",
+      "Một tổ chức chính trị - xã hội nằm trong hệ thống các cơ quan Nhà nước.",
+      "Tổ chức lãnh đạo xã hội Việt Nam, lãnh đạo nhân dân và thực hiện đoàn kết toàn xã hội.",
+    ],
+    ans: 1,
+    explain: "Đảng CSVN vừa là một bộ phận cấu thành của hệ thống chính trị (như Nhà nước, MTTQ...), vừa đồng thời giữ vai trò lãnh đạo toàn bộ hệ thống chính trị đó.",
+    tag: "Hệ thống chính trị",
+    difficulty: "medium",
+  },
+  {
+    id: "ktpl-44",
+    q: "Bộ máy nhà nước Cộng hòa xã hội chủ nghĩa Việt Nam có mấy đặc điểm chính?",
+    opts: ["5", "3", "6", "4"],
+    ans: 3,
+    explain: "Bộ máy nhà nước CHXHCNVN có 4 đặc điểm chính: (1) Mang bản chất giai cấp công nhân; (2) Có tính nhân dân rộng rãi; (3) Có tính dân tộc sâu sắc; (4) Tổ chức và hoạt động theo nguyên tắc pháp quyền XHCN.",
+    tag: "Hệ thống chính trị",
+    difficulty: "easy",
+  },
+  {
+    id: "ktpl-45",
+    q: "Nhà nước Cộng hoà xã hội chủ nghĩa Việt Nam được tổ chức, hoạt động theo Hiến pháp và pháp luật, quản lí xã hội bằng:",
+    opts: [
+      "Nguyên tắc pháp chế xã hội chủ nghĩa",
+      "Thi hành các đạo luật hà khắc",
+      "Hiến pháp và pháp luật",
+      "Các biện pháp tài chính hiệu quả",
+    ],
+    ans: 2,
+    explain: "Nhà nước pháp quyền XHCN Việt Nam tổ chức, hoạt động theo Hiến pháp và pháp luật, quản lý xã hội bằng Hiến pháp và pháp luật — đây là một đặc trưng cơ bản của nhà nước pháp quyền.",
+    tag: "Hệ thống chính trị",
+    difficulty: "easy",
+  },
+
+  // ── Bài 21: Chính phủ — câu bổ sung ───────────────────────────────────
+
+  {
+    id: "ktpl-46",
+    q: "Trong 1 năm, Chính phủ họp tối thiểu bao nhiêu phiên?",
+    opts: ["12", "4", "3", "2"],
+    ans: 0,
+    explain: "Theo quy định, Chính phủ họp thường kỳ tối thiểu 1 phiên mỗi tháng, tức ít nhất 12 phiên mỗi năm. Ngoài ra Chính phủ có thể họp bất thường theo yêu cầu.",
+    tag: "Chính phủ",
+    difficulty: "easy",
+  },
+
+  // ── Bài 21: Quốc hội — câu bổ sung ────────────────────────────────────
+
+  {
+    id: "ktpl-47",
+    q: "Việc chất vấn và nghe trả lời chất vấn của Bộ trưởng, Thủ trưởng cơ quan ngang Bộ thể hiện chức năng nào của Quốc hội?",
+    opts: [
+      "Quyết định các vấn đề quan trọng của đất nước",
+      "Kiểm tra, thanh tra hoạt động hành pháp.",
+      "Giám sát tối cao hoạt động của các cơ quan Nhà nước",
+      "Lập hiến, lập pháp",
+    ],
+    ans: 2,
+    explain: "Chất vấn Bộ trưởng và nghe trả lời chất vấn là hình thức Quốc hội thực hiện chức năng giám sát tối cao đối với hoạt động của Chính phủ và các thành viên Chính phủ.",
+    tag: "Quốc hội",
+    difficulty: "medium",
+  },
+  {
+    id: "ktpl-48",
+    q: "Việc xây dựng đường cao tốc Bắc - Nam có ý nghĩa to lớn về mặt chính trị... Đây được xem là vấn đề quan trọng của đất nước đã được Quốc hội thông qua. Trong trường hợp này, Quốc hội đã thực hiện nguyên tắc nào để thông qua dự án đường cao tốc Bắc - Nam?",
+    opts: [
+      "Nguyên tắc tập trung dân chủ.",
+      "Trưng cầu ý kiến của nhân dân.",
+      "Chủ tịch Quốc hội quyết định.",
+      "Dựa vào nghị quyết của Đảng.",
+    ],
+    ans: 0,
+    explain: "Quốc hội thông qua các quyết định lớn theo nguyên tắc tập trung dân chủ — biểu quyết theo đa số đại biểu tán thành, thể hiện ý chí tập thể của cơ quan quyền lực nhà nước cao nhất.",
+    tag: "Quốc hội",
+    difficulty: "hard",
+  },
+  {
+    id: "ktpl-49",
+    q: "Chính phủ được Quốc hội giám sát bằng hình thức nào sau đây?",
+    opts: [
+      "Trưng cầu ý dân",
+      "Chất vấn và bỏ phiếu tín nhiệm",
+      "Kiểm toán Nhà nước",
+      "Trưng cầu Quốc hội",
+    ],
+    ans: 1,
+    explain: "Quốc hội giám sát Chính phủ thông qua hình thức chất vấn (đặt câu hỏi và yêu cầu Bộ trưởng trả lời) và bỏ phiếu tín nhiệm đối với các chức danh do Quốc hội bầu hoặc phê chuẩn.",
+    tag: "Quốc hội",
+    difficulty: "medium",
+  },
+  {
+    id: "ktpl-50",
+    q: "Trường hợp nào sau đây cần có sự phê chuẩn của Quốc hội?",
+    opts: [
+      "Ký kết điều ước quốc tế về quốc phòng an ninh",
+      "Ký kết thỏa thuận hoặc văn bản liên thông giữa các bộ",
+      "Ký kết văn bản hợp tác cấp địa phương",
+      "Cử đại sứ đặc mệnh toàn quyền",
+    ],
+    ans: 0,
+    explain: "Theo Hiến pháp và Luật Điều ước quốc tế, các điều ước quốc tế liên quan đến quốc phòng, an ninh, chủ quyền quốc gia cần có sự phê chuẩn của Quốc hội mới có hiệu lực.",
+    tag: "Quốc hội",
+    difficulty: "hard",
+  },
+
+  // ── Bài 22: Tòa án — câu bổ sung ──────────────────────────────────────
+
+  {
+    id: "ktpl-51",
+    q: "Khẳng định nào dưới đây chưa đúng khi nói về Tòa án nhân dân?",
+    opts: [
+      "Tòa án nhân dân là cơ quan giám sát hoạt động của các cơ quan nhà nước.",
+      "Tòa án nhân dân là cơ quan xét xử của nước Cộng hoà xã hội chủ nghĩa Việt Nam",
+      "Tòa án nhân dân gồm Tòa án nhân dân tối cao và các Tòa án khác do luật định.",
+      "Tòa án nhân dân có nhiệm vụ bảo vệ công lý, bảo vệ quyền con người.",
+    ],
+    ans: 0,
+    explain: "Đây là khẳng định CHƯA ĐÚNG: TAND là cơ quan XÉT XỬ, không phải cơ quan giám sát. Chức năng giám sát hoạt động tư pháp thuộc về Viện kiểm sát nhân dân.",
+    tag: "Tòa án nhân dân",
+    difficulty: "medium",
+  },
+  {
+    id: "ktpl-52",
+    passage: "Nghe tin Tòa án nhân dân Tỉnh M sẽ tổ chức xét xử lưu động công khai vụ án hình sự chống người thi hành công vụ đối với ông P tại Nhà văn hóa huyện. Chị A, Q, B rủ nhau cùng đi xem. Khi đi ngang qua nhà chị V, thấy chị V, chị K và anh Q đang ngồi nói chuyện, chị A rủ họ đi cùng. Anh Q nói: \"Xét xử là chức năng của Tòa án rồi, đi xem cũng có ích lợi gì đâu, đi xem chỉ tốn kém thời gian.\" Chị A giải thích: \"Việc xét xử lưu động này có ý nghĩa tuyên truyền, phổ biến, nâng cao ý thức chấp hành pháp luật tới nhân dân, giáo dục công dân đấu tranh phòng chống tội phạm.\" Chị B, chị K thống nhất với chị A. Chị V thì thống nhất với ý của anh Q. Sau đó chị K đã cùng đi xem với chị A, Q, B.",
+    q: "Những ai sau đây hiểu chưa rõ về chức năng của Tòa án nhân dân?",
+    opts: [
+      "Chị A và anh Q.",
+      "Chị A, B và K.",
+      "Chị B, Q và A.",
+      "Anh Q và chị V.",
+    ],
+    ans: 3,
+    explain: "Anh Q cho rằng xét xử lưu động không có ích lợi; chị V đồng tình với anh Q — cả hai hiểu chưa rõ rằng xét xử công khai lưu động là một hình thức tuyên truyền pháp luật, góp phần thực hiện chức năng giáo dục của Tòa án. Chị A đã giải thích đúng.",
+    tag: "Tòa án nhân dân",
+    difficulty: "hard",
+  },
+  {
+    id: "ktpl-54",
+    passage: "Ngày 28/6/2023, Quốc hội nước CHXHCN Việt Nam đã thông qua Luật sửa đổi, bổ sung một số điều của Luật Tổ chức Tòa án nhân dân. Luật mới nhấn mạnh vai trò độc lập của thẩm phán trong hoạt động xét xử và sự giám sát tối cao của Quốc hội đối với hệ thống tòa án. Trong quá trình xây dựng luật, Viện kiểm sát nhân dân tối cao và Tòa án nhân dân tối cao đã có nhiều ý kiến đóng góp để bảo đảm tính thống nhất của hệ thống tư pháp. (Nguồn: quochoi.gov.vn)",
+    q: "Nhận định nào dưới đây KHÔNG đúng khi đọc thông tin trên?",
+    opts: [
+      "Quốc hội là cơ quan có quyền lập pháp, bao gồm cả việc thông qua luật liên quan đến tổ chức Tòa án.",
+      "Việc xét xử tại Tòa án nhân dân phải phụ thuộc hoàn toàn vào sự chỉ đạo của Quốc hội.",
+      "Tòa án nhân dân và Viện kiểm sát nhân dân có thể tham gia đóng góp ý kiến trong quá trình xây dựng pháp luật.",
+      "Luật Tổ chức Tòa án nhân dân được sửa đổi nhằm tăng tính độc lập và hiệu quả cho hoạt động xét xử.",
+    ],
+    ans: 1,
+    explain: "Nhận định KHÔNG đúng: TAND hoạt động độc lập và chỉ tuân theo pháp luật, không phụ thuộc hoàn toàn vào sự chỉ đạo của Quốc hội. Quốc hội chỉ giám sát tối cao, không can thiệp vào việc xét xử cụ thể.",
+    tag: "Tòa án nhân dân",
+    difficulty: "hard",
+  },
+
+  // ── Bài 21: Quốc hội — câu phân tích tình huống ─────────────────────
+
+  {
+    id: "ktpl-53",
+    passage: "\"Kỳ họp thứ 1, Quốc hội khóa XVI tiếp tục thể hiện vai trò cơ quan quyền lực nhà nước cao nhất, thảo luận và thông qua nhiều luật quan trọng, tăng cường giám sát tối cao, thể hiện nguyên tắc quyền lực nhà nước là thống nhất, có sự phân công, phối hợp và kiểm soát giữa các cơ quan.\" (Trích từ: Quốc hội phát huy vai trò cơ quan quyền lực nhà nước cao nhất – nhandan.vn)",
+    q: "Nhận định nào dưới đây KHÔNG đúng khi đọc đoạn trích trên?",
+    opts: [
+      "Quốc hội là cơ quan quyền lực nhà nước cao nhất của nước CHXHCN Việt Nam.",
+      "Nguyên tắc tổ chức bộ máy nhà nước bao gồm sự tách biệt hoàn toàn giữa các cơ quan quyền lực.",
+      "Quốc hội có chức năng ban hành văn bản Luật.",
+      "Có sự phân công, phối hợp và kiểm soát giữa các cơ quan trong bộ máy nhà nước Việt Nam.",
+    ],
+    ans: 1,
+    explain: "Nhận định KHÔNG đúng: Nhà nước Việt Nam không theo mô hình tách biệt hoàn toàn giữa các quyền. Hiến pháp quy định quyền lực nhà nước là THỐNG NHẤT, có sự phân công, phối hợp và kiểm soát giữa các cơ quan — không phải tách biệt hoàn toàn.",
+    tag: "Quốc hội",
+    difficulty: "hard",
+  },
+  {
+    id: "ktpl-56",
+    passage: "Lần đầu tiên trong lịch sử lập hiến, Hiến pháp quy định đầy đủ và phát triển thành nguyên tắc về việc \"Nhân dân thực hiện quyền lực nhà nước bằng dân chủ trực tiếp\". Nguyên tắc này được thể hiện nhất quán, xuyên suốt trong toàn bộ Hiến pháp năm 2013... Ngoài ra, nhân dân còn thực hiện quyền lực nhà nước một cách gián tiếp thông qua Quốc hội, Hội đồng nhân dân và các cơ quan khác của Nhà nước. Quốc hội và Hội đồng nhân dân do nhân dân bầu lên, thể hiện ý chí và nguyện vọng của nhân dân, được nhân dân trao quyền để thực hiện quyền lực và chịu trách nhiệm trước nhân dân.",
+    q: "Nhận định nào dưới đây KHÔNG đúng khi đọc đoạn trích trên?",
+    opts: [
+      "Quốc hội có quyền bầu và bãi nhiệm Thủ tướng chính phủ.",
+      "Đại biểu Quốc hội không còn xứng đáng với sự tín nhiệm của Nhân dân thì bị Quốc hội bãi nhiệm.",
+      "Chức năng của Quốc hội là tổ chức thi hành hiến pháp và pháp luật.",
+      "Quyền lực nhà nước thuộc về nhân dân là một nguyên tắc cơ bản của bộ máy nhà nước.",
+    ],
+    ans: 2,
+    explain: "Nhận định KHÔNG đúng: Chức năng của Quốc hội là lập hiến, lập pháp (ban hành), giám sát tối cao và quyết định các vấn đề quan trọng — không phải tổ chức thi hành. Việc tổ chức thi hành pháp luật là chức năng hành pháp của Chính phủ.",
+    tag: "Quốc hội",
+    difficulty: "hard",
+  },
+
+  // ── Bài 21: Chính phủ — câu phân tích tình huống ─────────────────────
+
+  {
+    id: "ktpl-55",
+    passage: "Thủ tướng Chính phủ Phạm Minh Chính vừa ký ban hành Công điện số 03/CĐ-TTg ngày 14/1/2024 về việc chăm lo đời sống, bảo đảm an sinh xã hội cho người dân và người lao động trong dịp Tết Nguyên đán Giáp Thìn năm 2024. Công điện gửi Bộ trưởng các Bộ, Thủ trưởng cơ quan ngang Bộ, cơ quan thuộc Chính phủ; Chủ tịch UBND các tỉnh, thành phố trực thuộc TW; Chủ tịch Tổng Liên đoàn lao động Việt Nam căn cứ vào chức năng và nhiệm vụ của mình chỉ đạo các ngành thực hiện nhiều giải pháp thiết thực, hiệu quả để chăm lo đời sống, bảo đảm an sinh xã hội, bảo đảm mọi người dân đều có Tết, không để ai bị bỏ lại phía sau.",
+    q: "Nhận định nào dưới đây là ĐÚNG khi đọc thông tin trên?",
+    opts: [
+      "Tổng Liên đoàn lao động Việt Nam là bộ phận cấu thành Bộ máy nhà nước CHXHCN Việt Nam.",
+      "Công điện số 03/CĐ-TTg là hoạt động cá biệt không gắn liền với chức năng của Chính phủ.",
+      "Xét về cấu trúc, Công điện số 03/CĐ-TTg là một văn bản quy phạm pháp luật.",
+      "Chăm lo tết cho người dân là trách nhiệm của cả hệ thống chính trị, thể hiện nguyên tắc vì nhân dân trong tổ chức và hoạt động của Hệ thống chính trị.",
+    ],
+    ans: 3,
+    explain: "Nhận định ĐÚNG: Việc Thủ tướng ban hành công điện chỉ đạo các cơ quan chăm lo cho người dân dịp Tết thể hiện nguyên tắc vì nhân dân và trách nhiệm của cả hệ thống chính trị. Các nhận định còn lại sai vì: Tổng LĐLĐ không thuộc bộ máy nhà nước; Công điện là văn bản hành chính, không phải VBQPPL; và đây là hoạt động thuộc chức năng hành pháp của Chính phủ.",
+    tag: "Chính phủ",
+    difficulty: "hard",
   },
 ];
