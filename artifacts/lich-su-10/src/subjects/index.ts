@@ -1,4 +1,5 @@
 import type { SubjectId } from "@/lib/storage";
+import { ktplSubject } from "./ktpl";
 import { lichSuSubject } from "./lich-su";
 import { sinhHocSubject } from "./sinh-hoc";
 import { tiengTrungSubject } from "./tiengtrung";
@@ -10,6 +11,7 @@ export const subjects: Record<SubjectId, SubjectConfig> = {
   sinhhoc: sinhHocSubject,
   tiengtrung: tiengTrungSubject,
   vatly: vatLySubject,
+  ktpl: ktplSubject,
 };
 
 export const subjectList: readonly SubjectConfig[] = [
@@ -17,6 +19,7 @@ export const subjectList: readonly SubjectConfig[] = [
   sinhHocSubject,
   tiengTrungSubject,
   vatLySubject,
+  ktplSubject,
 ];
 
 export function getSubject(id: SubjectId): SubjectConfig {

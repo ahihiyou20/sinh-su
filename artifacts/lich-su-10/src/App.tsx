@@ -13,8 +13,10 @@ function NotFound() {
         <a href="/sinhhoc" className="text-gold underline">Sinh học</a>
         {", "}
         <a href="/tiengtrung" className="text-gold underline">Tiếng Trung</a>
-        {" hoặc "}
+        {", "}
         <a href="/vatly" className="text-gold underline">Vật lý</a>
+        {" hoặc "}
+        <a href="/ktpl" className="text-gold underline">Kinh tế PL</a>
         .
       </p>
     </main>
@@ -38,6 +40,9 @@ function App() {
       </Route>
       <Route path="/vatly">
         <SubjectPage subject={getSubject("vatly")} />
+      </Route>
+      <Route path="/ktpl">
+        <SubjectPage subject={getSubject("ktpl")} />
       </Route>
       <Route>
         <NotFound />

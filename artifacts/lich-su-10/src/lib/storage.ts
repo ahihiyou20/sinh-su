@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 
-export type SubjectId = "lichsu" | "sinhhoc" | "tiengtrung" | "vatly";
+export type SubjectId = "lichsu" | "sinhhoc" | "tiengtrung" | "vatly" | "ktpl";
 
 const APP_NS = "revision-app";
 const HISTORY_MAX = 30;
@@ -120,6 +120,7 @@ const bookmarkStores: Record<SubjectId, BookmarkStoreEntry> = {
   sinhhoc: { current: new Set(), listeners: new Set() },
   tiengtrung: { current: new Set(), listeners: new Set() },
   vatly: { current: new Set(), listeners: new Set() },
+  ktpl: { current: new Set(), listeners: new Set() },
 };
 
 function readBookmarks(subject: SubjectId): ReadonlySet<string> {
@@ -156,9 +157,10 @@ if (typeof window !== "undefined") {
   bookmarkStores.sinhhoc.current = readBookmarks("sinhhoc");
   bookmarkStores.tiengtrung.current = readBookmarks("tiengtrung");
   bookmarkStores.vatly.current = readBookmarks("vatly");
+  bookmarkStores.ktpl.current = readBookmarks("ktpl");
   window.addEventListener("storage", (event) => {
     if (!event.key) return;
-    for (const subject of ["lichsu", "sinhhoc", "tiengtrung", "vatly"] as const) {
+    for (const subject of ["lichsu", "sinhhoc", "tiengtrung", "vatly", "ktpl"] as const) {
       if (event.key === ns("bookmarks", subject)) {
         bookmarkStores[subject].current = readBookmarks(subject);
         for (const l of bookmarkStores[subject].listeners) l();
@@ -445,15 +447,16 @@ const customQuestionsStores: Record<SubjectId, CustomQuestionsStoreEntry> = {
   sinhhoc: { current: [], listeners: new Set() },
   tiengtrung: { current: [], listeners: new Set() },
   vatly: { current: [], listeners: new Set() },
+  ktpl: { current: [], listeners: new Set() },
 };
 
 if (typeof window !== "undefined") {
-  for (const subject of ["lichsu", "sinhhoc", "tiengtrung", "vatly"] as const) {
+  for (const subject of ["lichsu", "sinhhoc", "tiengtrung", "vatly", "ktpl"] as const) {
     customQuestionsStores[subject].current = readCustomQuestions(subject);
   }
   window.addEventListener("storage", (event) => {
     if (!event.key) return;
-    for (const subject of ["lichsu", "sinhhoc", "tiengtrung", "vatly"] as const) {
+    for (const subject of ["lichsu", "sinhhoc", "tiengtrung", "vatly", "ktpl"] as const) {
       if (event.key === ns("custom-questions", subject)) {
         customQuestionsStores[subject].current = readCustomQuestions(subject);
         for (const l of customQuestionsStores[subject].listeners) l();
