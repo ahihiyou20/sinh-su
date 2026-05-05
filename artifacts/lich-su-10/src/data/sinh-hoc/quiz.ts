@@ -543,9 +543,9 @@ export const quizData: Quiz[] = [
       "Vì virus chỉ xâm nhập được vào tế bào vật chủ khi có sự khớp đặc hiệu giữa phân tử bề mặt của virus và thụ thể bề mặt tế bào",
       "Vì virus chỉ xâm nhập được vào tế bào vật chủ khi có sự khớp đặc hiệu giữa thụ thể của virus và phân tử bề mặt tế bào",
     ],
-    answer: 3,
+    answer: 2,
     explain:
-      "Tính đặc hiệu vật chủ: virus chỉ vào được tế bào khi THỤ THỂ của virus (gai glycoprotein hoặc protein vỏ capsid) khớp đặc hiệu với phân tử bề mặt tế bào chủ. Ví dụ: HIV chỉ tấn công tế bào có thụ thể CD4 (lympho T).",
+      "Tính đặc hiệu vật chủ: virus chỉ vào được tế bào khi phân tử bề mặt của virus (gai glycoprotein hoặc protein vỏ capsid) khớp đặc hiệu với thụ thể tế bào chủ. Ví dụ: HIV chỉ tấn công tế bào có thụ thể CD4 (lympho T).",
     difficulty: "hard",
   },
 
